@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Converter - Free Online Text Tools Tool | AI Tool Suite</title>
+    <meta name="description" content="Convert text between UPPERCASE, lowercase, Title Case, Sentence case, camelCase, snake_case, and kebab-case. Paste your text and click the format you need. Free and instant.">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Case Converter - Free Online Text Tools Tool | AI Tool Suite">
+    <meta property="og:description" content="Convert text between UPPERCASE, lowercase, Title Case, Sentence case, camelCase, snake_case, and kebab-case. Paste your text and click the format you need. Free and instant.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://aitoolsuite.lol/case-converter">
+    
+    <!-- JSON-LD: WebApplication -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Case Converter",
+        "description": "Convert text between UPPERCASE, lowercase, Title Case, Sentence case, camelCase, snake_case, and kebab-case. Paste your text and click the format you need. Free and instant.",
+        "url": "https://aitoolsuite.lol/case-converter",
+        "applicationCategory": "UtilityApplication",
+        "operatingSystem": "Any",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
+    
+    <!-- JSON-LD: FAQPage -->
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            
+            {
+                "@type": "Question",
+                "name": "What case formats are supported?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "This tool supports UPPERCASE, lowercase, Title Case, Sentence case, camelCase, snake_case, and kebab-case conversions."
+                }
+            },
+            
+            {
+                "@type": "Question",
+                "name": "What is camelCase used for?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "camelCase is commonly used in JavaScript and other programming languages for variable and function names. Each word starts with a capital letter except the first."
+                }
+            },
+            
+            {
+                "@type": "Question",
+                "name": "What is the difference between snake_case and kebab-case?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "snake_case uses underscores between words (like_this) and is common in Python. kebab-case uses hyphens (like-this) and is common in URLs and CSS class names."
+                }
+            }
+            
+        ]
+    }
+    </script>
+    
+    
+    <!-- JSON-LD: BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://aitoolsuite.lol"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Text Tools",
+                "item": "https://aitoolsuite.lol/text-tools"
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Case Converter"
+            }
+        ]
+    }
+    </script>
+    
+    <style>
+        /* Minimal, fast-loading CSS */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #1a1a2e;
+            background: #f8f9fa;
+        }
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+        
+        /* Breadcrumb */
+        .breadcrumb { font-size: 0.85rem; color: #666; margin-bottom: 24px; }
+        .breadcrumb a { color: #4361ee; text-decoration: none; }
+        .breadcrumb a:hover { text-decoration: underline; }
+        .breadcrumb .sep { margin: 0 8px; color: #ccc; }
+        
+        /* Header */
+        h1 { font-size: 2rem; margin-bottom: 16px; color: #1a1a2e; }
+        .description { font-size: 1.1rem; color: #444; margin-bottom: 32px; line-height: 1.7; }
+        
+        /* Tool Widget Area */
+        .tool-widget {
+            background: #fff;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 40px;
+            margin: 32px 0;
+            min-height: 100px;
+        }
+        .tool-widget-placeholder {
+            text-align: center;
+            padding: 40px;
+            color: #888;
+        }
+        
+        /* FAQ Section */
+        .faq-section { margin: 48px 0; }
+        .faq-section h2 { font-size: 1.5rem; margin-bottom: 24px; }
+        .faq-item { 
+            background: #fff; 
+            border: 1px solid #e8e8e8;
+            border-radius: 8px; 
+            padding: 20px; 
+            margin-bottom: 12px; 
+        }
+        .faq-item h3 { font-size: 1.05rem; color: #1a1a2e; margin-bottom: 8px; }
+        .faq-item p { color: #555; font-size: 0.95rem; }
+        
+        /* Related Tools */
+        .related-tools { margin: 48px 0; }
+        .related-tools h2 { font-size: 1.3rem; margin-bottom: 16px; }
+        .related-tools ul { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; }
+        .related-tools li a {
+            display: inline-block;
+            padding: 8px 16px;
+            background: #e8f0fe;
+            color: #4361ee;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        .related-tools li a:hover { background: #4361ee; color: #fff; }
+        
+        /* Ad Placement */
+        .ad-slot {
+            background: #f0f0f0;
+            border: 1px dashed #ccc;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 24px 0;
+            text-align: center;
+            color: #999;
+            font-size: 0.85rem;
+        }
+        
+        /* Footer */
+        footer {
+            margin-top: 64px;
+            padding-top: 24px;
+            border-top: 1px solid #e8e8e8;
+            color: #888;
+            font-size: 0.85rem;
+            text-align: center;
+        }
+        
+        @media (max-width: 600px) {
+            .container { padding: 16px; }
+            h1 { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Breadcrumb -->
+        <nav class="breadcrumb">
+            <a href="https://aitoolsuite.lol">Home</a>
+            <span class="sep">›</span>
+            <a href="https://aitoolsuite.lol/text-tools">Text Tools</a>
+            <span class="sep">›</span>
+            <span>Case Converter</span>
+        </nav>
+        
+        <!-- H1 -->
+        <h1>Case Converter</h1>
+        
+        <!-- Description -->
+        <p class="description">Convert text between UPPERCASE, lowercase, Title Case, Sentence case, camelCase, snake_case, and kebab-case. Paste your text and click the format you need. Free and instant.</p>
+        
+        <!-- Ad Slot (above tool) -->
+        <div class="ad-slot"><!-- Ad placement: above tool --></div>
+        
+        <!-- Tool Widget -->
+        
+        <style>
+.tool-container { font-family: system-ui, -apple-system, sans-serif; background: #f8f9fa; padding: 20px; border-radius: 8px; box-sizing: border-box; max-width: 800px; margin: 0 auto; color: #333; }
+.tool-container textarea { width: 100%; background: #fff; border: 1px solid #ddd; border-radius: 8px; padding: 10px; box-sizing: border-box; font-family: inherit; margin-bottom: 10px; min-height: 120px; resize: vertical; }
+.tool-container .btn-group { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 10px; }
+.tool-container button { background: #4361ee; color: white; border: none; padding: 8px 12px; border-radius: 6px; cursor: pointer; font-size: 13px; transition: background 0.2s; margin: 0; }
+.tool-container button:hover { background: #324ccc; }
+.tool-container .copy-btn { background: #28a745; }
+.tool-container .copy-btn:hover { background: #218838; }
+</style>
+<div class="tool-container">
+    <textarea id="case-input" placeholder="Type or paste your text here..."></textarea>
+    <div class="btn-group">
+        <button onclick="convertCase('upper')">UPPERCASE</button>
+        <button onclick="convertCase('lower')">lowercase</button>
+        <button onclick="convertCase('title')">Title Case</button>
+        <button onclick="convertCase('sentence')">Sentence case</button>
+        <button onclick="convertCase('camel')">camelCase</button>
+        <button onclick="convertCase('snake')">snake_case</button>
+        <button onclick="convertCase('kebab')">kebab-case</button>
+        <button onclick="copyCase(this)" class="copy-btn">Copy Output</button>
+    </div>
+    <textarea id="case-output" placeholder="Output..." readonly></textarea>
+</div>
+<script>
+function toTitleCase(str) {
+    return str.toLowerCase().split(' ').map(function(word) {
+        return (word.charAt(0).toUpperCase() + word.slice(1));
+    }).join(' ');
+}
+function toSentenceCase(str) {
+    return str.toLowerCase().replace(/(^\s*\w|[\.\!\?]\s*\w)/g, function(c) { return c.toUpperCase(); });
+}
+function toCamelCase(str) {
+    return str.replace(/(?:^\w|[A-Z]|\b\w)/g, function(word, index) {
+        return index === 0 ? word.toLowerCase() : word.toUpperCase();
+    }).replace(/\s+/g, '');
+}
+function toSnakeCase(str) {
+    return str.replace(/\W+/g, " ").split(/ |\B(?=[A-Z])/).map(word => word.toLowerCase()).join('_');
+}
+function toKebabCase(str) {
+    return str.replace(/\W+/g, " ").split(/ |\B(?=[A-Z])/).map(word => word.toLowerCase()).join('-');
+}
+function convertCase(type) {
+    const input = document.getElementById('case-input').value;
+    const output = document.getElementById('case-output');
+    if(!input) { output.value = ''; return; }
+    
+    let res = '';
+    switch(type) {
+        case 'upper': res = input.toUpperCase(); break;
+        case 'lower': res = input.toLowerCase(); break;
+        case 'title': res = toTitleCase(input); break;
+        case 'sentence': res = toSentenceCase(input); break;
+        case 'camel': res = toCamelCase(input); break;
+        case 'snake': res = toSnakeCase(input); break;
+        case 'kebab': res = toKebabCase(input); break;
+    }
+    output.value = res;
+}
+function copyCase(btn) {
+    const text = document.getElementById('case-output').value;
+    if (!text) return;
+    navigator.clipboard.writeText(text).then(() => {
+        const orig = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(() => btn.textContent = orig, 2000);
+    });
+}
+</script>
+
+        
+        
+        <!-- Ad Slot (below tool) -->
+        <div class="ad-slot"><!-- Ad placement: below tool --></div>
+        
+        <!-- FAQ Section -->
+        
+        <section class="faq-section">
+            <h2>Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+                <h3>What case formats are supported?</h3>
+                <p>This tool supports UPPERCASE, lowercase, Title Case, Sentence case, camelCase, snake_case, and kebab-case conversions.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h3>What is camelCase used for?</h3>
+                <p>camelCase is commonly used in JavaScript and other programming languages for variable and function names. Each word starts with a capital letter except the first.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h3>What is the difference between snake_case and kebab-case?</h3>
+                <p>snake_case uses underscores between words (like_this) and is common in Python. kebab-case uses hyphens (like-this) and is common in URLs and CSS class names.</p>
+            </div>
+            
+        </section>
+        
+        
+        <!-- Related Tools -->
+        
+        <section class="related-tools">
+            <h2>Related Tools</h2>
+            <ul>
+                
+                <li><a href="https://aitoolsuite.lol/word-counter">Word Counter</a></li>
+                
+                <li><a href="https://aitoolsuite.lol/lorem-ipsum-generator">Lorem Ipsum Generator</a></li>
+                
+            </ul>
+        </section>
+        
+        
+        <!-- Footer -->
+        <footer>
+            <p>&copy; 2026 AI Tool Suite. Free online tools for everyone.</p>
+        </footer>
+    </div>
+</body>
+</html>
