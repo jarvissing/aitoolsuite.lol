@@ -3,245 +3,421 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Tool Suite - Free Online Developer & AI Tools</title>
-    <meta name="description" content="Free online tools for developers and AI enthusiasts. JSON formatter, UUID generator, Base64 encoder, hash generator, and 12+ more tools.">
+    <title>AI Tool Suite — Free Online Developer & AI Utilities</title>
+    <meta name="description" content="Lightning-fast online tools for developers, designers, and AI creators. Free Markdown editor, JSON formatter, prompt token counter, and 12+ utilities.">
     <meta name="robots" content="index, follow">
-    <meta property="og:title" content="AI Tool Suite - Free Online Developer & AI Tools">
-    <meta property="og:description" content="Free online tools for developers. 12+ tools and counting.">
+    <meta property="og:title" content="AI Tool Suite — Free Online Developer & AI Utilities">
+    <meta property="og:description" content="Modern, private developer & AI utilities with zero ads and instant client-side execution.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://aitoolsuite.lol">
     <link rel="canonical" href="https://aitoolsuite.lol">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%234361ee'/%3E%3Cpath d='M56 12 L24 54 L48 54 L44 88 L76 46 L52 46 Z' fill='%23ffdd00' stroke='%23f59e0b' stroke-width='2'/%3E%3C/svg%3E">
     <link rel="alternate icon" href="/favicon.svg">
+    
+    <!-- Nexivo Google Fonts: Syne (Headings) + Inter (Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Syne:wght@700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+    
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Inter', sans-serif;
             line-height: 1.6;
-            color: #f1f5f9;
-            background: #0b0f19;
+            color: #f8fafc;
+            background: #07090e;
             min-height: 100vh;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 50% 0%, rgba(99, 102, 241, 0.15) 0%, transparent 60%),
+                radial-gradient(circle at 10% 40%, rgba(56, 189, 248, 0.05) 0%, transparent 40%);
         }
 
-        /* Top Sticky Navigation Bar */
-        .site-nav {
-            background: rgba(11, 15, 25, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        /* Floating Pill Navigation Bar (Nexivo Style) */
+        .nav-wrapper {
             position: sticky;
-            top: 0;
+            top: 16px;
             z-index: 100;
+            padding: 0 16px;
         }
-        .nav-container {
+        .site-nav {
             max-width: 960px;
             margin: 0 auto;
-            padding: 14px 20px;
+            background: rgba(13, 16, 26, 0.75);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 100px;
+            padding: 10px 24px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 12px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
         }
         .nav-brand {
-            font-size: 1.2rem;
-            font-weight: 700;
+            font-family: 'Syne', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 800;
             color: #ffffff;
             text-decoration: none;
             display: flex;
             align-items: center;
             gap: 8px;
-            letter-spacing: -0.02em;
+            letter-spacing: -0.03em;
         }
-        .nav-brand:hover { color: #818cf8; }
+        .nav-brand-dot {
+            width: 8px;
+            height: 8px;
+            background: #6366f1;
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 10px #6366f1;
+        }
         .nav-links {
             display: flex;
             gap: 8px;
-            flex-wrap: wrap;
             align-items: center;
         }
         .nav-link {
-            font-size: 0.88rem;
-            font-weight: 500;
+            font-size: 0.82rem;
+            font-weight: 600;
             color: #94a3b8;
             text-decoration: none;
             padding: 6px 14px;
-            border-radius: 8px;
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            transition: all 0.2s ease;
+            border-radius: 100px;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .nav-link:hover {
-            background: rgba(99, 102, 241, 0.15);
-            border-color: rgba(99, 102, 241, 0.4);
-            color: #c7d2fe;
-            transform: translateY(-1px);
+            background: rgba(255, 255, 255, 0.08);
+            color: #ffffff;
         }
 
-        .container { max-width: 960px; margin: 0 auto; padding: 24px 20px 80px; }
-        header { text-align: center; padding: 60px 20px 48px; }
+        .container { max-width: 960px; margin: 0 auto; padding: 40px 20px 80px; }
+        
+        /* Hero Section */
+        header { text-align: center; padding: 60px 20px 50px; }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(99, 102, 241, 0.12);
+            color: #a5b4fc;
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            padding: 6px 16px;
+            border-radius: 100px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
         header h1 {
-            font-size: 3rem;
-            margin-bottom: 16px;
+            font-family: 'Syne', sans-serif;
+            font-size: 3.4rem;
             font-weight: 800;
-            letter-spacing: -0.03em;
-            background: linear-gradient(135deg, #ffffff 40%, #818cf8 100%);
+            line-height: 1.1;
+            letter-spacing: -0.04em;
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+        header h1 span {
+            background: linear-gradient(135deg, #a5b4fc 0%, #6366f1 50%, #38bdf8 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        header p { font-size: 1.2rem; color: #94a3b8; max-width: 620px; margin: 0 auto; line-height: 1.6; }
-        .tool-count {
-            display: inline-block;
-            background: rgba(99, 102, 241, 0.12);
-            color: #818cf8;
-            border: 1px solid rgba(99, 102, 241, 0.3);
-            padding: 6px 16px;
-            border-radius: 24px;
-            font-size: 0.88rem;
-            margin-top: 20px;
-            font-weight: 600;
-            letter-spacing: 0.02em;
+        header p {
+            font-size: 1.15rem;
+            color: #94a3b8;
+            max-width: 600px;
+            margin: 0 auto 32px;
+            line-height: 1.6;
         }
-        
-        .category-section { margin-top: 48px; }
-        .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 18px; margin: 20px 0 32px; }
+
+        /* Category Sections */
+        .category-section { margin-top: 56px; }
+        .category-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            padding-bottom: 12px;
+        }
+        .category-title {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: -0.02em;
+        }
+        .category-count {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Obsidian Glass Tool Cards */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+            gap: 18px;
+        }
         .tool-card {
-            background: #111827;
+            background: rgba(15, 19, 32, 0.65);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.07);
-            border-radius: 16px;
+            border-radius: 20px;
             padding: 24px;
             text-decoration: none;
             color: inherit;
-            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-        }
-        .tool-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0), transparent);
-            transition: background 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
         }
         .tool-card:hover {
             transform: translateY(-4px);
             border-color: rgba(99, 102, 241, 0.5);
-            box-shadow: 0 16px 36px -4px rgba(79, 70, 229, 0.25);
-            background: #151e32;
+            background: rgba(22, 28, 46, 0.85);
+            box-shadow: 0 16px 36px rgba(99, 102, 241, 0.15), 0 0 0 1px rgba(99, 102, 241, 0.3);
         }
-        .tool-card:hover::before {
-            background: linear-gradient(90deg, transparent, #818cf8, transparent);
+        .card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 14px;
         }
-        .tool-card h3 { font-size: 1.15rem; margin-bottom: 8px; color: #f8fafc; font-weight: 600; letter-spacing: -0.01em; }
-        .tool-card p { font-size: 0.9rem; color: #94a3b8; line-height: 1.5; }
-        .category { font-size: 1.35rem; color: #ffffff; font-weight: 700; border-bottom: 2px solid #4f46e5; padding-bottom: 8px; display: inline-block; letter-spacing: -0.02em; }
-        footer { text-align: center; padding: 48px 20px; color: #64748b; font-size: 0.85rem; border-top: 1px solid rgba(255, 255, 255, 0.06); margin-top: 64px; }
-        @media (max-width: 600px) {
-            header h1 { font-size: 2rem; }
-            .nav-container { justify-content: center; }
-            .nav-links { justify-content: center; }
+        .pill-category {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #94a3b8;
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            padding: 3px 10px;
+            border-radius: 100px;
+        }
+        .card-arrow {
+            color: #64748b;
+            font-size: 1rem;
+            transition: transform 0.2s ease, color 0.2s ease;
+        }
+        .tool-card:hover .card-arrow {
+            color: #38bdf8;
+            transform: translate(2px, -2px);
+        }
+        .tool-card h3 {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 8px;
+            letter-spacing: -0.02em;
+        }
+        .tool-card p {
+            font-size: 0.88rem;
+            color: #94a3b8;
+            line-height: 1.5;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 80px;
+            padding: 40px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            text-align: center;
+            color: #64748b;
+            font-size: 0.85rem;
+        }
+        .footer-brand {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 8px;
+        }
+        footer a { color: #a5b4fc; text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+
+        @media (max-width: 640px) {
+            header h1 { font-size: 2.3rem; }
+            .nav-links { display: none; }
+            .site-nav { justify-content: center; }
         }
     </style>
 </head>
 <body>
-    <!-- Top Navigation Bar -->
-    <nav class="site-nav">
-        <div class="nav-container">
+
+    <!-- Floating Pill Navbar -->
+    <div class="nav-wrapper">
+        <nav class="site-nav">
             <a href="/" class="nav-brand">
-                <span>⚡</span> AI Tool Suite
+                <span class="nav-brand-dot"></span>
+                AI Tool Suite
             </a>
             <div class="nav-links">
-                <a href="#developer-tools" class="nav-link">🛠️ Developer Tools</a>
-                <a href="#text-tools" class="nav-link">📝 Text Tools</a>
-                <a href="#design-tools" class="nav-link">🎨 Design Tools</a>
+                <a href="#developer-tools" class="nav-link">Developer</a>
+                <a href="#text-tools" class="nav-link">Text</a>
+                <a href="#design-tools" class="nav-link">Design</a>
+                <a href="/sitemap.xml" class="nav-link">Sitemap</a>
             </div>
-        </div>
-    </nav>
+        </nav>
+    </div>
 
     <div class="container">
         <header>
-            <h1>⚡ AI Tool Suite</h1>
-            <p>Free online tools for developers, creators, and AI enthusiasts. No signup. Fast & browser-powered.</p>
-            <span class="tool-count">12 tools available</span>
+            <div class="hero-badge">⚡ 12 Free Production Tools</div>
+            <h1>The Developer & AI Suite built for <span>speed.</span></h1>
+            <p>High-performance web utilities that run 100% inside your browser. No sign-ups, no paywalls, and zero tracking cookies.</p>
         </header>
 
-        <section id="developer-tools" class="category-section">
-            <h2 class="category">🛠️ Developer Tools</h2>
+
+        <section id="ai-utilities" class="category-section">
+            <div class="category-header">
+                <h2 class="category-title">⚡ AI Utilities</h2>
+                <span class="category-count">1 tools</span>
+            </div>
             <div class="tools-grid">
             <a href="/ai-prompt-cost-calculator.html" class="tool-card">
+                <div class="card-top">
+                    <span class="pill-category">AI Utilities</span>
+                    <span class="card-arrow">↗</span>
+                </div>
                 <h3>AI Prompt Cost Calculator</h3>
-                <p>Calculate exact API costs for OpenAI GPT-4o, Claude 3.5, and Gemini models based on prompt tokens an</p>
+                <p>Calculate exact API costs for OpenAI GPT-4o, Claude 3.5, and Gemini models based on prompt tokens and output l...</p>
             </a>
+            </div>
+        </section>
+
+        <section id="developer-tools" class="category-section">
+            <div class="category-header">
+                <h2 class="category-title">🛠️ Developer Tools</h2>
+                <span class="category-count">6 tools</span>
+            </div>
+            <div class="tools-grid">
             <a href="/base64-encoder.html" class="tool-card">
+                <div class="card-top">
+                    <span class="pill-category">Developer Tools</span>
+                    <span class="card-arrow">↗</span>
+                </div>
                 <h3>Base64 Encoder & Decoder</h3>
-                <p>Encode text to Base64 or decode Base64 strings back to plain text. Fast, free, and runs entirely in </p>
+                <p>Encode text to Base64 format or decode Base64 strings back to plain readable text.</p>
             </a>
             <a href="/hash-generator.html" class="tool-card">
-                <h3>Hash Generator</h3>
-                <p>Generate MD5, SHA-1, and SHA-256 hashes from any text. Useful for checksums, password hashing verifi</p>
+                <div class="card-top">
+                    <span class="pill-category">Developer Tools</span>
+                    <span class="card-arrow">↗</span>
+                </div>
+                <h3>Hash Generator (MD5, SHA-256)</h3>
+                <p>Generate secure cryptographic hash strings using MD5, SHA-1, SHA-256, and SHA-512.</p>
             </a>
             <a href="/json-formatter.html" class="tool-card">
-                <h3>JSON Formatter</h3>
-                <p>Format, validate, and minify your JSON data instantly. Paste raw JSON and get beautifully formatted </p>
-            </a>
-            <a href="/markdown-previewer.html" class="tool-card">
-                <h3>Markdown Previewer & Editor</h3>
-                <p>Write Markdown and see live rendered HTML output instantly. Convert Markdown to HTML, copy formatted</p>
+                <div class="card-top">
+                    <span class="pill-category">Developer Tools</span>
+                    <span class="card-arrow">↗</span>
+                </div>
+                <h3>JSON Formatter & Validator</h3>
+                <p>Format, validate, and beautify JSON data instantly with syntax highlighting and tree view.</p>
             </a>
             <a href="/timestamp-converter.html" class="tool-card">
-                <h3>Timestamp Converter</h3>
-                <p>Convert between Unix timestamps and human-readable dates. See the current timestamp, convert any epo</p>
+                <div class="card-top">
+                    <span class="pill-category">Developer Tools</span>
+                    <span class="card-arrow">↗</span>
+                </div>
+                <h3>Unix Timestamp Converter</h3>
+                <p>Convert Unix epoch timestamps (seconds & milliseconds) to human-readable date and time.</p>
             </a>
             <a href="/url-encoder.html" class="tool-card">
+                <div class="card-top">
+                    <span class="pill-category">Developer Tools</span>
+                    <span class="card-arrow">↗</span>
+                </div>
                 <h3>URL Encoder & Decoder</h3>
-                <p>Encode special characters in URLs or decode percent-encoded URL strings. Essential for web developer</p>
+                <p>Encode and decode URLs, query parameters, and URI components safely for web applications.</p>
             </a>
             <a href="/uuid-generator.html" class="tool-card">
-                <h3>UUID Generator</h3>
-                <p>Generate random UUID v4 identifiers instantly. Create single or bulk UUIDs for your applications, da</p>
+                <div class="card-top">
+                    <span class="pill-category">Developer Tools</span>
+                    <span class="card-arrow">↗</span>
+                </div>
+                <h3>UUID & GUID Generator</h3>
+                <p>Generate random Version 4 UUIDs and GUIDs instantly with uppercase and hyphen options.</p>
             </a>
             </div>
         </section>
 
         <section id="text-tools" class="category-section">
-            <h2 class="category">📝 Text Tools</h2>
+            <div class="category-header">
+                <h2 class="category-title">📝 Text Tools</h2>
+                <span class="category-count">4 tools</span>
+            </div>
             <div class="tools-grid">
             <a href="/case-converter.html" class="tool-card">
-                <h3>Case Converter</h3>
-                <p>Convert text between UPPERCASE, lowercase, Title Case, Sentence case, camelCase, snake_case, and keb</p>
+                <div class="card-top">
+                    <span class="pill-category">Text Tools</span>
+                    <span class="card-arrow">↗</span>
+                </div>
+                <h3>Text Case Converter</h3>
+                <p>Convert text between UPPERCASE, lowercase, Title Case, camelCase, snake_case, and kebab-case.</p>
             </a>
             <a href="/lorem-ipsum-generator.html" class="tool-card">
+                <div class="card-top">
+                    <span class="pill-category">Text Tools</span>
+                    <span class="card-arrow">↗</span>
+                </div>
                 <h3>Lorem Ipsum Generator</h3>
-                <p>Generate placeholder text for your designs, mockups, and layouts. Choose how many paragraphs you nee</p>
+                <p>Generate custom placeholder dummy text by paragraphs, sentences, or words for design mockups.</p>
+            </a>
+            <a href="/markdown-previewer.html" class="tool-card">
+                <div class="card-top">
+                    <span class="pill-category">Text Tools</span>
+                    <span class="card-arrow">↗</span>
+                </div>
+                <h3>Markdown Previewer & Editor</h3>
+                <p>Write Markdown and see live rendered HTML output instantly with one-click HTML copying.</p>
             </a>
             <a href="/word-counter.html" class="tool-card">
-                <h3>Word Counter</h3>
-                <p>Count words, characters, sentences, and paragraphs in your text instantly. Get estimated reading tim</p>
+                <div class="card-top">
+                    <span class="pill-category">Text Tools</span>
+                    <span class="card-arrow">↗</span>
+                </div>
+                <h3>Word & Character Counter</h3>
+                <p>Count words, characters, sentences, paragraphs, and estimate reading time in real-time.</p>
             </a>
             </div>
         </section>
 
         <section id="design-tools" class="category-section">
-            <h2 class="category">🎨 Design Tools</h2>
+            <div class="category-header">
+                <h2 class="category-title">🎨 Design Tools</h2>
+                <span class="category-count">1 tools</span>
+            </div>
             <div class="tools-grid">
             <a href="/color-picker.html" class="tool-card">
-                <h3>Color Picker</h3>
-                <p>Pick any color and get its HEX, RGB, and HSL values. Enter a hex code to preview a color, or use the</p>
+                <div class="card-top">
+                    <span class="pill-category">Design Tools</span>
+                    <span class="card-arrow">↗</span>
+                </div>
+                <h3>Color Picker & HEX Converter</h3>
+                <p>Pick colors, generate palettes, and convert between HEX, RGB, and HSL color values.</p>
             </a>
             </div>
         </section>
 
+
         <footer>
-            <p>&copy; 2026 AI Tool Suite. Free online tools for everyone.</p>
+            <div class="footer-brand">AI Tool Suite</div>
+            <p>&copy; 2026 AI Tool Suite. Free open utilities for builders.</p>
+            <p style="margin-top: 8px;"><a href="/sitemap.xml">XML Sitemap</a> &middot; All processing happens locally in your browser.</p>
         </footer>
     </div>
+
     <!-- GoatCounter Analytics -->
     <script data-goatcounter="https://aitoolsuite.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
