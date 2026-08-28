@@ -109,7 +109,58 @@
             color: #1a1a2e;
             background: #f8f9fa;
         }
-        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+
+        /* Top Navigation Bar */
+        .site-nav {
+            background: #ffffff;
+            border-bottom: 1px solid #e2e8f0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+        }
+        .nav-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .nav-brand {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #1a1a2e;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .nav-brand:hover { color: #4361ee; }
+        .nav-links {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .nav-link {
+            font-size: 0.88rem;
+            font-weight: 500;
+            color: #475569;
+            text-decoration: none;
+            padding: 6px 12px;
+            border-radius: 8px;
+            background: #f1f5f9;
+            transition: all 0.2s ease;
+        }
+        .nav-link:hover {
+            background: #4361ee;
+            color: #ffffff;
+        }
+
+        .container { max-width: 800px; margin: 0 auto; padding: 24px 20px; }
         
         /* Breadcrumb */
         .breadcrumb { font-size: 0.85rem; color: #666; margin-bottom: 24px; }
@@ -189,16 +240,33 @@
         @media (max-width: 600px) {
             .container { padding: 16px; }
             h1 { font-size: 1.5rem; }
+            .nav-container { justify-content: center; }
+            .nav-links { justify-content: center; }
         }
     </style>
 </head>
 <body>
+    <!-- Top Navigation Bar -->
+    <nav class="site-nav">
+        <div class="nav-container">
+            <a href="https://aitoolsuite.lol" class="nav-brand">
+                <span>⚡</span> AI Tool Suite
+            </a>
+            <div class="nav-links">
+                <a href="https://aitoolsuite.lol/#developer-tools" class="nav-link">🛠️ Developer Tools</a>
+                <a href="https://aitoolsuite.lol/#text-tools" class="nav-link">📝 Text Tools</a>
+                <a href="https://aitoolsuite.lol/#design-tools" class="nav-link">🎨 Design Tools</a>
+                <a href="https://aitoolsuite.lol/#all-tools" class="nav-link">✨ All Tools</a>
+            </div>
+        </div>
+    </nav>
+
     <div class="container">
         <!-- Breadcrumb -->
         <nav class="breadcrumb">
             <a href="https://aitoolsuite.lol">Home</a>
             <span class="sep">›</span>
-            <a href="https://aitoolsuite.lol/text-tools">Text Tools</a>
+            <a href="https://aitoolsuite.lol/#text-tools">Text Tools</a>
             <span class="sep">›</span>
             <span>Case Converter</span>
         </nav>
