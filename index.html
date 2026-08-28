@@ -4,7 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Tool Suite - Free Online Developer & AI Tools</title>
-    <meta name="description" content="Free online tools for developers and AI enthusiasts. JSON formatter, UUID generator, Base64 encoder, hash generator, and 100+ more tools.">
+    <meta name="description" content="Free online tools for developers and AI enthusiasts. JSON formatter, UUID generator, Base64 encoder, hash generator, and 10+ more tools.">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="AI Tool Suite - Free Online Developer & AI Tools">
+    <meta property="og:description" content="Free online tools for developers. 10+ tools and counting.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://aitoolsuite.lol">
+    <link rel="canonical" href="https://aitoolsuite.lol">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -17,7 +23,8 @@
         header { text-align: center; padding: 60px 20px 40px; }
         header h1 { font-size: 2.5rem; margin-bottom: 12px; }
         header p { font-size: 1.2rem; color: #555; max-width: 600px; margin: 0 auto; }
-        .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 16px; margin: 40px 0; }
+        .tool-count { display: inline-block; background: #4361ee; color: white; padding: 4px 14px; border-radius: 20px; font-size: 0.9rem; margin-top: 16px; }
+        .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 16px; margin: 20px 0 40px; }
         .tool-card {
             background: #fff;
             border: 1px solid #e8e8e8;
@@ -40,57 +47,58 @@
         <header>
             <h1>🛠️ AI Tool Suite</h1>
             <p>Free online tools for developers, creators, and AI enthusiasts. No signup. No ads. Just tools.</p>
+            <span class="tool-count">10 tools available</span>
         </header>
 
-        <h2 class="category">🤖 Developer Tools</h2>
+        <h2 class="category">🛠️ Developer Tools</h2>
         <div class="tools-grid">
-            <a href="/json-formatter" class="tool-card">
-                <h3>JSON Formatter</h3>
-                <p>Format, validate, and minify JSON data instantly.</p>
+            <a href="/base64-encoder.html" class="tool-card">
+                <h3>Base64 Encoder & Decoder</h3>
+                <p>Encode text to Base64 or decode Base64 strings back to plain text. Fast, free, and runs entirely in </p>
             </a>
-            <a href="/uuid-generator" class="tool-card">
-                <h3>UUID Generator</h3>
-                <p>Generate random UUID v4 identifiers.</p>
-            </a>
-            <a href="/base64-encoder" class="tool-card">
-                <h3>Base64 Encoder/Decoder</h3>
-                <p>Encode or decode Base64 strings.</p>
-            </a>
-            <a href="/url-encoder" class="tool-card">
-                <h3>URL Encoder/Decoder</h3>
-                <p>Encode or decode URL components.</p>
-            </a>
-            <a href="/hash-generator" class="tool-card">
+            <a href="/hash-generator.html" class="tool-card">
                 <h3>Hash Generator</h3>
-                <p>Generate MD5, SHA-1, and SHA-256 hashes.</p>
+                <p>Generate MD5, SHA-1, and SHA-256 hashes from any text. Useful for checksums, password hashing verifi</p>
             </a>
-            <a href="/timestamp-converter" class="tool-card">
+            <a href="/json-formatter.html" class="tool-card">
+                <h3>JSON Formatter</h3>
+                <p>Format, validate, and minify your JSON data instantly. Paste raw JSON and get beautifully formatted </p>
+            </a>
+            <a href="/timestamp-converter.html" class="tool-card">
                 <h3>Timestamp Converter</h3>
-                <p>Convert between Unix timestamps and readable dates.</p>
+                <p>Convert between Unix timestamps and human-readable dates. See the current timestamp, convert any epo</p>
+            </a>
+            <a href="/url-encoder.html" class="tool-card">
+                <h3>URL Encoder & Decoder</h3>
+                <p>Encode special characters in URLs or decode percent-encoded URL strings. Essential for web developer</p>
+            </a>
+            <a href="/uuid-generator.html" class="tool-card">
+                <h3>UUID Generator</h3>
+                <p>Generate random UUID v4 identifiers instantly. Create single or bulk UUIDs for your applications, da</p>
             </a>
         </div>
 
         <h2 class="category">📝 Text Tools</h2>
         <div class="tools-grid">
-            <a href="/word-counter" class="tool-card">
-                <h3>Word Counter</h3>
-                <p>Count words, characters, sentences, and reading time.</p>
-            </a>
-            <a href="/case-converter" class="tool-card">
+            <a href="/case-converter.html" class="tool-card">
                 <h3>Case Converter</h3>
-                <p>Convert text between UPPER, lower, Title, camelCase, and more.</p>
+                <p>Convert text between UPPERCASE, lowercase, Title Case, Sentence case, camelCase, snake_case, and keb</p>
             </a>
-            <a href="/lorem-ipsum-generator" class="tool-card">
+            <a href="/lorem-ipsum-generator.html" class="tool-card">
                 <h3>Lorem Ipsum Generator</h3>
-                <p>Generate placeholder text for your designs.</p>
+                <p>Generate placeholder text for your designs, mockups, and layouts. Choose how many paragraphs you nee</p>
+            </a>
+            <a href="/word-counter.html" class="tool-card">
+                <h3>Word Counter</h3>
+                <p>Count words, characters, sentences, and paragraphs in your text instantly. Get estimated reading tim</p>
             </a>
         </div>
 
         <h2 class="category">🎨 Design Tools</h2>
         <div class="tools-grid">
-            <a href="/color-picker" class="tool-card">
+            <a href="/color-picker.html" class="tool-card">
                 <h3>Color Picker</h3>
-                <p>Pick colors and get HEX, RGB, and HSL values.</p>
+                <p>Pick any color and get its HEX, RGB, and HSL values. Enter a hex code to preview a color, or use the</p>
             </a>
         </div>
 
