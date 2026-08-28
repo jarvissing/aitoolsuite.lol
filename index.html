@@ -106,7 +106,7 @@
         /* Hero Section */
         header {
             text-align: center;
-            padding: clamp(36px, 8vw, 64px) 12px clamp(28px, 6vw, 48px);
+            padding: clamp(36px, 8vw, 64px) 12px clamp(28px, 6vw, 40px);
         }
         .hero-badge {
             display: inline-flex;
@@ -141,6 +141,71 @@
             max-width: 600px;
             margin: 0 auto;
             line-height: 1.6;
+        }
+
+        /* Search Bar */
+        .search-box-wrapper {
+            max-width: 580px;
+            margin: 32px auto 0;
+            width: 100%;
+        }
+        .search-box {
+            position: relative;
+            display: flex;
+            align-items: center;
+            background: #121216;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 100px;
+            padding: 6px 18px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            transition: all 0.25s ease;
+        }
+        .search-box:focus-within {
+            border-color: #3b82f6;
+            background: #16161d;
+            box-shadow: 0 0 24px rgba(59, 130, 246, 0.25), 0 0 0 1px #3b82f6;
+        }
+        .search-icon {
+            font-size: 1.1rem;
+            margin-right: 12px;
+            color: #64748b;
+        }
+        .search-box input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            outline: none;
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            padding: 8px 0;
+        }
+        .search-box input::placeholder {
+            color: #64748b;
+        }
+        .search-shortcut {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: #94a3b8;
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-size: 0.72rem;
+            font-weight: 600;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Empty Search Results Notice */
+        #noResults {
+            display: none;
+            text-align: center;
+            padding: 60px 20px;
+            color: #94a3b8;
+        }
+        #noResults h3 {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.3rem;
+            color: #ffffff;
+            margin-bottom: 8px;
         }
 
         /* Category Section */
@@ -267,12 +332,13 @@
             .tool-card {
                 padding: 18px;
             }
+            .search-shortcut { display: none; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Floating Pill Navbar (No Sitemap in top nav) -->
+    <!-- Floating Pill Navbar -->
     <div class="nav-wrapper">
         <nav class="site-nav">
             <a href="/" class="nav-brand">
@@ -293,7 +359,22 @@
             <div class="hero-badge">⚡ 12 Free Production Tools</div>
             <h1>The Developer & AI Suite built for <span>speed.</span></h1>
             <p>High-performance web utilities that run 100% inside your browser. No sign-ups, no paywalls, and zero tracking.</p>
+            
+            <!-- Live Search Bar -->
+            <div class="search-box-wrapper">
+                <div class="search-box">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" id="toolSearch" placeholder="Search 12+ developer & AI tools... (Press '/' to focus)" autocomplete="off" oninput="filterTools()">
+                    <span class="search-shortcut">/</span>
+                </div>
+            </div>
         </header>
+
+        <!-- No Results Fallback -->
+        <div id="noResults">
+            <h3>No matching tools found</h3>
+            <p>Try searching for terms like <i>json, base64, markdown, token, uuid, or regex</i>.</p>
+        </div>
 
 
         <section id="ai-utilities" class="category-section">
@@ -435,6 +516,43 @@
             <p style="margin-top: 8px;"><a href="/sitemap.xml">XML Sitemap</a> &middot; All processing happens locally in your browser.</p>
         </footer>
     </div>
+
+    <!-- Client-Side Instant Search Filter -->
+    <script>
+        function filterTools() {
+            const q = document.getElementById('toolSearch').value.toLowerCase().trim();
+            const cards = document.querySelectorAll('.tool-card');
+            const sections = document.querySelectorAll('.category-section');
+            let visibleTotal = 0;
+
+            cards.forEach(card => {
+                const title = card.querySelector('h3').textContent.toLowerCase();
+                const desc = card.querySelector('p').textContent.toLowerCase();
+                const cat = card.querySelector('.pill-category').textContent.toLowerCase();
+                const match = title.includes(q) || desc.includes(q) || cat.includes(q);
+                card.style.display = match ? 'flex' : 'none';
+                if (match) visibleTotal++;
+            });
+
+            sections.forEach(sec => {
+                const visibleCards = sec.querySelectorAll('.tool-card:not([style*="display: none"])');
+                sec.style.display = visibleCards.length > 0 ? 'block' : 'none';
+            });
+
+            const emptyState = document.getElementById('noResults');
+            if (emptyState) {
+                emptyState.style.display = (visibleTotal === 0 && q !== '') ? 'block' : 'none';
+            }
+        }
+
+        // Shortcut: Press '/' to focus search bar
+        document.addEventListener('keydown', e => {
+            if (e.key === '/' && document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
+                e.preventDefault();
+                document.getElementById('toolSearch').focus();
+            }
+        });
+    </script>
 
     <!-- GoatCounter Analytics -->
     <script data-goatcounter="https://aitoolsuite.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
