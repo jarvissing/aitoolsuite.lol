@@ -1,0 +1,46 @@
+<style>
+.tool-container { font-family: system-ui, -apple-system, sans-serif; background: #111827; padding: 20px; border-radius: 12px; box-sizing: border-box; max-width: 800px; margin: 0 auto; color: #f8fafc; }
+.tool-container textarea { width: 100%; background: #0b0f19; color: #f8fafc; border: 1px solid #334155; border-radius: 8px; padding: 12px; box-sizing: border-box; font-family: monospace; font-size: 14px; margin-bottom: 12px; min-height: 150px; resize: vertical; }
+.tool-container button { background: linear-gradient(135deg, #4f46e5 0%, #4361ee 100%); color: white; border: none; padding: 10px 18px; border-radius: 8px; cursor: pointer; font-size: 14px; font-weight: 600; margin-right: 8px; margin-bottom: 10px; transition: transform 0.2s; }
+.tool-container button:hover { transform: translateY(-1px); }
+.savings-badge { display: inline-block; padding: 4px 12px; background: rgba(34, 197, 94, 0.15); border: 1px solid rgba(34, 197, 94, 0.3); color: #4ade80; border-radius: 20px; font-size: 13px; font-weight: 600; margin-left: 8px; }
+</style>
+<div class="tool-container">
+    <textarea id="css-input" placeholder="/* Paste CSS code here */&#10;.header {&#10;    background-color: #ffffff;&#10;    padding: 20px;&#10;    margin: 0px;&#10;}"></textarea>
+    <div>
+        <button onclick="minifyCSS()">Minify CSS</button>
+        <button onclick="copyMinified(this)">Copy Output</button>
+        <span id="savings" class="savings-badge" style="display: none;"></span>
+    </div>
+    <textarea id="css-output" placeholder="Minified CSS will appear here..." readonly></textarea>
+</div>
+<script>
+function minifyCSS() {
+    let css = document.getElementById('css-input').value;
+    if (!css.trim()) return;
+    let min = css
+        .replace(/\/\*[\s\S]*?\*\//g, '')
+        .replace(/\s+/g, ' ')
+        .replace(/\s*([\{\}:;,])\s*/g, '$1')
+        .replace(/;\}/g, '}')
+        .trim();
+    document.getElementById('css-output').value = min;
+    let origLen = css.length;
+    let minLen = min.length;
+    if (origLen > 0) {
+        let saved = Math.round(((origLen - minLen) / origLen) * 100);
+        let badge = document.getElementById('savings');
+        badge.textContent = 'Saved ' + saved + '% (' + (origLen - minLen) + ' bytes)';
+        badge.style.display = 'inline-block';
+    }
+}
+function copyMinified(btn) {
+    const text = document.getElementById('css-output').value;
+    if (!text) return;
+    navigator.clipboard.writeText(text).then(() => {
+        const orig = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(() => btn.textContent = orig, 2000);
+    });
+}
+</script>

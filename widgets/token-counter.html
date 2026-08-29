@@ -1,0 +1,32 @@
+<style>
+.tool-container { font-family: system-ui, -apple-system, sans-serif; background: #111827; padding: 20px; border-radius: 12px; box-sizing: border-box; max-width: 800px; margin: 0 auto; color: #f8fafc; }
+.tool-container textarea { width: 100%; background: #0b0f19; color: #f8fafc; border: 1px solid #334155; border-radius: 8px; padding: 12px; box-sizing: border-box; font-family: monospace; font-size: 14px; margin-bottom: 20px; min-height: 180px; resize: vertical; }
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; }
+.stat-card { background: #0b0f19; border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 10px; padding: 16px; text-align: center; }
+.stat-val { font-size: 24px; font-weight: 700; color: #818cf8; margin-bottom: 4px; }
+.stat-lbl { font-size: 11px; color: #94a3b8; text-transform: uppercase; font-weight: 600; letter-spacing: 0.04em; }
+</style>
+<div class="tool-container">
+    <textarea id="tc-input" placeholder="Paste your AI prompt, system instructions, or text here..." oninput="calculateTokens()"></textarea>
+    <div class="stats-grid">
+        <div class="stat-card"><div class="stat-val" id="tc-tokens">0</div><div class="stat-lbl">Estimated Tokens</div></div>
+        <div class="stat-card"><div class="stat-val" id="tc-words">0</div><div class="stat-lbl">Words</div></div>
+        <div class="stat-card"><div class="stat-val" id="tc-chars">0</div><div class="stat-lbl">Characters</div></div>
+        <div class="stat-card"><div class="stat-val" id="tc-cost">$0.000</div><div class="stat-lbl">Est. Cost (GPT-4o)</div></div>
+    </div>
+</div>
+<script>
+function calculateTokens() {
+    let text = document.getElementById('tc-input').value;
+    let chars = text.length;
+    let words = text.trim() ? text.trim().split(/\s+/).length : 0;
+    // Standard rule of thumb: ~4 characters per token in English
+    let tokens = Math.ceil(chars / 3.8);
+    let cost = ((tokens / 1000000) * 5.00).toFixed(4); // ~$5 per 1M input tokens
+
+    document.getElementById('tc-tokens').textContent = chars > 0 ? tokens : 0;
+    document.getElementById('tc-words').textContent = words;
+    document.getElementById('tc-chars').textContent = chars;
+    document.getElementById('tc-cost').textContent = chars > 0 ? '$' + cost : '$0.0000';
+}
+</script>

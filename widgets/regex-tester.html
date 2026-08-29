@@ -1,0 +1,61 @@
+<style>
+.tool-container { font-family: system-ui, -apple-system, sans-serif; background: #111827; padding: 20px; border-radius: 12px; box-sizing: border-box; max-width: 800px; margin: 0 auto; color: #f8fafc; }
+.tool-container input[type="text"] { width: 100%; background: #0b0f19; color: #f8fafc; border: 1px solid #334155; border-radius: 8px; padding: 12px; box-sizing: border-box; font-family: monospace; font-size: 14px; margin-bottom: 12px; }
+.tool-container textarea { width: 100%; background: #0b0f19; color: #f8fafc; border: 1px solid #334155; border-radius: 8px; padding: 12px; box-sizing: border-box; font-family: monospace; font-size: 14px; margin-bottom: 12px; min-height: 140px; resize: vertical; }
+.flags-bar { display: flex; gap: 14px; margin-bottom: 12px; font-size: 13px; color: #94a3b8; }
+.flags-bar label { display: flex; align-items: center; gap: 4px; cursor: pointer; }
+.match-result { background: #0b0f19; border: 1px solid #334155; border-radius: 8px; padding: 14px; min-height: 100px; font-family: monospace; font-size: 14px; line-height: 1.6; }
+.highlight { background: #4f46e5; color: #ffffff; padding: 2px 4px; border-radius: 4px; font-weight: 600; }
+.match-count { display: inline-block; padding: 4px 10px; border-radius: 20px; font-size: 12px; font-weight: 600; background: rgba(56, 189, 248, 0.15); color: #38bdf8; margin-bottom: 8px; }
+</style>
+<div class="tool-container">
+    <div style="font-size: 12px; color: #94a3b8; margin-bottom: 6px; font-weight: 600;">REGULAR EXPRESSION</div>
+    <input type="text" id="regex-pattern" placeholder="Enter regex pattern (e.g. [a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,})" value="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" oninput="testRegex()">
+    
+    <div class="flags-bar">
+        <span>Flags:</span>
+        <label><input type="checkbox" id="flag-g" checked onchange="testRegex()"> Global (g)</label>
+        <label><input type="checkbox" id="flag-i" checked onchange="testRegex()"> Case-insensitive (i)</label>
+        <label><input type="checkbox" id="flag-m" onchange="testRegex()"> Multiline (m)</label>
+    </div>
+
+    <div style="font-size: 12px; color: #94a3b8; margin-bottom: 6px; font-weight: 600;">TEST STRING</div>
+    <textarea id="regex-input" placeholder="Enter text to test matches..." oninput="testRegex()">Contact our support at hello@aitoolsuite.lol or billing@example.com for assistance.</textarea>
+
+    <div id="match-info" class="match-count">2 matches found</div>
+    <div id="regex-output" class="match-result"></div>
+</div>
+<script>
+function testRegex() {
+    let pat = document.getElementById('regex-pattern').value;
+    let text = document.getElementById('regex-input').value;
+    let out = document.getElementById('regex-output');
+    let info = document.getElementById('match-info');
+    if (!pat) {
+        out.textContent = text;
+        info.textContent = '0 matches';
+        return;
+    }
+    let flags = '';
+    if (document.getElementById('flag-g').checked) flags += 'g';
+    if (document.getElementById('flag-i').checked) flags += 'i';
+    if (document.getElementById('flag-m').checked) flags += 'm';
+
+    try {
+        let re = new RegExp(pat, flags);
+        let count = 0;
+        let highlighted = text.replace(re, (m) => {
+            count++;
+            return '<span class="highlight">' + m + '</span>';
+        });
+        out.innerHTML = highlighted;
+        info.textContent = count + ' match' + (count === 1 ? '' : 'es') + ' found';
+        info.style.color = count > 0 ? '#38bdf8' : '#94a3b8';
+    } catch(e) {
+        out.innerHTML = '<span style="color:#ef4444;">Invalid Regular Expression: ' + e.message + '</span>';
+        info.textContent = 'Error in pattern';
+        info.style.color = '#ef4444';
+    }
+}
+testRegex();
+</script>

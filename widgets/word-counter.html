@@ -1,0 +1,37 @@
+<style>
+.tool-container { font-family: system-ui, -apple-system, sans-serif; background: #f8f9fa; padding: 20px; border-radius: 8px; box-sizing: border-box; max-width: 800px; margin: 0 auto; color: #333; }
+.tool-container textarea { width: 100%; background: #fff; border: 1px solid #ddd; border-radius: 8px; padding: 10px; box-sizing: border-box; font-family: inherit; margin-bottom: 20px; min-height: 200px; resize: vertical; }
+.tool-container .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; }
+.tool-container .stat-box { background: #fff; padding: 15px; border-radius: 8px; border: 1px solid #ddd; text-align: center; }
+.tool-container .stat-val { font-size: 24px; font-weight: bold; color: #4361ee; margin-bottom: 5px; }
+.tool-container .stat-lbl { font-size: 12px; color: #666; text-transform: uppercase; }
+</style>
+<div class="tool-container">
+    <textarea id="wc-input" placeholder="Type or paste your text here..." oninput="updateStats()"></textarea>
+    <div class="stats">
+        <div class="stat-box"><div class="stat-val" id="wc-words">0</div><div class="stat-lbl">Words</div></div>
+        <div class="stat-box"><div class="stat-val" id="wc-chars">0</div><div class="stat-lbl">Characters</div></div>
+        <div class="stat-box"><div class="stat-val" id="wc-chars-ns">0</div><div class="stat-lbl">No Spaces</div></div>
+        <div class="stat-box"><div class="stat-val" id="wc-sentences">0</div><div class="stat-lbl">Sentences</div></div>
+        <div class="stat-box"><div class="stat-val" id="wc-paragraphs">0</div><div class="stat-lbl">Paragraphs</div></div>
+        <div class="stat-box"><div class="stat-val" id="wc-readtime">0m</div><div class="stat-lbl">Read Time</div></div>
+    </div>
+</div>
+<script>
+function updateStats() {
+    const text = document.getElementById('wc-input').value;
+    const words = text.trim() ? text.trim().split(/\s+/).length : 0;
+    const chars = text.length;
+    const charsNs = text.replace(/\s/g, '').length;
+    const sentences = text.trim() ? (text.match(/[^.!?]+[.!?]+/g) || text.split(/[.!?]+/).filter(Boolean)).length : 0;
+    const paragraphs = text.trim() ? text.trim().split(/\n\s*\n/).filter(Boolean).length : 0;
+    const readTime = Math.ceil(words / 225);
+
+    document.getElementById('wc-words').textContent = words;
+    document.getElementById('wc-chars').textContent = chars;
+    document.getElementById('wc-chars-ns').textContent = charsNs;
+    document.getElementById('wc-sentences').textContent = sentences;
+    document.getElementById('wc-paragraphs').textContent = paragraphs;
+    document.getElementById('wc-readtime').textContent = readTime + 'm';
+}
+</script>

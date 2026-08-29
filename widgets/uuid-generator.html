@@ -1,0 +1,60 @@
+<style>
+.tool-container { font-family: system-ui, -apple-system, sans-serif; background: #f8f9fa; padding: 20px; border-radius: 8px; box-sizing: border-box; max-width: 800px; margin: 0 auto; color: #333; }
+.tool-container input[type="text"] { width: 100%; background: #fff; border: 1px solid #ddd; border-radius: 8px; padding: 15px; box-sizing: border-box; font-family: monospace; font-size: 16px; margin-bottom: 10px; text-align: center; }
+.tool-container button { background: #4361ee; color: white; border: none; padding: 10px 15px; border-radius: 8px; cursor: pointer; font-size: 14px; margin-right: 5px; margin-bottom: 10px; transition: background 0.2s; }
+.tool-container button:hover { background: #324ccc; }
+.tool-container .history { margin-top: 20px; background: #fff; border: 1px solid #ddd; border-radius: 8px; padding: 10px; max-height: 200px; overflow-y: auto; font-family: monospace; }
+.tool-container .history-item { padding: 5px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; }
+.tool-container .history-item:last-child { border-bottom: none; }
+</style>
+<div class="tool-container">
+    <input type="text" id="uuid-output" readonly placeholder="Click Generate">
+    <div>
+        <button onclick="generateOne()">Generate UUID</button>
+        <button onclick="copyUUID(this, 'uuid-output')">Copy</button>
+        <button onclick="generateTen()">Generate 10</button>
+    </div>
+    <div class="history" id="uuid-history"></div>
+</div>
+<script>
+function uuidv4() {
+    if(window.crypto && window.crypto.randomUUID) {
+        return window.crypto.randomUUID();
+    }
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+        var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+        return v.toString(16);
+    });
+}
+function addToHistory(uuids) {
+    const hist = document.getElementById('uuid-history');
+    uuids.reverse().forEach(u => {
+        const div = document.createElement('div');
+        div.className = 'history-item';
+        div.innerHTML = `<span>${u}</span> <button style="padding: 5px 10px; margin: 0; font-size: 12px;" onclick="copyText('${u}', this)">Copy</button>`;
+        hist.prepend(div);
+    });
+}
+function generateOne() {
+    const u = uuidv4();
+    document.getElementById('uuid-output').value = u;
+    addToHistory([u]);
+}
+function generateTen() {
+    const uuids = Array.from({length: 10}, uuidv4);
+    document.getElementById('uuid-output').value = uuids[0];
+    addToHistory(uuids);
+}
+function copyUUID(btn, id) {
+    const text = document.getElementById(id).value;
+    if(!text) return;
+    copyText(text, btn);
+}
+function copyText(text, btn) {
+    navigator.clipboard.writeText(text).then(() => {
+        const orig = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(() => btn.textContent = orig, 2000);
+    });
+}
+</script>

@@ -1,0 +1,47 @@
+name: Daily Autonomous Tool Publisher
+
+on:
+  schedule:
+    # Runs every day at 09:00 UTC (6:00 AM Brazil / 5:00 AM EST)
+    - cron: '0 9 * * *'
+  workflow_dispatch: # Allows manual trigger anytime from GitHub Web UI / Mobile App
+
+permissions:
+  contents: write
+
+jobs:
+  publish-daily-tool:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install jinja2 python-dotenv
+
+      - name: Run Market Analyzer & Publish Next Tool
+        env:
+          PYTHONIOENCODING: utf-8
+        run: |
+          python tools/daily_publisher.py
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "Autonomous Swarm Bot"
+          git config --global user.email "bot@aitoolsuite.lol"
+          git add .
+          if git diff --staged --quiet; then
+            echo "No new tool to commit."
+          else
+            git commit -m "Auto-publish daily tool & update sitemap [skip ci]"
+            git push
+          fi

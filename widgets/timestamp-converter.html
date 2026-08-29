@@ -1,0 +1,110 @@
+<style>
+.tool-container { font-family: system-ui, -apple-system, sans-serif; background: #f8f9fa; padding: 20px; border-radius: 8px; box-sizing: border-box; max-width: 800px; margin: 0 auto; color: #333; }
+.tool-container .row { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; align-items: center; }
+.tool-container input[type="text"] { flex-grow: 1; background: #fff; border: 1px solid #ddd; border-radius: 8px; padding: 10px; box-sizing: border-box; font-family: monospace; }
+.tool-container button { background: #4361ee; color: white; border: none; padding: 10px 15px; border-radius: 8px; cursor: pointer; font-size: 14px; transition: background 0.2s; white-space: nowrap; }
+.tool-container button:hover { background: #324ccc; }
+.tool-container .outputs { display: grid; grid-template-columns: 1fr; gap: 10px; background: #fff; padding: 15px; border-radius: 8px; border: 1px solid #ddd; }
+.tool-container .output-row { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+.tool-container .output-row:last-child { border-bottom: none; padding-bottom: 0; }
+.tool-container .label { font-weight: bold; color: #555; }
+.tool-container .val { font-family: monospace; }
+</style>
+<div class="tool-container">
+    <div class="row">
+        <label>Timestamp / Date:</label>
+        <input type="text" id="ts-input" placeholder="e.g. 1693150000 or 2023-08-27T10:00:00Z" oninput="parseDate()">
+        <button onclick="setNow()">Now</button>
+    </div>
+    
+    <div class="outputs">
+        <div class="output-row">
+            <div><span class="label">Unix Timestamp (sec):</span> <span class="val" id="ts-sec"></span></div>
+            <button onclick="copyTS(this, 'ts-sec')" style="padding: 5px 10px; font-size: 12px; margin: 0; border-radius: 4px;">Copy</button>
+        </div>
+        <div class="output-row">
+            <div><span class="label">Unix Timestamp (ms):</span> <span class="val" id="ts-ms"></span></div>
+            <button onclick="copyTS(this, 'ts-ms')" style="padding: 5px 10px; font-size: 12px; margin: 0; border-radius: 4px;">Copy</button>
+        </div>
+        <div class="output-row">
+            <div><span class="label">Local Time:</span> <span class="val" id="ts-local"></span></div>
+            <button onclick="copyTS(this, 'ts-local')" style="padding: 5px 10px; font-size: 12px; margin: 0; border-radius: 4px;">Copy</button>
+        </div>
+        <div class="output-row">
+            <div><span class="label">UTC Time:</span> <span class="val" id="ts-utc"></span></div>
+            <button onclick="copyTS(this, 'ts-utc')" style="padding: 5px 10px; font-size: 12px; margin: 0; border-radius: 4px;">Copy</button>
+        </div>
+        <div class="output-row">
+            <div><span class="label">ISO 8601:</span> <span class="val" id="ts-iso"></span></div>
+            <button onclick="copyTS(this, 'ts-iso')" style="padding: 5px 10px; font-size: 12px; margin: 0; border-radius: 4px;">Copy</button>
+        </div>
+        <div class="output-row">
+            <div><span class="label">Relative:</span> <span class="val" id="ts-rel"></span></div>
+        </div>
+    </div>
+</div>
+<script>
+function setNow() {
+    document.getElementById('ts-input').value = Math.floor(Date.now() / 1000);
+    parseDate();
+}
+function getRelativeTime(ms) {
+    const rtf = new Intl.RelativeTimeFormat('en', { numeric: 'auto' });
+    const diff = ms - Date.now();
+    const diffSec = Math.round(diff / 1000);
+    if (Math.abs(diffSec) < 60) return rtf.format(diffSec, 'second');
+    const diffMin = Math.round(diffSec / 60);
+    if (Math.abs(diffMin) < 60) return rtf.format(diffMin, 'minute');
+    const diffHour = Math.round(diffMin / 60);
+    if (Math.abs(diffHour) < 24) return rtf.format(diffHour, 'hour');
+    const diffDay = Math.round(diffHour / 24);
+    if (Math.abs(diffDay) < 30) return rtf.format(diffDay, 'day');
+    const diffMonth = Math.round(diffDay / 30);
+    if (Math.abs(diffMonth) < 12) return rtf.format(diffMonth, 'month');
+    return rtf.format(Math.round(diffDay / 365), 'year');
+}
+function parseDate() {
+    let input = document.getElementById('ts-input').value.trim();
+    if (!input) { clearOutputs(); return; }
+    
+    let date;
+    // Check if numeric
+    if (/^\d+$/.test(input)) {
+        let val = parseInt(input);
+        // If it looks like seconds (e.g. < 20000000000)
+        if (val < 20000000000) { val *= 1000; }
+        date = new Date(val);
+    } else {
+        date = new Date(input);
+    }
+    
+    if (isNaN(date.getTime())) {
+        clearOutputs();
+        document.getElementById('ts-local').textContent = 'Invalid Date';
+        return;
+    }
+    
+    document.getElementById('ts-sec').textContent = Math.floor(date.getTime() / 1000);
+    document.getElementById('ts-ms').textContent = date.getTime();
+    document.getElementById('ts-local').textContent = date.toLocaleString();
+    document.getElementById('ts-utc').textContent = date.toUTCString();
+    document.getElementById('ts-iso').textContent = date.toISOString();
+    document.getElementById('ts-rel').textContent = getRelativeTime(date.getTime());
+}
+function clearOutputs() {
+    ['ts-sec', 'ts-ms', 'ts-local', 'ts-utc', 'ts-iso', 'ts-rel'].forEach(id => {
+        document.getElementById(id).textContent = '';
+    });
+}
+function copyTS(btn, id) {
+    const text = document.getElementById(id).textContent;
+    if (!text || text === 'Invalid Date') return;
+    navigator.clipboard.writeText(text).then(() => {
+        const orig = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(() => btn.textContent = orig, 2000);
+    });
+}
+// Initial run
+setNow();
+</script>

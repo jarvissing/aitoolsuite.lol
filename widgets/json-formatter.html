@@ -1,0 +1,42 @@
+<style>
+.tool-container { font-family: system-ui, -apple-system, sans-serif; background: #f8f9fa; padding: 20px; border-radius: 8px; box-sizing: border-box; max-width: 800px; margin: 0 auto; color: #333; }
+.tool-container textarea { width: 100%; background: #fff; border: 1px solid #ddd; border-radius: 8px; padding: 10px; box-sizing: border-box; font-family: monospace; margin-bottom: 10px; min-height: 150px; resize: vertical; }
+.tool-container button { background: #4361ee; color: white; border: none; padding: 10px 15px; border-radius: 8px; cursor: pointer; font-size: 14px; margin-right: 5px; margin-bottom: 10px; transition: background 0.2s; }
+.tool-container button:hover { background: #324ccc; }
+.tool-container .error { color: #dc3545; margin-top: 10px; font-size: 14px; display: none; }
+</style>
+<div class="tool-container">
+    <textarea id="json-input" placeholder="Paste raw JSON here..."></textarea>
+    <div>
+        <button onclick="formatJSON(4)">Format</button>
+        <button onclick="formatJSON(0)">Minify</button>
+        <button onclick="copyJSON(this)">Copy</button>
+    </div>
+    <div id="json-error" class="error"></div>
+    <textarea id="json-output" placeholder="Output will appear here..." readonly></textarea>
+</div>
+<script>
+function formatJSON(spaces) {
+    const input = document.getElementById('json-input').value;
+    const output = document.getElementById('json-output');
+    const error = document.getElementById('json-error');
+    if (!input.trim()) return;
+    try {
+        const parsed = JSON.parse(input);
+        output.value = JSON.stringify(parsed, null, spaces);
+        error.style.display = 'none';
+    } catch (e) {
+        error.textContent = 'Invalid JSON: ' + e.message;
+        error.style.display = 'block';
+    }
+}
+function copyJSON(btn) {
+    const text = document.getElementById('json-output').value;
+    if (!text) return;
+    navigator.clipboard.writeText(text).then(() => {
+        const orig = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(() => btn.textContent = orig, 2000);
+    });
+}
+</script>

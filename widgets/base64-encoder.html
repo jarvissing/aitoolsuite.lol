@@ -1,0 +1,61 @@
+<style>
+.tool-container { font-family: system-ui, -apple-system, sans-serif; background: #f8f9fa; padding: 20px; border-radius: 8px; box-sizing: border-box; max-width: 800px; margin: 0 auto; color: #333; }
+.tool-container textarea { width: 100%; background: #fff; border: 1px solid #ddd; border-radius: 8px; padding: 10px; box-sizing: border-box; font-family: monospace; margin-bottom: 10px; min-height: 120px; resize: vertical; }
+.tool-container button { background: #4361ee; color: white; border: none; padding: 10px 15px; border-radius: 8px; cursor: pointer; font-size: 14px; margin-right: 5px; margin-bottom: 10px; transition: background 0.2s; }
+.tool-container button:hover { background: #324ccc; }
+.tool-container .mode-toggle { display: inline-flex; background: #e9ecef; border-radius: 8px; margin-bottom: 15px; overflow: hidden; }
+.tool-container .mode-btn { background: transparent; color: #333; margin: 0; border-radius: 0; padding: 8px 15px; }
+.tool-container .mode-btn.active { background: #4361ee; color: white; }
+.tool-container .error { color: #dc3545; margin-bottom: 10px; font-size: 14px; display: none; }
+</style>
+<div class="tool-container">
+    <div class="mode-toggle">
+        <button class="mode-btn active" id="b64-enc-btn" onclick="setMode('encode')">Encode</button>
+        <button class="mode-btn" id="b64-dec-btn" onclick="setMode('decode')">Decode</button>
+    </div>
+    <textarea id="b64-input" placeholder="Enter text to encode..."></textarea>
+    <div>
+        <button id="b64-action-btn" onclick="processBase64()">Encode</button>
+        <button onclick="copyBase64(this)">Copy Result</button>
+    </div>
+    <div id="b64-error" class="error"></div>
+    <textarea id="b64-output" placeholder="Result..." readonly></textarea>
+</div>
+<script>
+let b64Mode = 'encode';
+function setMode(mode) {
+    b64Mode = mode;
+    document.getElementById('b64-enc-btn').classList.toggle('active', mode === 'encode');
+    document.getElementById('b64-dec-btn').classList.toggle('active', mode === 'decode');
+    document.getElementById('b64-action-btn').textContent = mode === 'encode' ? 'Encode' : 'Decode';
+    document.getElementById('b64-input').placeholder = mode === 'encode' ? 'Enter text to encode...' : 'Enter Base64 to decode...';
+    document.getElementById('b64-output').value = '';
+    document.getElementById('b64-error').style.display = 'none';
+}
+function processBase64() {
+    const input = document.getElementById('b64-input').value;
+    const output = document.getElementById('b64-output');
+    const err = document.getElementById('b64-error');
+    err.style.display = 'none';
+    if (!input) { output.value = ''; return; }
+    try {
+        if (b64Mode === 'encode') {
+            output.value = btoa(unescape(encodeURIComponent(input)));
+        } else {
+            output.value = decodeURIComponent(escape(atob(input)));
+        }
+    } catch (e) {
+        err.textContent = 'Error: ' + e.message;
+        err.style.display = 'block';
+    }
+}
+function copyBase64(btn) {
+    const text = document.getElementById('b64-output').value;
+    if (!text) return;
+    navigator.clipboard.writeText(text).then(() => {
+        const orig = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(() => btn.textContent = orig, 2000);
+    });
+}
+</script>

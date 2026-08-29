@@ -1,0 +1,37 @@
+<style>
+.tool-container { font-family: system-ui, -apple-system, sans-serif; background: #111827; padding: 24px; border-radius: 12px; box-sizing: border-box; max-width: 800px; margin: 0 auto; color: #f8fafc; text-align: center; }
+.tool-container input { width: 100%; max-width: 500px; background: #0b0f19; color: #f8fafc; border: 1px solid #334155; border-radius: 8px; padding: 12px 16px; box-sizing: border-box; font-size: 15px; margin-bottom: 16px; }
+.tool-container button { background: linear-gradient(135deg, #4f46e5 0%, #4361ee 100%); color: white; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; font-size: 14px; font-weight: 600; margin: 0 4px 16px; transition: transform 0.2s; }
+.tool-container button:hover { transform: translateY(-1px); }
+.qr-preview { background: #ffffff; padding: 16px; border-radius: 12px; display: inline-block; margin: 16px auto; box-shadow: 0 4px 20px rgba(0,0,0,0.4); }
+.qr-preview img { display: block; width: 180px; height: 180px; }
+</style>
+<div class="tool-container">
+    <div>
+        <input type="text" id="qr-input" placeholder="Enter URL or text (e.g. https://aitoolsuite.lol)" value="https://aitoolsuite.lol">
+    </div>
+    <div>
+        <button onclick="generateQR()">Generate QR Code</button>
+        <button onclick="downloadQR()">Download Image</button>
+    </div>
+    <div id="qr-wrapper" class="qr-preview">
+        <img id="qr-image" src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://aitoolsuite.lol" alt="QR Code">
+    </div>
+</div>
+<script>
+function generateQR() {
+    let val = document.getElementById('qr-input').value.trim();
+    if (!val) return;
+    let url = 'https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=' + encodeURIComponent(val);
+    document.getElementById('qr-image').src = url;
+}
+function downloadQR() {
+    let img = document.getElementById('qr-image');
+    let val = document.getElementById('qr-input').value.trim() || 'qrcode';
+    let a = document.createElement('a');
+    a.href = img.src;
+    a.download = 'qrcode.png';
+    a.target = '_blank';
+    a.click();
+}
+</script>

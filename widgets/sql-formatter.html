@@ -1,0 +1,45 @@
+<style>
+.tool-container { font-family: system-ui, -apple-system, sans-serif; background: #111827; padding: 20px; border-radius: 12px; box-sizing: border-box; max-width: 800px; margin: 0 auto; color: #f8fafc; }
+.tool-container textarea { width: 100%; background: #0b0f19; color: #f8fafc; border: 1px solid #334155; border-radius: 8px; padding: 12px; box-sizing: border-box; font-family: monospace; font-size: 14px; margin-bottom: 12px; min-height: 150px; resize: vertical; }
+.tool-container button { background: linear-gradient(135deg, #4f46e5 0%, #4361ee 100%); color: white; border: none; padding: 10px 18px; border-radius: 8px; cursor: pointer; font-size: 14px; font-weight: 600; margin-right: 8px; margin-bottom: 10px; transition: transform 0.2s; }
+.tool-container button:hover { transform: translateY(-1px); }
+</style>
+<div class="tool-container">
+    <textarea id="sql-input" placeholder="SELECT users.id, users.email, orders.total FROM users LEFT JOIN orders ON users.id = orders.user_id WHERE orders.created_at >= '2026-01-01' ORDER BY orders.total DESC;"></textarea>
+    <div>
+        <button onclick="formatSQL()">Format SQL</button>
+        <button onclick="copySQL(this)">Copy Formatted SQL</button>
+    </div>
+    <textarea id="sql-output" placeholder="Formatted SQL will appear here..." readonly></textarea>
+</div>
+<script>
+function formatSQL() {
+    let sql = document.getElementById('sql-input').value;
+    if (!sql.trim()) return;
+    const keywords = ["SELECT", "FROM", "WHERE", "GROUP BY", "ORDER BY", "HAVING", "LIMIT", "LEFT JOIN", "RIGHT JOIN", "INNER JOIN", "OUTER JOIN", "JOIN", "UNION", "INSERT INTO", "UPDATE", "DELETE FROM", "VALUES", "SET", "AND", "OR", "ON", "AS", "IN", "NOT", "NULL", "IS"];
+    
+    let formatted = sql;
+    keywords.forEach(kw => {
+        let regex = new RegExp('\\b' + kw + '\\b', 'gi');
+        formatted = formatted.replace(regex, kw);
+    });
+
+    const majorClauses = ["SELECT", "FROM", "WHERE", "GROUP BY", "ORDER BY", "HAVING", "LIMIT", "LEFT JOIN", "RIGHT JOIN", "INNER JOIN", "JOIN", "UNION", "SET"];
+    majorClauses.forEach(clause => {
+        let regex = new RegExp('\\s*' + clause + '\\s+', 'g');
+        formatted = formatted.replace(regex, '\n' + clause + '\n  ');
+    });
+
+    formatted = formatted.replace(/,\s*/g, ',\n  ').trim();
+    document.getElementById('sql-output').value = formatted;
+}
+function copySQL(btn) {
+    const text = document.getElementById('sql-output').value;
+    if (!text) return;
+    navigator.clipboard.writeText(text).then(() => {
+        const orig = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(() => btn.textContent = orig, 2000);
+    });
+}
+</script>

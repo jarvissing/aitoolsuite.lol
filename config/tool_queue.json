@@ -1,0 +1,122 @@
+[
+  {
+    "keyword": "px to rem converter",
+    "tool_name": "PX to REM Converter",
+    "description": "Convert pixel values (px) to CSS rem and em units instantly. Set custom root base font size and copy responsive CSS code.",
+    "category": "Design Tools",
+    "tool_type": "px-to-rem",
+    "search_demand": 88,
+    "faq_items": "What is the standard base font size?:::The default browser base font size is 16px (1rem = 16px). You can customize this in the tool.|||Why use REM instead of PX in CSS?:::REM units scale with the user's browser accessibility font settings, making websites more accessible and responsive.|||Can I convert REM back to PX?:::Yes, the tool converts bidirectionally between px and rem in real time.",
+    "related_tools": "Color Picker,CSS Minifier,HTML Minifier",
+    "status": "published",
+    "priority_score": 88,
+    "discovered_at": "2026-08-28T11:58:12.462972",
+    "published_at": "2026-08-29T13:09:53.847166"
+  },
+  {
+    "keyword": "curl to python converter",
+    "tool_name": "cURL to Python Converter",
+    "description": "Convert raw cURL command lines into clean Python requests and httpx code snippets ready for production use.",
+    "category": "Developer Tools",
+    "tool_type": "curl-converter",
+    "search_demand": 86,
+    "faq_items": "Which HTTP methods are supported?:::Supports GET, POST, PUT, DELETE, and PATCH with headers and JSON payloads.|||Does it handle authentication headers?:::Yes, Bearer tokens and Basic Auth headers are automatically converted to request params.|||Which Python libraries does it output?:::Generates standard 'requests' and modern async 'httpx' code.",
+    "related_tools": "JSON Formatter,Base64 Encoder,URL Encoder",
+    "status": "pending",
+    "priority_score": 86,
+    "discovered_at": "2026-08-28T11:58:12.463014"
+  },
+  {
+    "keyword": "token counter",
+    "tool_name": "AI Prompt Token Counter",
+    "description": "Estimate tokens, words, and API costs for OpenAI GPT-4o, Claude, and Gemini prompts. Optimize prompt length and reduce AI development expenses.",
+    "category": "Developer Tools",
+    "tool_type": "token-counter",
+    "faq_items": "How are AI tokens counted?:::Tokens represent chunks of text used by Large Language Models. In English, 1 token is roughly 4 characters or 0.75 words.|||Which AI models are supported?:::This tool provides token and cost estimates calibrated for modern models including GPT-4o, Claude 3.5, and Gemini.|||Is the token count exact?:::It provides an accurate estimation based on standard tokenization rules, ideal for budgeting prompt sizes and context windows.",
+    "related_tools": "Word Counter,JSON Formatter,UUID Generator",
+    "status": "pending"
+  },
+  {
+    "keyword": "qr code generator",
+    "tool_name": "QR Code Generator",
+    "description": "Generate free high-resolution QR codes for websites, text, contact cards, and Wi-Fi credentials. Download high-quality PNG images instantly.",
+    "category": "Developer Tools",
+    "tool_type": "qr-code-generator",
+    "faq_items": "Do these QR codes expire?:::No, standard static QR codes encode your data directly into the pattern and never expire.|||Can I download the generated QR code?:::Yes, click the Download Image button to save the QR code as a PNG image.|||Is there a limit on QR code creation?:::No, you can generate unlimited QR codes for personal and commercial use for free.",
+    "related_tools": "URL Encoder,Base64 Encoder,Hash Generator",
+    "status": "pending"
+  },
+  {
+    "keyword": "css minifier",
+    "tool_name": "CSS Minifier & Compressor",
+    "description": "Compress and minify CSS code by stripping whitespace, comments, and redundant formatting. Boost website speed and improve Google PageSpeed performance.",
+    "category": "Developer Tools",
+    "tool_type": "css-minifier",
+    "faq_items": "What does CSS minification do?:::CSS minification removes unnecessary characters, whitespace, and comments without altering how stylesheets render in the browser.|||How much file size can I save?:::Minification typically reduces stylesheet file size by 20% to 50%, speeding up page load times.|||Is this CSS minifier safe for production?:::Yes, it preserves all valid CSS rules, selectors, and properties while compressing layout whitespace.",
+    "related_tools": "HTML Minifier,JSON Formatter,Color Picker",
+    "status": "pending"
+  },
+  {
+    "keyword": "html minifier",
+    "tool_name": "HTML Minifier & Compressor",
+    "description": "Minify HTML documents and component templates. Remove comments, whitespace, and line breaks to optimize DOM load speed and bandwidth usage.",
+    "category": "Developer Tools",
+    "tool_type": "html-minifier",
+    "faq_items": "Why should I minify HTML?:::Minifying HTML reduces transfer size over the network, leading to faster First Contentful Paint (FCP) and better Core Web Vitals scores.|||Will minification break my HTML layout?:::No, standard whitespace between tags is safely handled while eliminating excessive line breaks and comments.|||Is my code processed privately?:::Yes, minification runs entirely inside your client browser with no external server requests.",
+    "related_tools": "CSS Minifier,JSON Formatter,Markdown Previewer",
+    "status": "pending"
+  },
+  {
+    "keyword": "sql formatter and beautifier",
+    "tool_name": "SQL Formatter & Beautifier",
+    "description": "Format and beautify messy SQL queries with proper keyword indentation, uppercase keywords, and clean line breaks.",
+    "category": "Developer Tools",
+    "tool_type": "sql-formatter",
+    "search_demand": 89,
+    "faq_items": "Which SQL dialects are supported?:::Formats standard ANSI SQL, PostgreSQL, MySQL, SQLite, and BigQuery syntax.|||Does it capitalize keywords automatically?:::Yes, SELECT, FROM, WHERE, JOIN and all standard keywords are formatted to uppercase.|||Is my database query private?:::Yes, formatting runs 100% in your browser with no database connection required.",
+    "related_tools": "JSON Formatter,CSS Minifier,HTML Minifier",
+    "status": "published",
+    "priority_score": 89,
+    "discovered_at": "2026-08-28T11:58:12.462930",
+    "published_at": "2026-08-29T13:09:47.638195"
+  },
+  {
+    "keyword": "regex tester and cheat sheet",
+    "tool_name": "Regex Tester & Cheat Sheet",
+    "description": "Test regular expressions in real-time with instant match highlighting, capture group breakdown, and standard regex cheat sheet.",
+    "category": "Developer Tools",
+    "tool_type": "regex-tester",
+    "search_demand": 92,
+    "faq_items": "What regex flags are supported?:::Supports global (g), case-insensitive (i), multiline (m), and single-line (s) flags.|||Does this tool validate syntax?:::Yes, it catches regex syntax errors in real time as you type.|||Is matching done in the browser?:::Yes, expressions evaluate instantly in your local JavaScript engine.",
+    "related_tools": "JSON Formatter,Markdown Previewer,Case Converter",
+    "status": "published",
+    "priority_score": 92,
+    "discovered_at": "2026-08-28T11:58:12.462884",
+    "published_at": "2026-08-29T13:06:30.923956"
+  },
+  {
+    "keyword": "ai prompt cost calculator",
+    "tool_name": "AI Prompt Cost Calculator",
+    "description": "Calculate exact API costs for OpenAI GPT-4o, Claude 3.5, and Gemini models based on prompt tokens and output length.",
+    "category": "AI Utilities",
+    "tool_type": "token-counter",
+    "search_demand": 94,
+    "faq_items": "How does the AI cost calculator work?:::It calculates pricing per 1,000 and 1,000,000 input/output tokens according to official API pricing tiers.|||Which models are included?:::Pricing includes GPT-4o, GPT-4o-mini, Claude 3.5 Sonnet, and Gemini 1.5 Pro.|||Can I calculate batch costs?:::Yes, enter total batch prompt tokens to estimate monthly operational cost.",
+    "related_tools": "AI Prompt Token Counter,JSON Formatter,Word Counter",
+    "status": "published",
+    "priority_score": 94,
+    "discovered_at": "2026-08-28T11:58:12.462806",
+    "published_at": "2026-08-28T12:02:08.194407"
+  },
+  {
+    "keyword": "markdown previewer",
+    "tool_name": "Markdown Previewer & Editor",
+    "description": "Write Markdown and see live rendered HTML output instantly. Convert Markdown to HTML, copy formatted code, and preview headings, lists, and formatting with zero latency.",
+    "category": "Text Tools",
+    "tool_type": "markdown-previewer",
+    "faq_items": "What is a Markdown previewer?:::A Markdown previewer is an interactive tool that translates Markdown syntax into formatted HTML in real time.|||Can I copy the converted HTML?:::Yes, click the Copy HTML button to copy the raw rendered HTML code to your clipboard.|||Does this tool send data to a server?:::No, all parsing happens locally in your browser using lightweight JavaScript.",
+    "related_tools": "Word Counter,Case Converter,Lorem Ipsum Generator",
+    "status": "published",
+    "published_at": "2026-08-28T11:26:51.640179"
+  }
+]

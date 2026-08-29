@@ -1,0 +1,70 @@
+<style>
+.tool-container { font-family: system-ui, -apple-system, sans-serif; background: #f8f9fa; padding: 20px; border-radius: 8px; box-sizing: border-box; max-width: 800px; margin: 0 auto; color: #333; }
+.tool-container textarea { width: 100%; background: #fff; border: 1px solid #ddd; border-radius: 8px; padding: 10px; box-sizing: border-box; font-family: inherit; margin-bottom: 10px; min-height: 120px; resize: vertical; }
+.tool-container .btn-group { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 10px; }
+.tool-container button { background: #4361ee; color: white; border: none; padding: 8px 12px; border-radius: 6px; cursor: pointer; font-size: 13px; transition: background 0.2s; margin: 0; }
+.tool-container button:hover { background: #324ccc; }
+.tool-container .copy-btn { background: #28a745; }
+.tool-container .copy-btn:hover { background: #218838; }
+</style>
+<div class="tool-container">
+    <textarea id="case-input" placeholder="Type or paste your text here..."></textarea>
+    <div class="btn-group">
+        <button onclick="convertCase('upper')">UPPERCASE</button>
+        <button onclick="convertCase('lower')">lowercase</button>
+        <button onclick="convertCase('title')">Title Case</button>
+        <button onclick="convertCase('sentence')">Sentence case</button>
+        <button onclick="convertCase('camel')">camelCase</button>
+        <button onclick="convertCase('snake')">snake_case</button>
+        <button onclick="convertCase('kebab')">kebab-case</button>
+        <button onclick="copyCase(this)" class="copy-btn">Copy Output</button>
+    </div>
+    <textarea id="case-output" placeholder="Output..." readonly></textarea>
+</div>
+<script>
+function toTitleCase(str) {
+    return str.toLowerCase().split(' ').map(function(word) {
+        return (word.charAt(0).toUpperCase() + word.slice(1));
+    }).join(' ');
+}
+function toSentenceCase(str) {
+    return str.toLowerCase().replace(/(^\s*\w|[\.\!\?]\s*\w)/g, function(c) { return c.toUpperCase(); });
+}
+function toCamelCase(str) {
+    return str.replace(/(?:^\w|[A-Z]|\b\w)/g, function(word, index) {
+        return index === 0 ? word.toLowerCase() : word.toUpperCase();
+    }).replace(/\s+/g, '');
+}
+function toSnakeCase(str) {
+    return str.replace(/\W+/g, " ").split(/ |\B(?=[A-Z])/).map(word => word.toLowerCase()).join('_');
+}
+function toKebabCase(str) {
+    return str.replace(/\W+/g, " ").split(/ |\B(?=[A-Z])/).map(word => word.toLowerCase()).join('-');
+}
+function convertCase(type) {
+    const input = document.getElementById('case-input').value;
+    const output = document.getElementById('case-output');
+    if(!input) { output.value = ''; return; }
+    
+    let res = '';
+    switch(type) {
+        case 'upper': res = input.toUpperCase(); break;
+        case 'lower': res = input.toLowerCase(); break;
+        case 'title': res = toTitleCase(input); break;
+        case 'sentence': res = toSentenceCase(input); break;
+        case 'camel': res = toCamelCase(input); break;
+        case 'snake': res = toSnakeCase(input); break;
+        case 'kebab': res = toKebabCase(input); break;
+    }
+    output.value = res;
+}
+function copyCase(btn) {
+    const text = document.getElementById('case-output').value;
+    if (!text) return;
+    navigator.clipboard.writeText(text).then(() => {
+        const orig = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(() => btn.textContent = orig, 2000);
+    });
+}
+</script>
