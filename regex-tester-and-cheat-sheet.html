@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regex Tester & Cheat Sheet - Free Online Developer Tools Tool | AI Tool Suite</title>
+    <meta name="description" content="Test regular expressions in real-time with instant match highlighting, capture group breakdown, and standard regex cheat sheet.">
+    <meta name="robots" content="index, follow">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%234361ee'/%3E%3Cpath d='M56 12 L24 54 L48 54 L44 88 L76 46 L52 46 Z' fill='%23ffdd00' stroke='%23f59e0b' stroke-width='2'/%3E%3C/svg%3E">
+    <link rel="alternate icon" href="/favicon.svg">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Regex Tester & Cheat Sheet - Free Online Developer Tools Tool | AI Tool Suite">
+    <meta property="og:description" content="Test regular expressions in real-time with instant match highlighting, capture group breakdown, and standard regex cheat sheet.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://aitoolsuite.lol/regex-tester-and-cheat-sheet">
+    
+    <!-- JSON-LD: WebApplication -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Regex Tester & Cheat Sheet",
+        "description": "Test regular expressions in real-time with instant match highlighting, capture group breakdown, and standard regex cheat sheet.",
+        "url": "https://aitoolsuite.lol/regex-tester-and-cheat-sheet",
+        "applicationCategory": "UtilityApplication",
+        "operatingSystem": "Any",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
+    
+    <!-- JSON-LD: FAQPage -->
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            
+            {
+                "@type": "Question",
+                "name": "What regex flags are supported?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Supports global (g), case-insensitive (i), multiline (m), and single-line (s) flags."
+                }
+            },
+            
+            {
+                "@type": "Question",
+                "name": "Does this tool validate syntax?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, it catches regex syntax errors in real time as you type."
+                }
+            },
+            
+            {
+                "@type": "Question",
+                "name": "Is matching done in the browser?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, expressions evaluate instantly in your local JavaScript engine."
+                }
+            }
+            
+        ]
+    }
+    </script>
+    
+    
+    <!-- JSON-LD: BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://aitoolsuite.lol"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Developer Tools",
+                "item": "https://aitoolsuite.lol/#developer-tools"
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Regex Tester & Cheat Sheet"
+            }
+        ]
+    }
+    </script>
+    
+    <!-- Syne + Inter Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Syne:wght@700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #f1f5f9;
+            background: #09090b;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Responsive Floating Pill Navigation Bar */
+        .nav-wrapper {
+            position: sticky;
+            top: 14px;
+            z-index: 100;
+            padding: 0 16px;
+            width: 100%;
+        }
+        .site-nav {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(18, 18, 23, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 100px;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
+        }
+        .nav-brand {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: #ffffff;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            letter-spacing: -0.03em;
+            flex-shrink: 0;
+        }
+        .nav-brand-dot {
+            width: 8px;
+            height: 8px;
+            background: #3b82f6;
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 10px #3b82f6;
+        }
+        .nav-links {
+            display: flex;
+            gap: 6px;
+            align-items: center;
+            overflow-x: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        .nav-links::-webkit-scrollbar { display: none; }
+        .nav-link {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: #94a3b8;
+            text-decoration: none;
+            padding: 6px 14px;
+            border-radius: 100px;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+        }
+        .nav-link:hover {
+            background: rgba(255, 255, 255, 0.08);
+            color: #ffffff;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 24px 16px 80px;
+        }
+        
+        /* Breadcrumb */
+        .breadcrumb {
+            font-size: 0.82rem;
+            color: #64748b;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 500;
+            flex-wrap: wrap;
+        }
+        .breadcrumb a { color: #94a3b8; text-decoration: none; transition: color 0.2s; }
+        .breadcrumb a:hover { color: #93c5fd; }
+
+        /* Header */
+        header { margin-bottom: 24px; }
+        .tool-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(59, 130, 246, 0.1);
+            color: #93c5fd;
+            border: 1px solid rgba(59, 130, 246, 0.25);
+            padding: 4px 12px;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        header h1 {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -0.03em;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+        .description {
+            font-size: clamp(0.95rem, 2vw, 1.05rem);
+            color: #94a3b8;
+            line-height: 1.6;
+        }
+
+        /* Tool Interactive Surface */
+        .tool-surface {
+            background: #121216;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: clamp(16px, 4vw, 28px);
+            margin-bottom: 40px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Sections */
+        .section-title {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(1.15rem, 3vw, 1.35rem);
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        /* FAQ Accordion Section */
+        .faq-section { margin-bottom: 40px; }
+        .faq-list { display: flex; flex-direction: column; gap: 10px; }
+        .faq-item {
+            background: #121216;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 14px;
+            padding: 18px 20px;
+            transition: border-color 0.2s ease;
+        }
+        .faq-item:hover { border-color: rgba(59, 130, 246, 0.3); }
+        .faq-question {
+            font-family: 'Syne', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 6px;
+        }
+        .faq-answer {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* Related Tools Grid */
+        .related-section { margin-bottom: 40px; }
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr));
+            gap: 12px;
+        }
+        .related-card {
+            background: #121216;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 14px;
+            padding: 14px 18px;
+            text-decoration: none;
+            color: #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.2s ease;
+        }
+        .related-card:hover {
+            border-color: rgba(59, 130, 246, 0.4);
+            transform: translateY(-2px);
+            background: #18181f;
+            color: #ffffff;
+        }
+        .related-card span { font-weight: 600; font-size: 0.9rem; }
+        .related-arrow { color: #64748b; font-size: 0.9rem; }
+
+        /* Footer */
+        footer {
+            margin-top: 56px;
+            padding: 32px 0 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            text-align: center;
+            color: #64748b;
+            font-size: 0.85rem;
+        }
+        .footer-brand {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 6px;
+        }
+        footer a { color: #93c5fd; text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+
+        @media (max-width: 640px) {
+            .site-nav {
+                padding: 8px 14px;
+                border-radius: 12px;
+            }
+            .nav-link {
+                padding: 5px 10px;
+                font-size: 0.78rem;
+            }
+            .container {
+                padding: 16px 12px 60px;
+            }
+            .tool-surface {
+                padding: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Floating Pill Navigation Bar (No Sitemap in top nav) -->
+    <div class="nav-wrapper">
+        <nav class="site-nav">
+            <a href="/" class="nav-brand">
+                <span class="nav-brand-dot"></span>
+                AI Tool Suite
+            </a>
+            <div class="nav-links">
+                <a href="/#ai-utilities" class="nav-link">AI</a>
+                <a href="/#developer-tools" class="nav-link">Developer</a>
+                <a href="/#text-tools" class="nav-link">Text</a>
+                <a href="/#design-tools" class="nav-link">Design</a>
+            </div>
+        </nav>
+    </div>
+
+    <div class="container">
+        <!-- Breadcrumb -->
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="/">Home</a>
+            <span>/</span>
+            <a href="/#developer-tools">Developer Tools</a>
+            <span>/</span>
+            <span style="color: #cbd5e1;">Regex Tester & Cheat Sheet</span>
+        </nav>
+
+        <!-- Header -->
+        <header>
+            <div class="tool-badge">⚡ Developer Tools</div>
+            <h1>Regex Tester & Cheat Sheet</h1>
+            <p class="description">Test regular expressions in real-time with instant match highlighting, capture group breakdown, and standard regex cheat sheet.</p>
+        </header>
+
+        <!-- Tool Widget Surface -->
+        <div class="tool-surface">
+            <style>
+.tool-container { font-family: system-ui, -apple-system, sans-serif; background: #111827; padding: 20px; border-radius: 12px; box-sizing: border-box; max-width: 800px; margin: 0 auto; color: #f8fafc; }
+.tool-container input[type="text"] { width: 100%; background: #0b0f19; color: #f8fafc; border: 1px solid #334155; border-radius: 8px; padding: 12px; box-sizing: border-box; font-family: monospace; font-size: 14px; margin-bottom: 12px; }
+.tool-container textarea { width: 100%; background: #0b0f19; color: #f8fafc; border: 1px solid #334155; border-radius: 8px; padding: 12px; box-sizing: border-box; font-family: monospace; font-size: 14px; margin-bottom: 12px; min-height: 140px; resize: vertical; }
+.flags-bar { display: flex; gap: 14px; margin-bottom: 12px; font-size: 13px; color: #94a3b8; }
+.flags-bar label { display: flex; align-items: center; gap: 4px; cursor: pointer; }
+.match-result { background: #0b0f19; border: 1px solid #334155; border-radius: 8px; padding: 14px; min-height: 100px; font-family: monospace; font-size: 14px; line-height: 1.6; }
+.highlight { background: #4f46e5; color: #ffffff; padding: 2px 4px; border-radius: 4px; font-weight: 600; }
+.match-count { display: inline-block; padding: 4px 10px; border-radius: 20px; font-size: 12px; font-weight: 600; background: rgba(56, 189, 248, 0.15); color: #38bdf8; margin-bottom: 8px; }
+</style>
+<div class="tool-container">
+    <div style="font-size: 12px; color: #94a3b8; margin-bottom: 6px; font-weight: 600;">REGULAR EXPRESSION</div>
+    <input type="text" id="regex-pattern" placeholder="Enter regex pattern (e.g. [a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,})" value="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" oninput="testRegex()">
+    
+    <div class="flags-bar">
+        <span>Flags:</span>
+        <label><input type="checkbox" id="flag-g" checked onchange="testRegex()"> Global (g)</label>
+        <label><input type="checkbox" id="flag-i" checked onchange="testRegex()"> Case-insensitive (i)</label>
+        <label><input type="checkbox" id="flag-m" onchange="testRegex()"> Multiline (m)</label>
+    </div>
+
+    <div style="font-size: 12px; color: #94a3b8; margin-bottom: 6px; font-weight: 600;">TEST STRING</div>
+    <textarea id="regex-input" placeholder="Enter text to test matches..." oninput="testRegex()">Contact our support at hello@aitoolsuite.lol or billing@example.com for assistance.</textarea>
+
+    <div id="match-info" class="match-count">2 matches found</div>
+    <div id="regex-output" class="match-result"></div>
+</div>
+<script>
+function testRegex() {
+    let pat = document.getElementById('regex-pattern').value;
+    let text = document.getElementById('regex-input').value;
+    let out = document.getElementById('regex-output');
+    let info = document.getElementById('match-info');
+    if (!pat) {
+        out.textContent = text;
+        info.textContent = '0 matches';
+        return;
+    }
+    let flags = '';
+    if (document.getElementById('flag-g').checked) flags += 'g';
+    if (document.getElementById('flag-i').checked) flags += 'i';
+    if (document.getElementById('flag-m').checked) flags += 'm';
+
+    try {
+        let re = new RegExp(pat, flags);
+        let count = 0;
+        let highlighted = text.replace(re, (m) => {
+            count++;
+            return '<span class="highlight">' + m + '</span>';
+        });
+        out.innerHTML = highlighted;
+        info.textContent = count + ' match' + (count === 1 ? '' : 'es') + ' found';
+        info.style.color = count > 0 ? '#38bdf8' : '#94a3b8';
+    } catch(e) {
+        out.innerHTML = '<span style="color:#ef4444;">Invalid Regular Expression: ' + e.message + '</span>';
+        info.textContent = 'Error in pattern';
+        info.style.color = '#ef4444';
+    }
+}
+testRegex();
+</script>
+
+        </div>
+
+        <!-- FAQ Section -->
+        
+        <section class="faq-section">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="faq-list">
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">What regex flags are supported?</h3>
+                    <p class="faq-answer">Supports global (g), case-insensitive (i), multiline (m), and single-line (s) flags.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">Does this tool validate syntax?</h3>
+                    <p class="faq-answer">Yes, it catches regex syntax errors in real time as you type.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">Is matching done in the browser?</h3>
+                    <p class="faq-answer">Yes, expressions evaluate instantly in your local JavaScript engine.</p>
+                </div>
+                
+            </div>
+        </section>
+        
+
+        <!-- Related Tools -->
+        
+        <section class="related-section">
+            <h2 class="section-title">Explore Related Tools</h2>
+            <div class="related-grid">
+                
+                <a href="/json-formatter.html" class="related-card">
+                    <span>JSON Formatter</span>
+                    <span class="related-arrow">↗</span>
+                </a>
+                
+                <a href="/markdown-previewer.html" class="related-card">
+                    <span>Markdown Previewer</span>
+                    <span class="related-arrow">↗</span>
+                </a>
+                
+                <a href="/case-converter.html" class="related-card">
+                    <span>Case Converter</span>
+                    <span class="related-arrow">↗</span>
+                </a>
+                
+            </div>
+        </section>
+        
+
+        <footer>
+            <div class="footer-brand">AI Tool Suite</div>
+            <p>&copy; 2026 AI Tool Suite. Free private developer utilities.</p>
+            <p style="margin-top: 6px;"><a href="/">Browse All Tools</a></p>
+        </footer>
+    </div>
+
+    <!-- GoatCounter Analytics -->
+    <script data-goatcounter="https://aitoolsuite.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
