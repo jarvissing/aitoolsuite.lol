@@ -1,0 +1,85 @@
+<style>
+.tool-container { font-family: system-ui, -apple-system, sans-serif; background: #111827; padding: 24px; border-radius: 12px; box-sizing: border-box; max-width: 900px; margin: 0 auto; color: #f8fafc; }
+.tool-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+@media (max-width: 640px) { .tool-grid { grid-template-columns: 1fr; } }
+.input-col label { display: block; font-size: 13px; font-weight: 600; color: #94a3b8; margin-bottom: 6px; }
+.input-col textarea { width: 100%; height: 220px; background: #0b0f19; color: #f8fafc; border: 1px solid #334155; border-radius: 8px; padding: 12px; box-sizing: border-box; font-family: monospace; font-size: 13px; resize: vertical; }
+.input-col textarea:focus { border-color: #3b82f6; outline: none; }
+.btn-row { display: flex; gap: 10px; margin-bottom: 12px; }
+.action-btn { background: #3b82f6; color: #fff; border: none; padding: 10px 18px; border-radius: 6px; cursor: pointer; font-size: 14px; font-weight: 600; }
+.action-btn:hover { background: #2563eb; }
+.copy-btn { background: #1e293b; color: #38bdf8; border: 1px solid #334155; padding: 10px 16px; border-radius: 6px; cursor: pointer; font-size: 13px; font-weight: 600; }
+.copy-btn:hover { background: #334155; color: #fff; }
+</style>
+<div class="tool-container">
+    <div class="tool-grid">
+        <div class="input-col">
+            <label>YAML Input:</label>
+            <textarea id="yamlInput" placeholder="name: AI Tool Suite&#10;version: 1.0&#10;features:&#10;  - fast&#10;  - private" oninput="convertYamlToJson()"></textarea>
+        </div>
+        <div class="input-col">
+            <label>JSON Output:</label>
+            <textarea id="jsonOutput" readonly placeholder="JSON output will appear here..."></textarea>
+        </div>
+    </div>
+    <div class="btn-row">
+        <button class="action-btn" onclick="convertYamlToJson()">Convert to JSON</button>
+        <button class="copy-btn" onclick="copyJsonOutput(this)">Copy JSON</button>
+    </div>
+</div>
+<script>
+function parseSimpleYaml(yamlStr) {
+    let lines = yamlStr.split('\n');
+    let result = {};
+    let currentKey = null;
+    for (let line of lines) {
+        let trimmed = line.trim();
+        if (!trimmed || trimmed.startsWith('#')) continue;
+        if (trimmed.startsWith('- ')) {
+            if (currentKey && Array.isArray(result[currentKey])) {
+                let val = trimmed.substring(2).trim();
+                result[currentKey].push(isNaN(val) ? val.replace(/^["']|["']$/g, '') : Number(val));
+            }
+            continue;
+        }
+        let colonIdx = line.indexOf(':');
+        if (colonIdx !== -1) {
+            let key = line.substring(0, colonIdx).trim();
+            let val = line.substring(colonIdx + 1).trim();
+            if (val === '') {
+                currentKey = key;
+                result[key] = [];
+            } else {
+                currentKey = key;
+                if (val === 'true') result[key] = true;
+                else if (val === 'false') result[key] = false;
+                else if (!isNaN(val) && val !== '') result[key] = Number(val);
+                else result[key] = val.replace(/^["']|["']$/g, '');
+            }
+        }
+    }
+    return result;
+}
+function convertYamlToJson() {
+    let yaml = document.getElementById('yamlInput').value.trim();
+    if (!yaml) {
+        document.getElementById('jsonOutput').value = '';
+        return;
+    }
+    try {
+        let obj = parseSimpleYaml(yaml);
+        document.getElementById('jsonOutput').value = JSON.stringify(obj, null, 2);
+    } catch(e) {
+        document.getElementById('jsonOutput').value = 'Error parsing YAML: ' + e.message;
+    }
+}
+function copyJsonOutput(btn) {
+    let json = document.getElementById('jsonOutput').value;
+    if (!json) return;
+    navigator.clipboard.writeText(json).then(() => {
+        let orig = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(() => btn.textContent = orig, 1800);
+    });
+}
+</script>

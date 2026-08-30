@@ -1,0 +1,30 @@
+<style>
+.tool-container { font-family: system-ui, -apple-system, sans-serif; background: #111827; padding: 24px; border-radius: 12px; box-sizing: border-box; max-width: 860px; margin: 0 auto; color: #f8fafc; }
+.cron-display { background: #0b0f19; border: 1px solid #334155; border-radius: 8px; padding: 16px; font-family: monospace; font-size: 24px; color: #38bdf8; text-align: center; margin-bottom: 16px; font-weight: 700; letter-spacing: 4px; }
+.cron-meaning { background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 8px; padding: 12px 16px; margin-bottom: 20px; font-size: 14px; text-align: center; }
+.presets-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 8px; }
+.preset-btn { background: #1e293b; color: #e2e8f0; border: 1px solid #334155; padding: 10px 14px; border-radius: 6px; cursor: pointer; font-size: 13px; font-weight: 600; text-align: left; }
+.preset-btn:hover { background: #3b82f6; color: #fff; border-color: #3b82f6; }
+</style>
+<div class="tool-container">
+    <div id="cronExpr" class="cron-display">*/15 * * * *</div>
+    <div id="cronHuman" class="cron-meaning">⏳ Runs every 15 minutes</div>
+    <label style="display:block; font-size:13px; font-weight:600; color:#94a3b8; margin-bottom:10px;">Select Standard Cron Schedule Presets:</label>
+    <div class="presets-grid">
+        <button class="preset-btn" onclick="setCron('* * * * *', 'Every minute')">⚡ Every Minute</button>
+        <button class="preset-btn" onclick="setCron('*/5 * * * *', 'Every 5 minutes')">⏱️ Every 5 Minutes</button>
+        <button class="preset-btn" onclick="setCron('*/15 * * * *', 'Every 15 minutes')">⏱️ Every 15 Minutes</button>
+        <button class="preset-btn" onclick="setCron('0 * * * *', 'Every hour (at minute 0)')">🕒 Every Hour</button>
+        <button class="preset-btn" onclick="setCron('0 0 * * *', 'Every day at midnight')">🌙 Every Midnight</button>
+        <button class="preset-btn" onclick="setCron('0 6 * * *', 'Every day at 6:00 AM')">🌅 Every Morning 6 AM</button>
+        <button class="preset-btn" onclick="setCron('0 0 * * 0', 'Every Sunday at midnight')">📅 Every Sunday</button>
+        <button class="preset-btn" onclick="setCron('0 0 1 * *', 'First day of every month')">🗓️ Every 1st of Month</button>
+    </div>
+</div>
+<script>
+function setCron(expr, meaning) {
+    document.getElementById('cronExpr').textContent = expr;
+    document.getElementById('cronHuman').textContent = '⏳ ' + meaning;
+    navigator.clipboard.writeText(expr);
+}
+</script>

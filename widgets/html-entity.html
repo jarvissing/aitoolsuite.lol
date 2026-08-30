@@ -1,0 +1,38 @@
+<style>
+.tool-container { font-family: system-ui, -apple-system, sans-serif; background: #111827; padding: 24px; border-radius: 12px; box-sizing: border-box; max-width: 860px; margin: 0 auto; color: #f8fafc; }
+.tool-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+@media (max-width: 640px) { .tool-grid { grid-template-columns: 1fr; } }
+.col label { display: block; font-size: 13px; font-weight: 600; color: #94a3b8; margin-bottom: 6px; }
+.col textarea { width: 100%; height: 160px; background: #0b0f19; color: #f8fafc; border: 1px solid #334155; border-radius: 8px; padding: 12px; box-sizing: border-box; font-family: monospace; font-size: 13px; resize: vertical; }
+.btn-row { display: flex; gap: 10px; }
+.btn-act { background: #3b82f6; color: #fff; border: none; padding: 10px 16px; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 13px; }
+.btn-act:hover { background: #2563eb; }
+</style>
+<div class="tool-container">
+    <div class="tool-grid">
+        <div class="col">
+            <label>Plain Text / Symbols:</label>
+            <textarea id="rawText" placeholder="e.g. <div class=&quot;box&quot;> &copy; 2026 & 'AI'</div>" oninput="encodeHtmlEntities()"></textarea>
+        </div>
+        <div class="col">
+            <label>HTML Encoded Entities:</label>
+            <textarea id="encodedText" placeholder="Encoded entities will appear here..." oninput="decodeHtmlEntities()"></textarea>
+        </div>
+    </div>
+    <div class="btn-row">
+        <button class="btn-act" onclick="encodeHtmlEntities()">Encode to Entities</button>
+        <button class="btn-act" style="background:#1e293b; color:#38bdf8;" onclick="decodeHtmlEntities()">Decode from Entities</button>
+    </div>
+</div>
+<script>
+function encodeHtmlEntities() {
+    let str = document.getElementById('rawText').value;
+    let enc = str.replace(/[\u00A0-\u9999<>\&"']/g, i => '&#' + i.charCodeAt(0) + ';');
+    document.getElementById('encodedText').value = enc;
+}
+function decodeHtmlEntities() {
+    let str = document.getElementById('encodedText').value;
+    let doc = new DOMParser().parseFromString(str, 'text/html');
+    document.getElementById('rawText').value = doc.body.textContent || '';
+}
+</script>

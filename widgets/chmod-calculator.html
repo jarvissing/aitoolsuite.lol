@@ -1,0 +1,43 @@
+<style>
+.tool-container { font-family: system-ui, -apple-system, sans-serif; background: #111827; padding: 24px; border-radius: 12px; box-sizing: border-box; max-width: 860px; margin: 0 auto; color: #f8fafc; }
+.chmod-display { background: #0b0f19; border: 1px solid #334155; border-radius: 8px; padding: 16px; font-family: monospace; font-size: 28px; color: #38bdf8; text-align: center; margin-bottom: 20px; font-weight: 700; }
+.chmod-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 20px; }
+@media (max-width: 600px) { .chmod-grid { grid-template-columns: 1fr; } }
+.perm-card { background: #1e293b; border: 1px solid #334155; border-radius: 8px; padding: 14px; }
+.perm-title { font-size: 14px; font-weight: 700; color: #60a5fa; margin-bottom: 10px; }
+.perm-row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; font-size: 13px; }
+</style>
+<div class="tool-container">
+    <div id="chmodOutput" class="chmod-display">chmod 755 (rwxr-xr-x)</div>
+    <div class="chmod-grid">
+        <div class="perm-card">
+            <div class="perm-title">Owner (User)</div>
+            <label class="perm-row"><input type="checkbox" id="u_r" checked onchange="calcChmod()"> Read (4)</label>
+            <label class="perm-row"><input type="checkbox" id="u_w" checked onchange="calcChmod()"> Write (2)</label>
+            <label class="perm-row"><input type="checkbox" id="u_x" checked onchange="calcChmod()"> Execute (1)</label>
+        </div>
+        <div class="perm-card">
+            <div class="perm-title">Group</div>
+            <label class="perm-row"><input type="checkbox" id="g_r" checked onchange="calcChmod()"> Read (4)</label>
+            <label class="perm-row"><input type="checkbox" id="g_w" onchange="calcChmod()"> Write (2)</label>
+            <label class="perm-row"><input type="checkbox" id="g_x" checked onchange="calcChmod()"> Execute (1)</label>
+        </div>
+        <div class="perm-card">
+            <div class="perm-title">Public (Others)</div>
+            <label class="perm-row"><input type="checkbox" id="o_r" checked onchange="calcChmod()"> Read (4)</label>
+            <label class="perm-row"><input type="checkbox" id="o_w" onchange="calcChmod()"> Write (2)</label>
+            <label class="perm-row"><input type="checkbox" id="o_x" checked onchange="calcChmod()"> Execute (1)</label>
+        </div>
+    </div>
+</div>
+<script>
+function calcChmod() {
+    let u = (document.getElementById('u_r').checked ? 4 : 0) + (document.getElementById('u_w').checked ? 2 : 0) + (document.getElementById('u_x').checked ? 1 : 0);
+    let g = (document.getElementById('g_r').checked ? 4 : 0) + (document.getElementById('g_w').checked ? 2 : 0) + (document.getElementById('g_x').checked ? 1 : 0);
+    let o = (document.getElementById('o_r').checked ? 4 : 0) + (document.getElementById('o_w').checked ? 2 : 0) + (document.getElementById('o_x').checked ? 1 : 0);
+    let sym = (document.getElementById('u_r').checked ? 'r' : '-') + (document.getElementById('u_w').checked ? 'w' : '-') + (document.getElementById('u_x').checked ? 'x' : '-')
+            + (document.getElementById('g_r').checked ? 'r' : '-') + (document.getElementById('g_w').checked ? 'w' : '-') + (document.getElementById('g_x').checked ? 'x' : '-')
+            + (document.getElementById('o_r').checked ? 'r' : '-') + (document.getElementById('o_w').checked ? 'w' : '-') + (document.getElementById('o_x').checked ? 'x' : '-');
+    document.getElementById('chmodOutput').textContent = `chmod ${u}${g}${o} (${sym})`;
+}
+</script>

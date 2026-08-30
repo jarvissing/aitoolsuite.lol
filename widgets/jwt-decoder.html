@@ -1,0 +1,57 @@
+<style>
+.tool-container { font-family: system-ui, -apple-system, sans-serif; background: #111827; padding: 24px; border-radius: 12px; box-sizing: border-box; max-width: 900px; margin: 0 auto; color: #f8fafc; }
+.tool-input-group label { display: block; font-size: 13px; font-weight: 600; color: #94a3b8; margin-bottom: 6px; }
+.tool-input-group textarea { width: 100%; height: 100px; background: #0b0f19; color: #f8fafc; border: 1px solid #334155; border-radius: 8px; padding: 12px; box-sizing: border-box; font-family: monospace; font-size: 13px; margin-bottom: 16px; }
+.tool-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+@media (max-width: 640px) { .tool-grid { grid-template-columns: 1fr; } }
+.box-output { background: #0b0f19; border: 1px solid #334155; border-radius: 8px; padding: 14px; color: #38bdf8; font-family: monospace; font-size: 13px; white-space: pre-wrap; word-break: break-all; min-height: 140px; }
+</style>
+<div class="tool-container">
+    <div class="tool-input-group">
+        <label>Paste JWT Token:</label>
+        <textarea id="jwtInput" placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c" oninput="decodeJwt()"></textarea>
+    </div>
+    <div class="tool-grid">
+        <div>
+            <label style="font-size:13px; color:#94a3b8; font-weight:600; margin-bottom:6px; display:block;">HEADER (Algorithm & Type):</label>
+            <div id="jwtHeader" class="box-output">// Header payload will decode here...</div>
+        </div>
+        <div>
+            <label style="font-size:13px; color:#94a3b8; font-weight:600; margin-bottom:6px; display:block;">PAYLOAD (Claims & Data):</label>
+            <div id="jwtPayload" class="box-output">// Payload claims will decode here...</div>
+        </div>
+    </div>
+</div>
+<script>
+function base64UrlDecode(str) {
+    let base64 = str.replace(/-/g, '+').replace(/_/g, '/');
+    while (base64.length % 4) base64 += '=';
+    return decodeURIComponent(atob(base64).split('').map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join(''));
+}
+function decodeJwt() {
+    let token = document.getElementById('jwtInput').value.trim();
+    if (!token) {
+        document.getElementById('jwtHeader').textContent = '// Header payload will decode here...';
+        document.getElementById('jwtPayload').textContent = '// Payload claims will decode here...';
+        return;
+    }
+    let parts = token.split('.');
+    if (parts.length >= 2) {
+        try {
+            let header = JSON.stringify(JSON.parse(base64UrlDecode(parts[0])), null, 2);
+            document.getElementById('jwtHeader').textContent = header;
+        } catch(e) {
+            document.getElementById('jwtHeader').textContent = 'Invalid Header Base64';
+        }
+        try {
+            let payload = JSON.stringify(JSON.parse(base64UrlDecode(parts[1])), null, 2);
+            document.getElementById('jwtPayload').textContent = payload;
+        } catch(e) {
+            document.getElementById('jwtPayload').textContent = 'Invalid Payload Base64';
+        }
+    } else {
+        document.getElementById('jwtHeader').textContent = 'Invalid JWT format (expected 3 parts separated by dots)';
+        document.getElementById('jwtPayload').textContent = '';
+    }
+}
+</script>
