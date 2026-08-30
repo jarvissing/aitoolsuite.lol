@@ -61,6 +61,12 @@
         <priority>0.8</priority>
     </url>
     <url>
+        <loc>https://aitoolsuite.lol/jwt-decoder-and-debugger.html</loc>
+        <lastmod>2026-08-30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
         <loc>https://aitoolsuite.lol/lorem-ipsum-generator.html</loc>
         <lastmod>2026-08-30</lastmod>
         <changefreq>weekly</changefreq>
