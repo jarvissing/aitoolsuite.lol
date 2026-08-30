@@ -1,0 +1,32 @@
+============================================================
+  QA REPORT — 2026-08-30 14:19:01
+============================================================
+
+Found 16 tool pages to check.
+
+✅ ai-prompt-cost-calculator — 12/12 checks passed
+✅ base64-encoder — 12/12 checks passed
+✅ case-converter — 12/12 checks passed
+✅ color-picker — 12/12 checks passed
+❌ curl-to-python-converter — 11/12 checks passed
+   ⚠️  working_widget: PLACEHOLDER ONLY - no working tool
+✅ hash-generator — 12/12 checks passed
+✅ json-formatter — 12/12 checks passed
+✅ lorem-ipsum-generator — 12/12 checks passed
+✅ markdown-previewer — 12/12 checks passed
+✅ px-to-rem-converter — 12/12 checks passed
+✅ regex-tester-and-cheat-sheet — 12/12 checks passed
+✅ sql-formatter-and-beautifier — 12/12 checks passed
+✅ timestamp-converter — 12/12 checks passed
+✅ url-encoder — 12/12 checks passed
+✅ uuid-generator — 12/12 checks passed
+✅ word-counter — 12/12 checks passed
+
+————————————————————————————————————————
+HOMEPAGE CHECK:
+✅ 16/16 tools listed on homepage
+
+============================================================
+SUMMARY: 15 passed, 1 failed out of 16 pages
+⚠️  1 page(s) need attention.
+============================================================

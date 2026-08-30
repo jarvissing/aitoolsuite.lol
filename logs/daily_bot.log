@@ -1,0 +1,42 @@
+2026-08-30 14:19:01,496 [INFO] Running Market Feedback Analyzer & Queue Optimizer...
+2026-08-30 14:19:01,497 [INFO] Market Analysis: {'status': 'success', 'added_candidates': 0, 'total_pending': 5, 'top_priority': 'cURL to Python Converter'}
+2026-08-30 14:19:01,497 [INFO] 🚀 Publishing tool: 'cURL to Python Converter' for keyword 'curl to python converter'...
+2026-08-30 14:19:01,501 [INFO] SUCCESS: Page created at /home/runner/work/aitoolsuite.lol/aitoolsuite.lol/curl-to-python-converter.html | URL: https://aitoolsuite.lol/curl-to-python-converter
+2026-08-30 14:19:01,501 [INFO] Updating homepage and generating sitemap...
+2026-08-30 14:19:01,502 [INFO] SUCCESS: Homepage updated with search bar and 16 tools across 4 categories.
+2026-08-30 14:19:01,503 [INFO] SUCCESS: Generated sitemap.xml (17 URLs) and robots.txt
+2026-08-30 14:19:01,503 [INFO] Running QA verification checks...
+2026-08-30 14:19:01,505 [INFO] QA Result:
+============================================================
+  QA REPORT — 2026-08-30 14:19:01
+============================================================
+
+Found 16 tool pages to check.
+
+✅ ai-prompt-cost-calculator — 12/12 checks passed
+✅ base64-encoder — 12/12 checks passed
+✅ case-converter — 12/12 checks passed
+✅ color-picker — 12/12 checks passed
+❌ curl-to-python-converter — 11/12 checks passed
+   ⚠️  working_widget: PLACEHOLDER ONLY - no working tool
+✅ hash-generator — 12/12 checks passed
+✅ json-formatter — 12/12 checks passed
+✅ lorem-ipsum-generator — 12/12 checks passed
+✅ markdown-previewer — 12/12 checks passed
+✅ px-to-rem-converter — 12/12 checks passed
+✅ regex-tester-and-cheat-sheet — 12/12 checks passed
+✅ sql-formatter-and-beautifier — 12/12 checks passed
+✅ timestamp-converter — 12/12 checks passed
+✅ url-encoder — 12/12 checks passed
+✅ uuid-generator — 12/12 checks passed
+✅ word-counter — 12/12 checks passed
+
+————————————————————————————————————————
+HOMEPAGE CHECK:
+✅ 16/16 tools listed on homepage
+
+============================================================
+SUMMARY: 15 passed, 1 failed out of 16 pages
+⚠️  1 page(s) need attention.
+============================================================
+2026-08-30 14:19:01,505 [WARNING] QA check had warnings; review QA report.

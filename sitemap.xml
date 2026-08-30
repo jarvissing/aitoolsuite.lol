@@ -2,97 +2,103 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>https://aitoolsuite.lol/</loc>
-        <lastmod>2026-08-29</lastmod>
+        <lastmod>2026-08-30</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
         <loc>https://aitoolsuite.lol/ai-prompt-cost-calculator.html</loc>
-        <lastmod>2026-08-29</lastmod>
+        <lastmod>2026-08-30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://aitoolsuite.lol/base64-encoder.html</loc>
-        <lastmod>2026-08-29</lastmod>
+        <lastmod>2026-08-30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://aitoolsuite.lol/case-converter.html</loc>
-        <lastmod>2026-08-29</lastmod>
+        <lastmod>2026-08-30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://aitoolsuite.lol/color-picker.html</loc>
-        <lastmod>2026-08-29</lastmod>
+        <lastmod>2026-08-30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://aitoolsuite.lol/curl-to-python-converter.html</loc>
+        <lastmod>2026-08-30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://aitoolsuite.lol/hash-generator.html</loc>
-        <lastmod>2026-08-29</lastmod>
+        <lastmod>2026-08-30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://aitoolsuite.lol/json-formatter.html</loc>
-        <lastmod>2026-08-29</lastmod>
+        <lastmod>2026-08-30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://aitoolsuite.lol/lorem-ipsum-generator.html</loc>
-        <lastmod>2026-08-29</lastmod>
+        <lastmod>2026-08-30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://aitoolsuite.lol/markdown-previewer.html</loc>
-        <lastmod>2026-08-29</lastmod>
+        <lastmod>2026-08-30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://aitoolsuite.lol/px-to-rem-converter.html</loc>
-        <lastmod>2026-08-29</lastmod>
+        <lastmod>2026-08-30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://aitoolsuite.lol/regex-tester-and-cheat-sheet.html</loc>
-        <lastmod>2026-08-29</lastmod>
+        <lastmod>2026-08-30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://aitoolsuite.lol/sql-formatter-and-beautifier.html</loc>
-        <lastmod>2026-08-29</lastmod>
+        <lastmod>2026-08-30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://aitoolsuite.lol/timestamp-converter.html</loc>
-        <lastmod>2026-08-29</lastmod>
+        <lastmod>2026-08-30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://aitoolsuite.lol/url-encoder.html</loc>
-        <lastmod>2026-08-29</lastmod>
+        <lastmod>2026-08-30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://aitoolsuite.lol/uuid-generator.html</loc>
-        <lastmod>2026-08-29</lastmod>
+        <lastmod>2026-08-30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://aitoolsuite.lol/word-counter.html</loc>
-        <lastmod>2026-08-29</lastmod>
+        <lastmod>2026-08-30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
