@@ -49,6 +49,12 @@
         <priority>0.8</priority>
     </url>
     <url>
+        <loc>https://aitoolsuite.lol/html-minifier.html</loc>
+        <lastmod>2026-08-30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
         <loc>https://aitoolsuite.lol/json-formatter.html</loc>
         <lastmod>2026-08-30</lastmod>
         <changefreq>weekly</changefreq>
