@@ -1,0 +1,102 @@
+<style>
+.tool-container { font-family: system-ui, -apple-system, sans-serif; background: #111827; padding: 24px; border-radius: 12px; box-sizing: border-box; max-width: 860px; margin: 0 auto; color: #f8fafc; }
+.tool-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-bottom: 20px; }
+.tool-input-group { display: flex; flex-direction: column; gap: 8px; }
+.tool-input-group label { font-size: 13px; font-weight: 600; color: #94a3b8; }
+.tool-input-group textarea { background: #0b0f19; color: #f8fafc; border: 1px solid #334155; border-radius: 8px; padding: 14px; box-sizing: border-box; font-size: 14px; font-family: monospace; min-height: 120px; resize: vertical; }
+.tool-input-group textarea:focus { border-color: #3b82f6; outline: none; }
+.output-box { background: #0b0f19; color: #38bdf8; border: 1px solid #334155; border-radius: 8px; padding: 14px; box-sizing: border-box; font-size: 13px; font-family: monospace; min-height: 160px; white-space: pre-wrap; word-break: break-all; overflow-x: auto; }
+.btn-row { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; }
+.action-btn { background: #3b82f6; color: #fff; border: none; padding: 10px 18px; border-radius: 6px; cursor: pointer; font-size: 14px; font-weight: 600; transition: background 0.2s; }
+.action-btn:hover { background: #2563eb; }
+.copy-btn { background: #1e293b; color: #38bdf8; border: 1px solid #334155; padding: 10px 16px; border-radius: 6px; cursor: pointer; font-size: 13px; font-weight: 600; }
+.copy-btn:hover { background: #334155; color: #fff; }
+</style>
+<div class="tool-container">
+    <div class="tool-grid">
+        <div class="tool-input-group">
+            <label for="curlInput">Paste cURL Command:</label>
+            <textarea id="curlInput" placeholder="curl -X POST https://api.example.com/data -H 'Content-Type: application/json' -d '{&quot;key&quot;: &quot;value&quot;}'" oninput="convertCurl()"></textarea>
+        </div>
+        <div class="btn-row">
+            <button class="action-btn" onclick="convertCurl()">Convert to Python (Requests)</button>
+            <button class="copy-btn" onclick="copyPython(this)">Copy Python Code</button>
+        </div>
+        <div class="tool-input-group">
+            <label>Generated Python Code:</label>
+            <div id="pythonOutput" class="output-box"># Python requests code will appear here...</div>
+        </div>
+    </div>
+</div>
+<script>
+function convertCurl() {
+    let raw = document.getElementById('curlInput').value.trim();
+    if (!raw) {
+        document.getElementById('pythonOutput').textContent = '# Paste a curl command above to generate Python code.';
+        return;
+    }
+    
+    let url = 'https://api.example.com';
+    let method = 'GET';
+    let headers = {};
+    let data = null;
+    
+    // Extract URL
+    let urlMatch = raw.match(/['"]?(https?:\/\/[^\s'"]+)['"]?/);
+    if (urlMatch) url = urlMatch[1];
+    
+    // Extract Method
+    let methodMatch = raw.match(/-X\s+([A-Z]+)/i);
+    if (methodMatch) method = methodMatch[1].toUpperCase();
+    
+    // Extract Headers
+    let headerMatches = raw.matchAll(/-H\s+['"]([^'"]+)['"]/g);
+    for (let m of headerMatches) {
+        let parts = m[1].split(':');
+        if (parts.length >= 2) {
+            headers[parts[0].trim()] = parts.slice(1).join(':').trim();
+        }
+    }
+    
+    // Extract Data
+    let dataMatch = raw.match(/(?:-d|--data|--data-raw)\s+['"]([^'"]+)['"]/);
+    if (dataMatch) {
+        data = dataMatch[1];
+        if (method === 'GET') method = 'POST';
+    }
+    
+    let py = `import requests\n\n`;
+    py += `url = "${url}"\n\n`;
+    
+    if (Object.keys(headers).length > 0) {
+        py += `headers = ${JSON.stringify(headers, null, 4)}\n\n`;
+    }
+    
+    if (data) {
+        try {
+            let jsonParsed = JSON.parse(data);
+            py += `payload = ${JSON.stringify(jsonParsed, null, 4)}\n\n`;
+            py += `response = requests.${method.toLowerCase()}(url, json=payload${Object.keys(headers).length ? ', headers=headers' : ''})\n`;
+        } catch (e) {
+            py += `payload = """${data}"""\n\n`;
+            py += `response = requests.${method.toLowerCase()}(url, data=payload${Object.keys(headers).length ? ', headers=headers' : ''})\n`;
+        }
+    } else {
+        py += `response = requests.${method.toLowerCase()}(url${Object.keys(headers).length ? ', headers=headers' : ''})\n`;
+    }
+    
+    py += `\nprint("Status:", response.status_code)\nprint("Response:", response.text)\n`;
+    
+    document.getElementById('pythonOutput').textContent = py;
+}
+
+function copyPython(btn) {
+    let code = document.getElementById('pythonOutput').textContent;
+    if (!code) return;
+    navigator.clipboard.writeText(code).then(() => {
+        let orig = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(() => btn.textContent = orig, 1800);
+    });
+}
+</script>

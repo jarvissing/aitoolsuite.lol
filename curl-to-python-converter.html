@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>cURL to Python Converter - Free Online Developer Tools Tool | AI Tool Suite</title>
-    <meta name="description" content="Convert raw cURL command lines into clean Python requests and httpx code snippets ready for production use.">
+    <meta name="description" content="Convert cURL commands into clean Python requests code, headers, and payloads instantly in your browser.">
     <meta name="robots" content="index, follow">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%234361ee'/%3E%3Cpath d='M56 12 L24 54 L48 54 L44 88 L76 46 L52 46 Z' fill='%23ffdd00' stroke='%23f59e0b' stroke-width='2'/%3E%3C/svg%3E">
     <link rel="alternate icon" href="/favicon.svg">
     
     <!-- Open Graph -->
     <meta property="og:title" content="cURL to Python Converter - Free Online Developer Tools Tool | AI Tool Suite">
-    <meta property="og:description" content="Convert raw cURL command lines into clean Python requests and httpx code snippets ready for production use.">
+    <meta property="og:description" content="Convert cURL commands into clean Python requests code, headers, and payloads instantly in your browser.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://aitoolsuite.lol/curl-to-python-converter">
     
@@ -21,7 +21,7 @@
         "@context": "https://schema.org",
         "@type": "WebApplication",
         "name": "cURL to Python Converter",
-        "description": "Convert raw cURL command lines into clean Python requests and httpx code snippets ready for production use.",
+        "description": "Convert cURL commands into clean Python requests code, headers, and payloads instantly in your browser.",
         "url": "https://aitoolsuite.lol/curl-to-python-converter",
         "applicationCategory": "UtilityApplication",
         "operatingSystem": "Any",
@@ -43,28 +43,28 @@
             
             {
                 "@type": "Question",
-                "name": "Which HTTP methods are supported?",
+                "name": "What library does the generated code use?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Supports GET, POST, PUT, DELETE, and PATCH with headers and JSON payloads."
+                    "text": "The generated Python code uses the industry-standard requests library."
                 }
             },
             
             {
                 "@type": "Question",
-                "name": "Does it handle authentication headers?",
+                "name": "Does it handle JSON request bodies?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Yes, Bearer tokens and Basic Auth headers are automatically converted to request params."
+                    "text": "Yes, it parses -d / --data JSON strings and formats them into clean Python dictionaries."
                 }
             },
             
             {
                 "@type": "Question",
-                "name": "Which Python libraries does it output?",
+                "name": "Is my API key or data safe?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Generates standard 'requests' and modern async 'httpx' code."
+                    "text": "Yes, all conversion happens 100% locally in your browser. Nothing is sent to any server."
                 }
             }
             
@@ -376,12 +376,114 @@
         <header>
             <div class="tool-badge">⚡ Developer Tools</div>
             <h1>cURL to Python Converter</h1>
-            <p class="description">Convert raw cURL command lines into clean Python requests and httpx code snippets ready for production use.</p>
+            <p class="description">Convert cURL commands into clean Python requests code, headers, and payloads instantly in your browser.</p>
         </header>
 
         <!-- Tool Widget Surface -->
         <div class="tool-surface">
-            <div class="tool-widget-placeholder"><p>🔧 Interactive tool coming soon.</p></div>
+            <style>
+.tool-container { font-family: system-ui, -apple-system, sans-serif; background: #111827; padding: 24px; border-radius: 12px; box-sizing: border-box; max-width: 860px; margin: 0 auto; color: #f8fafc; }
+.tool-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-bottom: 20px; }
+.tool-input-group { display: flex; flex-direction: column; gap: 8px; }
+.tool-input-group label { font-size: 13px; font-weight: 600; color: #94a3b8; }
+.tool-input-group textarea { background: #0b0f19; color: #f8fafc; border: 1px solid #334155; border-radius: 8px; padding: 14px; box-sizing: border-box; font-size: 14px; font-family: monospace; min-height: 120px; resize: vertical; }
+.tool-input-group textarea:focus { border-color: #3b82f6; outline: none; }
+.output-box { background: #0b0f19; color: #38bdf8; border: 1px solid #334155; border-radius: 8px; padding: 14px; box-sizing: border-box; font-size: 13px; font-family: monospace; min-height: 160px; white-space: pre-wrap; word-break: break-all; overflow-x: auto; }
+.btn-row { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; }
+.action-btn { background: #3b82f6; color: #fff; border: none; padding: 10px 18px; border-radius: 6px; cursor: pointer; font-size: 14px; font-weight: 600; transition: background 0.2s; }
+.action-btn:hover { background: #2563eb; }
+.copy-btn { background: #1e293b; color: #38bdf8; border: 1px solid #334155; padding: 10px 16px; border-radius: 6px; cursor: pointer; font-size: 13px; font-weight: 600; }
+.copy-btn:hover { background: #334155; color: #fff; }
+</style>
+<div class="tool-container">
+    <div class="tool-grid">
+        <div class="tool-input-group">
+            <label for="curlInput">Paste cURL Command:</label>
+            <textarea id="curlInput" placeholder="curl -X POST https://api.example.com/data -H 'Content-Type: application/json' -d '{&quot;key&quot;: &quot;value&quot;}'" oninput="convertCurl()"></textarea>
+        </div>
+        <div class="btn-row">
+            <button class="action-btn" onclick="convertCurl()">Convert to Python (Requests)</button>
+            <button class="copy-btn" onclick="copyPython(this)">Copy Python Code</button>
+        </div>
+        <div class="tool-input-group">
+            <label>Generated Python Code:</label>
+            <div id="pythonOutput" class="output-box"># Python requests code will appear here...</div>
+        </div>
+    </div>
+</div>
+<script>
+function convertCurl() {
+    let raw = document.getElementById('curlInput').value.trim();
+    if (!raw) {
+        document.getElementById('pythonOutput').textContent = '# Paste a curl command above to generate Python code.';
+        return;
+    }
+    
+    let url = 'https://api.example.com';
+    let method = 'GET';
+    let headers = {};
+    let data = null;
+    
+    // Extract URL
+    let urlMatch = raw.match(/['"]?(https?:\/\/[^\s'"]+)['"]?/);
+    if (urlMatch) url = urlMatch[1];
+    
+    // Extract Method
+    let methodMatch = raw.match(/-X\s+([A-Z]+)/i);
+    if (methodMatch) method = methodMatch[1].toUpperCase();
+    
+    // Extract Headers
+    let headerMatches = raw.matchAll(/-H\s+['"]([^'"]+)['"]/g);
+    for (let m of headerMatches) {
+        let parts = m[1].split(':');
+        if (parts.length >= 2) {
+            headers[parts[0].trim()] = parts.slice(1).join(':').trim();
+        }
+    }
+    
+    // Extract Data
+    let dataMatch = raw.match(/(?:-d|--data|--data-raw)\s+['"]([^'"]+)['"]/);
+    if (dataMatch) {
+        data = dataMatch[1];
+        if (method === 'GET') method = 'POST';
+    }
+    
+    let py = `import requests\n\n`;
+    py += `url = "${url}"\n\n`;
+    
+    if (Object.keys(headers).length > 0) {
+        py += `headers = ${JSON.stringify(headers, null, 4)}\n\n`;
+    }
+    
+    if (data) {
+        try {
+            let jsonParsed = JSON.parse(data);
+            py += `payload = ${JSON.stringify(jsonParsed, null, 4)}\n\n`;
+            py += `response = requests.${method.toLowerCase()}(url, json=payload${Object.keys(headers).length ? ', headers=headers' : ''})\n`;
+        } catch (e) {
+            py += `payload = """${data}"""\n\n`;
+            py += `response = requests.${method.toLowerCase()}(url, data=payload${Object.keys(headers).length ? ', headers=headers' : ''})\n`;
+        }
+    } else {
+        py += `response = requests.${method.toLowerCase()}(url${Object.keys(headers).length ? ', headers=headers' : ''})\n`;
+    }
+    
+    py += `\nprint("Status:", response.status_code)\nprint("Response:", response.text)\n`;
+    
+    document.getElementById('pythonOutput').textContent = py;
+}
+
+function copyPython(btn) {
+    let code = document.getElementById('pythonOutput').textContent;
+    if (!code) return;
+    navigator.clipboard.writeText(code).then(() => {
+        let orig = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(() => btn.textContent = orig, 1800);
+    });
+}
+</script>
+
         </div>
 
         <!-- FAQ Section -->
@@ -391,18 +493,18 @@
             <div class="faq-list">
                 
                 <div class="faq-item">
-                    <h3 class="faq-question">Which HTTP methods are supported?</h3>
-                    <p class="faq-answer">Supports GET, POST, PUT, DELETE, and PATCH with headers and JSON payloads.</p>
+                    <h3 class="faq-question">What library does the generated code use?</h3>
+                    <p class="faq-answer">The generated Python code uses the industry-standard requests library.</p>
                 </div>
                 
                 <div class="faq-item">
-                    <h3 class="faq-question">Does it handle authentication headers?</h3>
-                    <p class="faq-answer">Yes, Bearer tokens and Basic Auth headers are automatically converted to request params.</p>
+                    <h3 class="faq-question">Does it handle JSON request bodies?</h3>
+                    <p class="faq-answer">Yes, it parses -d / --data JSON strings and formats them into clean Python dictionaries.</p>
                 </div>
                 
                 <div class="faq-item">
-                    <h3 class="faq-question">Which Python libraries does it output?</h3>
-                    <p class="faq-answer">Generates standard 'requests' and modern async 'httpx' code.</p>
+                    <h3 class="faq-question">Is my API key or data safe?</h3>
+                    <p class="faq-answer">Yes, all conversion happens 100% locally in your browser. Nothing is sent to any server.</p>
                 </div>
                 
             </div>

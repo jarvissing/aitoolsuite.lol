@@ -28,5 +28,8 @@
   "sql-formatter": "sql-formatter.html",
   "sql-beautifier": "sql-formatter.html",
   "px-to-rem": "px-to-rem.html",
-  "px-to-rem-converter": "px-to-rem.html"
+  "px-to-rem-converter": "px-to-rem.html",
+  "curl-converter": "curl-converter.html",
+  "curl-to-python-converter": "curl-converter.html",
+  "curl-to-python": "curl-converter.html"
 }
