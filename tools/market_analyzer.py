@@ -27,58 +27,70 @@ ALLOWED_CATEGORIES = {
     "SEO Tools": ["meta", "sitemap", "robots", "schema", "ogimage", "canonical", "redirect"]
 }
 
-# High-Demand Tool Opportunity Database (Pre-validated low-KD keywords)
+# High-Demand Tool Opportunity Database (Balanced Dual-Engine: 50% AI + 50% Engineering)
 HIGH_DEMAND_EXPANSIONS = [
-    # AI Utilities (High Tier-1 CPM & Traffic)
+    # ── AI Utilities Engine (50%) ──
     {
-        "keyword": "ai prompt cost calculator",
-        "tool_name": "AI Prompt Cost Calculator",
-        "description": "Calculate exact API costs for OpenAI GPT-4o, Claude 3.5, and Gemini models based on prompt tokens and output length.",
+        "keyword": "openai json schema generator",
+        "tool_name": "OpenAI Structured Outputs JSON Schema Generator",
+        "description": "Generate strict JSON Schema definitions for OpenAI GPT-4o and Claude structured function calling outputs.",
+        "category": "AI Utilities",
+        "tool_type": "json-to-ts",
+        "search_demand": 94,
+        "faq_items": "What are structured outputs?:::A feature in OpenAI APIs that guarantees the model outputs strict JSON matching a provided schema.|||Does this generate strict mode schemas?:::Yes, it adds 'additionalProperties: false' and marks required properties automatically.|||Can I copy the schema directly?:::Yes, 1-click button copies the JSON schema object to your clipboard.",
+        "related_tools": "JSON Formatter,AI Prompt Cost Calculator,JSON to TypeScript Interface"
+    },
+    {
+        "keyword": "llm context window calculator",
+        "tool_name": "LLM Context Window & Memory Calculator",
+        "description": "Calculate token usage, context window limits (128k, 200k, 1M, 2M tokens), and memory requirements across AI models.",
         "category": "AI Utilities",
         "tool_type": "token-counter",
-        "search_demand": 94,
-        "faq_items": "How does the AI cost calculator work?:::It calculates pricing per 1,000 and 1,000,000 input/output tokens according to official API pricing tiers.|||Which models are included?:::Pricing includes GPT-4o, GPT-4o-mini, Claude 3.5 Sonnet, and Gemini 1.5 Pro.|||Can I calculate batch costs?:::Yes, enter total batch prompt tokens to estimate monthly operational cost.",
-        "related_tools": "AI Prompt Token Counter,JSON Formatter,Word Counter"
-    },
-    {
-        "keyword": "regex tester and cheat sheet",
-        "tool_name": "Regex Tester & Cheat Sheet",
-        "description": "Test regular expressions in real-time with instant match highlighting, capture group breakdown, and standard regex cheat sheet.",
-        "category": "Developer Tools",
-        "tool_type": "regex-tester",
         "search_demand": 92,
-        "faq_items": "What regex flags are supported?:::Supports global (g), case-insensitive (i), multiline (m), and single-line (s) flags.|||Does this tool validate syntax?:::Yes, it catches regex syntax errors in real time as you type.|||Is matching done in the browser?:::Yes, expressions evaluate instantly in your local JavaScript engine.",
-        "related_tools": "JSON Formatter,Markdown Previewer,Case Converter"
+        "faq_items": "Which models are supported?:::Includes context limits for GPT-4o (128k), Claude 3.5 Sonnet (200k), and Gemini 1.5 Pro (2M).|||How does it calculate memory?:::Estimates KV-cache RAM requirements based on precision (FP16, INT8, INT4).|||Is it browser-safe?:::All calculations run locally with zero server requests.",
+        "related_tools": "AI Prompt Token Counter,AI Prompt Cost Calculator,Word Counter"
     },
     {
-        "keyword": "sql formatter and beautifier",
-        "tool_name": "SQL Formatter & Beautifier",
-        "description": "Format and beautify messy SQL queries with proper keyword indentation, uppercase keywords, and clean line breaks.",
+        "keyword": "embedding cost calculator",
+        "tool_name": "AI Embedding & Vector Dimension Calculator",
+        "description": "Calculate vector embedding dimensions, storage RAM requirements, and API costs for OpenAI, Cohere, and HuggingFace models.",
+        "category": "AI Utilities",
+        "tool_type": "token-counter",
+        "search_demand": 90,
+        "faq_items": "What dimensions are included?:::Supports 1536 (text-embedding-3-small), 3072 (text-embedding-3-large), 768 (nomad), and 1024 (Cohere).|||How is vector storage estimated?:::Calculates total gigabytes based on 4 bytes per float32 vector element.|||Can I calculate batch datasets?:::Yes, enter total document count to see total vector DB storage requirements.",
+        "related_tools": "AI Prompt Cost Calculator,JSON Formatter,UUID Generator"
+    },
+
+    # ── Core Engineering & Developer Tools Engine (50%) ──
+    {
+        "keyword": "docker compose to kubernetes",
+        "tool_name": "Docker Compose to Kubernetes Converter",
+        "description": "Convert docker-compose.yml services and port bindings into clean Kubernetes Deployment and Service YAML manifests.",
         "category": "Developer Tools",
-        "tool_type": "sql-formatter",
+        "tool_type": "yaml-to-json",
+        "search_demand": 93,
+        "faq_items": "Which Kubernetes resources are generated?:::Generates Deployment specs, Container ports, and ClusterIP/NodePort Service manifests.|||Does it convert environment variables?:::Yes, environment key-values are mapped into pod env definitions.|||Is my compose file private?:::All YAML conversion runs client-side in browser memory.",
+        "related_tools": "YAML to JSON Converter,Cron Expression Generator,Chmod Calculator"
+    },
+    {
+        "keyword": "cidr subnet calculator",
+        "tool_name": "IPv4 CIDR Subnet & IP Range Calculator",
+        "description": "Calculate network masks, usable host IP ranges, broadcast addresses, and wildcard masks for IPv4 CIDR blocks (/8 to /32).",
+        "category": "Developer Tools",
+        "tool_type": "chmod-calculator",
+        "search_demand": 91,
+        "faq_items": "What does CIDR notation mean?:::Classless Inter-Domain Routing specifies the prefix length (number of bits in the network mask).|||How many usable hosts are in a /24 subnet?:::A /24 subnet provides 256 total IP addresses and 254 usable host addresses.|||Does it calculate broadcast and network IPs?:::Yes, network IP, broadcast IP, and first/last usable IP addresses are calculated instantly.",
+        "related_tools": "DNS Record Lookup,Unix Timestamp Converter,Hash Generator"
+    },
+    {
+        "keyword": "env to json converter",
+        "tool_name": ".env to JSON Environment Converter",
+        "description": "Convert .env key-value variables into formatted JSON configuration objects and JavaScript process.env definitions.",
+        "category": "Developer Tools",
+        "tool_type": "yaml-to-json",
         "search_demand": 89,
-        "faq_items": "Which SQL dialects are supported?:::Formats standard ANSI SQL, PostgreSQL, MySQL, SQLite, and BigQuery syntax.|||Does it capitalize keywords automatically?:::Yes, SELECT, FROM, WHERE, JOIN and all standard keywords are formatted to uppercase.|||Is my database query private?:::Yes, formatting runs 100% in your browser with no database connection required.",
-        "related_tools": "JSON Formatter,CSS Minifier,HTML Minifier"
-    },
-    {
-        "keyword": "px to rem converter",
-        "tool_name": "PX to REM Converter",
-        "description": "Convert pixel values (px) to CSS rem and em units instantly. Set custom root base font size and copy responsive CSS code.",
-        "category": "Design Tools",
-        "tool_type": "px-to-rem",
-        "search_demand": 88,
-        "faq_items": "What is the standard base font size?:::The default browser base font size is 16px (1rem = 16px). You can customize this in the tool.|||Why use REM instead of PX in CSS?:::REM units scale with the user's browser accessibility font settings, making websites more accessible and responsive.|||Can I convert REM back to PX?:::Yes, the tool converts bidirectionally between px and rem in real time.",
-        "related_tools": "Color Picker,CSS Minifier,HTML Minifier"
-    },
-    {
-        "keyword": "curl to python converter",
-        "tool_name": "cURL to Python Converter",
-        "description": "Convert raw cURL command lines into clean Python requests and httpx code snippets ready for production use.",
-        "category": "Developer Tools",
-        "tool_type": "curl-converter",
-        "search_demand": 86,
-        "faq_items": "Which HTTP methods are supported?:::Supports GET, POST, PUT, DELETE, and PATCH with headers and JSON payloads.|||Does it handle authentication headers?:::Yes, Bearer tokens and Basic Auth headers are automatically converted to request params.|||Which Python libraries does it output?:::Generates standard 'requests' and modern async 'httpx' code.",
-        "related_tools": "JSON Formatter,Base64 Encoder,URL Encoder"
+        "faq_items": "How does it handle quoted values?:::Strips single and double quotes and trims surrounding whitespace.|||Can I convert back from JSON to .env?:::Yes, the tool supports bidirectional conversion between .env and JSON.|||Are API keys safe?:::Yes, conversion happens entirely on your machine with zero network transmission.",
+        "related_tools": "JSON Formatter,YAML to JSON Converter,Base64 Encoder"
     }
 ]
 
