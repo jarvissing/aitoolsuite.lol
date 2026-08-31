@@ -498,9 +498,9 @@ def update_homepage() -> str:
             <p style="margin-top: 6px; color: #64748b;">All processing happens locally in your browser.</p>
             <div style="margin-top: 14px; display: flex; justify-content: center; gap: 20px; font-size: 0.85rem;">
                 <a href="/about.html" style="color: #94a3b8; text-decoration: none;">About</a>
+                <a href="/contact.html" style="color: #94a3b8; text-decoration: none;">Contact</a>
                 <a href="/privacy.html" style="color: #94a3b8; text-decoration: none;">Privacy Policy</a>
                 <a href="/terms.html" style="color: #94a3b8; text-decoration: none;">Terms of Service</a>
-                <a href="https://github.com/jarvissing/aitoolsuite.lol" target="_blank" rel="noopener" style="color: #94a3b8; text-decoration: none;">GitHub</a>
             </div>
         </footer>
     </div>
