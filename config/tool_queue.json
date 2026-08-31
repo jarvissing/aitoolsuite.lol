@@ -1,19 +1,5 @@
 [
   {
-    "keyword": "csv to json converter",
-    "tool_name": "CSV to JSON Converter",
-    "description": "Convert CSV data, Excel rows, and tab-delimited text into formatted JSON arrays instantly in your browser.",
-    "category": "Developer Tools",
-    "tool_type": "csv-to-json",
-    "search_demand": 95,
-    "faq_items": "How does the CSV parser handle headers?:::The first row of your CSV is automatically mapped to JSON object keys.|||Can I parse tab-separated TSV data?:::Yes, the tool detects comma, tab, and semicolon delimiters automatically.|||Is my spreadsheet data private?:::All parsing is processed locally in client-side memory with zero server uploads.",
-    "related_tools": "JSON to CSV Converter,JSON Formatter,SQL Formatter",
-    "status": "published",
-    "priority_score": 96,
-    "discovered_at": "2026-08-31T13:30:00.000000",
-    "published_at": "2026-08-31T13:38:37.923020"
-  },
-  {
     "keyword": "json to csv converter",
     "tool_name": "JSON to CSV & Excel Exporter",
     "description": "Convert JSON arrays and API responses into downloadable CSV spreadsheets and tables with proper column escaping.",
@@ -22,9 +8,10 @@
     "search_demand": 93,
     "faq_items": "Can I export nested JSON fields?:::Yes, root keys and properties are formatted into clean spreadsheet columns.|||How are commas in values handled?:::Values with commas or line breaks are escaped in standard RFC 4180 quotes.|||Can I copy the CSV directly?:::Yes, 1-click button copies the entire CSV string to your clipboard.",
     "related_tools": "CSV to JSON Converter,JSON Formatter,JSON to TypeScript Interface",
-    "status": "pending",
+    "status": "published",
     "priority_score": 94,
-    "discovered_at": "2026-08-31T13:30:00.000000"
+    "discovered_at": "2026-08-31T13:30:00.000000",
+    "published_at": "2026-08-31T16:48:57.887339"
   },
   {
     "keyword": "og meta tag generator",
@@ -116,5 +103,19 @@
     "status": "pending",
     "priority_score": 87,
     "discovered_at": "2026-08-31T13:30:00.000000"
+  },
+  {
+    "keyword": "csv to json converter",
+    "tool_name": "CSV to JSON Converter",
+    "description": "Convert CSV data, Excel rows, and tab-delimited text into formatted JSON arrays instantly in your browser.",
+    "category": "Developer Tools",
+    "tool_type": "csv-to-json",
+    "search_demand": 95,
+    "faq_items": "How does the CSV parser handle headers?:::The first row of your CSV is automatically mapped to JSON object keys.|||Can I parse tab-separated TSV data?:::Yes, the tool detects comma, tab, and semicolon delimiters automatically.|||Is my spreadsheet data private?:::All parsing is processed locally in client-side memory with zero server uploads.",
+    "related_tools": "JSON to CSV Converter,JSON Formatter,SQL Formatter",
+    "status": "published",
+    "priority_score": 96,
+    "discovered_at": "2026-08-31T13:30:00.000000",
+    "published_at": "2026-08-31T13:38:37.923020"
   }
 ]

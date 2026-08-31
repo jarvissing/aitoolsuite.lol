@@ -1,0 +1,47 @@
+============================================================
+  QA REPORT — 2026-08-31 16:48:58
+============================================================
+
+Found 31 tool pages to check.
+
+✅ ai-prompt-cost-calculator — 12/12 checks passed
+✅ base64-encoder — 12/12 checks passed
+✅ case-converter — 12/12 checks passed
+✅ chmod-calculator — 12/12 checks passed
+✅ color-picker — 12/12 checks passed
+✅ cron-expression-generator — 12/12 checks passed
+✅ css-minifier — 12/12 checks passed
+✅ csv-to-json-converter — 12/12 checks passed
+✅ curl-to-python-converter — 12/12 checks passed
+✅ diff-checker-and-text-compare — 12/12 checks passed
+✅ hash-generator — 12/12 checks passed
+✅ html-entity-encoder — 12/12 checks passed
+✅ html-minifier — 12/12 checks passed
+✅ json-formatter — 12/12 checks passed
+❌ json-to-csv-converter — 11/12 checks passed
+   ⚠️  working_widget: PLACEHOLDER ONLY - no working tool
+✅ json-to-typescript-generator — 12/12 checks passed
+✅ jwt-decoder-and-debugger — 12/12 checks passed
+✅ lorem-ipsum-generator — 12/12 checks passed
+✅ markdown-previewer — 12/12 checks passed
+✅ px-to-rem-converter — 12/12 checks passed
+✅ qr-code-generator — 12/12 checks passed
+✅ regex-tester-and-cheat-sheet — 12/12 checks passed
+✅ sql-formatter-and-beautifier — 12/12 checks passed
+✅ strong-password-generator — 12/12 checks passed
+✅ svg-optimizer-and-viewer — 12/12 checks passed
+✅ tailwind-color-palette-generator — 12/12 checks passed
+✅ timestamp-converter — 12/12 checks passed
+✅ url-encoder — 12/12 checks passed
+✅ uuid-generator — 12/12 checks passed
+✅ word-counter — 12/12 checks passed
+✅ yaml-to-json-converter — 12/12 checks passed
+
+————————————————————————————————————————
+HOMEPAGE CHECK:
+✅ 31/31 tools listed on homepage
+
+============================================================
+SUMMARY: 30 passed, 1 failed out of 31 pages
+⚠️  1 page(s) need attention.
+============================================================
