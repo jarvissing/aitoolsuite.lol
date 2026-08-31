@@ -1,0 +1,53 @@
+<style>
+.tool-container { font-family: system-ui, -apple-system, sans-serif; background: #111827; padding: 24px; border-radius: 12px; box-sizing: border-box; max-width: 860px; margin: 0 auto; color: #f8fafc; }
+.tool-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
+@media (max-width: 600px) { .tool-grid { grid-template-columns: 1fr; } }
+.field label { display: block; font-size: 13px; font-weight: 600; color: #94a3b8; margin-bottom: 6px; }
+.field input { width: 100%; background: #0b0f19; color: #f8fafc; border: 1px solid #334155; border-radius: 8px; padding: 12px; box-sizing: border-box; font-family: monospace; font-size: 16px; }
+.ratio-badge { background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 8px; padding: 16px; font-family: monospace; font-size: 24px; color: #38bdf8; text-align: center; font-weight: 700; margin-bottom: 20px; }
+.presets { display: flex; gap: 8px; flex-wrap: wrap; }
+.preset-btn { background: #1e293b; color: #e2e8f0; border: 1px solid #334155; padding: 8px 14px; border-radius: 6px; cursor: pointer; font-size: 13px; font-weight: 600; }
+.preset-btn:hover { background: #3b82f6; color: #fff; border-color: #3b82f6; }
+</style>
+<div class="tool-container">
+    <div class="tool-grid">
+        <div class="field">
+            <label>Width (Pixels):</label>
+            <input type="number" id="ratioW" value="1920" oninput="calcRatio()">
+        </div>
+        <div class="field">
+            <label>Height (Pixels):</label>
+            <input type="number" id="ratioH" value="1080" oninput="calcRatio()">
+        </div>
+    </div>
+    <div id="ratioResult" class="ratio-badge">Aspect Ratio: 16:9 (1.78)</div>
+    <label style="display:block; font-size:13px; font-weight:600; color:#94a3b8; margin-bottom:10px;">Quick Screen & Video Presets:</label>
+    <div class="presets">
+        <button class="preset-btn" onclick="setRes(1920, 1080)">16:9 Full HD (1920x1080)</button>
+        <button class="preset-btn" onclick="setRes(3840, 2160)">16:9 4K UHD (3840x2160)</button>
+        <button class="preset-btn" onclick="setRes(1080, 1920)">9:16 TikTok / Reel (1080x1920)</button>
+        <button class="preset-btn" onclick="setRes(1080, 1080)">1:1 Square (1080x1080)</button>
+        <button class="preset-btn" onclick="setRes(1440, 900)">16:10 Laptop (1440x900)</button>
+        <button class="preset-btn" onclick="setRes(1024, 768)">4:3 Classic (1024x768)</button>
+    </div>
+</div>
+<script>
+function gcd(a, b) {
+    return b ? gcd(b, a % b) : a;
+}
+function calcRatio() {
+    let w = parseInt(document.getElementById('ratioW').value) || 1;
+    let h = parseInt(document.getElementById('ratioH').value) || 1;
+    let d = gcd(w, h);
+    let rw = w / d;
+    let rh = h / d;
+    let dec = (w / h).toFixed(2);
+    document.getElementById('ratioResult').textContent = `Aspect Ratio: ${rw}:${rh} (${dec})`;
+}
+function setRes(w, h) {
+    document.getElementById('ratioW').value = w;
+    document.getElementById('ratioH').value = h;
+    calcRatio();
+}
+calcRatio();
+</script>

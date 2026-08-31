@@ -1,0 +1,73 @@
+<style>
+.tool-container { font-family: system-ui, -apple-system, sans-serif; background: #111827; padding: 24px; border-radius: 12px; box-sizing: border-box; max-width: 860px; margin: 0 auto; color: #f8fafc; }
+.tool-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
+@media (max-width: 600px) { .tool-grid { grid-template-columns: 1fr; } }
+.pick-box { display: flex; align-items: center; gap: 10px; background: #0b0f19; padding: 12px; border-radius: 8px; border: 1px solid #334155; }
+.pick-box input[type="color"] { width: 44px; height: 38px; border: none; border-radius: 6px; cursor: pointer; background: transparent; }
+.pick-box input[type="text"] { background: transparent; border: none; color: #fff; font-family: monospace; font-size: 15px; font-weight: 700; width: 100%; outline: none; }
+.preview-card { border-radius: 10px; padding: 24px; text-align: center; font-size: 18px; font-weight: 700; margin-bottom: 20px; transition: all 0.2s; border: 1px solid rgba(255,255,255,0.1); }
+.score-badge { font-size: 26px; font-weight: 800; font-family: monospace; text-align: center; margin-bottom: 16px; }
+.badge-pass { color: #4ade80; }
+.badge-fail { color: #f87171; }
+</style>
+<div class="tool-container">
+    <div class="tool-grid">
+        <div>
+            <label style="display:block; font-size:13px; font-weight:600; color:#94a3b8; margin-bottom:6px;">Foreground (Text Color):</label>
+            <div class="pick-box">
+                <input type="color" id="fgColor" value="#FFFFFF" oninput="updateFgHex(this.value)">
+                <input type="text" id="fgHex" value="#FFFFFF" oninput="updateFgPicker(this.value)">
+            </div>
+        </div>
+        <div>
+            <label style="display:block; font-size:13px; font-weight:600; color:#94a3b8; margin-bottom:6px;">Background Color:</label>
+            <div class="pick-box">
+                <input type="color" id="bgColor" value="#3B82F6" oninput="updateBgHex(this.value)">
+                <input type="text" id="bgHex" value="#3B82F6" oninput="updateBgPicker(this.value)">
+            </div>
+        </div>
+    </div>
+    <div id="previewBox" class="preview-card" style="background:#3b82f6; color:#ffffff;">
+        The quick brown fox jumps over the lazy dog. (18pt Bold / 14pt Regular)
+    </div>
+    <div id="ratioScore" class="score-badge badge-pass">Contrast Ratio: 4.82 : 1 (WCAG AA PASS)</div>
+</div>
+<script>
+function getLuminance(r, g, b) {
+    let a = [r, g, b].map(v => {
+        v /= 255;
+        return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+    });
+    return a[0] * 0.2126 + a[1] * 0.7152 + a[2] * 0.0722;
+}
+function hexToRgb(hex) {
+    hex = hex.replace(/^#/, '');
+    if (hex.length === 3) hex = hex.split('').map(c => c+c).join('');
+    let num = parseInt(hex, 16);
+    return { r: (num >> 16) & 255, g: (num >> 8) & 255, b: num & 255 };
+}
+function calcContrast() {
+    let fg = document.getElementById('fgHex').value;
+    let bg = document.getElementById('bgHex').value;
+    try {
+        let rgb1 = hexToRgb(fg);
+        let rgb2 = hexToRgb(bg);
+        let l1 = getLuminance(rgb1.r, rgb1.g, rgb1.b);
+        let l2 = getLuminance(rgb2.r, rgb2.g, rgb2.b);
+        let ratio = (Math.max(l1, l2) + 0.05) / (Math.min(l1, l2) + 0.05);
+        let rounded = ratio.toFixed(2);
+        let pass = ratio >= 4.5 ? 'WCAG AA PASS' : (ratio >= 3.0 ? 'WCAG AA Large PASS' : 'WCAG FAIL');
+        let el = document.getElementById('ratioScore');
+        el.textContent = `Contrast Ratio: ${rounded} : 1 (${pass})`;
+        el.className = 'score-badge ' + (ratio >= 4.5 ? 'badge-pass' : 'badge-fail');
+        let p = document.getElementById('previewBox');
+        p.style.color = fg;
+        p.style.backgroundColor = bg;
+    } catch(e) {}
+}
+function updateFgHex(val) { document.getElementById('fgHex').value = val.toUpperCase(); calcContrast(); }
+function updateFgPicker(val) { if(/^#[0-9A-Fa-f]{6}$/.test(val)) { document.getElementById('fgColor').value = val; calcContrast(); } }
+function updateBgHex(val) { document.getElementById('bgHex').value = val.toUpperCase(); calcContrast(); }
+function updateBgPicker(val) { if(/^#[0-9A-Fa-f]{6}$/.test(val)) { document.getElementById('bgColor').value = val; calcContrast(); } }
+calcContrast();
+</script>

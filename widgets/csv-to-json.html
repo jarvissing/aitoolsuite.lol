@@ -1,0 +1,65 @@
+<style>
+.tool-container { font-family: system-ui, -apple-system, sans-serif; background: #111827; padding: 24px; border-radius: 12px; box-sizing: border-box; max-width: 900px; margin: 0 auto; color: #f8fafc; }
+.tool-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+@media (max-width: 640px) { .tool-grid { grid-template-columns: 1fr; } }
+.col label { display: block; font-size: 13px; font-weight: 600; color: #94a3b8; margin-bottom: 6px; }
+.col textarea { width: 100%; height: 220px; background: #0b0f19; color: #f8fafc; border: 1px solid #334155; border-radius: 8px; padding: 12px; box-sizing: border-box; font-family: monospace; font-size: 13px; resize: vertical; }
+.btn-row { display: flex; gap: 10px; }
+.btn-act { background: #3b82f6; color: #fff; border: none; padding: 10px 18px; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 13px; }
+.btn-copy { background: #1e293b; color: #38bdf8; border: 1px solid #334155; padding: 10px 16px; border-radius: 6px; cursor: pointer; font-size: 13px; font-weight: 600; }
+</style>
+<div class="tool-container">
+    <div class="tool-grid">
+        <div class="col">
+            <label>CSV Input (Comma or Tab Separated):</label>
+            <textarea id="csvInput" placeholder="id,name,role,country&#10;1,Alice,Developer,Canada&#10;2,Bob,Designer,USA&#10;3,Charlie,Product,UK" oninput="convertCsvToJson()"></textarea>
+        </div>
+        <div class="col">
+            <label>JSON Array Output:</label>
+            <textarea id="jsonCsvOutput" readonly placeholder="JSON output will appear here..."></textarea>
+        </div>
+    </div>
+    <div class="btn-row">
+        <button class="btn-act" onclick="convertCsvToJson()">Convert to JSON</button>
+        <button class="btn-copy" onclick="copyCsvJson(this)">Copy JSON</button>
+    </div>
+</div>
+<script>
+function convertCsvToJson() {
+    let raw = document.getElementById('csvInput').value.trim();
+    if (!raw) {
+        document.getElementById('jsonCsvOutput').value = '';
+        return;
+    }
+    let lines = raw.split('\n').filter(l => l.trim().length > 0);
+    if (lines.length < 2) {
+        document.getElementById('jsonCsvOutput').value = '[]';
+        return;
+    }
+    let delimiter = lines[0].includes('\t') ? '\t' : ',';
+    let headers = lines[0].split(delimiter).map(h => h.trim().replace(/^["']|["']$/g, ''));
+    let result = [];
+    for (let i = 1; i < lines.length; i++) {
+        let cols = lines[i].split(delimiter).map(c => c.trim().replace(/^["']|["']$/g, ''));
+        let obj = {};
+        for (let j = 0; j < headers.length; j++) {
+            let val = cols[j] !== undefined ? cols[j] : '';
+            if (val === 'true') obj[headers[j]] = true;
+            else if (val === 'false') obj[headers[j]] = false;
+            else if (!isNaN(val) && val !== '') obj[headers[j]] = Number(val);
+            else obj[headers[j]] = val;
+        }
+        result.push(obj);
+    }
+    document.getElementById('jsonCsvOutput').value = JSON.stringify(result, null, 2);
+}
+function copyCsvJson(btn) {
+    let text = document.getElementById('jsonCsvOutput').value;
+    if (!text) return;
+    navigator.clipboard.writeText(text).then(() => {
+        let orig = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(() => btn.textContent = orig, 1800);
+    });
+}
+</script>

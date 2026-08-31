@@ -1,0 +1,76 @@
+<style>
+.tool-container { font-family: system-ui, -apple-system, sans-serif; background: #111827; padding: 24px; border-radius: 12px; box-sizing: border-box; max-width: 860px; margin: 0 auto; color: #f8fafc; }
+.search-row { display: flex; gap: 10px; margin-bottom: 20px; }
+.search-row input { flex: 1; background: #0b0f19; color: #f8fafc; border: 1px solid #334155; border-radius: 8px; padding: 12px 16px; font-size: 15px; font-family: monospace; }
+.search-row button { background: #3b82f6; color: #fff; border: none; padding: 12px 24px; border-radius: 8px; font-weight: 700; cursor: pointer; font-size: 14px; }
+.search-row button:hover { background: #2563eb; }
+.dns-table { width: 100%; border-collapse: collapse; font-family: monospace; font-size: 13px; }
+.dns-table th, .dns-table td { padding: 10px 14px; text-align: left; border-bottom: 1px solid #334155; }
+.dns-table th { background: #0b0f19; color: #94a3b8; font-weight: 600; }
+.dns-table td { color: #f8fafc; }
+.tag-type { background: rgba(59, 130, 246, 0.2); color: #60a5fa; padding: 2px 6px; border-radius: 4px; font-weight: 700; font-size: 11px; }
+</style>
+<div class="tool-container">
+    <div class="search-row">
+        <input type="text" id="domainInput" placeholder="example.com" value="aitoolsuite.lol">
+        <button onclick="lookupDns()">Lookup DNS</button>
+    </div>
+    <table class="dns-table">
+        <thead>
+            <tr>
+                <th>Record Type</th>
+                <th>Name / Host</th>
+                <th>Target / Value</th>
+                <th>TTL</th>
+            </tr>
+        </thead>
+        <tbody id="dnsBody">
+            <tr>
+                <td><span class="tag-type">A</span></td>
+                <td>@</td>
+                <td>185.199.108.153</td>
+                <td>300</td>
+            </tr>
+            <tr>
+                <td><span class="tag-type">A</span></td>
+                <td>@</td>
+                <td>185.199.109.153</td>
+                <td>300</td>
+            </tr>
+            <tr>
+                <td><span class="tag-type">CNAME</span></td>
+                <td>www</td>
+                <td>jarvissing.github.io</td>
+                <td>3600</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<script>
+async function lookupDns() {
+    let domain = document.getElementById('domainInput').value.trim().replace(/^https?:\/\//, '').replace(/\/.*$/, '');
+    if (!domain) return;
+    let tbody = document.getElementById('dnsBody');
+    tbody.innerHTML = '<tr><td colspan="4" style="text-align:center; color:#94a3b8;">Querying Cloudflare DNS over HTTPS (DoH)...</td></tr>';
+    let types = ['A', 'AAAA', 'CNAME', 'MX', 'TXT'];
+    let rows = [];
+    for (let t of types) {
+        try {
+            let res = await fetch(`https://cloudflare-dns.com/dns-query?name=${domain}&type=${t}`, {
+                headers: { 'Accept': 'application/dns-json' }
+            });
+            let data = await res.json();
+            if (data.Answer) {
+                for (let ans of data.Answer) {
+                    rows.push(`<tr><td><span class="tag-type">${t}</span></td><td>${ans.name}</td><td style="color:#38bdf8;">${ans.data}</td><td>${ans.TTL}</td></tr>`);
+                }
+            }
+        } catch(e) {}
+    }
+    if (rows.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="4" style="text-align:center; color:#f87171;">No public DNS records found for this domain.</td></tr>';
+    } else {
+        tbody.innerHTML = rows.join('');
+    }
+}
+</script>

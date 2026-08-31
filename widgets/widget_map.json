@@ -45,5 +45,14 @@
   "json-to-ts": "json-to-ts.html",
   "svg-optimizer": "svg-optimizer.html",
   "chmod-calculator": "chmod-calculator.html",
-  "password-generator": "password-generator.html"
+  "password-generator": "password-generator.html",
+  "csv-to-json": "csv-to-json.html",
+  "json-to-csv": "json-to-csv.html",
+  "meta-tag-generator": "meta-tag-generator.html",
+  "curl-to-fetch": "curl-to-fetch.html",
+  "aspect-ratio-calculator": "aspect-ratio-calculator.html",
+  "color-contrast-checker": "color-contrast-checker.html",
+  "base64-image": "base64-image.html",
+  "image-placeholder": "image-placeholder.html",
+  "dns-lookup": "dns-lookup.html"
 }
