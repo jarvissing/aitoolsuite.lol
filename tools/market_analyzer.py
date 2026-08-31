@@ -143,6 +143,14 @@ def optimize_tool_queue() -> dict:
         else:
             logger.info(f"Guardrail filter skipped candidate '{kw}': {reason}")
 
+    # Call Live Context Engine for real-time traffic & trend signals
+    try:
+        from tools.live_context_engine import format_live_context_for_prompt, get_live_context_payload
+        live_ctx = get_live_context_payload()
+        logger.info(f"Live Context Ingested: {live_ctx['trending_developer_topics'][:2]}")
+    except Exception as e:
+        logger.debug(f"Live context engine skipped: {e}")
+
     # Re-rank pending queue by priority score
     pending_items = [i for i in current_queue if i.get("status") == "pending"]
     published_items = [i for i in current_queue if i.get("status") == "published"]
