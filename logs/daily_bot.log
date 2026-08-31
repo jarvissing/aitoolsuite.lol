@@ -40,3 +40,65 @@ SUMMARY: 15 passed, 1 failed out of 16 pages
 ⚠️  1 page(s) need attention.
 ============================================================
 2026-08-30 14:19:01,505 [WARNING] QA check had warnings; review QA report.
+2026-08-31 16:48:57,869 [INFO] Running Market Feedback Analyzer & Queue Optimizer...
+2026-08-31 16:48:57,869 [INFO] Guardrail filter skipped candidate 'ai prompt cost calculator': Page 'ai-prompt-cost-calculator.html' already exists on site (cannibalization prevented).
+2026-08-31 16:48:57,869 [INFO] Guardrail filter skipped candidate 'regex tester and cheat sheet': Page 'regex-tester-and-cheat-sheet.html' already exists on site (cannibalization prevented).
+2026-08-31 16:48:57,869 [INFO] Guardrail filter skipped candidate 'sql formatter and beautifier': Page 'sql-formatter-and-beautifier.html' already exists on site (cannibalization prevented).
+2026-08-31 16:48:57,869 [INFO] Guardrail filter skipped candidate 'px to rem converter': Page 'px-to-rem-converter.html' already exists on site (cannibalization prevented).
+2026-08-31 16:48:57,869 [INFO] Guardrail filter skipped candidate 'curl to python converter': Page 'curl-to-python-converter.html' already exists on site (cannibalization prevented).
+2026-08-31 16:48:57,876 [INFO] Market Analysis: {'status': 'success', 'added_candidates': 0, 'total_pending': 8, 'top_priority': 'JSON to CSV & Excel Exporter'}
+2026-08-31 16:48:57,877 [INFO] 🚀 Publishing tool: 'JSON to CSV & Excel Exporter' for keyword 'json to csv converter'...
+2026-08-31 16:48:57,887 [INFO] SUCCESS: Page created at /home/runner/work/aitoolsuite.lol/aitoolsuite.lol/json-to-csv-converter.html | URL: https://aitoolsuite.lol/json-to-csv-converter
+2026-08-31 16:48:58,000 [INFO] Updating homepage and generating sitemap...
+2026-08-31 16:48:58,246 [INFO] SUCCESS: Homepage updated with search bar and 31 tools across 4 categories.
+2026-08-31 16:48:58,247 [INFO] SUCCESS: Generated sitemap.xml (32 URLs) and robots.txt
+2026-08-31 16:48:58,247 [INFO] Running QA verification checks...
+2026-08-31 16:48:58,251 [INFO] QA Result:
+============================================================
+  QA REPORT — 2026-08-31 16:48:58
+============================================================
+
+Found 31 tool pages to check.
+
+✅ ai-prompt-cost-calculator — 12/12 checks passed
+✅ base64-encoder — 12/12 checks passed
+✅ case-converter — 12/12 checks passed
+✅ chmod-calculator — 12/12 checks passed
+✅ color-picker — 12/12 checks passed
+✅ cron-expression-generator — 12/12 checks passed
+✅ css-minifier — 12/12 checks passed
+✅ csv-to-json-converter — 12/12 checks passed
+✅ curl-to-python-converter — 12/12 checks passed
+✅ diff-checker-and-text-compare — 12/12 checks passed
+✅ hash-generator — 12/12 checks passed
+✅ html-entity-encoder — 12/12 checks passed
+✅ html-minifier — 12/12 checks passed
+✅ json-formatter — 12/12 checks passed
+❌ json-to-csv-converter — 11/12 checks passed
+   ⚠️  working_widget: PLACEHOLDER ONLY - no working tool
+✅ json-to-typescript-generator — 12/12 checks passed
+✅ jwt-decoder-and-debugger — 12/12 checks passed
+✅ lorem-ipsum-generator — 12/12 checks passed
+✅ markdown-previewer — 12/12 checks passed
+✅ px-to-rem-converter — 12/12 checks passed
+✅ qr-code-generator — 12/12 checks passed
+✅ regex-tester-and-cheat-sheet — 12/12 checks passed
+✅ sql-formatter-and-beautifier — 12/12 checks passed
+✅ strong-password-generator — 12/12 checks passed
+✅ svg-optimizer-and-viewer — 12/12 checks passed
+✅ tailwind-color-palette-generator — 12/12 checks passed
+✅ timestamp-converter — 12/12 checks passed
+✅ url-encoder — 12/12 checks passed
+✅ uuid-generator — 12/12 checks passed
+✅ word-counter — 12/12 checks passed
+✅ yaml-to-json-converter — 12/12 checks passed
+
+————————————————————————————————————————
+HOMEPAGE CHECK:
+✅ 31/31 tools listed on homepage
+
+============================================================
+SUMMARY: 30 passed, 1 failed out of 31 pages
+⚠️  1 page(s) need attention.
+============================================================
+2026-08-31 16:48:58,251 [WARNING] QA check had warnings; review QA report.
