@@ -1,39 +1,182 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us — AI Tool Suite</title>
-    <meta name="description" content="About AI Tool Suite — A collection of free, lightning-fast developer, design, and AI utilities built for modern engineers.">
+    <meta name="description"
+        content="About AI Tool Suite — A collection of free, lightning-fast developer, design, and AI utilities built for modern engineers.">
     <link rel="canonical" href="https://aitoolsuite.lol/about.html">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Syne:wght@700;800&display=swap"
+        rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: #09090b; color: #e4e4e7; font-family: 'Inter', -apple-system, sans-serif; line-height: 1.7; min-height: 100vh; padding: 0 20px; }
-        .nav-pill { position: sticky; top: 16px; z-index: 100; max-width: 900px; margin: 16px auto 32px; background: rgba(18, 18, 22, 0.85); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 100px; padding: 10px 24px; display: flex; justify-content: space-between; align-items: center; }
-        .nav-brand { font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 800; color: #fff; text-decoration: none; display: flex; align-items: center; gap: 8px; }
-        .nav-links { display: flex; gap: 16px; font-size: 0.85rem; font-weight: 500; }
-        .nav-links a { color: #a1a1aa; text-decoration: none; transition: color 0.2s; }
-        .nav-links a:hover { color: #fff; }
-        .legal-container { max-width: 800px; margin: 0 auto 60px; background: #121216; border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 16px; padding: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        h1 { font-family: 'Syne', sans-serif; font-size: 2.2rem; font-weight: 800; color: #fff; margin-bottom: 8px; letter-spacing: -0.03em; }
-        .mission-tag { font-size: 1rem; color: #38bdf8; font-weight: 600; margin-bottom: 32px; }
-        h2 { font-family: 'Syne', sans-serif; font-size: 1.3rem; font-weight: 700; color: #f4f4f5; margin: 28px 0 12px; }
-        p, ul { margin-bottom: 16px; color: #a1a1aa; font-size: 0.95rem; }
-        ul { padding-left: 20px; }
-        li { margin-bottom: 8px; }
-        a { color: #38bdf8; text-decoration: none; }
-        a:hover { text-decoration: underline; }
-        .feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 24px 0; }
-        @media (max-width: 600px) { .feature-grid { grid-template-columns: 1fr; } }
-        .feature-card { background: #18181f; border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 12px; padding: 18px; }
-        .feature-title { font-weight: 700; color: #fff; margin-bottom: 6px; font-size: 0.95rem; }
-        footer { max-width: 800px; margin: 0 auto; text-align: center; padding: 30px 0; border-top: 1px solid rgba(255,255,255,0.06); font-size: 0.8rem; color: #71717a; }
-        .footer-links { display: flex; justify-content: center; gap: 20px; margin-top: 10px; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #09090b;
+            color: #e4e4e7;
+            font-family: 'Inter', -apple-system, sans-serif;
+            line-height: 1.7;
+            min-height: 100vh;
+            padding: 0 20px;
+        }
+
+        .nav-pill {
+            position: sticky;
+            top: 16px;
+            z-index: 100;
+            max-width: 900px;
+            margin: 16px auto 32px;
+            background: rgba(18, 18, 22, 0.85);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 100px;
+            padding: 10px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: #fff;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 16px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .nav-links a {
+            color: #a1a1aa;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #fff;
+        }
+
+        .legal-container {
+            max-width: 800px;
+            margin: 0 auto 60px;
+            background: #121216;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            font-family: 'Syne', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 8px;
+            letter-spacing: -0.03em;
+        }
+
+        .mission-tag {
+            font-size: 1rem;
+            color: #38bdf8;
+            font-weight: 600;
+            margin-bottom: 32px;
+        }
+
+        h2 {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #f4f4f5;
+            margin: 28px 0 12px;
+        }
+
+        p,
+        ul {
+            margin-bottom: 16px;
+            color: #a1a1aa;
+            font-size: 0.95rem;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        a {
+            color: #38bdf8;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 24px 0;
+        }
+
+        @media (max-width: 600px) {
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .feature-card {
+            background: #18181f;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 12px;
+            padding: 18px;
+        }
+
+        .feature-title {
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 6px;
+            font-size: 0.95rem;
+        }
+
+        footer {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 30px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            font-size: 0.8rem;
+            color: #71717a;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 10px;
+        }
     </style>
 </head>
+
 <body>
     <nav class="nav-pill">
         <a href="/" class="nav-brand"><span>⚡</span><span>AI TOOL SUITE</span></a>
@@ -50,30 +193,39 @@
         <div class="mission-tag">Fast, private, zero-bloat utilities for developers, designers, and AI builders.</div>
 
         <h2>Our Mission</h2>
-        <p>Most developer utility websites on the internet are plagued with 15+ intrusive video ads, slow backend roundtrips, bloated tracking cookies, and outdated user interfaces.</p>
-        <p><strong>AI Tool Suite</strong> was created to offer a modern, respectful alternative: a lightning-fast collection of browser-native tools that execute in microseconds with zero server latency and zero data collection.</p>
+        <p>Most developer utility websites on the internet are plagued with 15+ intrusive video ads, slow backend
+            roundtrips, bloated tracking cookies, and outdated user interfaces.</p>
+        <p><strong>AI Tool Suite</strong> was created to offer a modern, respectful alternative: a lightning-fast
+            collection of browser-native tools that execute in microseconds with zero server latency and zero data
+            collection.</p>
 
         <div class="feature-grid">
             <div class="feature-card">
                 <div class="feature-title">🔒 100% Client-Side Privacy</div>
-                <p style="font-size:0.85rem; margin-bottom:0;">Your code, API keys, JSON, and queries execute locally in your browser memory and never touch remote servers.</p>
+                <p style="font-size:0.85rem; margin-bottom:0;">Your code, API keys, JSON, and queries execute locally in
+                    your browser memory and never touch remote servers.</p>
             </div>
             <div class="feature-card">
                 <div class="feature-title">⚡ Sub-50ms Performance</div>
-                <p style="font-size:0.85rem; margin-bottom:0;">Built with vanilla JavaScript and clean CSS for instant DOM load times and zero framework bloat.</p>
+                <p style="font-size:0.85rem; margin-bottom:0;">Built with vanilla JavaScript and clean CSS for instant
+                    DOM load times and zero framework bloat.</p>
             </div>
             <div class="feature-card">
                 <div class="feature-title">🤖 Modern AI Ecosystem</div>
-                <p style="font-size:0.85rem; margin-bottom:0;">Calculators and parsers calibrated for OpenAI GPT-4o, Claude 3.5 Sonnet, Gemini 1.5, and LLM context windows.</p>
+                <p style="font-size:0.85rem; margin-bottom:0;">Calculators and parsers calibrated for OpenAI GPT-4o,
+                    Claude 3.5 Sonnet, Gemini 1.5, and LLM context windows.</p>
             </div>
             <div class="feature-card">
                 <div class="feature-title">🛠️ Open & Free Forever</div>
-                <p style="font-size:0.85rem; margin-bottom:0;">All utilities are free to use for personal and commercial development with zero subscriptions or paywalls.</p>
+                <p style="font-size:0.85rem; margin-bottom:0;">All utilities are free to use for personal and commercial
+                    development with zero subscriptions or paywalls.</p>
             </div>
         </div>
 
         <h2>Get in Touch</h2>
-        <p>AI Tool Suite is continuously expanding. You can suggest new tools, report bugs, or request custom features on our <a href="/contact.html">Contact Page</a> or via email at <a href="mailto:agencymeta.app@gmail.com">agencymeta.app@gmail.com</a>.</p>
+        <p>AI Tool Suite is continuously expanding. You can suggest new tools, report bugs, or request custom features
+            on our <a href="/contact.html">Contact Page</a> or via email at <a
+                href="mailto:agencymeta.app@gmail.com">agencymeta.app@gmail.com</a>.</p>
     </div>
 
     <footer>
@@ -87,4 +239,5 @@
         </div>
     </footer>
 </body>
+
 </html>

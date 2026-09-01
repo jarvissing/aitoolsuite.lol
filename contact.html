@@ -1,37 +1,178 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us — AI Tool Suite</title>
-    <meta name="description" content="Contact AI Tool Suite. Send feedback, suggest new developer and AI utilities, or report bugs.">
+    <meta name="description"
+        content="Contact AI Tool Suite. Send feedback, suggest new developer and AI utilities, or report bugs.">
     <link rel="canonical" href="https://aitoolsuite.lol/contact.html">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Syne:wght@700;800&display=swap"
+        rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: #09090b; color: #e4e4e7; font-family: 'Inter', -apple-system, sans-serif; line-height: 1.7; min-height: 100vh; padding: 0 20px; }
-        .nav-pill { position: sticky; top: 16px; z-index: 100; max-width: 900px; margin: 16px auto 32px; background: rgba(18, 18, 22, 0.85); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 100px; padding: 10px 24px; display: flex; justify-content: space-between; align-items: center; }
-        .nav-brand { font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 800; color: #fff; text-decoration: none; display: flex; align-items: center; gap: 8px; }
-        .nav-links { display: flex; gap: 16px; font-size: 0.85rem; font-weight: 500; }
-        .nav-links a { color: #a1a1aa; text-decoration: none; transition: color 0.2s; }
-        .nav-links a:hover { color: #fff; }
-        .legal-container { max-width: 800px; margin: 0 auto 60px; background: #121216; border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 16px; padding: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        h1 { font-family: 'Syne', sans-serif; font-size: 2.2rem; font-weight: 800; color: #fff; margin-bottom: 8px; letter-spacing: -0.03em; }
-        .mission-tag { font-size: 1rem; color: #38bdf8; font-weight: 600; margin-bottom: 32px; }
-        h2 { font-family: 'Syne', sans-serif; font-size: 1.3rem; font-weight: 700; color: #f4f4f5; margin: 28px 0 12px; }
-        p { margin-bottom: 16px; color: #a1a1aa; font-size: 0.95rem; }
-        .contact-box { background: #18181f; border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 24px; margin: 24px 0; }
-        .contact-email { font-family: monospace; font-size: 1.1rem; color: #38bdf8; font-weight: 700; }
-        .btn-email { display: inline-block; background: #3b82f6; color: #fff; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 0.95rem; margin-top: 14px; transition: background 0.2s; }
-        .btn-email:hover { background: #2563eb; }
-        footer { max-width: 800px; margin: 0 auto; text-align: center; padding: 30px 0; border-top: 1px solid rgba(255,255,255,0.06); font-size: 0.8rem; color: #71717a; }
-        .footer-links { display: flex; justify-content: center; gap: 20px; margin-top: 10px; }
-        .footer-links a { color: #94a3b8; text-decoration: none; }
-        .footer-links a:hover { color: #fff; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #09090b;
+            color: #e4e4e7;
+            font-family: 'Inter', -apple-system, sans-serif;
+            line-height: 1.7;
+            min-height: 100vh;
+            padding: 0 20px;
+        }
+
+        .nav-pill {
+            position: sticky;
+            top: 16px;
+            z-index: 100;
+            max-width: 900px;
+            margin: 16px auto 32px;
+            background: rgba(18, 18, 22, 0.85);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 100px;
+            padding: 10px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: #fff;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 16px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .nav-links a {
+            color: #a1a1aa;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #fff;
+        }
+
+        .legal-container {
+            max-width: 800px;
+            margin: 0 auto 60px;
+            background: #121216;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            font-family: 'Syne', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 8px;
+            letter-spacing: -0.03em;
+        }
+
+        .mission-tag {
+            font-size: 1rem;
+            color: #38bdf8;
+            font-weight: 600;
+            margin-bottom: 32px;
+        }
+
+        h2 {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #f4f4f5;
+            margin: 28px 0 12px;
+        }
+
+        p {
+            margin-bottom: 16px;
+            color: #a1a1aa;
+            font-size: 0.95rem;
+        }
+
+        .contact-box {
+            background: #18181f;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 24px 0;
+        }
+
+        .contact-email {
+            font-family: monospace;
+            font-size: 1.1rem;
+            color: #38bdf8;
+            font-weight: 700;
+        }
+
+        .btn-email {
+            display: inline-block;
+            background: #3b82f6;
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-top: 14px;
+            transition: background 0.2s;
+        }
+
+        .btn-email:hover {
+            background: #2563eb;
+        }
+
+        footer {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 30px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            font-size: 0.8rem;
+            color: #71717a;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 10px;
+        }
+
+        .footer-links a {
+            color: #94a3b8;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: #fff;
+        }
     </style>
 </head>
+
 <body>
     <nav class="nav-pill">
         <a href="/" class="nav-brand"><span>⚡</span><span>AI TOOL SUITE</span></a>
@@ -46,19 +187,26 @@
 
     <div class="legal-container">
         <h1>Contact Support & Feedback</h1>
-        <div class="mission-tag">Have questions, feature suggestions, or custom tool requests? Reach out to our team.</div>
+        <div class="mission-tag">Have questions, feature suggestions, or custom tool requests? Reach out to our team.
+        </div>
 
-        <p>We actively maintain and expand the AI Tool Suite catalog. If you encounter an issue, need a specific developer utility added, or have questions regarding our privacy standards, we would love to hear from you.</p>
+        <p>We actively maintain and expand the AI Tool Suite catalog. If you encounter an issue, need a specific
+            developer utility added, or have questions regarding our privacy standards, we would love to hear from you.
+        </p>
 
         <div class="contact-box">
-            <div style="font-size:0.85rem; color:#94a3b8; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:6px;">Official Contact Email</div>
+            <div
+                style="font-size:0.85rem; color:#94a3b8; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:6px;">
+                Official Contact Email</div>
             <div class="contact-email">agencymeta.app@gmail.com</div>
             <p style="margin-top:10px; font-size:0.85rem; color:#71717a;">Average response time: within 24 hours.</p>
-            <a href="mailto:agencymeta.app@gmail.com?subject=AI%20Tool%20Suite%20Inquiry" class="btn-email">Send an Email</a>
+            <a href="mailto:agencymeta.app@gmail.com?subject=AI%20Tool%20Suite%20Inquiry" class="btn-email">Send an
+                Email</a>
         </div>
 
         <h2>Suggest a Tool</h2>
-        <p>Looking for a specific converter, formatter, or AI utility that isn't in our directory yet? Send us the details and our autonomous publishing pipeline will review and ship it.</p>
+        <p>Looking for a specific converter, formatter, or AI utility that isn't in our directory yet? Send us the
+            details and our autonomous publishing pipeline will review and ship it.</p>
     </div>
 
     <footer>
@@ -72,4 +220,5 @@
         </div>
     </footer>
 </body>
+
 </html>
