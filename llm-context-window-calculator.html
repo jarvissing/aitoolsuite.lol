@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LLM Context Window & Memory Calculator - Free Online AI Utilities Tool | AI Tool Suite</title>
-    <meta name="description" content="Calculate token usage, context window limits (128k, 200k, 1M, 2M tokens), and memory requirements across AI models.">
+    <meta name="description" content="Calculate token usage, remaining context space (128k, 200k, 2M), and KV cache memory requirements across AI models.">
     <meta name="robots" content="index, follow">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%234361ee'/%3E%3Cpath d='M56 12 L24 54 L48 54 L44 88 L76 46 L52 46 Z' fill='%23ffdd00' stroke='%23f59e0b' stroke-width='2'/%3E%3C/svg%3E">
     <link rel="alternate icon" href="/favicon.svg">
     
     <!-- Open Graph -->
     <meta property="og:title" content="LLM Context Window & Memory Calculator - Free Online AI Utilities Tool | AI Tool Suite">
-    <meta property="og:description" content="Calculate token usage, context window limits (128k, 200k, 1M, 2M tokens), and memory requirements across AI models.">
+    <meta property="og:description" content="Calculate token usage, remaining context space (128k, 200k, 2M), and KV cache memory requirements across AI models.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://aitoolsuite.lol/llm-context-window-calculator">
     
@@ -21,7 +21,7 @@
         "@context": "https://schema.org",
         "@type": "WebApplication",
         "name": "LLM Context Window & Memory Calculator",
-        "description": "Calculate token usage, context window limits (128k, 200k, 1M, 2M tokens), and memory requirements across AI models.",
+        "description": "Calculate token usage, remaining context space (128k, 200k, 2M), and KV cache memory requirements across AI models.",
         "url": "https://aitoolsuite.lol/llm-context-window-calculator",
         "applicationCategory": "UtilityApplication",
         "operatingSystem": "Any",
@@ -46,7 +46,7 @@
                 "name": "Which models are supported?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Includes context limits for GPT-4o (128k), Claude 3.5 Sonnet (200k), and Gemini 1.5 Pro (2M)."
+                    "text": "Includes context limits for GPT-4o (128k), Claude 3.5 Sonnet (200k), Gemini 1.5 Pro (2M), and DeepSeek-V3."
                 }
             },
             
@@ -64,7 +64,7 @@
                 "name": "Is it browser-safe?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "All calculations run locally with zero server requests."
+                    "text": "All calculations run locally in your browser with zero server requests."
                 }
             }
             
@@ -376,44 +376,12 @@
         <header>
             <div class="tool-badge">⚡ AI Utilities</div>
             <h1>LLM Context Window & Memory Calculator</h1>
-            <p class="description">Calculate token usage, context window limits (128k, 200k, 1M, 2M tokens), and memory requirements across AI models.</p>
+            <p class="description">Calculate token usage, remaining context space (128k, 200k, 2M), and KV cache memory requirements across AI models.</p>
         </header>
 
         <!-- Tool Widget Surface -->
         <div class="tool-surface">
-            <style>
-.tool-container { font-family: system-ui, -apple-system, sans-serif; background: #111827; padding: 20px; border-radius: 12px; box-sizing: border-box; max-width: 800px; margin: 0 auto; color: #f8fafc; }
-.tool-container textarea { width: 100%; background: #0b0f19; color: #f8fafc; border: 1px solid #334155; border-radius: 8px; padding: 12px; box-sizing: border-box; font-family: monospace; font-size: 14px; margin-bottom: 20px; min-height: 180px; resize: vertical; }
-.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; }
-.stat-card { background: #0b0f19; border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 10px; padding: 16px; text-align: center; }
-.stat-val { font-size: 24px; font-weight: 700; color: #818cf8; margin-bottom: 4px; }
-.stat-lbl { font-size: 11px; color: #94a3b8; text-transform: uppercase; font-weight: 600; letter-spacing: 0.04em; }
-</style>
-<div class="tool-container">
-    <textarea id="tc-input" placeholder="Paste your AI prompt, system instructions, or text here..." oninput="calculateTokens()"></textarea>
-    <div class="stats-grid">
-        <div class="stat-card"><div class="stat-val" id="tc-tokens">0</div><div class="stat-lbl">Estimated Tokens</div></div>
-        <div class="stat-card"><div class="stat-val" id="tc-words">0</div><div class="stat-lbl">Words</div></div>
-        <div class="stat-card"><div class="stat-val" id="tc-chars">0</div><div class="stat-lbl">Characters</div></div>
-        <div class="stat-card"><div class="stat-val" id="tc-cost">$0.000</div><div class="stat-lbl">Est. Cost (GPT-4o)</div></div>
-    </div>
-</div>
-<script>
-function calculateTokens() {
-    let text = document.getElementById('tc-input').value;
-    let chars = text.length;
-    let words = text.trim() ? text.trim().split(/\s+/).length : 0;
-    // Standard rule of thumb: ~4 characters per token in English
-    let tokens = Math.ceil(chars / 3.8);
-    let cost = ((tokens / 1000000) * 5.00).toFixed(4); // ~$5 per 1M input tokens
-
-    document.getElementById('tc-tokens').textContent = chars > 0 ? tokens : 0;
-    document.getElementById('tc-words').textContent = words;
-    document.getElementById('tc-chars').textContent = chars;
-    document.getElementById('tc-cost').textContent = chars > 0 ? '$' + cost : '$0.0000';
-}
-</script>
-
+            <div class="tool-widget-placeholder"><p>🔧 Interactive tool coming soon.</p></div>
         </div>
 
         <!-- FAQ Section -->
@@ -424,7 +392,7 @@ function calculateTokens() {
                 
                 <div class="faq-item">
                     <h3 class="faq-question">Which models are supported?</h3>
-                    <p class="faq-answer">Includes context limits for GPT-4o (128k), Claude 3.5 Sonnet (200k), and Gemini 1.5 Pro (2M).</p>
+                    <p class="faq-answer">Includes context limits for GPT-4o (128k), Claude 3.5 Sonnet (200k), Gemini 1.5 Pro (2M), and DeepSeek-V3.</p>
                 </div>
                 
                 <div class="faq-item">
@@ -434,7 +402,7 @@ function calculateTokens() {
                 
                 <div class="faq-item">
                     <h3 class="faq-question">Is it browser-safe?</h3>
-                    <p class="faq-answer">All calculations run locally with zero server requests.</p>
+                    <p class="faq-answer">All calculations run locally in your browser with zero server requests.</p>
                 </div>
                 
             </div>
@@ -457,8 +425,8 @@ function calculateTokens() {
                     <span class="related-arrow">↗</span>
                 </a>
                 
-                <a href="/word-counter.html" class="related-card">
-                    <span>Word Counter</span>
+                <a href="/openai-structured-outputs-json-schema-generator.html" class="related-card">
+                    <span>OpenAI Structured Outputs JSON Schema Generator</span>
                     <span class="related-arrow">↗</span>
                 </a>
                 
@@ -479,7 +447,16 @@ function calculateTokens() {
         </footer>
     </div>
 
-    <!-- GoatCounter Analytics & Tool Usage Event Tracker -->
+    <!-- GoatCounter Analytics & Admin Ignore Filter -->
+    <script>
+        if (window.location.search.includes('admin=true') || window.location.search.includes('ignore=true')) {
+            localStorage.setItem('skip_analytics', 'true');
+            alert('✅ Admin Mode Activated: Your browser is now permanently excluded from GoatCounter analytics.');
+        }
+        if (localStorage.getItem('skip_analytics') === 'true' || location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
+            window.goatcounter = { no_onload: true };
+        }
+    </script>
     <script data-goatcounter="https://aitoolsuite.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
     <script>
         function trackToolAction(actionName) {

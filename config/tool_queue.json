@@ -8,9 +8,10 @@
     "search_demand": 94,
     "faq_items": "Which models are supported?:::Includes context limits for GPT-4o (128k), Claude 3.5 Sonnet (200k), Gemini 1.5 Pro (2M), and DeepSeek-V3.|||How does it calculate memory?:::Estimates KV-cache RAM requirements based on precision (FP16, INT8, INT4).|||Is it browser-safe?:::All calculations run locally in your browser with zero server requests.",
     "related_tools": "AI Prompt Token Counter,AI Prompt Cost Calculator,OpenAI Structured Outputs JSON Schema Generator",
-    "status": "pending",
+    "status": "published",
     "priority_score": 95,
-    "discovered_at": "2026-09-01T07:50:00.000000"
+    "discovered_at": "2026-09-01T07:50:00.000000",
+    "published_at": "2026-09-01T13:59:38.757117"
   },
   {
     "keyword": "embedding cost calculator",
