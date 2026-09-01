@@ -62,7 +62,7 @@ def update_homepage() -> str:
     
     html_files = sorted([
         f for f in PAGES_DIR.glob("*.html")
-        if f.stem not in ("index", "404")
+        if f.stem not in ("index", "404", "privacy", "terms", "about", "contact", "admin-ignore")
     ])
     
     if not html_files:

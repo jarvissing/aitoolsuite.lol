@@ -129,7 +129,7 @@ def check_homepage_lists_all_tools() -> dict:
     # Get all tool pages (exclude index.html, CNAME, .gitkeep)
     tool_pages = [
         f.stem for f in PAGES_DIR.glob("*.html")
-        if f.stem not in ("index", "404")
+        if f.stem not in ("index", "404", "privacy", "terms", "about", "contact", "admin-ignore")
     ]
     
     # Check which tools are linked from homepage
