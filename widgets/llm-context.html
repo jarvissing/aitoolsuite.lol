@@ -1,0 +1,53 @@
+<style>
+.tool-container { font-family: system-ui, -apple-system, sans-serif; background: #111827; padding: 24px; border-radius: 12px; box-sizing: border-box; max-width: 860px; margin: 0 auto; color: #f8fafc; }
+.tool-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
+@media (max-width: 600px) { .tool-grid { grid-template-columns: 1fr; } }
+.field label { display: block; font-size: 13px; font-weight: 600; color: #94a3b8; margin-bottom: 6px; }
+.field select, .field input { width: 100%; background: #0b0f19; color: #f8fafc; border: 1px solid #334155; border-radius: 8px; padding: 12px; box-sizing: border-box; font-size: 14px; }
+.stat-card { background: #0b0f19; border: 1px solid #334155; border-radius: 10px; padding: 20px; text-align: center; margin-bottom: 16px; }
+.stat-val { font-family: monospace; font-size: 32px; font-weight: 800; color: #38bdf8; }
+.stat-sub { font-size: 13px; color: #94a3b8; margin-top: 4px; }
+.progress-bar-bg { width: 100%; height: 12px; background: #1e293b; border-radius: 6px; overflow: hidden; margin-top: 14px; }
+.progress-bar-fill { height: 100%; background: #3b82f6; width: 0%; transition: width 0.3s; }
+</style>
+<div class="tool-container">
+    <div class="tool-grid">
+        <div class="field">
+            <label>Select AI Model:</label>
+            <select id="modelSelect" onchange="calcContext()">
+                <option value="128000">OpenAI GPT-4o (128k Context)</option>
+                <option value="200000">Claude 3.5 Sonnet (200k Context)</option>
+                <option value="2000000">Google Gemini 1.5 Pro (2M Context)</option>
+                <option value="128000">DeepSeek-V3 / R1 (128k Context)</option>
+                <option value="32000">Llama 3 8B / 70B (32k Context)</option>
+                <option value="8192">GPT-4 Turbo (8k Classic)</option>
+            </select>
+        </div>
+        <div class="field">
+            <label>Current Token Usage (Estimate or Count):</label>
+            <input type="number" id="tokenUsed" value="24500" oninput="calcContext()">
+        </div>
+    </div>
+    <div class="stat-card">
+        <div id="pctRemaining" class="stat-val">80.8%</div>
+        <div id="tokenSub" class="stat-sub">103,500 tokens remaining out of 128,000</div>
+        <div class="progress-bar-bg">
+            <div id="barFill" class="progress-bar-fill" style="width: 19.2%;"></div>
+        </div>
+    </div>
+</div>
+<script>
+function calcContext() {
+    let limit = parseInt(document.getElementById('modelSelect').value) || 128000;
+    let used = parseInt(document.getElementById('tokenUsed').value) || 0;
+    let pctUsed = Math.min(100, (used / limit) * 100);
+    let pctLeft = Math.max(0, 100 - pctUsed);
+    let rem = Math.max(0, limit - used);
+    document.getElementById('pctRemaining').textContent = pctLeft.toFixed(1) + '% Free';
+    document.getElementById('tokenSub').textContent = `${rem.toLocaleString()} tokens free out of ${limit.toLocaleString()}`;
+    let fill = document.getElementById('barFill');
+    fill.style.width = pctUsed + '%';
+    fill.style.background = pctUsed > 90 ? '#ef4444' : (pctUsed > 75 ? '#f59e0b' : '#3b82f6');
+}
+calcContext();
+</script>

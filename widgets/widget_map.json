@@ -54,5 +54,12 @@
   "color-contrast-checker": "color-contrast-checker.html",
   "base64-image": "base64-image.html",
   "image-placeholder": "image-placeholder.html",
-  "dns-lookup": "dns-lookup.html"
+  "dns-lookup": "dns-lookup.html",
+  "llm-context": "llm-context.html",
+  "embedding-cost": "embedding-cost.html",
+  "env-to-json": "env-to-json.html",
+  "json-to-env": "json-to-env.html",
+  "css-grid": "css-grid.html",
+  "svg-to-png": "svg-to-png.html",
+  "md-table-to-json": "md-table-to-json.html"
 }

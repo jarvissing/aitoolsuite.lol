@@ -1,0 +1,59 @@
+<style>
+.tool-container { font-family: system-ui, -apple-system, sans-serif; background: #111827; padding: 24px; border-radius: 12px; box-sizing: border-box; max-width: 860px; margin: 0 auto; color: #f8fafc; }
+.tool-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
+@media (max-width: 600px) { .tool-grid { grid-template-columns: 1fr; } }
+.field label { display: block; font-size: 13px; font-weight: 600; color: #94a3b8; margin-bottom: 6px; }
+.field select, .field input { width: 100%; background: #0b0f19; color: #f8fafc; border: 1px solid #334155; border-radius: 8px; padding: 12px; box-sizing: border-box; font-size: 14px; }
+.result-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 16px; }
+.res-card { background: #0b0f19; border: 1px solid #334155; border-radius: 10px; padding: 16px; text-align: center; }
+.res-val { font-family: monospace; font-size: 24px; font-weight: 800; color: #38bdf8; }
+.res-sub { font-size: 12px; color: #94a3b8; margin-top: 4px; }
+</style>
+<div class="tool-container">
+    <div class="tool-grid">
+        <div class="field">
+            <label>Embedding Model:</label>
+            <select id="embModel" onchange="calcEmbedding()">
+                <option value="1536,0.02">OpenAI text-embedding-3-small (1536 dim - $0.02/1M)</option>
+                <option value="3072,0.13">OpenAI text-embedding-3-large (3072 dim - $0.13/1M)</option>
+                <option value="768,0.00">Google Gemini Text-Embedding-004 (768 dim - Free/Tier)</option>
+                <option value="1024,0.10">Cohere Embed-v3 (1024 dim - $0.10/1M)</option>
+            </select>
+        </div>
+        <div class="field">
+            <label>Total Number of Documents / Chunks:</label>
+            <input type="number" id="docCount" value="50000" oninput="calcEmbedding()">
+        </div>
+    </div>
+    <div class="result-grid">
+        <div class="res-card">
+            <div id="storageSize" class="res-val">292.9 MB</div>
+            <div class="res-sub">Estimated Vector Database RAM / Storage</div>
+        </div>
+        <div class="res-card">
+            <div id="embCost" class="res-val">$0.50</div>
+            <div class="res-sub">One-Time API Generation Cost (Avg 500 tokens/doc)</div>
+        </div>
+    </div>
+</div>
+<script>
+function calcEmbedding() {
+    let [dimStr, priceStr] = document.getElementById('embModel').value.split(',');
+    let dim = parseInt(dimStr);
+    let pricePerMillion = parseFloat(priceStr);
+    let count = parseInt(document.getElementById('docCount').value) || 0;
+    
+    // 4 bytes per float32 vector dimension
+    let bytes = count * dim * 4;
+    let mb = bytes / (1024 * 1024);
+    let sizeText = mb >= 1024 ? (mb / 1024).toFixed(2) + ' GB' : mb.toFixed(1) + ' MB';
+    
+    // Assume average 500 tokens per chunk
+    let totalTokens = count * 500;
+    let cost = (totalTokens / 1000000) * pricePerMillion;
+    
+    document.getElementById('storageSize').textContent = sizeText;
+    document.getElementById('embCost').textContent = '$' + cost.toFixed(2);
+}
+calcEmbedding();
+</script>

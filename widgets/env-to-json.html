@@ -1,0 +1,63 @@
+<style>
+.tool-container { font-family: system-ui, -apple-system, sans-serif; background: #111827; padding: 24px; border-radius: 12px; box-sizing: border-box; max-width: 900px; margin: 0 auto; color: #f8fafc; }
+.tool-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+@media (max-width: 640px) { .tool-grid { grid-template-columns: 1fr; } }
+.col label { display: block; font-size: 13px; font-weight: 600; color: #94a3b8; margin-bottom: 6px; }
+.col textarea { width: 100%; height: 220px; background: #0b0f19; color: #f8fafc; border: 1px solid #334155; border-radius: 8px; padding: 12px; box-sizing: border-box; font-family: monospace; font-size: 13px; resize: vertical; }
+.btn-row { display: flex; gap: 10px; }
+.btn-act { background: #3b82f6; color: #fff; border: none; padding: 10px 18px; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 13px; }
+.btn-copy { background: #1e293b; color: #38bdf8; border: 1px solid #334155; padding: 10px 16px; border-radius: 6px; cursor: pointer; font-size: 13px; font-weight: 600; }
+</style>
+<div class="tool-container">
+    <div class="tool-grid">
+        <div class="col">
+            <label>.env Input Format:</label>
+            <textarea id="envInput" placeholder="PORT=8080&#10;NODE_ENV=production&#10;DATABASE_URL=postgresql://user:pass@localhost:5432/db&#10;DEBUG=true&#10;MAX_CONNECTIONS=50" oninput="convertEnvToJson()"></textarea>
+        </div>
+        <div class="col">
+            <label>JSON Object Output:</label>
+            <textarea id="jsonEnvOutput" readonly placeholder="JSON output will appear here..."></textarea>
+        </div>
+    </div>
+    <div class="btn-row">
+        <button class="btn-act" onclick="convertEnvToJson()">Convert to JSON</button>
+        <button class="btn-copy" onclick="copyEnvJson(this)">Copy JSON</button>
+    </div>
+</div>
+<script>
+function convertEnvToJson() {
+    let raw = document.getElementById('envInput').value.trim();
+    if (!raw) {
+        document.getElementById('jsonEnvOutput').value = '';
+        return;
+    }
+    let lines = raw.split('\n');
+    let obj = {};
+    for (let line of lines) {
+        line = line.trim();
+        if (!line || line.startsWith('#')) continue;
+        let idx = line.indexOf('=');
+        if (idx !== -1) {
+            let key = line.substring(0, idx).trim();
+            let val = line.substring(idx + 1).trim();
+            // Clean wrapping quotes
+            val = val.replace(/^["']|["']$/g, '');
+            if (val === 'true') obj[key] = true;
+            else if (val === 'false') obj[key] = false;
+            else if (!isNaN(val) && val !== '') obj[key] = Number(val);
+            else obj[key] = val;
+        }
+    }
+    document.getElementById('jsonEnvOutput').value = JSON.stringify(obj, null, 2);
+}
+function copyEnvJson(btn) {
+    let t = document.getElementById('jsonEnvOutput').value;
+    if (!t) return;
+    navigator.clipboard.writeText(t).then(() => {
+        let orig = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(() => btn.textContent = orig, 1800);
+    });
+}
+convertEnvToJson();
+</script>

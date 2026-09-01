@@ -1,0 +1,65 @@
+<style>
+.tool-container { font-family: system-ui, -apple-system, sans-serif; background: #111827; padding: 24px; border-radius: 12px; box-sizing: border-box; max-width: 900px; margin: 0 auto; color: #f8fafc; }
+.tool-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+@media (max-width: 640px) { .tool-grid { grid-template-columns: 1fr; } }
+.col label { display: block; font-size: 13px; font-weight: 600; color: #94a3b8; margin-bottom: 6px; }
+.col textarea { width: 100%; height: 220px; background: #0b0f19; color: #f8fafc; border: 1px solid #334155; border-radius: 8px; padding: 12px; box-sizing: border-box; font-family: monospace; font-size: 13px; resize: vertical; }
+.btn-row { display: flex; gap: 10px; }
+.btn-act { background: #3b82f6; color: #fff; border: none; padding: 10px 18px; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 13px; }
+.btn-copy { background: #1e293b; color: #38bdf8; border: 1px solid #334155; padding: 10px 16px; border-radius: 6px; cursor: pointer; font-size: 13px; font-weight: 600; }
+</style>
+<div class="tool-container">
+    <div class="tool-grid">
+        <div class="col">
+            <label>Markdown Table Input:</label>
+            <textarea id="mdTableIn" placeholder="| ID | Name | Role | Active |&#10;| --- | --- | --- | --- |&#10;| 1 | Alice | Lead Dev | true |&#10;| 2 | Bob | Designer | false |" oninput="convertMdTableToJson()"></textarea>
+        </div>
+        <div class="col">
+            <label>JSON Array Output:</label>
+            <textarea id="jsonMdOut" readonly placeholder="JSON array output will appear here..."></textarea>
+        </div>
+    </div>
+    <div class="btn-row">
+        <button class="btn-act" onclick="convertMdTableToJson()">Convert to JSON</button>
+        <button class="btn-copy" onclick="copyMdJson(this)">Copy JSON</button>
+    </div>
+</div>
+<script>
+function convertMdTableToJson() {
+    let raw = document.getElementById('mdTableIn').value.trim();
+    if (!raw) {
+        document.getElementById('jsonMdOut').value = '';
+        return;
+    }
+    let lines = raw.split('\n').map(l => l.trim()).filter(l => l.startsWith('|') && l.endsWith('|'));
+    if (lines.length < 3) {
+        document.getElementById('jsonMdOut').value = '[]';
+        return;
+    }
+    let headers = lines[0].split('|').map(s => s.trim()).filter(s => s.length > 0);
+    let rows = [];
+    for (let i = 2; i < lines.length; i++) {
+        let cols = lines[i].split('|').map(s => s.trim()).filter((_, idx, arr) => idx > 0 && idx < arr.length - 1);
+        let obj = {};
+        for (let j = 0; j < headers.length; j++) {
+            let val = cols[j] !== undefined ? cols[j] : '';
+            if (val.toLowerCase() === 'true') obj[headers[j]] = true;
+            else if (val.toLowerCase() === 'false') obj[headers[j]] = false;
+            else if (!isNaN(val) && val !== '') obj[headers[j]] = Number(val);
+            else obj[headers[j]] = val;
+        }
+        rows.push(obj);
+    }
+    document.getElementById('jsonMdOut').value = JSON.stringify(rows, null, 2);
+}
+function copyMdJson(btn) {
+    let t = document.getElementById('jsonMdOut').value;
+    if (!t) return;
+    navigator.clipboard.writeText(t).then(() => {
+        let orig = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(() => btn.textContent = orig, 1800);
+    });
+}
+convertMdTableToJson();
+</script>
