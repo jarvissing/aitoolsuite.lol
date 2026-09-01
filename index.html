@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Tool Suite — Free Online Developer & AI Utilities</title>
-    <meta name="description" content="Lightning-fast online tools for developers, designers, and AI creators. Free Markdown editor, JSON formatter, prompt token counter, and 46+ utilities.">
+    <meta name="description" content="Lightning-fast online tools for developers, designers, and AI creators. Free Markdown editor, JSON formatter, prompt token counter, and 47+ utilities.">
     <meta name="robots" content="index, follow">
     <meta property="og:title" content="AI Tool Suite — Free Online Developer & AI Utilities">
     <meta property="og:description" content="Modern, private developer & AI utilities with zero ads and instant client-side execution.">
@@ -356,7 +356,7 @@
 
     <div class="container">
         <header>
-            <div class="hero-badge">⚡ 46 Free Production Tools</div>
+            <div class="hero-badge">⚡ 47 Free Production Tools</div>
             <h1>The Developer & AI Suite built for <span>speed.</span></h1>
             <p>High-performance web utilities that run 100% inside your browser. No sign-ups, no paywalls, and zero tracking.</p>
             
@@ -364,7 +364,7 @@
             <div class="search-box-wrapper">
                 <div class="search-box">
                     <span class="search-icon">🔍</span>
-                    <input type="text" id="toolSearch" placeholder="Search 46+ developer & AI tools... (Press '/' to focus)" autocomplete="off" oninput="filterTools()">
+                    <input type="text" id="toolSearch" placeholder="Search 47+ developer & AI tools... (Press '/' to focus)" autocomplete="off" oninput="filterTools()">
                     <span class="search-shortcut">/</span>
                 </div>
             </div>
@@ -421,7 +421,7 @@
         <section id="developer-tools" class="category-section">
             <div class="category-header">
                 <h2 class="category-title">🛠️ Developer Tools</h2>
-                <span class="category-count">26 tools</span>
+                <span class="category-count">27 tools</span>
             </div>
             <div class="tools-grid">
             <a href="/about.html" class="tool-card">
@@ -431,6 +431,14 @@
                 </div>
                 <h3>About AI Tool Suite</h3>
                 <p>About AI Tool Suite — A collection of free, lightning-fast developer, design, and AI utilities built for moder...</p>
+            </a>
+            <a href="/admin-ignore.html" class="tool-card">
+                <div class="card-top">
+                    <span class="pill-category">Developer Tools</span>
+                    <span class="card-arrow">↗</span>
+                </div>
+                <h3>Admin Analytics Exclusion</h3>
+                <p></p>
             </a>
             <a href="/aspect-ratio-calculator.html" class="tool-card">
                 <div class="card-top">
@@ -841,7 +849,16 @@
         });
     </script>
 
-    <!-- GoatCounter Analytics -->
+    <!-- GoatCounter Analytics & Admin Ignore Filter -->
+    <script>
+        if (window.location.search.includes('admin=true') || window.location.search.includes('ignore=true')) {
+            localStorage.setItem('skip_analytics', 'true');
+            alert('✅ Admin Mode Activated: Your browser is now permanently excluded from GoatCounter analytics.');
+        }
+        if (localStorage.getItem('skip_analytics') === 'true' || location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
+            window.goatcounter = { no_onload: true };
+        }
+    </script>
     <script data-goatcounter="https://aitoolsuite.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>

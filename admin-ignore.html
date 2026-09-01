@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Ignore Analytics — AI Tool Suite</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #09090b; color: #e4e4e7; font-family: 'Inter', -apple-system, sans-serif; display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 20px; text-align: center; }
+        .card { background: #121216; border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 16px; padding: 40px; max-width: 500px; box-shadow: 0 10px 40px rgba(0,0,0,0.6); }
+        h1 { font-family: 'Syne', sans-serif; font-size: 1.6rem; color: #fff; margin-bottom: 12px; }
+        p { font-size: 0.95rem; color: #a1a1aa; line-height: 1.6; margin-bottom: 24px; }
+        .status-badge { display: inline-block; background: rgba(34, 197, 94, 0.15); border: 1px solid rgba(34, 197, 94, 0.3); color: #4ade80; font-family: monospace; font-weight: 700; padding: 8px 16px; border-radius: 100px; font-size: 0.9rem; margin-bottom: 20px; }
+        .btn-toggle { background: #3b82f6; color: #fff; border: none; padding: 12px 24px; border-radius: 8px; font-weight: 600; font-size: 0.95rem; cursor: pointer; transition: background 0.2s; }
+        .btn-toggle:hover { background: #2563eb; }
+        .home-link { display: block; margin-top: 20px; font-size: 0.85rem; color: #94a3b8; text-decoration: none; }
+        .home-link:hover { color: #fff; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div style="font-size: 48px; margin-bottom: 12px;">🛡️</div>
+        <h1>Admin Analytics Exclusion</h1>
+        <div id="statusBadge" class="status-badge">Checking status...</div>
+        <p id="statusDesc">Click below to toggle whether your browser's visits and clicks are tracked on GoatCounter.</p>
+        <button id="toggleBtn" class="btn-toggle" onclick="toggleIgnore()">Toggle Status</button>
+        <a href="/" class="home-link">← Return to Homepage</a>
+    </div>
+
+    <script>
+        function updateUI() {
+            let isIgnored = localStorage.getItem('skip_analytics') === 'true';
+            let badge = document.getElementById('statusBadge');
+            let desc = document.getElementById('statusDesc');
+            let btn = document.getElementById('toggleBtn');
+            
+            if (isIgnored) {
+                badge.textContent = '✅ STATUS: TRACKING BLOCKED';
+                badge.style.background = 'rgba(34, 197, 94, 0.15)';
+                badge.style.borderColor = 'rgba(34, 197, 94, 0.3)';
+                badge.style.color = '#4ade80';
+                desc.textContent = 'Your browser is completely ignored by GoatCounter. None of your pageviews or clicks will be counted.';
+                btn.textContent = 'Re-enable Tracking for this Browser';
+                btn.style.background = '#334155';
+            } else {
+                badge.textContent = '⚠️ STATUS: CURRENTLY TRACKED';
+                badge.style.background = 'rgba(239, 68, 68, 0.15)';
+                badge.style.borderColor = 'rgba(239, 68, 68, 0.3)';
+                badge.style.color = '#f87171';
+                desc.textContent = 'Your visits are currently being counted in GoatCounter analytics.';
+                btn.textContent = 'Block Tracking for this Browser (Recommended)';
+                btn.style.background = '#3b82f6';
+            }
+        }
+
+        function toggleIgnore() {
+            let isIgnored = localStorage.getItem('skip_analytics') === 'true';
+            if (isIgnored) {
+                localStorage.removeItem('skip_analytics');
+            } else {
+                localStorage.setItem('skip_analytics', 'true');
+            }
+            updateUI();
+        }
+
+        // Auto-ignore on load if query param present
+        if (window.location.search.includes('ignore=true') || window.location.search.includes('admin=true')) {
+            localStorage.setItem('skip_analytics', 'true');
+        }
+
+        updateUI();
+    </script>
+</body>
+</html>

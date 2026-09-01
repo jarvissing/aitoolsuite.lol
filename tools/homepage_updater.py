@@ -542,7 +542,16 @@ def update_homepage() -> str:
         }});
     </script>
 
-    <!-- GoatCounter Analytics -->
+    <!-- GoatCounter Analytics & Admin Ignore Filter -->
+    <script>
+        if (window.location.search.includes('admin=true') || window.location.search.includes('ignore=true')) {{
+            localStorage.setItem('skip_analytics', 'true');
+            alert('✅ Admin Mode Activated: Your browser is now permanently excluded from GoatCounter analytics.');
+        }}
+        if (localStorage.getItem('skip_analytics') === 'true' || location.hostname === 'localhost' || location.hostname === '127.0.0.1') {{
+            window.goatcounter = {{ no_onload: true }};
+        }}
+    </script>
     <script data-goatcounter="https://aitoolsuite.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>"""
