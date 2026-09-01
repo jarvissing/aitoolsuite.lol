@@ -121,6 +121,12 @@
         <priority>0.8</priority>
     </url>
     <url>
+        <loc>https://aitoolsuite.lol/llm-context-window-calculator.html</loc>
+        <lastmod>2026-09-01</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
         <loc>https://aitoolsuite.lol/lorem-ipsum-generator.html</loc>
         <lastmod>2026-09-01</lastmod>
         <changefreq>weekly</changefreq>
