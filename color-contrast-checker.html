@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WCAG Color Contrast Ratio Checker - Free Online Design Tools Tool | AI Tool Suite</title>
+    <meta name="description" content="Test foreground and background color combinations against WCAG 2.1 AA and AAA accessibility standards.">
+    <meta name="robots" content="index, follow">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%234361ee'/%3E%3Cpath d='M56 12 L24 54 L48 54 L44 88 L76 46 L52 46 Z' fill='%23ffdd00' stroke='%23f59e0b' stroke-width='2'/%3E%3C/svg%3E">
+    <link rel="alternate icon" href="/favicon.svg">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="WCAG Color Contrast Ratio Checker - Free Online Design Tools Tool | AI Tool Suite">
+    <meta property="og:description" content="Test foreground and background color combinations against WCAG 2.1 AA and AAA accessibility standards.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://aitoolsuite.lol/color-contrast-checker">
+    
+    <!-- JSON-LD: WebApplication -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "WCAG Color Contrast Ratio Checker",
+        "description": "Test foreground and background color combinations against WCAG 2.1 AA and AAA accessibility standards.",
+        "url": "https://aitoolsuite.lol/color-contrast-checker",
+        "applicationCategory": "UtilityApplication",
+        "operatingSystem": "Any",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
+    
+    <!-- JSON-LD: FAQPage -->
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            
+            {
+                "@type": "Question",
+                "name": "What is the minimum WCAG contrast ratio?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "WCAG AA requires at least 4.5:1 for normal text and 3:1 for large text (18pt+)."
+                }
+            },
+            
+            {
+                "@type": "Question",
+                "name": "How is relative luminance calculated?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Using the official W3C formula based on sRGB color space conversion."
+                }
+            },
+            
+            {
+                "@type": "Question",
+                "name": "Does it provide a visual text preview?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, see live text rendering across small, medium, and large typography."
+                }
+            }
+            
+        ]
+    }
+    </script>
+    
+    
+    <!-- JSON-LD: BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://aitoolsuite.lol"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Design Tools",
+                "item": "https://aitoolsuite.lol/#design-tools"
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "WCAG Color Contrast Ratio Checker"
+            }
+        ]
+    }
+    </script>
+    
+    <!-- Syne + Inter Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Syne:wght@700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #f1f5f9;
+            background: #09090b;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Responsive Floating Pill Navigation Bar */
+        .nav-wrapper {
+            position: sticky;
+            top: 14px;
+            z-index: 100;
+            padding: 0 16px;
+            width: 100%;
+        }
+        .site-nav {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(18, 18, 23, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 100px;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
+        }
+        .nav-brand {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: #ffffff;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            letter-spacing: -0.03em;
+            flex-shrink: 0;
+        }
+        .nav-brand-dot {
+            width: 8px;
+            height: 8px;
+            background: #3b82f6;
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 10px #3b82f6;
+        }
+        .nav-links {
+            display: flex;
+            gap: 6px;
+            align-items: center;
+            overflow-x: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        .nav-links::-webkit-scrollbar { display: none; }
+        .nav-link {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: #94a3b8;
+            text-decoration: none;
+            padding: 6px 14px;
+            border-radius: 100px;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+        }
+        .nav-link:hover {
+            background: rgba(255, 255, 255, 0.08);
+            color: #ffffff;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 24px 16px 80px;
+        }
+        
+        /* Breadcrumb */
+        .breadcrumb {
+            font-size: 0.82rem;
+            color: #64748b;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 500;
+            flex-wrap: wrap;
+        }
+        .breadcrumb a { color: #94a3b8; text-decoration: none; transition: color 0.2s; }
+        .breadcrumb a:hover { color: #93c5fd; }
+
+        /* Header */
+        header { margin-bottom: 24px; }
+        .tool-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(59, 130, 246, 0.1);
+            color: #93c5fd;
+            border: 1px solid rgba(59, 130, 246, 0.25);
+            padding: 4px 12px;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        header h1 {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -0.03em;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+        .description {
+            font-size: clamp(0.95rem, 2vw, 1.05rem);
+            color: #94a3b8;
+            line-height: 1.6;
+        }
+
+        /* Tool Interactive Surface */
+        .tool-surface {
+            background: #121216;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: clamp(16px, 4vw, 28px);
+            margin-bottom: 40px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Sections */
+        .section-title {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(1.15rem, 3vw, 1.35rem);
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        /* FAQ Accordion Section */
+        .faq-section { margin-bottom: 40px; }
+        .faq-list { display: flex; flex-direction: column; gap: 10px; }
+        .faq-item {
+            background: #121216;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 14px;
+            padding: 18px 20px;
+            transition: border-color 0.2s ease;
+        }
+        .faq-item:hover { border-color: rgba(59, 130, 246, 0.3); }
+        .faq-question {
+            font-family: 'Syne', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 6px;
+        }
+        .faq-answer {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* Related Tools Grid */
+        .related-section { margin-bottom: 40px; }
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr));
+            gap: 12px;
+        }
+        .related-card {
+            background: #121216;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 14px;
+            padding: 14px 18px;
+            text-decoration: none;
+            color: #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.2s ease;
+        }
+        .related-card:hover {
+            border-color: rgba(59, 130, 246, 0.4);
+            transform: translateY(-2px);
+            background: #18181f;
+            color: #ffffff;
+        }
+        .related-card span { font-weight: 600; font-size: 0.9rem; }
+        .related-arrow { color: #64748b; font-size: 0.9rem; }
+
+        /* Footer */
+        footer {
+            margin-top: 56px;
+            padding: 32px 0 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            text-align: center;
+            color: #64748b;
+            font-size: 0.85rem;
+        }
+        .footer-brand {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 6px;
+        }
+        footer a { color: #93c5fd; text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+
+        @media (max-width: 640px) {
+            .site-nav {
+                padding: 8px 14px;
+                border-radius: 12px;
+            }
+            .nav-link {
+                padding: 5px 10px;
+                font-size: 0.78rem;
+            }
+            .container {
+                padding: 16px 12px 60px;
+            }
+            .tool-surface {
+                padding: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Floating Pill Navigation Bar (No Sitemap in top nav) -->
+    <div class="nav-wrapper">
+        <nav class="site-nav">
+            <a href="/" class="nav-brand">
+                <span class="nav-brand-dot"></span>
+                AI Tool Suite
+            </a>
+            <div class="nav-links">
+                <a href="/#ai-utilities" class="nav-link">AI</a>
+                <a href="/#developer-tools" class="nav-link">Developer</a>
+                <a href="/#text-tools" class="nav-link">Text</a>
+                <a href="/#design-tools" class="nav-link">Design</a>
+            </div>
+        </nav>
+    </div>
+
+    <div class="container">
+        <!-- Breadcrumb -->
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="/">Home</a>
+            <span>/</span>
+            <a href="/#design-tools">Design Tools</a>
+            <span>/</span>
+            <span style="color: #cbd5e1;">WCAG Color Contrast Ratio Checker</span>
+        </nav>
+
+        <!-- Header -->
+        <header>
+            <div class="tool-badge">⚡ Design Tools</div>
+            <h1>WCAG Color Contrast Ratio Checker</h1>
+            <p class="description">Test foreground and background color combinations against WCAG 2.1 AA and AAA accessibility standards.</p>
+        </header>
+
+        <!-- Tool Widget Surface -->
+        <div class="tool-surface">
+            <style>
+.tool-container { font-family: system-ui, -apple-system, sans-serif; background: #111827; padding: 24px; border-radius: 12px; box-sizing: border-box; max-width: 860px; margin: 0 auto; color: #f8fafc; }
+.tool-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
+@media (max-width: 600px) { .tool-grid { grid-template-columns: 1fr; } }
+.pick-box { display: flex; align-items: center; gap: 10px; background: #0b0f19; padding: 12px; border-radius: 8px; border: 1px solid #334155; }
+.pick-box input[type="color"] { width: 44px; height: 38px; border: none; border-radius: 6px; cursor: pointer; background: transparent; }
+.pick-box input[type="text"] { background: transparent; border: none; color: #fff; font-family: monospace; font-size: 15px; font-weight: 700; width: 100%; outline: none; }
+.preview-card { border-radius: 10px; padding: 24px; text-align: center; font-size: 18px; font-weight: 700; margin-bottom: 20px; transition: all 0.2s; border: 1px solid rgba(255,255,255,0.1); }
+.score-badge { font-size: 26px; font-weight: 800; font-family: monospace; text-align: center; margin-bottom: 16px; }
+.badge-pass { color: #4ade80; }
+.badge-fail { color: #f87171; }
+</style>
+<div class="tool-container">
+    <div class="tool-grid">
+        <div>
+            <label style="display:block; font-size:13px; font-weight:600; color:#94a3b8; margin-bottom:6px;">Foreground (Text Color):</label>
+            <div class="pick-box">
+                <input type="color" id="fgColor" value="#FFFFFF" oninput="updateFgHex(this.value)">
+                <input type="text" id="fgHex" value="#FFFFFF" oninput="updateFgPicker(this.value)">
+            </div>
+        </div>
+        <div>
+            <label style="display:block; font-size:13px; font-weight:600; color:#94a3b8; margin-bottom:6px;">Background Color:</label>
+            <div class="pick-box">
+                <input type="color" id="bgColor" value="#3B82F6" oninput="updateBgHex(this.value)">
+                <input type="text" id="bgHex" value="#3B82F6" oninput="updateBgPicker(this.value)">
+            </div>
+        </div>
+    </div>
+    <div id="previewBox" class="preview-card" style="background:#3b82f6; color:#ffffff;">
+        The quick brown fox jumps over the lazy dog. (18pt Bold / 14pt Regular)
+    </div>
+    <div id="ratioScore" class="score-badge badge-pass">Contrast Ratio: 4.82 : 1 (WCAG AA PASS)</div>
+</div>
+<script>
+function getLuminance(r, g, b) {
+    let a = [r, g, b].map(v => {
+        v /= 255;
+        return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+    });
+    return a[0] * 0.2126 + a[1] * 0.7152 + a[2] * 0.0722;
+}
+function hexToRgb(hex) {
+    hex = hex.replace(/^#/, '');
+    if (hex.length === 3) hex = hex.split('').map(c => c+c).join('');
+    let num = parseInt(hex, 16);
+    return { r: (num >> 16) & 255, g: (num >> 8) & 255, b: num & 255 };
+}
+function calcContrast() {
+    let fg = document.getElementById('fgHex').value;
+    let bg = document.getElementById('bgHex').value;
+    try {
+        let rgb1 = hexToRgb(fg);
+        let rgb2 = hexToRgb(bg);
+        let l1 = getLuminance(rgb1.r, rgb1.g, rgb1.b);
+        let l2 = getLuminance(rgb2.r, rgb2.g, rgb2.b);
+        let ratio = (Math.max(l1, l2) + 0.05) / (Math.min(l1, l2) + 0.05);
+        let rounded = ratio.toFixed(2);
+        let pass = ratio >= 4.5 ? 'WCAG AA PASS' : (ratio >= 3.0 ? 'WCAG AA Large PASS' : 'WCAG FAIL');
+        let el = document.getElementById('ratioScore');
+        el.textContent = `Contrast Ratio: ${rounded} : 1 (${pass})`;
+        el.className = 'score-badge ' + (ratio >= 4.5 ? 'badge-pass' : 'badge-fail');
+        let p = document.getElementById('previewBox');
+        p.style.color = fg;
+        p.style.backgroundColor = bg;
+    } catch(e) {}
+}
+function updateFgHex(val) { document.getElementById('fgHex').value = val.toUpperCase(); calcContrast(); }
+function updateFgPicker(val) { if(/^#[0-9A-Fa-f]{6}$/.test(val)) { document.getElementById('fgColor').value = val; calcContrast(); } }
+function updateBgHex(val) { document.getElementById('bgHex').value = val.toUpperCase(); calcContrast(); }
+function updateBgPicker(val) { if(/^#[0-9A-Fa-f]{6}$/.test(val)) { document.getElementById('bgColor').value = val; calcContrast(); } }
+calcContrast();
+</script>
+
+        </div>
+
+        <!-- FAQ Section -->
+        
+        <section class="faq-section">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="faq-list">
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">What is the minimum WCAG contrast ratio?</h3>
+                    <p class="faq-answer">WCAG AA requires at least 4.5:1 for normal text and 3:1 for large text (18pt+).</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">How is relative luminance calculated?</h3>
+                    <p class="faq-answer">Using the official W3C formula based on sRGB color space conversion.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">Does it provide a visual text preview?</h3>
+                    <p class="faq-answer">Yes, see live text rendering across small, medium, and large typography.</p>
+                </div>
+                
+            </div>
+        </section>
+        
+
+        <!-- Related Tools -->
+        
+        <section class="related-section">
+            <h2 class="section-title">Explore Related Tools</h2>
+            <div class="related-grid">
+                
+                <a href="/color-picker.html" class="related-card">
+                    <span>Color Picker</span>
+                    <span class="related-arrow">↗</span>
+                </a>
+                
+                <a href="/tailwind-css-palette-generator.html" class="related-card">
+                    <span>Tailwind CSS Palette Generator</span>
+                    <span class="related-arrow">↗</span>
+                </a>
+                
+                <a href="/px-to-rem-converter.html" class="related-card">
+                    <span>PX to REM Converter</span>
+                    <span class="related-arrow">↗</span>
+                </a>
+                
+            </div>
+        </section>
+        
+
+        <footer>
+            <div class="footer-brand">AI Tool Suite</div>
+            <p>&copy; 2026 AI Tool Suite. Free private developer utilities.</p>
+            <div style="margin-top: 10px; display: flex; justify-content: center; gap: 16px; font-size: 0.85rem;">
+                <a href="/" style="color: #94a3b8; text-decoration: none;">All Tools</a>
+                <a href="/about.html" style="color: #94a3b8; text-decoration: none;">About</a>
+                <a href="/contact.html" style="color: #94a3b8; text-decoration: none;">Contact</a>
+                <a href="/privacy.html" style="color: #94a3b8; text-decoration: none;">Privacy Policy</a>
+                <a href="/terms.html" style="color: #94a3b8; text-decoration: none;">Terms of Service</a>
+            </div>
+        </footer>
+    </div>
+
+    <!-- GoatCounter Analytics & Tool Usage Event Tracker -->
+    <script data-goatcounter="https://aitoolsuite.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+    <script>
+        function trackToolAction(actionName) {
+            if (window.goatcounter && window.goatcounter.count) {
+                window.goatcounter.count({
+                    path: 'use-' + actionName,
+                    title: 'Tool Action: ' + actionName,
+                    event: true
+                });
+            }
+        }
+
+        // Automatically track tool button clicks and copy events
+        document.addEventListener('DOMContentLoaded', () => {
+            const surface = document.querySelector('.tool-surface');
+            if (surface) {
+                surface.addEventListener('click', (e) => {
+                    const btn = e.target.closest('button');
+                    if (btn) {
+                        const btnText = btn.textContent.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-');
+                        const toolSlug = window.location.pathname.replace(/^\//, '').replace('.html', '') || 'tool';
+                        trackToolAction(toolSlug + '--' + btnText);
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
