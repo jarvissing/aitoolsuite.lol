@@ -1,0 +1,67 @@
+<style>
+.tool-container { font-family: system-ui, -apple-system, sans-serif; background: #111827; padding: 24px; border-radius: 12px; box-sizing: border-box; max-width: 860px; margin: 0 auto; color: #f8fafc; }
+.controls-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 20px; }
+@media (max-width: 600px) { .controls-grid { grid-template-columns: 1fr; } }
+.field label { display: flex; justify-content: space-between; font-size: 13px; font-weight: 600; color: #94a3b8; margin-bottom: 6px; }
+.field input[type="range"] { width: 100%; accent-color: #3b82f6; }
+.preview-box { background: #0b0f19; border-radius: 12px; height: 180px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
+.shadow-target { width: 130px; height: 90px; background: #1e293b; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 700; color: #38bdf8; font-size: 14px; }
+.output-box { width: 100%; height: 80px; background: #0b0f19; color: #38bdf8; border: 1px solid #334155; border-radius: 8px; padding: 12px; box-sizing: border-box; font-family: monospace; font-size: 13px; resize: vertical; margin-bottom: 10px; }
+.btn-copy { background: #3b82f6; color: #fff; border: none; padding: 10px 18px; border-radius: 6px; cursor: pointer; font-size: 13px; font-weight: 600; }
+</style>
+<div class="tool-container">
+    <div class="preview-box">
+        <div id="targetBox" class="shadow-target">Preview Box</div>
+    </div>
+    <div class="controls-grid">
+        <div class="field">
+            <label><span>Horizontal Offset (X):</span><span id="valX">0px</span></label>
+            <input type="range" id="rangeX" min="-50" max="50" value="0" oninput="updateShadow()">
+        </div>
+        <div class="field">
+            <label><span>Vertical Offset (Y):</span><span id="valY">10px</span></label>
+            <input type="range" id="rangeY" min="-50" max="50" value="10" oninput="updateShadow()">
+        </div>
+        <div class="field">
+            <label><span>Blur Radius:</span><span id="valBlur">25px</span></label>
+            <input type="range" id="rangeBlur" min="0" max="100" value="25" oninput="updateShadow()">
+        </div>
+        <div class="field">
+            <label><span>Spread Radius:</span><span id="valSpread">-5px</span></label>
+            <input type="range" id="rangeSpread" min="-20" max="50" value="-5" oninput="updateShadow()">
+        </div>
+    </div>
+    <label style="display:block; font-size:13px; font-weight:600; color:#94a3b8; margin-bottom:6px;">CSS box-shadow Code:</label>
+    <textarea id="shadowCode" class="output-box" readonly></textarea>
+    <button class="btn-copy" onclick="copyShadowCss(this)">Copy box-shadow CSS</button>
+</div>
+<script>
+function updateShadow() {
+    let x = document.getElementById('rangeX').value;
+    let y = document.getElementById('rangeY').value;
+    let b = document.getElementById('rangeBlur').value;
+    let s = document.getElementById('rangeSpread').value;
+    
+    document.getElementById('valX').textContent = x + 'px';
+    document.getElementById('valY').textContent = y + 'px';
+    document.getElementById('valBlur').textContent = b + 'px';
+    document.getElementById('valSpread').textContent = s + 'px';
+    
+    let shadowVal = `${x}px ${y}px ${b}px ${s}px rgba(0, 0, 0, 0.6)`;
+    let glowVal = `${x}px ${y}px ${b}px ${s}px rgba(59, 130, 246, 0.3)`;
+    
+    document.getElementById('targetBox').style.boxShadow = shadowVal + ', ' + glowVal;
+    let css = `box-shadow: ${shadowVal},\n            ${glowVal};`;
+    document.getElementById('shadowCode').value = css;
+}
+function copyShadowCss(btn) {
+    let t = document.getElementById('shadowCode').value;
+    if (!t) return;
+    navigator.clipboard.writeText(t).then(() => {
+        let orig = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(() => btn.textContent = orig, 1800);
+    });
+}
+updateShadow();
+</script>

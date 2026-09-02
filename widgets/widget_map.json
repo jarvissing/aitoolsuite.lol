@@ -61,5 +61,8 @@
   "json-to-env": "json-to-env.html",
   "css-grid": "css-grid.html",
   "svg-to-png": "svg-to-png.html",
-  "md-table-to-json": "md-table-to-json.html"
+  "md-table-to-json": "md-table-to-json.html",
+  "json-to-yaml": "json-to-yaml.html",
+  "box-shadow": "box-shadow.html",
+  "url-parser": "url-parser.html"
 }

@@ -1,0 +1,51 @@
+<style>
+.tool-container { font-family: system-ui, -apple-system, sans-serif; background: #111827; padding: 24px; border-radius: 12px; box-sizing: border-box; max-width: 860px; margin: 0 auto; color: #f8fafc; }
+.url-input-box { width: 100%; background: #0b0f19; color: #f8fafc; border: 1px solid #334155; border-radius: 8px; padding: 12px 16px; font-family: monospace; font-size: 14px; margin-bottom: 20px; box-sizing: border-box; }
+.parsed-table { width: 100%; border-collapse: collapse; font-family: monospace; font-size: 13px; margin-bottom: 16px; }
+.parsed-table th, .parsed-table td { padding: 10px 14px; text-align: left; border-bottom: 1px solid #334155; }
+.parsed-table th { background: #0b0f19; color: #94a3b8; font-weight: 600; width: 30%; }
+.parsed-table td { color: #38bdf8; word-break: break-all; }
+</style>
+<div class="tool-container">
+    <label style="display:block; font-size:13px; font-weight:600; color:#94a3b8; margin-bottom:6px;">Paste Complete URL:</label>
+    <input type="text" id="urlInput" class="url-input-box" value="https://api.example.com:8080/v1/search?query=developer+tools&category=ai&sort=desc#results" oninput="parseUrl()">
+    
+    <table class="parsed-table">
+        <tbody>
+            <tr><th>Protocol:</th><td id="resProtocol">https:</td></tr>
+            <tr><th>Hostname / Domain:</th><td id="resHost">api.example.com</td></tr>
+            <tr><th>Port:</th><td id="resPort">8080</td></tr>
+            <tr><th>Pathname:</th><td id="resPath">/v1/search</td></tr>
+            <tr><th>Query Parameters:</th><td id="resQuery">query: developer tools, category: ai, sort: desc</td></tr>
+            <tr><th>Hash / Fragment:</th><td id="resHash">#results</td></tr>
+        </tbody>
+    </table>
+</div>
+<script>
+function parseUrl() {
+    let raw = document.getElementById('urlInput').value.trim();
+    if (!raw) return;
+    try {
+        let u = new URL(raw);
+        document.getElementById('resProtocol').textContent = u.protocol;
+        document.getElementById('resHost').textContent = u.hostname;
+        document.getElementById('resPort').textContent = u.port || '(Default 80/443)';
+        document.getElementById('resPath').textContent = u.pathname;
+        
+        let params = [];
+        u.searchParams.forEach((v, k) => {
+            params.push(`${k}: "${v}"`);
+        });
+        document.getElementById('resQuery').textContent = params.length > 0 ? params.join(' | ') : '(None)';
+        document.getElementById('resHash').textContent = u.hash || '(None)';
+    } catch(e) {
+        document.getElementById('resProtocol').textContent = 'Invalid URL format';
+        document.getElementById('resHost').textContent = '-';
+        document.getElementById('resPort').textContent = '-';
+        document.getElementById('resPath').textContent = '-';
+        document.getElementById('resQuery').textContent = '-';
+        document.getElementById('resHash').textContent = '-';
+    }
+}
+parseUrl();
+</script>

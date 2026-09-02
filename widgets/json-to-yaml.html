@@ -1,0 +1,77 @@
+<style>
+.tool-container { font-family: system-ui, -apple-system, sans-serif; background: #111827; padding: 24px; border-radius: 12px; box-sizing: border-box; max-width: 900px; margin: 0 auto; color: #f8fafc; }
+.tool-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+@media (max-width: 640px) { .tool-grid { grid-template-columns: 1fr; } }
+.col label { display: block; font-size: 13px; font-weight: 600; color: #94a3b8; margin-bottom: 6px; }
+.col textarea { width: 100%; height: 220px; background: #0b0f19; color: #f8fafc; border: 1px solid #334155; border-radius: 8px; padding: 12px; box-sizing: border-box; font-family: monospace; font-size: 13px; resize: vertical; }
+.btn-row { display: flex; gap: 10px; }
+.btn-act { background: #3b82f6; color: #fff; border: none; padding: 10px 18px; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 13px; }
+.btn-copy { background: #1e293b; color: #38bdf8; border: 1px solid #334155; padding: 10px 16px; border-radius: 6px; cursor: pointer; font-size: 13px; font-weight: 600; }
+</style>
+<div class="tool-container">
+    <div class="tool-grid">
+        <div class="col">
+            <label>JSON Input:</label>
+            <textarea id="jsonYamlIn" placeholder="{&#10;  &quot;name&quot;: &quot;myapp&quot;,&#10;  &quot;version&quot;: &quot;1.0.0&quot;,&#10;  &quot;services&quot;: [&#10;    {&quot;id&quot;: &quot;web&quot;, &quot;port&quot;: 8080}&#10;  ]&#10;}" oninput="convertJsonToYaml()"></textarea>
+        </div>
+        <div class="col">
+            <label>YAML Output:</label>
+            <textarea id="yamlJsonOut" readonly placeholder="YAML output will appear here..."></textarea>
+        </div>
+    </div>
+    <div class="btn-row">
+        <button class="btn-act" onclick="convertJsonToYaml()">Convert to YAML</button>
+        <button class="btn-copy" onclick="copyYamlText(this)">Copy YAML</button>
+    </div>
+</div>
+<script>
+function toYaml(obj, indent = 0) {
+    let spaces = ' '.repeat(indent);
+    let yaml = '';
+    if (Array.isArray(obj)) {
+        for (let item of obj) {
+            if (typeof item === 'object' && item !== null) {
+                let inner = toYaml(item, indent + 2).trimStart();
+                yaml += `${spaces}- ${inner}`;
+            } else {
+                yaml += `${spaces}- ${item}\n`;
+            }
+        }
+    } else if (typeof obj === 'object' && obj !== null) {
+        for (let [k, v] of Object.entries(obj)) {
+            if (typeof v === 'object' && v !== null) {
+                yaml += `${spaces}${k}:\n${toYaml(v, indent + 2)}`;
+            } else {
+                let strVal = typeof v === 'string' && (v.includes(':') || v.includes('\n')) ? `"${v}"` : v;
+                yaml += `${spaces}${k}: ${strVal}\n`;
+            }
+        }
+    } else {
+        yaml += `${spaces}${obj}\n`;
+    }
+    return yaml;
+}
+function convertJsonToYaml() {
+    let raw = document.getElementById('jsonYamlIn').value.trim();
+    if (!raw) {
+        document.getElementById('yamlJsonOut').value = '';
+        return;
+    }
+    try {
+        let parsed = JSON.parse(raw);
+        document.getElementById('yamlJsonOut').value = toYaml(parsed).trim();
+    } catch(e) {
+        document.getElementById('yamlJsonOut').value = 'Invalid JSON: ' + e.message;
+    }
+}
+function copyYamlText(btn) {
+    let t = document.getElementById('yamlJsonOut').value;
+    if (!t) return;
+    navigator.clipboard.writeText(t).then(() => {
+        let orig = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(() => btn.textContent = orig, 1800);
+    });
+}
+convertJsonToYaml();
+</script>
