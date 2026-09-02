@@ -79,6 +79,12 @@
         <priority>0.8</priority>
     </url>
     <url>
+        <loc>https://aitoolsuite.lol/css-grid-generator.html</loc>
+        <lastmod>2026-09-02</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
         <loc>https://aitoolsuite.lol/css-minifier.html</loc>
         <lastmod>2026-09-02</lastmod>
         <changefreq>weekly</changefreq>
@@ -146,6 +152,12 @@
     </url>
     <url>
         <loc>https://aitoolsuite.lol/json-to-csv-converter.html</loc>
+        <lastmod>2026-09-02</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://aitoolsuite.lol/json-to-env-converter.html</loc>
         <lastmod>2026-09-02</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>

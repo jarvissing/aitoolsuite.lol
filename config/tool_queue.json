@@ -1,45 +1,5 @@
 [
   {
-    "keyword": "embedding cost calculator",
-    "tool_name": "AI Embedding & Vector Storage Calculator",
-    "description": "Calculate vector embedding dimensions, storage RAM requirements, and API generation costs for OpenAI, Cohere, and Gemini models.",
-    "category": "AI Utilities",
-    "tool_type": "embedding-cost",
-    "search_demand": 92,
-    "faq_items": "What dimensions are included?:::Supports 1536 (text-embedding-3-small), 3072 (text-embedding-3-large), 768 (Gemini), and 1024 (Cohere).|||How is vector storage estimated?:::Calculates total megabytes/gigabytes based on 4 bytes per float32 vector element.|||Can I calculate batch datasets?:::Yes, enter your total document/chunk count to see total vector DB storage requirements.",
-    "related_tools": "AI Prompt Cost Calculator,JSON Formatter,UUID Generator",
-    "status": "published",
-    "priority_score": 93,
-    "discovered_at": "2026-09-01T07:50:00.000000",
-    "published_at": "2026-09-02T13:21:27.946983"
-  },
-  {
-    "keyword": "env to json converter",
-    "tool_name": ".env to JSON Environment Converter",
-    "description": "Convert .env key-value variables into formatted JSON configuration objects and JavaScript process.env definitions.",
-    "category": "Developer Tools",
-    "tool_type": "env-to-json",
-    "search_demand": 91,
-    "faq_items": "How does it handle quoted values?:::Strips single and double quotes and trims surrounding whitespace.|||Can I convert back from JSON to .env?:::Yes, use our companion JSON to .env converter.|||Are API keys safe?:::Yes, conversion happens entirely on your machine with zero network transmission.",
-    "related_tools": "JSON to .env Converter,YAML to JSON Converter,Base64 Encoder",
-    "status": "pending",
-    "priority_score": 92,
-    "discovered_at": "2026-09-01T07:50:00.000000"
-  },
-  {
-    "keyword": "json to env converter",
-    "tool_name": "JSON to .env Configuration Converter",
-    "description": "Convert JSON configuration objects into clean .env environment variable files with proper key escaping.",
-    "category": "Developer Tools",
-    "tool_type": "json-to-env",
-    "search_demand": 90,
-    "faq_items": "How are spaces handled?:::Values with spaces are automatically wrapped in double quotes.|||Does it handle nested JSON?:::Nested objects are converted to stringified JSON values.|||Is it browser-safe?:::All parsing runs locally in client-side JavaScript.",
-    "related_tools": ".env to JSON Environment Converter,JSON Formatter,YAML to JSON Converter",
-    "status": "pending",
-    "priority_score": 91,
-    "discovered_at": "2026-09-01T07:50:00.000000"
-  },
-  {
     "keyword": "css grid generator",
     "tool_name": "CSS Grid Layout & Code Generator",
     "description": "Visual interactive CSS Grid generator. Set column counts, row counts, and gaps with instant CSS code preview.",
@@ -48,9 +8,10 @@
     "search_demand": 89,
     "faq_items": "Can I customize gaps?:::Yes, set custom pixel gaps between grid tracks.|||Does it generate standard CSS?:::Generates modern 'display: grid' and 'grid-template-columns: repeat()' rules.|||Can I copy with one click?:::Yes, click Copy CSS Code to paste directly into your stylesheet.",
     "related_tools": "Tailwind CSS Palette Generator,PX to REM Converter,Aspect Ratio Calculator",
-    "status": "pending",
+    "status": "published",
     "priority_score": 90,
-    "discovered_at": "2026-09-01T07:50:00.000000"
+    "discovered_at": "2026-09-01T07:50:00.000000",
+    "published_at": "2026-09-02T02:27:21.256521"
   },
   {
     "keyword": "svg to png converter",
@@ -79,6 +40,48 @@
     "discovered_at": "2026-09-01T07:50:00.000000"
   },
   {
+    "keyword": "json to env converter",
+    "tool_name": "JSON to .env Configuration Converter",
+    "description": "Convert JSON configuration objects into clean .env environment variable files with proper key escaping.",
+    "category": "Developer Tools",
+    "tool_type": "json-to-env",
+    "search_demand": 90,
+    "faq_items": "How are spaces handled?:::Values with spaces are automatically wrapped in double quotes.|||Does it handle nested JSON?:::Nested objects are converted to stringified JSON values.|||Is it browser-safe?:::All parsing runs locally in client-side JavaScript.",
+    "related_tools": ".env to JSON Environment Converter,JSON Formatter,YAML to JSON Converter",
+    "status": "published",
+    "priority_score": 91,
+    "discovered_at": "2026-09-01T07:50:00.000000",
+    "published_at": "2026-09-02T02:27:18.646378"
+  },
+  {
+    "keyword": "env to json converter",
+    "tool_name": ".env to JSON Environment Converter",
+    "description": "Convert .env key-value variables into formatted JSON configuration objects and JavaScript process.env definitions.",
+    "category": "Developer Tools",
+    "tool_type": "env-to-json",
+    "search_demand": 91,
+    "faq_items": "How does it handle quoted values?:::Strips single and double quotes and trims surrounding whitespace.|||Can I convert back from JSON to .env?:::Yes, use our companion JSON to .env converter.|||Are API keys safe?:::Yes, conversion happens entirely on your machine with zero network transmission.",
+    "related_tools": "JSON to .env Converter,YAML to JSON Converter,Base64 Encoder",
+    "status": "published",
+    "priority_score": 92,
+    "discovered_at": "2026-09-01T07:50:00.000000",
+    "published_at": "2026-09-02T02:27:16.038979"
+  },
+  {
+    "keyword": "embedding cost calculator",
+    "tool_name": "AI Embedding & Vector Storage Calculator",
+    "description": "Calculate vector embedding dimensions, storage RAM requirements, and API generation costs for OpenAI, Cohere, and Gemini models.",
+    "category": "AI Utilities",
+    "tool_type": "embedding-cost",
+    "search_demand": 92,
+    "faq_items": "What dimensions are included?:::Supports 1536 (text-embedding-3-small), 3072 (text-embedding-3-large), 768 (Gemini), and 1024 (Cohere).|||How is vector storage estimated?:::Calculates total megabytes/gigabytes based on 4 bytes per float32 vector element.|||Can I calculate batch datasets?:::Yes, enter your total document/chunk count to see total vector DB storage requirements.",
+    "related_tools": "AI Prompt Cost Calculator,JSON Formatter,UUID Generator",
+    "status": "published",
+    "priority_score": 93,
+    "discovered_at": "2026-09-01T07:50:00.000000",
+    "published_at": "2026-09-02T02:27:13.490439"
+  },
+  {
     "keyword": "llm context window calculator",
     "tool_name": "LLM Context Window & Memory Calculator",
     "description": "Calculate token usage, remaining context space (128k, 200k, 2M), and KV cache memory requirements across AI models.",
@@ -90,6 +93,6 @@
     "status": "published",
     "priority_score": 95,
     "discovered_at": "2026-09-01T07:50:00.000000",
-    "published_at": "2026-09-01T13:59:38.757117"
+    "published_at": "2026-09-02T02:27:07.097076"
   }
 ]

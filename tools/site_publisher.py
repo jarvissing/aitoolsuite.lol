@@ -42,7 +42,11 @@ def build_tool_page(keyword: str, tool_name: str, description: str, category: st
 
     # Load the correct widget HTML based on tool_type
     widget_html = ""
-    widgets_dir = PAGES_DIR.parent.parent / "widgets"
+    widgets_dir = Path("widgets")
+    if not widgets_dir.exists() and (PAGES_DIR / "widgets").exists():
+        widgets_dir = PAGES_DIR / "widgets"
+    elif not widgets_dir.exists() and (PAGES_DIR.parent.parent / "widgets").exists():
+        widgets_dir = PAGES_DIR.parent.parent / "widgets"
     widget_map_path = widgets_dir / "widget_map.json"
 
     if tool_type:
