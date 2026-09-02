@@ -1,19 +1,5 @@
 [
   {
-    "keyword": "llm context window calculator",
-    "tool_name": "LLM Context Window & Memory Calculator",
-    "description": "Calculate token usage, remaining context space (128k, 200k, 2M), and KV cache memory requirements across AI models.",
-    "category": "AI Utilities",
-    "tool_type": "llm-context",
-    "search_demand": 94,
-    "faq_items": "Which models are supported?:::Includes context limits for GPT-4o (128k), Claude 3.5 Sonnet (200k), Gemini 1.5 Pro (2M), and DeepSeek-V3.|||How does it calculate memory?:::Estimates KV-cache RAM requirements based on precision (FP16, INT8, INT4).|||Is it browser-safe?:::All calculations run locally in your browser with zero server requests.",
-    "related_tools": "AI Prompt Token Counter,AI Prompt Cost Calculator,OpenAI Structured Outputs JSON Schema Generator",
-    "status": "published",
-    "priority_score": 95,
-    "discovered_at": "2026-09-01T07:50:00.000000",
-    "published_at": "2026-09-01T13:59:38.757117"
-  },
-  {
     "keyword": "embedding cost calculator",
     "tool_name": "AI Embedding & Vector Storage Calculator",
     "description": "Calculate vector embedding dimensions, storage RAM requirements, and API generation costs for OpenAI, Cohere, and Gemini models.",
@@ -22,9 +8,10 @@
     "search_demand": 92,
     "faq_items": "What dimensions are included?:::Supports 1536 (text-embedding-3-small), 3072 (text-embedding-3-large), 768 (Gemini), and 1024 (Cohere).|||How is vector storage estimated?:::Calculates total megabytes/gigabytes based on 4 bytes per float32 vector element.|||Can I calculate batch datasets?:::Yes, enter your total document/chunk count to see total vector DB storage requirements.",
     "related_tools": "AI Prompt Cost Calculator,JSON Formatter,UUID Generator",
-    "status": "pending",
+    "status": "published",
     "priority_score": 93,
-    "discovered_at": "2026-09-01T07:50:00.000000"
+    "discovered_at": "2026-09-01T07:50:00.000000",
+    "published_at": "2026-09-02T13:21:27.946983"
   },
   {
     "keyword": "env to json converter",
@@ -90,5 +77,19 @@
     "status": "pending",
     "priority_score": 88,
     "discovered_at": "2026-09-01T07:50:00.000000"
+  },
+  {
+    "keyword": "llm context window calculator",
+    "tool_name": "LLM Context Window & Memory Calculator",
+    "description": "Calculate token usage, remaining context space (128k, 200k, 2M), and KV cache memory requirements across AI models.",
+    "category": "AI Utilities",
+    "tool_type": "llm-context",
+    "search_demand": 94,
+    "faq_items": "Which models are supported?:::Includes context limits for GPT-4o (128k), Claude 3.5 Sonnet (200k), Gemini 1.5 Pro (2M), and DeepSeek-V3.|||How does it calculate memory?:::Estimates KV-cache RAM requirements based on precision (FP16, INT8, INT4).|||Is it browser-safe?:::All calculations run locally in your browser with zero server requests.",
+    "related_tools": "AI Prompt Token Counter,AI Prompt Cost Calculator,OpenAI Structured Outputs JSON Schema Generator",
+    "status": "published",
+    "priority_score": 95,
+    "discovered_at": "2026-09-01T07:50:00.000000",
+    "published_at": "2026-09-01T13:59:38.757117"
   }
 ]

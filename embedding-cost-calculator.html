@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Embedding & Vector Dimension Calculator - Free Online AI Utilities Tool | AI Tool Suite</title>
-    <meta name="description" content="Calculate vector embedding dimensions, storage RAM requirements, and API costs for OpenAI, Cohere, and HuggingFace models.">
+    <title>AI Embedding & Vector Storage Calculator - Free Online AI Utilities Tool | AI Tool Suite</title>
+    <meta name="description" content="Calculate vector embedding dimensions, storage RAM requirements, and API generation costs for OpenAI, Cohere, and Gemini models.">
     <meta name="robots" content="index, follow">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%234361ee'/%3E%3Cpath d='M56 12 L24 54 L48 54 L44 88 L76 46 L52 46 Z' fill='%23ffdd00' stroke='%23f59e0b' stroke-width='2'/%3E%3C/svg%3E">
     <link rel="alternate icon" href="/favicon.svg">
     
     <!-- Open Graph -->
-    <meta property="og:title" content="AI Embedding & Vector Dimension Calculator - Free Online AI Utilities Tool | AI Tool Suite">
-    <meta property="og:description" content="Calculate vector embedding dimensions, storage RAM requirements, and API costs for OpenAI, Cohere, and HuggingFace models.">
+    <meta property="og:title" content="AI Embedding & Vector Storage Calculator - Free Online AI Utilities Tool | AI Tool Suite">
+    <meta property="og:description" content="Calculate vector embedding dimensions, storage RAM requirements, and API generation costs for OpenAI, Cohere, and Gemini models.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://aitoolsuite.lol/embedding-cost-calculator">
     
@@ -20,8 +20,8 @@
     {
         "@context": "https://schema.org",
         "@type": "WebApplication",
-        "name": "AI Embedding & Vector Dimension Calculator",
-        "description": "Calculate vector embedding dimensions, storage RAM requirements, and API costs for OpenAI, Cohere, and HuggingFace models.",
+        "name": "AI Embedding & Vector Storage Calculator",
+        "description": "Calculate vector embedding dimensions, storage RAM requirements, and API generation costs for OpenAI, Cohere, and Gemini models.",
         "url": "https://aitoolsuite.lol/embedding-cost-calculator",
         "applicationCategory": "UtilityApplication",
         "operatingSystem": "Any",
@@ -46,7 +46,7 @@
                 "name": "What dimensions are included?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Supports 1536 (text-embedding-3-small), 3072 (text-embedding-3-large), 768 (nomad), and 1024 (Cohere)."
+                    "text": "Supports 1536 (text-embedding-3-small), 3072 (text-embedding-3-large), 768 (Gemini), and 1024 (Cohere)."
                 }
             },
             
@@ -55,7 +55,7 @@
                 "name": "How is vector storage estimated?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Calculates total gigabytes based on 4 bytes per float32 vector element."
+                    "text": "Calculates total megabytes/gigabytes based on 4 bytes per float32 vector element."
                 }
             },
             
@@ -64,7 +64,7 @@
                 "name": "Can I calculate batch datasets?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Yes, enter total document count to see total vector DB storage requirements."
+                    "text": "Yes, enter your total document/chunk count to see total vector DB storage requirements."
                 }
             }
             
@@ -94,7 +94,7 @@
             {
                 "@type": "ListItem",
                 "position": 3,
-                "name": "AI Embedding & Vector Dimension Calculator"
+                "name": "AI Embedding & Vector Storage Calculator"
             }
         ]
     }
@@ -369,51 +369,19 @@
             <span>/</span>
             <a href="/#ai-utilities">AI Utilities</a>
             <span>/</span>
-            <span style="color: #cbd5e1;">AI Embedding & Vector Dimension Calculator</span>
+            <span style="color: #cbd5e1;">AI Embedding & Vector Storage Calculator</span>
         </nav>
 
         <!-- Header -->
         <header>
             <div class="tool-badge">⚡ AI Utilities</div>
-            <h1>AI Embedding & Vector Dimension Calculator</h1>
-            <p class="description">Calculate vector embedding dimensions, storage RAM requirements, and API costs for OpenAI, Cohere, and HuggingFace models.</p>
+            <h1>AI Embedding & Vector Storage Calculator</h1>
+            <p class="description">Calculate vector embedding dimensions, storage RAM requirements, and API generation costs for OpenAI, Cohere, and Gemini models.</p>
         </header>
 
         <!-- Tool Widget Surface -->
         <div class="tool-surface">
-            <style>
-.tool-container { font-family: system-ui, -apple-system, sans-serif; background: #111827; padding: 20px; border-radius: 12px; box-sizing: border-box; max-width: 800px; margin: 0 auto; color: #f8fafc; }
-.tool-container textarea { width: 100%; background: #0b0f19; color: #f8fafc; border: 1px solid #334155; border-radius: 8px; padding: 12px; box-sizing: border-box; font-family: monospace; font-size: 14px; margin-bottom: 20px; min-height: 180px; resize: vertical; }
-.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; }
-.stat-card { background: #0b0f19; border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 10px; padding: 16px; text-align: center; }
-.stat-val { font-size: 24px; font-weight: 700; color: #818cf8; margin-bottom: 4px; }
-.stat-lbl { font-size: 11px; color: #94a3b8; text-transform: uppercase; font-weight: 600; letter-spacing: 0.04em; }
-</style>
-<div class="tool-container">
-    <textarea id="tc-input" placeholder="Paste your AI prompt, system instructions, or text here..." oninput="calculateTokens()"></textarea>
-    <div class="stats-grid">
-        <div class="stat-card"><div class="stat-val" id="tc-tokens">0</div><div class="stat-lbl">Estimated Tokens</div></div>
-        <div class="stat-card"><div class="stat-val" id="tc-words">0</div><div class="stat-lbl">Words</div></div>
-        <div class="stat-card"><div class="stat-val" id="tc-chars">0</div><div class="stat-lbl">Characters</div></div>
-        <div class="stat-card"><div class="stat-val" id="tc-cost">$0.000</div><div class="stat-lbl">Est. Cost (GPT-4o)</div></div>
-    </div>
-</div>
-<script>
-function calculateTokens() {
-    let text = document.getElementById('tc-input').value;
-    let chars = text.length;
-    let words = text.trim() ? text.trim().split(/\s+/).length : 0;
-    // Standard rule of thumb: ~4 characters per token in English
-    let tokens = Math.ceil(chars / 3.8);
-    let cost = ((tokens / 1000000) * 5.00).toFixed(4); // ~$5 per 1M input tokens
-
-    document.getElementById('tc-tokens').textContent = chars > 0 ? tokens : 0;
-    document.getElementById('tc-words').textContent = words;
-    document.getElementById('tc-chars').textContent = chars;
-    document.getElementById('tc-cost').textContent = chars > 0 ? '$' + cost : '$0.0000';
-}
-</script>
-
+            <div class="tool-widget-placeholder"><p>🔧 Interactive tool coming soon.</p></div>
         </div>
 
         <!-- FAQ Section -->
@@ -424,17 +392,17 @@ function calculateTokens() {
                 
                 <div class="faq-item">
                     <h3 class="faq-question">What dimensions are included?</h3>
-                    <p class="faq-answer">Supports 1536 (text-embedding-3-small), 3072 (text-embedding-3-large), 768 (nomad), and 1024 (Cohere).</p>
+                    <p class="faq-answer">Supports 1536 (text-embedding-3-small), 3072 (text-embedding-3-large), 768 (Gemini), and 1024 (Cohere).</p>
                 </div>
                 
                 <div class="faq-item">
                     <h3 class="faq-question">How is vector storage estimated?</h3>
-                    <p class="faq-answer">Calculates total gigabytes based on 4 bytes per float32 vector element.</p>
+                    <p class="faq-answer">Calculates total megabytes/gigabytes based on 4 bytes per float32 vector element.</p>
                 </div>
                 
                 <div class="faq-item">
                     <h3 class="faq-question">Can I calculate batch datasets?</h3>
-                    <p class="faq-answer">Yes, enter total document count to see total vector DB storage requirements.</p>
+                    <p class="faq-answer">Yes, enter your total document/chunk count to see total vector DB storage requirements.</p>
                 </div>
                 
             </div>
@@ -479,7 +447,16 @@ function calculateTokens() {
         </footer>
     </div>
 
-    <!-- GoatCounter Analytics & Tool Usage Event Tracker -->
+    <!-- GoatCounter Analytics & Admin Ignore Filter -->
+    <script>
+        if (window.location.search.includes('admin=true') || window.location.search.includes('ignore=true')) {
+            localStorage.setItem('skip_analytics', 'true');
+            alert('✅ Admin Mode Activated: Your browser is now permanently excluded from GoatCounter analytics.');
+        }
+        if (localStorage.getItem('skip_analytics') === 'true' || location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
+            window.goatcounter = { no_onload: true };
+        }
+    </script>
     <script data-goatcounter="https://aitoolsuite.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
     <script>
         function trackToolAction(actionName) {
