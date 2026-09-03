@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Parser & Query Parameter Extractor - Free Online Developer Tools Tool | AI Tool Suite</title>
+    <meta name="description" content="Parse complex URLs into protocol, hostname, port, pathname, search query parameters, and hash fragments instantly.">
+    <meta name="robots" content="index, follow">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%234361ee'/%3E%3Cpath d='M56 12 L24 54 L48 54 L44 88 L76 46 L52 46 Z' fill='%23ffdd00' stroke='%23f59e0b' stroke-width='2'/%3E%3C/svg%3E">
+    <link rel="alternate icon" href="/favicon.svg">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="URL Parser & Query Parameter Extractor - Free Online Developer Tools Tool | AI Tool Suite">
+    <meta property="og:description" content="Parse complex URLs into protocol, hostname, port, pathname, search query parameters, and hash fragments instantly.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://aitoolsuite.lol/url-parser-and-query-params">
+    
+    <!-- JSON-LD: WebApplication -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "URL Parser & Query Parameter Extractor",
+        "description": "Parse complex URLs into protocol, hostname, port, pathname, search query parameters, and hash fragments instantly.",
+        "url": "https://aitoolsuite.lol/url-parser-and-query-params",
+        "applicationCategory": "UtilityApplication",
+        "operatingSystem": "Any",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
+    
+    <!-- JSON-LD: FAQPage -->
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            
+            {
+                "@type": "Question",
+                "name": "What parts of the URL are extracted?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Extracts protocol, domain host, port, path, query parameters (as key-value pairs), and hash fragments."
+                }
+            },
+            
+            {
+                "@type": "Question",
+                "name": "Can it handle URL encoded queries?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, automatically decodes URI percent-encoding in query parameters."
+                }
+            },
+            
+            {
+                "@type": "Question",
+                "name": "Is sensitive query data kept private?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Zero server communication—parsed purely in client browser memory."
+                }
+            }
+            
+        ]
+    }
+    </script>
+    
+    
+    <!-- JSON-LD: BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://aitoolsuite.lol"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Developer Tools",
+                "item": "https://aitoolsuite.lol/#developer-tools"
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "URL Parser & Query Parameter Extractor"
+            }
+        ]
+    }
+    </script>
+    
+    <!-- Syne + Inter Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Syne:wght@700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #f1f5f9;
+            background: #09090b;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Responsive Floating Pill Navigation Bar */
+        .nav-wrapper {
+            position: sticky;
+            top: 14px;
+            z-index: 100;
+            padding: 0 16px;
+            width: 100%;
+        }
+        .site-nav {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(18, 18, 23, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 100px;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
+        }
+        .nav-brand {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: #ffffff;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            letter-spacing: -0.03em;
+            flex-shrink: 0;
+        }
+        .nav-brand-dot {
+            width: 8px;
+            height: 8px;
+            background: #3b82f6;
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 10px #3b82f6;
+        }
+        .nav-links {
+            display: flex;
+            gap: 6px;
+            align-items: center;
+            overflow-x: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        .nav-links::-webkit-scrollbar { display: none; }
+        .nav-link {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: #94a3b8;
+            text-decoration: none;
+            padding: 6px 14px;
+            border-radius: 100px;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+        }
+        .nav-link:hover {
+            background: rgba(255, 255, 255, 0.08);
+            color: #ffffff;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 24px 16px 80px;
+        }
+        
+        /* Breadcrumb */
+        .breadcrumb {
+            font-size: 0.82rem;
+            color: #64748b;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 500;
+            flex-wrap: wrap;
+        }
+        .breadcrumb a { color: #94a3b8; text-decoration: none; transition: color 0.2s; }
+        .breadcrumb a:hover { color: #93c5fd; }
+
+        /* Header */
+        header { margin-bottom: 24px; }
+        .tool-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(59, 130, 246, 0.1);
+            color: #93c5fd;
+            border: 1px solid rgba(59, 130, 246, 0.25);
+            padding: 4px 12px;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        header h1 {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -0.03em;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+        .description {
+            font-size: clamp(0.95rem, 2vw, 1.05rem);
+            color: #94a3b8;
+            line-height: 1.6;
+        }
+
+        /* Tool Action Bar */
+        .tool-action-bar {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 16px 0 24px 0;
+            flex-wrap: wrap;
+        }
+        .btn-action-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: #cbd5e1;
+            padding: 6px 14px;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            user-select: none;
+        }
+        .btn-action-pill:hover {
+            background: rgba(59, 130, 246, 0.15);
+            border-color: rgba(59, 130, 246, 0.4);
+            color: #93c5fd;
+            transform: translateY(-1px);
+        }
+        .btn-action-pill.copied {
+            background: rgba(34, 197, 94, 0.2);
+            border-color: rgba(34, 197, 94, 0.4);
+            color: #4ade80;
+        }
+
+        /* Embed Modal */
+        .embed-modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(4px);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+        }
+        .embed-modal-box {
+            background: #121216;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 16px;
+            max-width: 540px;
+            width: 100%;
+            padding: 24px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+        }
+        .embed-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        .embed-modal-header h3 {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.15rem;
+            color: #fff;
+            margin: 0;
+        }
+        .embed-close-btn {
+            background: transparent;
+            border: none;
+            color: #94a3b8;
+            font-size: 1.4rem;
+            cursor: pointer;
+            padding: 0;
+            line-height: 1;
+        }
+        .embed-code-textarea {
+            width: 100%;
+            height: 110px;
+            background: #09090b;
+            color: #38bdf8;
+            border: 1px solid #334155;
+            border-radius: 8px;
+            padding: 10px;
+            font-family: monospace;
+            font-size: 12px;
+            resize: none;
+            box-sizing: border-box;
+            margin-bottom: 14px;
+        }
+
+        /* Tool Interactive Surface */
+        .tool-surface {
+            background: #121216;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: clamp(16px, 4vw, 28px);
+            margin-bottom: 40px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Sections */
+        .section-title {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(1.15rem, 3vw, 1.35rem);
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        /* FAQ Accordion Section */
+        .faq-section { margin-bottom: 40px; }
+        .faq-list { display: flex; flex-direction: column; gap: 10px; }
+        .faq-item {
+            background: #121216;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 14px;
+            padding: 18px 20px;
+            transition: border-color 0.2s ease;
+        }
+        .faq-item:hover { border-color: rgba(59, 130, 246, 0.3); }
+        .faq-question {
+            font-family: 'Syne', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 6px;
+        }
+        .faq-answer {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* Related Tools Grid */
+        .related-section { margin-bottom: 40px; }
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr));
+            gap: 12px;
+        }
+        .related-card {
+            background: #121216;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 14px;
+            padding: 14px 18px;
+            text-decoration: none;
+            color: #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.2s ease;
+        }
+        .related-card:hover {
+            border-color: rgba(59, 130, 246, 0.4);
+            transform: translateY(-2px);
+            background: #18181f;
+            color: #ffffff;
+        }
+        .related-card span { font-weight: 600; font-size: 0.9rem; }
+        .related-arrow { color: #64748b; font-size: 0.9rem; }
+
+        /* Footer */
+        footer {
+            margin-top: 56px;
+            padding: 32px 0 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            text-align: center;
+            color: #64748b;
+            font-size: 0.85rem;
+        }
+        .footer-brand {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 6px;
+        }
+        footer a { color: #93c5fd; text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+
+        @media (max-width: 640px) {
+            .site-nav {
+                padding: 8px 14px;
+                border-radius: 12px;
+            }
+            .nav-link {
+                padding: 5px 10px;
+                font-size: 0.78rem;
+            }
+            .container {
+                padding: 16px 12px 60px;
+            }
+            .tool-surface {
+                padding: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Floating Pill Navigation Bar (No Sitemap in top nav) -->
+    <div class="nav-wrapper">
+        <nav class="site-nav">
+            <a href="/" class="nav-brand">
+                <span class="nav-brand-dot"></span>
+                AI Tool Suite
+            </a>
+            <div class="nav-links">
+                <a href="/#ai-utilities" class="nav-link">AI</a>
+                <a href="/#developer-tools" class="nav-link">Developer</a>
+                <a href="/#text-tools" class="nav-link">Text</a>
+                <a href="/#design-tools" class="nav-link">Design</a>
+            </div>
+        </nav>
+    </div>
+
+    <div class="container">
+        <!-- Breadcrumb -->
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="/">Home</a>
+            <span>/</span>
+            <a href="/#developer-tools">Developer Tools</a>
+            <span>/</span>
+            <span style="color: #cbd5e1;">URL Parser & Query Parameter Extractor</span>
+        </nav>
+
+        <!-- Header -->
+        <header>
+            <div class="tool-badge">⚡ Developer Tools</div>
+            <h1>URL Parser & Query Parameter Extractor</h1>
+            <p class="description">Parse complex URLs into protocol, hostname, port, pathname, search query parameters, and hash fragments instantly.</p>
+        </header>
+
+        <!-- Viral Share & Embed Toolbar -->
+        <div class="tool-action-bar">
+            <button class="btn-action-pill" onclick="copyToolShareUrl(this)">
+                <span>🔗</span> Copy Link
+            </button>
+            <a href="https://twitter.com/intent/tweet" class="btn-action-pill share-twitter-btn" target="_blank" rel="noopener">
+                <span>𝕏</span> Share
+            </a>
+            <a href="https://www.linkedin.com/sharing/share-offsite/" class="btn-action-pill share-linkedin-btn" target="_blank" rel="noopener">
+                <span>in</span> LinkedIn
+            </a>
+            <button class="btn-action-pill" onclick="openEmbedModal()">
+                <span>&lt;/&gt;</span> Embed Tool
+            </button>
+        </div>
+
+        <!-- Tool Widget Surface -->
+        <div class="tool-surface">
+            <style>
+.tool-container { font-family: system-ui, -apple-system, sans-serif; background: #111827; padding: 24px; border-radius: 12px; box-sizing: border-box; max-width: 860px; margin: 0 auto; color: #f8fafc; }
+.url-input-box { width: 100%; background: #0b0f19; color: #f8fafc; border: 1px solid #334155; border-radius: 8px; padding: 12px 16px; font-family: monospace; font-size: 14px; margin-bottom: 20px; box-sizing: border-box; }
+.parsed-table { width: 100%; border-collapse: collapse; font-family: monospace; font-size: 13px; margin-bottom: 16px; }
+.parsed-table th, .parsed-table td { padding: 10px 14px; text-align: left; border-bottom: 1px solid #334155; }
+.parsed-table th { background: #0b0f19; color: #94a3b8; font-weight: 600; width: 30%; }
+.parsed-table td { color: #38bdf8; word-break: break-all; }
+</style>
+<div class="tool-container">
+    <label style="display:block; font-size:13px; font-weight:600; color:#94a3b8; margin-bottom:6px;">Paste Complete URL:</label>
+    <input type="text" id="urlInput" class="url-input-box" value="https://api.example.com:8080/v1/search?query=developer+tools&category=ai&sort=desc#results" oninput="parseUrl()">
+    
+    <table class="parsed-table">
+        <tbody>
+            <tr><th>Protocol:</th><td id="resProtocol">https:</td></tr>
+            <tr><th>Hostname / Domain:</th><td id="resHost">api.example.com</td></tr>
+            <tr><th>Port:</th><td id="resPort">8080</td></tr>
+            <tr><th>Pathname:</th><td id="resPath">/v1/search</td></tr>
+            <tr><th>Query Parameters:</th><td id="resQuery">query: developer tools, category: ai, sort: desc</td></tr>
+            <tr><th>Hash / Fragment:</th><td id="resHash">#results</td></tr>
+        </tbody>
+    </table>
+</div>
+<script>
+function parseUrl() {
+    let raw = document.getElementById('urlInput').value.trim();
+    if (!raw) return;
+    try {
+        let u = new URL(raw);
+        document.getElementById('resProtocol').textContent = u.protocol;
+        document.getElementById('resHost').textContent = u.hostname;
+        document.getElementById('resPort').textContent = u.port || '(Default 80/443)';
+        document.getElementById('resPath').textContent = u.pathname;
+        
+        let params = [];
+        u.searchParams.forEach((v, k) => {
+            params.push(`${k}: "${v}"`);
+        });
+        document.getElementById('resQuery').textContent = params.length > 0 ? params.join(' | ') : '(None)';
+        document.getElementById('resHash').textContent = u.hash || '(None)';
+    } catch(e) {
+        document.getElementById('resProtocol').textContent = 'Invalid URL format';
+        document.getElementById('resHost').textContent = '-';
+        document.getElementById('resPort').textContent = '-';
+        document.getElementById('resPath').textContent = '-';
+        document.getElementById('resQuery').textContent = '-';
+        document.getElementById('resHash').textContent = '-';
+    }
+}
+parseUrl();
+</script>
+
+        </div>
+
+        <!-- FAQ Section -->
+        
+        <section class="faq-section">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="faq-list">
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">What parts of the URL are extracted?</h3>
+                    <p class="faq-answer">Extracts protocol, domain host, port, path, query parameters (as key-value pairs), and hash fragments.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">Can it handle URL encoded queries?</h3>
+                    <p class="faq-answer">Yes, automatically decodes URI percent-encoding in query parameters.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">Is sensitive query data kept private?</h3>
+                    <p class="faq-answer">Zero server communication—parsed purely in client browser memory.</p>
+                </div>
+                
+            </div>
+        </section>
+        
+
+        <!-- Related Tools -->
+        
+        <section class="related-section">
+            <h2 class="section-title">Explore Related Tools</h2>
+            <div class="related-grid">
+                
+                <a href="/url-encoder-and-decoder.html" class="related-card">
+                    <span>URL Encoder and Decoder</span>
+                    <span class="related-arrow">↗</span>
+                </a>
+                
+                <a href="/curl-to-javascript-fetch-converter.html" class="related-card">
+                    <span>cURL to JavaScript Fetch Converter</span>
+                    <span class="related-arrow">↗</span>
+                </a>
+                
+                <a href="/jwt-decoder-and-debugger.html" class="related-card">
+                    <span>JWT Decoder and Debugger</span>
+                    <span class="related-arrow">↗</span>
+                </a>
+                
+            </div>
+        </section>
+        
+
+        <footer>
+            <div class="footer-brand">AI Tool Suite</div>
+            <p>&copy; 2026 AI Tool Suite. Free private developer utilities.</p>
+            <div style="margin-top: 10px; display: flex; justify-content: center; gap: 16px; font-size: 0.85rem;">
+                <a href="/" style="color: #94a3b8; text-decoration: none;">All Tools</a>
+                <a href="/about.html" style="color: #94a3b8; text-decoration: none;">About</a>
+                <a href="/contact.html" style="color: #94a3b8; text-decoration: none;">Contact</a>
+                <a href="/privacy.html" style="color: #94a3b8; text-decoration: none;">Privacy Policy</a>
+                <a href="/terms.html" style="color: #94a3b8; text-decoration: none;">Terms of Service</a>
+            </div>
+        </footer>
+    </div>
+
+    <!-- GoatCounter Analytics & Admin Ignore Filter -->
+    <script>
+        if (window.location.search.includes('admin=true') || window.location.search.includes('ignore=true')) {
+            localStorage.setItem('skip_analytics', 'true');
+            alert('✅ Admin Mode Activated: Your browser is now permanently excluded from GoatCounter analytics.');
+        }
+        if (localStorage.getItem('skip_analytics') === 'true' || location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
+            window.goatcounter = { no_onload: true };
+        }
+    </script>
+    <script data-goatcounter="https://aitoolsuite.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+    <script>
+        function trackToolAction(actionName) {
+            if (window.goatcounter && window.goatcounter.count) {
+                window.goatcounter.count({
+                    path: 'use-' + actionName,
+                    title: 'Tool Action: ' + actionName,
+                    event: true
+                });
+            }
+        }
+
+        // Automatically track tool button clicks and copy events
+        document.addEventListener('DOMContentLoaded', () => {
+            const surface = document.querySelector('.tool-surface');
+            if (surface) {
+                surface.addEventListener('click', (e) => {
+                    const btn = e.target.closest('button');
+                    if (btn) {
+                        const btnText = btn.textContent.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-');
+                        const toolSlug = window.location.pathname.replace(/^\//, '').replace('.html', '') || 'tool';
+                        trackToolAction(toolSlug + '--' + btnText);
+                    }
+                });
+            }
+
+            // Populate viral share buttons dynamically
+            const curUrl = window.location.href;
+            const toolHeading = document.querySelector('h1') ? document.querySelector('h1').innerText : 'Developer Utility';
+            
+            const twBtn = document.querySelector('.share-twitter-btn');
+            if (twBtn) {
+                twBtn.href = `https://twitter.com/intent/tweet?text=${encodeURIComponent('Check out this fast, free developer tool: ' + toolHeading)}&url=${encodeURIComponent(curUrl)}`;
+            }
+            const liBtn = document.querySelector('.share-linkedin-btn');
+            if (liBtn) {
+                liBtn.href = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(curUrl)}`;
+            }
+
+            const embedSnippet = `<iframe src="${curUrl}" width="100%" height="650" frameborder="0" style="border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; max-width: 900px; width: 100%;"></iframe>\n<p style="font-size: 12px; color: #64748b;">Tool powered by <a href="${curUrl}" target="_blank" rel="noopener">AI Tool Suite</a></p>`;
+            const embedArea = document.getElementById('embedSnippetText');
+            if (embedArea) embedArea.value = embedSnippet;
+        });
+
+        function copyToolShareUrl(btn) {
+            navigator.clipboard.writeText(window.location.href).then(() => {
+                const orig = btn.innerHTML;
+                btn.innerHTML = '<span>✅</span> Link Copied!';
+                btn.classList.add('copied');
+                setTimeout(() => {
+                    btn.innerHTML = orig;
+                    btn.classList.remove('copied');
+                }, 2000);
+            });
+        }
+
+        function openEmbedModal() {
+            const m = document.getElementById('embedModal');
+            if (m) m.style.display = 'flex';
+        }
+
+        function closeEmbedModal() {
+            const m = document.getElementById('embedModal');
+            if (m) m.style.display = 'none';
+        }
+
+        function copyEmbedSnippet(btn) {
+            const snippet = document.getElementById('embedSnippetText').value;
+            navigator.clipboard.writeText(snippet).then(() => {
+                const orig = btn.innerText;
+                btn.innerText = 'Copied to Clipboard!';
+                setTimeout(() => btn.innerText = orig, 2000);
+            });
+        }
+    </script>
+
+    <!-- Embed Modal Dialog -->
+    <div id="embedModal" class="embed-modal-overlay" onclick="if(event.target === this) closeEmbedModal()">
+        <div class="embed-modal-box">
+            <div class="embed-modal-header">
+                <h3>Embed this Tool on Your Site</h3>
+                <button class="embed-close-btn" onclick="closeEmbedModal()">&times;</button>
+            </div>
+            <p style="font-size: 0.85rem; color: #94a3b8; margin-bottom: 12px; line-height: 1.5;">
+                Copy and paste this snippet into your blog, documentation, or tech site to embed this interactive utility:
+            </p>
+            <textarea id="embedSnippetText" class="embed-code-textarea" readonly></textarea>
+            <div style="display: flex; justify-content: flex-end; gap: 10px;">
+                <button class="btn-action-pill" onclick="closeEmbedModal()">Close</button>
+                <button class="btn-action-pill" style="background: #3b82f6; color: #fff; border-color: #3b82f6;" onclick="copyEmbedSnippet(this)">
+                    Copy Embed Code
+                </button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -324,3 +324,83 @@ SUMMARY: 48 passed, 0 failed out of 48 pages
 ============================================================
 2026-09-03 13:20:24,027 [INFO] Deploying changes to GitHub Pages...
 2026-09-03 13:20:24,053 [WARNING] Git push note: Command '['git', 'commit', '-m', 'Auto-publish tool: CSS Box Shadow & Layer Glow Generator']' returned non-zero exit status 128.
+2026-09-03 22:53:59,851 [INFO] Running Market Feedback Analyzer & Queue Optimizer...
+2026-09-03 22:53:59,852 [INFO] Guardrail filter skipped candidate 'openai json schema generator': Page 'openai-json-schema-generator.html' already exists on site (cannibalization prevented).
+2026-09-03 22:53:59,852 [INFO] Guardrail filter skipped candidate 'llm context window calculator': Page 'llm-context-window-calculator.html' already exists on site (cannibalization prevented).
+2026-09-03 22:53:59,852 [INFO] Guardrail filter skipped candidate 'embedding cost calculator': Page 'embedding-cost-calculator.html' already exists on site (cannibalization prevented).
+2026-09-03 22:53:59,852 [INFO] Guardrail filter skipped candidate 'docker compose to kubernetes': Keyword 'docker compose to kubernetes' fails domain semantic relevance check.
+2026-09-03 22:53:59,852 [INFO] Guardrail filter skipped candidate 'env to json converter': Page 'env-to-json-converter.html' already exists on site (cannibalization prevented).
+2026-09-03 22:54:01,272 [INFO] Market Analysis: {'status': 'success', 'added_candidates': 0, 'total_pending': 7, 'top_priority': 'URL Parser & Query Parameter Extractor'}
+2026-09-03 22:54:01,273 [INFO] 🚀 Publishing tool: 'URL Parser & Query Parameter Extractor' for keyword 'url parser and query params'...
+2026-09-03 22:54:01,282 [INFO] SUCCESS: Page created at /home/runner/work/aitoolsuite.lol/aitoolsuite.lol/url-parser-and-query-params.html | URL: https://aitoolsuite.lol/url-parser-and-query-params
+2026-09-03 22:54:01,283 [INFO] Updating homepage and generating sitemap...
+2026-09-03 22:54:01,287 [INFO] SUCCESS: Homepage updated with search bar and 49 tools across 5 categories.
+2026-09-03 22:54:01,287 [INFO] SUCCESS: Generated sitemap.xml (55 URLs) and robots.txt
+2026-09-03 22:54:01,287 [INFO] Running QA verification checks...
+2026-09-03 22:54:01,298 [INFO] QA Result:
+============================================================
+  QA REPORT — 2026-09-03 22:54:01
+============================================================
+
+Found 49 tool pages to check.
+
+✅ ai-prompt-cost-calculator — 12/12 checks passed
+✅ aspect-ratio-calculator — 12/12 checks passed
+✅ base64-encoder — 12/12 checks passed
+✅ base64-image-encoder — 12/12 checks passed
+✅ case-converter — 12/12 checks passed
+✅ chmod-calculator — 12/12 checks passed
+✅ color-contrast-checker — 12/12 checks passed
+✅ color-picker — 12/12 checks passed
+✅ cron-expression-generator — 12/12 checks passed
+✅ css-box-shadow-generator — 12/12 checks passed
+✅ css-grid-generator — 12/12 checks passed
+✅ css-minifier — 12/12 checks passed
+✅ csv-to-json-converter — 12/12 checks passed
+✅ curl-to-fetch-converter — 12/12 checks passed
+✅ curl-to-python-converter — 12/12 checks passed
+✅ diff-checker-and-text-compare — 12/12 checks passed
+✅ embedding-cost-calculator — 12/12 checks passed
+✅ env-to-json-converter — 12/12 checks passed
+✅ hash-generator — 12/12 checks passed
+✅ html-entity-encoder — 12/12 checks passed
+✅ html-minifier — 12/12 checks passed
+✅ json-formatter — 12/12 checks passed
+✅ json-to-csv-converter — 12/12 checks passed
+✅ json-to-env-converter — 12/12 checks passed
+✅ json-to-typescript-generator — 12/12 checks passed
+✅ json-to-yaml-converter — 12/12 checks passed
+✅ jwt-decoder-and-debugger — 12/12 checks passed
+✅ llm-context-window-calculator — 12/12 checks passed
+✅ lorem-image-placeholder-generator — 12/12 checks passed
+✅ lorem-ipsum-generator — 12/12 checks passed
+✅ markdown-previewer — 12/12 checks passed
+✅ markdown-table-to-json — 12/12 checks passed
+✅ og-meta-tag-generator — 12/12 checks passed
+✅ openai-json-schema-generator — 12/12 checks passed
+✅ px-to-rem-converter — 12/12 checks passed
+✅ qr-code-generator — 12/12 checks passed
+✅ regex-tester-and-cheat-sheet — 12/12 checks passed
+✅ sql-formatter-and-beautifier — 12/12 checks passed
+✅ strong-password-generator — 12/12 checks passed
+✅ subdomain-finder-and-dns-lookup — 12/12 checks passed
+✅ svg-optimizer-and-viewer — 12/12 checks passed
+✅ svg-to-png-converter — 12/12 checks passed
+✅ tailwind-color-palette-generator — 12/12 checks passed
+✅ timestamp-converter — 12/12 checks passed
+✅ url-encoder — 12/12 checks passed
+✅ url-parser-and-query-params — 12/12 checks passed
+✅ uuid-generator — 12/12 checks passed
+✅ word-counter — 12/12 checks passed
+✅ yaml-to-json-converter — 12/12 checks passed
+
+————————————————————————————————————————
+HOMEPAGE CHECK:
+✅ 49/49 tools listed on homepage
+
+============================================================
+SUMMARY: 49 passed, 0 failed out of 49 pages
+🎉 ALL PAGES PASS QA!
+============================================================
+2026-09-03 22:54:01,298 [INFO] Deploying changes to GitHub Pages...
+2026-09-03 22:54:01,320 [WARNING] Git push note: Command '['git', 'commit', '-m', 'Auto-publish tool: URL Parser & Query Parameter Extractor']' returned non-zero exit status 128.

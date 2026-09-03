@@ -1,8 +1,8 @@
 ============================================================
-  QA REPORT — 2026-09-03 13:20:24
+  QA REPORT — 2026-09-03 22:54:01
 ============================================================
 
-Found 48 tool pages to check.
+Found 49 tool pages to check.
 
 ✅ ai-prompt-cost-calculator — 12/12 checks passed
 ✅ aspect-ratio-calculator — 12/12 checks passed
@@ -49,15 +49,16 @@ Found 48 tool pages to check.
 ✅ tailwind-color-palette-generator — 12/12 checks passed
 ✅ timestamp-converter — 12/12 checks passed
 ✅ url-encoder — 12/12 checks passed
+✅ url-parser-and-query-params — 12/12 checks passed
 ✅ uuid-generator — 12/12 checks passed
 ✅ word-counter — 12/12 checks passed
 ✅ yaml-to-json-converter — 12/12 checks passed
 
 ————————————————————————————————————————
 HOMEPAGE CHECK:
-✅ 48/48 tools listed on homepage
+✅ 49/49 tools listed on homepage
 
 ============================================================
-SUMMARY: 48 passed, 0 failed out of 48 pages
+SUMMARY: 49 passed, 0 failed out of 49 pages
 🎉 ALL PAGES PASS QA!
 ============================================================
