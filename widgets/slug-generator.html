@@ -1,0 +1,86 @@
+<style>
+.tool-container { font-family: system-ui, -apple-system, sans-serif; background: #111827; padding: 24px; border-radius: 12px; box-sizing: border-box; max-width: 860px; margin: 0 auto; color: #f8fafc; }
+.field-row { margin-bottom: 18px; }
+.field-row label { display: block; font-size: 13px; font-weight: 600; color: #94a3b8; margin-bottom: 6px; }
+.input-text { width: 100%; background: #0b0f19; color: #f8fafc; border: 1px solid #334155; border-radius: 8px; padding: 12px 14px; font-size: 14px; box-sizing: border-box; }
+.output-slug-wrap { display: flex; gap: 10px; margin-bottom: 20px; }
+.output-slug { flex-grow: 1; background: #0b0f19; color: #38bdf8; border: 1px solid #1e293b; border-radius: 8px; padding: 12px 14px; font-family: monospace; font-size: 15px; font-weight: 600; word-break: break-all; }
+.options-grid { display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 20px; background: #0b0f19; padding: 12px 16px; border-radius: 8px; border: 1px solid #1e293b; }
+.option-label { display: flex; align-items: center; gap: 8px; font-size: 13px; color: #e2e8f0; cursor: pointer; }
+.option-label input { accent-color: #3b82f6; cursor: pointer; }
+.btn-copy { background: #3b82f6; color: #fff; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-size: 13px; font-weight: 600; white-space: nowrap; }
+.btn-copy:hover { background: #2563eb; }
+</style>
+<div class="tool-container">
+    <div class="field-row">
+        <label>Enter Article Title / Headline / Text:</label>
+        <input type="text" id="titleInput" class="input-text" value="How to Build 100% Client-Side Developer Tools in 2026!" oninput="generateSlug()">
+    </div>
+
+    <div class="options-grid">
+        <label class="option-label">
+            <input type="checkbox" id="optLower" checked onchange="generateSlug()"> Lowercase
+        </label>
+        <label class="option-label">
+            <input type="checkbox" id="optStripSpecial" checked onchange="generateSlug()"> Strip Special Characters
+        </label>
+        <label class="option-label">
+            Separator:
+            <select id="optSep" onchange="generateSlug()" style="background:#1e293b; color:#fff; border:1px solid #334155; border-radius:4px; padding:3px 8px;">
+                <option value="-">Hyphen (-)</option>
+                <option value="_">Underscore (_)</option>
+            </select>
+        </label>
+    </div>
+
+    <div class="field-row">
+        <label>Generated URL Slug:</label>
+        <div class="output-slug-wrap">
+            <div id="slugOutput" class="output-slug">how-to-build-100-client-side-developer-tools-in-2026</div>
+            <button class="btn-copy" onclick="copySlug(this)">Copy Slug</button>
+        </div>
+    </div>
+</div>
+<script>
+function generateSlug() {
+    let text = document.getElementById('titleInput').value.trim();
+    let lower = document.getElementById('optLower').checked;
+    let stripSpecial = document.getElementById('optStripSpecial').checked;
+    let sep = document.getElementById('optSep').value;
+
+    if (!text) {
+        document.getElementById('slugOutput').textContent = '';
+        return;
+    }
+
+    if (lower) text = text.toLowerCase();
+    
+    // Normalize unicode accents
+    text = text.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+
+    if (stripSpecial) {
+        // Replace non-alphanumeric with separator
+        text = text.replace(/[^a-zA-Z0-9]+/g, sep);
+    } else {
+        text = text.replace(/\s+/g, sep);
+    }
+
+    // Trim trailing/leading separators
+    let escapeSep = sep === '-' ? '\\-' : sep;
+    let trimRegex = new RegExp(`^${escapeSep}+|${escapeSep}+$`, 'g');
+    text = text.replace(trimRegex, '');
+
+    document.getElementById('slugOutput').textContent = text;
+}
+
+function copySlug(btn) {
+    let t = document.getElementById('slugOutput').textContent;
+    if (!t) return;
+    navigator.clipboard.writeText(t).then(() => {
+        let orig = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(() => btn.textContent = orig, 1500);
+    });
+}
+generateSlug();
+</script>

@@ -20,10 +20,10 @@ logger = logging.getLogger("market_analyzer")
 
 # Strict Domain Whitelist Guardrails (Bot CANNOT build outside these)
 ALLOWED_CATEGORIES = {
-    "Developer Tools": ["json", "uuid", "base64", "hash", "timestamp", "sql", "regex", "jwt", "yaml", "html", "css", "api", "curl", "diff"],
+    "Developer Tools": ["json", "uuid", "base64", "hash", "timestamp", "sql", "regex", "jwt", "yaml", "html", "css", "api", "curl", "diff", "cidr", "subnet", "ip", "url"],
     "AI Utilities": ["token", "prompt", "llm", "embedding", "cost", "model", "context", "ai"],
-    "Text Tools": ["word", "case", "lorem", "text", "character", "markdown", "string", "slug", "counter"],
-    "Design Tools": ["color", "gradient", "svg", "favicon", "palette", "contrast", "image", "px", "rem"],
+    "Text Tools": ["word", "case", "lorem", "text", "character", "markdown", "string", "slug", "counter", "table"],
+    "Design Tools": ["color", "gradient", "svg", "favicon", "palette", "contrast", "image", "px", "rem", "hex", "rgb", "hsl", "shadow", "grid"],
     "SEO Tools": ["meta", "sitemap", "robots", "schema", "ogimage", "canonical", "redirect"]
 }
 

@@ -1,16 +1,5 @@
 [
   {
-    "keyword": "json to yaml converter",
-    "tool_name": "JSON to YAML Data Converter",
-    "description": "Convert JSON payloads into clean, formatted YAML configuration syntax with custom indentation.",
-    "category": "Developer Tools",
-    "faq_items": "How does it handle nested arrays?:::Converts nested objects and arrays into standard indented YAML syntax with dashes.|||Is my JSON data kept private?:::Yes, conversion executes 100% locally in your browser memory.|||Can I copy with 1 click?:::Yes, one-click copy button copies the YAML result to your clipboard.",
-    "related_tools": "YAML to JSON Converter,JSON Formatter,JSON to CSV Converter",
-    "tool_type": "json-to-yaml",
-    "status": "pending",
-    "priority": 1
-  },
-  {
     "keyword": "css box shadow generator",
     "tool_name": "CSS Box Shadow & Layer Glow Generator",
     "description": "Generate smooth multi-layered CSS box-shadows, soft blurs, and neon glows with interactive visual controls.",
@@ -19,7 +8,7 @@
     "related_tools": "Tailwind CSS Color Palette Generator,CSS Minifier,Aspect Ratio Calculator",
     "tool_type": "box-shadow",
     "status": "pending",
-    "priority": 2
+    "priority": 1
   },
   {
     "keyword": "url parser and query params",
@@ -30,6 +19,72 @@
     "related_tools": "URL Encoder and Decoder,cURL to JavaScript Fetch Converter,JWT Decoder and Debugger",
     "tool_type": "url-parser",
     "status": "pending",
+    "priority": 2
+  },
+  {
+    "keyword": "hex to rgb converter",
+    "tool_name": "Hex to RGB and HSL Color Converter",
+    "description": "Convert Hex color codes to RGB, RGBA, and HSL formats instantly with live visual color previews and 1-click copying.",
+    "category": "Design Tools",
+    "faq_items": "Does it support 3-digit shorthand Hex?:::Yes, shorthand hex codes like #fff or #09f are automatically expanded to 6 digits.|||Can I copy CSS formatted values?:::Yes, 1-click buttons copy ready-to-use rgb(), rgba(), and hsl() CSS functions.|||Is a color picker included?:::Yes, you can click the color picker swatch to visually choose colors or type raw hex codes.",
+    "related_tools": "Tailwind CSS Color Palette Generator,Color Contrast Checker,CSS Minifier",
+    "tool_type": "hex-to-rgb",
+    "status": "pending",
     "priority": 3
+  },
+  {
+    "keyword": "csv to markdown table converter",
+    "tool_name": "CSV to Markdown Table Converter",
+    "description": "Convert comma-separated values (CSV) and spreadsheet rows into clean GitHub-flavored Markdown tables instantly.",
+    "category": "Text Tools",
+    "faq_items": "Does it handle quotes in CSV cells?:::Yes, properly handles escaped commas and quoted cells.|||Are columns aligned automatically?:::Yes, column counts are normalized and formatted with standard Markdown pipes and separators.|||Is it browser-side?:::Zero server upload—your CSV data never leaves your browser.",
+    "related_tools": "Markdown Table to JSON Array Converter,CSV to JSON Converter,Markdown Live Previewer",
+    "tool_type": "csv-to-md",
+    "status": "pending",
+    "priority": 4
+  },
+  {
+    "keyword": "json minifier",
+    "tool_name": "JSON Minifier & Compact Formatter",
+    "description": "Compress and minify JSON data by stripping whitespace, newlines, and indentation to reduce payload transfer size.",
+    "category": "Developer Tools",
+    "faq_items": "How much file size does it save?:::Typically saves 20% to 40% of payload size by removing whitespace and formatting characters.|||Does it validate JSON syntax?:::Yes, invalid JSON syntax is highlighted with clear error messages before minification.|||Can I copy with 1 click?:::Yes, single-click copy button copies the compact one-line string to your clipboard.",
+    "related_tools": "JSON Formatter,JSON to YAML Data Converter,JSON to CSV Converter",
+    "tool_type": "json-minifier",
+    "status": "pending",
+    "priority": 5
+  },
+  {
+    "keyword": "url slug generator",
+    "tool_name": "URL Slug Generator & Text Sanitizer",
+    "description": "Generate clean, SEO-friendly URL slugs from blog titles, headlines, and strings with customizable separators and accents.",
+    "category": "Text Tools",
+    "faq_items": "Does it remove special characters?:::Yes, removes punctuation, symbols, and non-alphanumeric characters while preserving words.|||Does it handle accents and umlauts?:::Yes, normalizes unicode accents (e.g. é becomes e, ü becomes u).|||Can I choose separators?:::Supports both hyphens (-) and underscores (_) with optional lowercase enforcement.",
+    "related_tools": "URL Parser & Query Parameter Extractor,Case Converter,Word Counter",
+    "tool_type": "slug-generator",
+    "status": "pending",
+    "priority": 6
+  },
+  {
+    "keyword": "cidr subnet calculator",
+    "tool_name": "IPv4 CIDR Subnet & IP Range Calculator",
+    "description": "Calculate subnet masks, usable host IP ranges, broadcast IPs, and wildcard masks for IPv4 CIDR blocks (/8 to /32).",
+    "category": "Developer Tools",
+    "faq_items": "What does CIDR notation mean?:::Classless Inter-Domain Routing specifies the prefix length (bits in the network mask).|||How many usable hosts are in a /24 subnet?:::A /24 subnet provides 256 total IP addresses and 254 usable host addresses.|||Does it calculate broadcast and network IPs?:::Yes, network IP, broadcast IP, and first/last usable IP addresses are calculated instantly.",
+    "related_tools": "DNS Record Lookup,Unix Timestamp Converter,Hash Generator",
+    "tool_type": "cidr-calculator",
+    "status": "pending",
+    "priority": 7
+  },
+  {
+    "keyword": "html table generator",
+    "tool_name": "HTML Table & CSS Styler Generator",
+    "description": "Create custom HTML tables with headers, striped rows, and clean responsive CSS styling with live visual preview.",
+    "category": "Developer Tools",
+    "faq_items": "Can I customize rows and columns?:::Yes, interactive numeric inputs allow adjusting row and column counts up to 15x10.|||Does it generate semantic HTML?:::Generates standard <table>, <thead>, <th>, <tbody>, and <td> elements.|||Can I toggle striped styling?:::Yes, one-click checkbox toggles alternating row backgrounds.",
+    "related_tools": "CSV to Markdown Table Converter,HTML Entity Encoder,HTML Minifier",
+    "tool_type": "html-table",
+    "status": "pending",
+    "priority": 8
   }
 ]

@@ -64,5 +64,11 @@
   "md-table-to-json": "md-table-to-json.html",
   "json-to-yaml": "json-to-yaml.html",
   "box-shadow": "box-shadow.html",
-  "url-parser": "url-parser.html"
+  "url-parser": "url-parser.html",
+  "hex-to-rgb": "hex-to-rgb.html",
+  "csv-to-md": "csv-to-md.html",
+  "json-minifier": "json-minifier.html",
+  "slug-generator": "slug-generator.html",
+  "cidr-calculator": "cidr-calculator.html",
+  "html-table": "html-table.html"
 }
