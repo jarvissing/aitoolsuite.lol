@@ -137,5 +137,12 @@ def publish_next_tool() -> dict:
 
 
 if __name__ == "__main__":
-    res = publish_next_tool()
-    print("\nResult:", res)
+    count = 1
+    if len(sys.argv) > 1 and sys.argv[1].isdigit():
+        count = int(sys.argv[1])
+    
+    results = []
+    for i in range(count):
+        res = publish_next_tool()
+        results.append(res)
+        print(f"\nTool {i+1} Result: {res}")

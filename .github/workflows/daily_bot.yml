@@ -2,8 +2,8 @@ name: Daily Autonomous Tool Publisher
 
 on:
   schedule:
-    # Runs every day at 09:00 UTC (6:00 AM Brazil / 5:00 AM EST)
-    - cron: '0 9 * * *'
+    # Runs twice daily: 09:00 UTC and 21:00 UTC (every 12 hours)
+    - cron: '0 9,21 * * *'
   workflow_dispatch: # Allows manual trigger anytime from GitHub Web UI / Mobile App
 
 permissions:
