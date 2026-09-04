@@ -1,17 +1,5 @@
 [
   {
-    "keyword": "hex to rgb converter",
-    "tool_name": "Hex to RGB and HSL Color Converter",
-    "description": "Convert Hex color codes to RGB, RGBA, and HSL formats instantly with live visual color previews and 1-click copying.",
-    "category": "Design Tools",
-    "faq_items": "Does it support 3-digit shorthand Hex?:::Yes, shorthand hex codes like #fff or #09f are automatically expanded to 6 digits.|||Can I copy CSS formatted values?:::Yes, 1-click buttons copy ready-to-use rgb(), rgba(), and hsl() CSS functions.|||Is a color picker included?:::Yes, you can click the color picker swatch to visually choose colors or type raw hex codes.",
-    "related_tools": "Tailwind CSS Color Palette Generator,Color Contrast Checker,CSS Minifier",
-    "tool_type": "hex-to-rgb",
-    "status": "published",
-    "priority": 3,
-    "published_at": "2026-09-04T13:01:23.139755"
-  },
-  {
     "keyword": "csv to markdown table converter",
     "tool_name": "CSV to Markdown Table Converter",
     "description": "Convert comma-separated values (CSV) and spreadsheet rows into clean GitHub-flavored Markdown tables instantly.",
@@ -19,8 +7,9 @@
     "faq_items": "Does it handle quotes in CSV cells?:::Yes, properly handles escaped commas and quoted cells.|||Are columns aligned automatically?:::Yes, column counts are normalized and formatted with standard Markdown pipes and separators.|||Is it browser-side?:::Zero server upload\u2014your CSV data never leaves your browser.",
     "related_tools": "Markdown Table to JSON Array Converter,CSV to JSON Converter,Markdown Live Previewer",
     "tool_type": "csv-to-md",
-    "status": "pending",
-    "priority": 4
+    "status": "published",
+    "priority": 4,
+    "published_at": "2026-09-04T22:39:03.258981"
   },
   {
     "keyword": "json minifier",
@@ -65,6 +54,18 @@
     "tool_type": "html-table",
     "status": "pending",
     "priority": 8
+  },
+  {
+    "keyword": "hex to rgb converter",
+    "tool_name": "Hex to RGB and HSL Color Converter",
+    "description": "Convert Hex color codes to RGB, RGBA, and HSL formats instantly with live visual color previews and 1-click copying.",
+    "category": "Design Tools",
+    "faq_items": "Does it support 3-digit shorthand Hex?:::Yes, shorthand hex codes like #fff or #09f are automatically expanded to 6 digits.|||Can I copy CSS formatted values?:::Yes, 1-click buttons copy ready-to-use rgb(), rgba(), and hsl() CSS functions.|||Is a color picker included?:::Yes, you can click the color picker swatch to visually choose colors or type raw hex codes.",
+    "related_tools": "Tailwind CSS Color Palette Generator,Color Contrast Checker,CSS Minifier",
+    "tool_type": "hex-to-rgb",
+    "status": "published",
+    "priority": 3,
+    "published_at": "2026-09-04T13:01:23.139755"
   },
   {
     "keyword": "url parser and query params",

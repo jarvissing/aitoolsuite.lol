@@ -1,8 +1,8 @@
 ============================================================
-  QA REPORT — 2026-09-04 13:01:23
+  QA REPORT — 2026-09-04 22:39:03
 ============================================================
 
-Found 50 tool pages to check.
+Found 51 tool pages to check.
 
 ✅ ai-prompt-cost-calculator — 12/12 checks passed
 ✅ aspect-ratio-calculator — 12/12 checks passed
@@ -17,6 +17,7 @@ Found 50 tool pages to check.
 ✅ css-grid-generator — 12/12 checks passed
 ✅ css-minifier — 12/12 checks passed
 ✅ csv-to-json-converter — 12/12 checks passed
+✅ csv-to-markdown-table-converter — 12/12 checks passed
 ✅ curl-to-fetch-converter — 12/12 checks passed
 ✅ curl-to-python-converter — 12/12 checks passed
 ✅ diff-checker-and-text-compare — 12/12 checks passed
@@ -57,9 +58,9 @@ Found 50 tool pages to check.
 
 ————————————————————————————————————————
 HOMEPAGE CHECK:
-✅ 50/50 tools listed on homepage
+✅ 51/51 tools listed on homepage
 
 ============================================================
-SUMMARY: 50 passed, 0 failed out of 50 pages
+SUMMARY: 51 passed, 0 failed out of 51 pages
 🎉 ALL PAGES PASS QA!
 ============================================================
