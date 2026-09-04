@@ -1,17 +1,5 @@
 [
   {
-    "keyword": "url parser and query params",
-    "tool_name": "URL Parser & Query Parameter Extractor",
-    "description": "Parse complex URLs into protocol, hostname, port, pathname, search query parameters, and hash fragments instantly.",
-    "category": "Developer Tools",
-    "faq_items": "What parts of the URL are extracted?:::Extracts protocol, domain host, port, path, query parameters (as key-value pairs), and hash fragments.|||Can it handle URL encoded queries?:::Yes, automatically decodes URI percent-encoding in query parameters.|||Is sensitive query data kept private?:::Zero server communication\u2014parsed purely in client browser memory.",
-    "related_tools": "URL Encoder and Decoder,cURL to JavaScript Fetch Converter,JWT Decoder and Debugger",
-    "tool_type": "url-parser",
-    "status": "published",
-    "priority": 2,
-    "published_at": "2026-09-03T22:54:01.282761"
-  },
-  {
     "keyword": "hex to rgb converter",
     "tool_name": "Hex to RGB and HSL Color Converter",
     "description": "Convert Hex color codes to RGB, RGBA, and HSL formats instantly with live visual color previews and 1-click copying.",
@@ -19,8 +7,9 @@
     "faq_items": "Does it support 3-digit shorthand Hex?:::Yes, shorthand hex codes like #fff or #09f are automatically expanded to 6 digits.|||Can I copy CSS formatted values?:::Yes, 1-click buttons copy ready-to-use rgb(), rgba(), and hsl() CSS functions.|||Is a color picker included?:::Yes, you can click the color picker swatch to visually choose colors or type raw hex codes.",
     "related_tools": "Tailwind CSS Color Palette Generator,Color Contrast Checker,CSS Minifier",
     "tool_type": "hex-to-rgb",
-    "status": "pending",
-    "priority": 3
+    "status": "published",
+    "priority": 3,
+    "published_at": "2026-09-04T13:01:23.139755"
   },
   {
     "keyword": "csv to markdown table converter",
@@ -76,6 +65,18 @@
     "tool_type": "html-table",
     "status": "pending",
     "priority": 8
+  },
+  {
+    "keyword": "url parser and query params",
+    "tool_name": "URL Parser & Query Parameter Extractor",
+    "description": "Parse complex URLs into protocol, hostname, port, pathname, search query parameters, and hash fragments instantly.",
+    "category": "Developer Tools",
+    "faq_items": "What parts of the URL are extracted?:::Extracts protocol, domain host, port, path, query parameters (as key-value pairs), and hash fragments.|||Can it handle URL encoded queries?:::Yes, automatically decodes URI percent-encoding in query parameters.|||Is sensitive query data kept private?:::Zero server communication\u2014parsed purely in client browser memory.",
+    "related_tools": "URL Encoder and Decoder,cURL to JavaScript Fetch Converter,JWT Decoder and Debugger",
+    "tool_type": "url-parser",
+    "status": "published",
+    "priority": 2,
+    "published_at": "2026-09-03T22:54:01.282761"
   },
   {
     "keyword": "css box shadow generator",
