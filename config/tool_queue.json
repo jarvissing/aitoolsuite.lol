@@ -1,17 +1,5 @@
 [
   {
-    "keyword": "json minifier",
-    "tool_name": "JSON Minifier & Compact Formatter",
-    "description": "Compress and minify JSON data by stripping whitespace, newlines, and indentation to reduce payload transfer size.",
-    "category": "Developer Tools",
-    "faq_items": "How much file size does it save?:::Typically saves 20% to 40% of payload size by removing whitespace and formatting characters.|||Does it validate JSON syntax?:::Yes, invalid JSON syntax is highlighted with clear error messages before minification.|||Can I copy with 1 click?:::Yes, single-click copy button copies the compact one-line string to your clipboard.",
-    "related_tools": "JSON Formatter,JSON to YAML Data Converter,JSON to CSV Converter",
-    "tool_type": "json-minifier",
-    "status": "published",
-    "priority": 5,
-    "published_at": "2026-09-05T12:13:46.398159"
-  },
-  {
     "keyword": "url slug generator",
     "tool_name": "URL Slug Generator & Text Sanitizer",
     "description": "Generate clean, SEO-friendly URL slugs from blog titles, headlines, and strings with customizable separators and accents.",
@@ -19,8 +7,9 @@
     "faq_items": "Does it remove special characters?:::Yes, removes punctuation, symbols, and non-alphanumeric characters while preserving words.|||Does it handle accents and umlauts?:::Yes, normalizes unicode accents (e.g. \u00e9 becomes e, \u00fc becomes u).|||Can I choose separators?:::Supports both hyphens (-) and underscores (_) with optional lowercase enforcement.",
     "related_tools": "URL Parser & Query Parameter Extractor,Case Converter,Word Counter",
     "tool_type": "slug-generator",
-    "status": "pending",
-    "priority": 6
+    "status": "published",
+    "priority": 6,
+    "published_at": "2026-09-05T22:29:59.143403"
   },
   {
     "keyword": "cidr subnet calculator",
@@ -43,6 +32,18 @@
     "tool_type": "html-table",
     "status": "pending",
     "priority": 8
+  },
+  {
+    "keyword": "json minifier",
+    "tool_name": "JSON Minifier & Compact Formatter",
+    "description": "Compress and minify JSON data by stripping whitespace, newlines, and indentation to reduce payload transfer size.",
+    "category": "Developer Tools",
+    "faq_items": "How much file size does it save?:::Typically saves 20% to 40% of payload size by removing whitespace and formatting characters.|||Does it validate JSON syntax?:::Yes, invalid JSON syntax is highlighted with clear error messages before minification.|||Can I copy with 1 click?:::Yes, single-click copy button copies the compact one-line string to your clipboard.",
+    "related_tools": "JSON Formatter,JSON to YAML Data Converter,JSON to CSV Converter",
+    "tool_type": "json-minifier",
+    "status": "published",
+    "priority": 5,
+    "published_at": "2026-09-05T12:13:46.398159"
   },
   {
     "keyword": "csv to markdown table converter",

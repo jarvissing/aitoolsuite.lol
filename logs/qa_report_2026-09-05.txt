@@ -1,8 +1,8 @@
 ============================================================
-  QA REPORT — 2026-09-05 12:13:46
+  QA REPORT — 2026-09-05 22:29:59
 ============================================================
 
-Found 52 tool pages to check.
+Found 53 tool pages to check.
 
 ✅ ai-prompt-cost-calculator — 12/12 checks passed
 ✅ aspect-ratio-calculator — 12/12 checks passed
@@ -53,15 +53,16 @@ Found 52 tool pages to check.
 ✅ timestamp-converter — 12/12 checks passed
 ✅ url-encoder — 12/12 checks passed
 ✅ url-parser-and-query-params — 12/12 checks passed
+✅ url-slug-generator — 12/12 checks passed
 ✅ uuid-generator — 12/12 checks passed
 ✅ word-counter — 12/12 checks passed
 ✅ yaml-to-json-converter — 12/12 checks passed
 
 ————————————————————————————————————————
 HOMEPAGE CHECK:
-✅ 52/52 tools listed on homepage
+✅ 53/53 tools listed on homepage
 
 ============================================================
-SUMMARY: 52 passed, 0 failed out of 52 pages
+SUMMARY: 53 passed, 0 failed out of 53 pages
 🎉 ALL PAGES PASS QA!
 ============================================================
