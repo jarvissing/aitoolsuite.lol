@@ -1,17 +1,5 @@
 [
   {
-    "keyword": "csv to markdown table converter",
-    "tool_name": "CSV to Markdown Table Converter",
-    "description": "Convert comma-separated values (CSV) and spreadsheet rows into clean GitHub-flavored Markdown tables instantly.",
-    "category": "Text Tools",
-    "faq_items": "Does it handle quotes in CSV cells?:::Yes, properly handles escaped commas and quoted cells.|||Are columns aligned automatically?:::Yes, column counts are normalized and formatted with standard Markdown pipes and separators.|||Is it browser-side?:::Zero server upload\u2014your CSV data never leaves your browser.",
-    "related_tools": "Markdown Table to JSON Array Converter,CSV to JSON Converter,Markdown Live Previewer",
-    "tool_type": "csv-to-md",
-    "status": "published",
-    "priority": 4,
-    "published_at": "2026-09-04T22:39:03.258981"
-  },
-  {
     "keyword": "json minifier",
     "tool_name": "JSON Minifier & Compact Formatter",
     "description": "Compress and minify JSON data by stripping whitespace, newlines, and indentation to reduce payload transfer size.",
@@ -19,8 +7,9 @@
     "faq_items": "How much file size does it save?:::Typically saves 20% to 40% of payload size by removing whitespace and formatting characters.|||Does it validate JSON syntax?:::Yes, invalid JSON syntax is highlighted with clear error messages before minification.|||Can I copy with 1 click?:::Yes, single-click copy button copies the compact one-line string to your clipboard.",
     "related_tools": "JSON Formatter,JSON to YAML Data Converter,JSON to CSV Converter",
     "tool_type": "json-minifier",
-    "status": "pending",
-    "priority": 5
+    "status": "published",
+    "priority": 5,
+    "published_at": "2026-09-05T12:13:46.398159"
   },
   {
     "keyword": "url slug generator",
@@ -54,6 +43,18 @@
     "tool_type": "html-table",
     "status": "pending",
     "priority": 8
+  },
+  {
+    "keyword": "csv to markdown table converter",
+    "tool_name": "CSV to Markdown Table Converter",
+    "description": "Convert comma-separated values (CSV) and spreadsheet rows into clean GitHub-flavored Markdown tables instantly.",
+    "category": "Text Tools",
+    "faq_items": "Does it handle quotes in CSV cells?:::Yes, properly handles escaped commas and quoted cells.|||Are columns aligned automatically?:::Yes, column counts are normalized and formatted with standard Markdown pipes and separators.|||Is it browser-side?:::Zero server upload\u2014your CSV data never leaves your browser.",
+    "related_tools": "Markdown Table to JSON Array Converter,CSV to JSON Converter,Markdown Live Previewer",
+    "tool_type": "csv-to-md",
+    "status": "published",
+    "priority": 4,
+    "published_at": "2026-09-04T22:39:03.258981"
   },
   {
     "keyword": "hex to rgb converter",

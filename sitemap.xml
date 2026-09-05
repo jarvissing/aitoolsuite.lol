@@ -2,343 +2,349 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>https://aitoolsuite.lol/</loc>
-        <lastmod>2026-09-04</lastmod>
+        <lastmod>2026-09-05</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
         <loc>https://aitoolsuite.lol/about.html</loc>
-        <lastmod>2026-09-04</lastmod>
+        <lastmod>2026-09-05</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://aitoolsuite.lol/admin-ignore.html</loc>
-        <lastmod>2026-09-04</lastmod>
+        <lastmod>2026-09-05</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://aitoolsuite.lol/ai-prompt-cost-calculator.html</loc>
-        <lastmod>2026-09-04</lastmod>
+        <lastmod>2026-09-05</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://aitoolsuite.lol/aspect-ratio-calculator.html</loc>
-        <lastmod>2026-09-04</lastmod>
+        <lastmod>2026-09-05</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://aitoolsuite.lol/base64-encoder.html</loc>
-        <lastmod>2026-09-04</lastmod>
+        <lastmod>2026-09-05</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://aitoolsuite.lol/base64-image-encoder.html</loc>
-        <lastmod>2026-09-04</lastmod>
+        <lastmod>2026-09-05</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://aitoolsuite.lol/case-converter.html</loc>
-        <lastmod>2026-09-04</lastmod>
+        <lastmod>2026-09-05</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://aitoolsuite.lol/chmod-calculator.html</loc>
-        <lastmod>2026-09-04</lastmod>
+        <lastmod>2026-09-05</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://aitoolsuite.lol/color-contrast-checker.html</loc>
-        <lastmod>2026-09-04</lastmod>
+        <lastmod>2026-09-05</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://aitoolsuite.lol/color-picker.html</loc>
-        <lastmod>2026-09-04</lastmod>
+        <lastmod>2026-09-05</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://aitoolsuite.lol/contact.html</loc>
-        <lastmod>2026-09-04</lastmod>
+        <lastmod>2026-09-05</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://aitoolsuite.lol/cron-expression-generator.html</loc>
-        <lastmod>2026-09-04</lastmod>
+        <lastmod>2026-09-05</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://aitoolsuite.lol/css-box-shadow-generator.html</loc>
-        <lastmod>2026-09-04</lastmod>
+        <lastmod>2026-09-05</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://aitoolsuite.lol/css-grid-generator.html</loc>
-        <lastmod>2026-09-04</lastmod>
+        <lastmod>2026-09-05</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://aitoolsuite.lol/css-minifier.html</loc>
-        <lastmod>2026-09-04</lastmod>
+        <lastmod>2026-09-05</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://aitoolsuite.lol/csv-to-json-converter.html</loc>
-        <lastmod>2026-09-04</lastmod>
+        <lastmod>2026-09-05</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://aitoolsuite.lol/csv-to-markdown-table-converter.html</loc>
-        <lastmod>2026-09-04</lastmod>
+        <lastmod>2026-09-05</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://aitoolsuite.lol/curl-to-fetch-converter.html</loc>
-        <lastmod>2026-09-04</lastmod>
+        <lastmod>2026-09-05</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://aitoolsuite.lol/curl-to-python-converter.html</loc>
-        <lastmod>2026-09-04</lastmod>
+        <lastmod>2026-09-05</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://aitoolsuite.lol/diff-checker-and-text-compare.html</loc>
-        <lastmod>2026-09-04</lastmod>
+        <lastmod>2026-09-05</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://aitoolsuite.lol/embedding-cost-calculator.html</loc>
-        <lastmod>2026-09-04</lastmod>
+        <lastmod>2026-09-05</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://aitoolsuite.lol/env-to-json-converter.html</loc>
-        <lastmod>2026-09-04</lastmod>
+        <lastmod>2026-09-05</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://aitoolsuite.lol/hash-generator.html</loc>
-        <lastmod>2026-09-04</lastmod>
+        <lastmod>2026-09-05</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://aitoolsuite.lol/hex-to-rgb-converter.html</loc>
-        <lastmod>2026-09-04</lastmod>
+        <lastmod>2026-09-05</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://aitoolsuite.lol/html-entity-encoder.html</loc>
-        <lastmod>2026-09-04</lastmod>
+        <lastmod>2026-09-05</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://aitoolsuite.lol/html-minifier.html</loc>
-        <lastmod>2026-09-04</lastmod>
+        <lastmod>2026-09-05</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://aitoolsuite.lol/json-formatter.html</loc>
-        <lastmod>2026-09-04</lastmod>
+        <lastmod>2026-09-05</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://aitoolsuite.lol/json-minifier.html</loc>
+        <lastmod>2026-09-05</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://aitoolsuite.lol/json-to-csv-converter.html</loc>
-        <lastmod>2026-09-04</lastmod>
+        <lastmod>2026-09-05</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://aitoolsuite.lol/json-to-env-converter.html</loc>
-        <lastmod>2026-09-04</lastmod>
+        <lastmod>2026-09-05</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://aitoolsuite.lol/json-to-typescript-generator.html</loc>
-        <lastmod>2026-09-04</lastmod>
+        <lastmod>2026-09-05</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://aitoolsuite.lol/json-to-yaml-converter.html</loc>
-        <lastmod>2026-09-04</lastmod>
+        <lastmod>2026-09-05</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://aitoolsuite.lol/jwt-decoder-and-debugger.html</loc>
-        <lastmod>2026-09-04</lastmod>
+        <lastmod>2026-09-05</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://aitoolsuite.lol/llm-context-window-calculator.html</loc>
-        <lastmod>2026-09-04</lastmod>
+        <lastmod>2026-09-05</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://aitoolsuite.lol/lorem-image-placeholder-generator.html</loc>
-        <lastmod>2026-09-04</lastmod>
+        <lastmod>2026-09-05</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://aitoolsuite.lol/lorem-ipsum-generator.html</loc>
-        <lastmod>2026-09-04</lastmod>
+        <lastmod>2026-09-05</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://aitoolsuite.lol/markdown-previewer.html</loc>
-        <lastmod>2026-09-04</lastmod>
+        <lastmod>2026-09-05</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://aitoolsuite.lol/markdown-table-to-json.html</loc>
-        <lastmod>2026-09-04</lastmod>
+        <lastmod>2026-09-05</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://aitoolsuite.lol/og-meta-tag-generator.html</loc>
-        <lastmod>2026-09-04</lastmod>
+        <lastmod>2026-09-05</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://aitoolsuite.lol/openai-json-schema-generator.html</loc>
-        <lastmod>2026-09-04</lastmod>
+        <lastmod>2026-09-05</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://aitoolsuite.lol/privacy.html</loc>
-        <lastmod>2026-09-04</lastmod>
+        <lastmod>2026-09-05</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://aitoolsuite.lol/px-to-rem-converter.html</loc>
-        <lastmod>2026-09-04</lastmod>
+        <lastmod>2026-09-05</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://aitoolsuite.lol/qr-code-generator.html</loc>
-        <lastmod>2026-09-04</lastmod>
+        <lastmod>2026-09-05</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://aitoolsuite.lol/regex-tester-and-cheat-sheet.html</loc>
-        <lastmod>2026-09-04</lastmod>
+        <lastmod>2026-09-05</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://aitoolsuite.lol/sql-formatter-and-beautifier.html</loc>
-        <lastmod>2026-09-04</lastmod>
+        <lastmod>2026-09-05</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://aitoolsuite.lol/strong-password-generator.html</loc>
-        <lastmod>2026-09-04</lastmod>
+        <lastmod>2026-09-05</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://aitoolsuite.lol/subdomain-finder-and-dns-lookup.html</loc>
-        <lastmod>2026-09-04</lastmod>
+        <lastmod>2026-09-05</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://aitoolsuite.lol/svg-optimizer-and-viewer.html</loc>
-        <lastmod>2026-09-04</lastmod>
+        <lastmod>2026-09-05</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://aitoolsuite.lol/svg-to-png-converter.html</loc>
-        <lastmod>2026-09-04</lastmod>
+        <lastmod>2026-09-05</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://aitoolsuite.lol/tailwind-color-palette-generator.html</loc>
-        <lastmod>2026-09-04</lastmod>
+        <lastmod>2026-09-05</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://aitoolsuite.lol/terms.html</loc>
-        <lastmod>2026-09-04</lastmod>
+        <lastmod>2026-09-05</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://aitoolsuite.lol/timestamp-converter.html</loc>
-        <lastmod>2026-09-04</lastmod>
+        <lastmod>2026-09-05</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://aitoolsuite.lol/url-encoder.html</loc>
-        <lastmod>2026-09-04</lastmod>
+        <lastmod>2026-09-05</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://aitoolsuite.lol/url-parser-and-query-params.html</loc>
-        <lastmod>2026-09-04</lastmod>
+        <lastmod>2026-09-05</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://aitoolsuite.lol/uuid-generator.html</loc>
-        <lastmod>2026-09-04</lastmod>
+        <lastmod>2026-09-05</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://aitoolsuite.lol/word-counter.html</loc>
-        <lastmod>2026-09-04</lastmod>
+        <lastmod>2026-09-05</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://aitoolsuite.lol/yaml-to-json-converter.html</loc>
-        <lastmod>2026-09-04</lastmod>
+        <lastmod>2026-09-05</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
