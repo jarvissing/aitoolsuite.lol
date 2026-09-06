@@ -1,17 +1,5 @@
 [
   {
-    "keyword": "url slug generator",
-    "tool_name": "URL Slug Generator & Text Sanitizer",
-    "description": "Generate clean, SEO-friendly URL slugs from blog titles, headlines, and strings with customizable separators and accents.",
-    "category": "Text Tools",
-    "faq_items": "Does it remove special characters?:::Yes, removes punctuation, symbols, and non-alphanumeric characters while preserving words.|||Does it handle accents and umlauts?:::Yes, normalizes unicode accents (e.g. \u00e9 becomes e, \u00fc becomes u).|||Can I choose separators?:::Supports both hyphens (-) and underscores (_) with optional lowercase enforcement.",
-    "related_tools": "URL Parser & Query Parameter Extractor,Case Converter,Word Counter",
-    "tool_type": "slug-generator",
-    "status": "published",
-    "priority": 6,
-    "published_at": "2026-09-05T22:29:59.143403"
-  },
-  {
     "keyword": "cidr subnet calculator",
     "tool_name": "IPv4 CIDR Subnet & IP Range Calculator",
     "description": "Calculate subnet masks, usable host IP ranges, broadcast IPs, and wildcard masks for IPv4 CIDR blocks (/8 to /32).",
@@ -19,8 +7,9 @@
     "faq_items": "What does CIDR notation mean?:::Classless Inter-Domain Routing specifies the prefix length (bits in the network mask).|||How many usable hosts are in a /24 subnet?:::A /24 subnet provides 256 total IP addresses and 254 usable host addresses.|||Does it calculate broadcast and network IPs?:::Yes, network IP, broadcast IP, and first/last usable IP addresses are calculated instantly.",
     "related_tools": "DNS Record Lookup,Unix Timestamp Converter,Hash Generator",
     "tool_type": "cidr-calculator",
-    "status": "pending",
-    "priority": 7
+    "status": "published",
+    "priority": 7,
+    "published_at": "2026-09-06T12:28:39.258702"
   },
   {
     "keyword": "html table generator",
@@ -32,6 +21,18 @@
     "tool_type": "html-table",
     "status": "pending",
     "priority": 8
+  },
+  {
+    "keyword": "url slug generator",
+    "tool_name": "URL Slug Generator & Text Sanitizer",
+    "description": "Generate clean, SEO-friendly URL slugs from blog titles, headlines, and strings with customizable separators and accents.",
+    "category": "Text Tools",
+    "faq_items": "Does it remove special characters?:::Yes, removes punctuation, symbols, and non-alphanumeric characters while preserving words.|||Does it handle accents and umlauts?:::Yes, normalizes unicode accents (e.g. \u00e9 becomes e, \u00fc becomes u).|||Can I choose separators?:::Supports both hyphens (-) and underscores (_) with optional lowercase enforcement.",
+    "related_tools": "URL Parser & Query Parameter Extractor,Case Converter,Word Counter",
+    "tool_type": "slug-generator",
+    "status": "published",
+    "priority": 6,
+    "published_at": "2026-09-05T22:29:59.143403"
   },
   {
     "keyword": "json minifier",

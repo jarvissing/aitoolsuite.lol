@@ -9,3 +9,4 @@ timestamp,action_type,tool_name,keyword,url,status,details
 2026-09-04T22:39:03.302109,PUBLISH,csv to markdown table converter,SUCCESS,https://aitoolsuite.lol/csv-to-markdown-table-converter.html,Published CSV to Markdown Table Converter,
 2026-09-05T12:13:46.435537,PUBLISH,json minifier,SUCCESS,https://aitoolsuite.lol/json-minifier.html,Published JSON Minifier & Compact Formatter,
 2026-09-05T22:29:59.181879,PUBLISH,url slug generator,SUCCESS,https://aitoolsuite.lol/url-slug-generator.html,Published URL Slug Generator & Text Sanitizer,
+2026-09-06T12:28:39.298068,PUBLISH,cidr subnet calculator,SUCCESS,https://aitoolsuite.lol/cidr-subnet-calculator.html,Published IPv4 CIDR Subnet & IP Range Calculator,
