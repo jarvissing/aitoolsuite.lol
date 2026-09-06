@@ -1,5 +1,17 @@
 [
   {
+    "keyword": "html table generator",
+    "tool_name": "HTML Table & CSS Styler Generator",
+    "description": "Create custom HTML tables with headers, striped rows, and clean responsive CSS styling with live visual preview.",
+    "category": "Developer Tools",
+    "faq_items": "Can I customize rows and columns?:::Yes, interactive numeric inputs allow adjusting row and column counts up to 15x10.|||Does it generate semantic HTML?:::Generates standard <table>, <thead>, <th>, <tbody>, and <td> elements.|||Can I toggle striped styling?:::Yes, one-click checkbox toggles alternating row backgrounds.",
+    "related_tools": "CSV to Markdown Table Converter,HTML Entity Encoder,HTML Minifier",
+    "tool_type": "html-table",
+    "status": "published",
+    "priority": 8,
+    "published_at": "2026-09-06T22:34:18.433898"
+  },
+  {
     "keyword": "cidr subnet calculator",
     "tool_name": "IPv4 CIDR Subnet & IP Range Calculator",
     "description": "Calculate subnet masks, usable host IP ranges, broadcast IPs, and wildcard masks for IPv4 CIDR blocks (/8 to /32).",
@@ -10,17 +22,6 @@
     "status": "published",
     "priority": 7,
     "published_at": "2026-09-06T12:28:39.258702"
-  },
-  {
-    "keyword": "html table generator",
-    "tool_name": "HTML Table & CSS Styler Generator",
-    "description": "Create custom HTML tables with headers, striped rows, and clean responsive CSS styling with live visual preview.",
-    "category": "Developer Tools",
-    "faq_items": "Can I customize rows and columns?:::Yes, interactive numeric inputs allow adjusting row and column counts up to 15x10.|||Does it generate semantic HTML?:::Generates standard <table>, <thead>, <th>, <tbody>, and <td> elements.|||Can I toggle striped styling?:::Yes, one-click checkbox toggles alternating row backgrounds.",
-    "related_tools": "CSV to Markdown Table Converter,HTML Entity Encoder,HTML Minifier",
-    "tool_type": "html-table",
-    "status": "pending",
-    "priority": 8
   },
   {
     "keyword": "url slug generator",
