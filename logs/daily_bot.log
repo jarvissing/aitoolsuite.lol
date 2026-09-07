@@ -913,3 +913,11 @@ SUMMARY: 55 passed, 0 failed out of 55 pages
 2026-09-07 14:36:27,241 [INFO] Guardrail filter skipped candidate 'env to json converter': Page 'env-to-json-converter.html' already exists on site (cannibalization prevented).
 2026-09-07 14:36:29,018 [INFO] Market Analysis: {'status': 'success', 'added_candidates': 0, 'total_pending': 0, 'top_priority': 'None'}
 2026-09-07 14:36:29,018 [INFO] No pending tools found in queue.
+2026-09-07 23:10:43,018 [INFO] Running Market Feedback Analyzer & Queue Optimizer...
+2026-09-07 23:10:43,018 [INFO] Guardrail filter skipped candidate 'openai json schema generator': Page 'openai-json-schema-generator.html' already exists on site (cannibalization prevented).
+2026-09-07 23:10:43,019 [INFO] Guardrail filter skipped candidate 'llm context window calculator': Page 'llm-context-window-calculator.html' already exists on site (cannibalization prevented).
+2026-09-07 23:10:43,019 [INFO] Guardrail filter skipped candidate 'embedding cost calculator': Page 'embedding-cost-calculator.html' already exists on site (cannibalization prevented).
+2026-09-07 23:10:43,019 [INFO] Guardrail filter skipped candidate 'docker compose to kubernetes': Keyword 'docker compose to kubernetes' fails domain semantic relevance check.
+2026-09-07 23:10:43,019 [INFO] Guardrail filter skipped candidate 'env to json converter': Page 'env-to-json-converter.html' already exists on site (cannibalization prevented).
+2026-09-07 23:10:44,303 [INFO] Market Analysis: {'status': 'success', 'added_candidates': 0, 'total_pending': 0, 'top_priority': 'None'}
+2026-09-07 23:10:44,304 [INFO] No pending tools found in queue.
