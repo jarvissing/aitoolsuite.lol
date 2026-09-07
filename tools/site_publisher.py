@@ -32,7 +32,7 @@ def build_tool_page(keyword: str, tool_name: str, description: str, category: st
         
     meta_title = f"{tool_name} - Free Online {category} Tool | {SITE_NAME}"
     page_slug = slug
-    page_url = f"{SITE_URL}/{slug}"
+    page_url = f"{SITE_URL}/{slug}.html"
     category_slug = category.lower().replace(" ", "-").replace("&", "and")
 
     related_tool_list = []

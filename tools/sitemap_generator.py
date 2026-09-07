@@ -15,7 +15,7 @@ def generate_sitemap() -> str:
 
     html_files = sorted([
         f for f in PAGES_DIR.glob("*.html")
-        if f.stem != "404"
+        if f.stem not in ("404", "admin-ignore")
     ])
 
     today = datetime.now().strftime("%Y-%m-%d")
@@ -33,7 +33,7 @@ def generate_sitemap() -> str:
 
     # All other tool pages
     for f in html_files:
-        if f.stem == "index":
+        if f.stem in ("index", "admin-ignore"):
             continue
         urls_xml.append(f"""    <url>
         <loc>{SITE_URL}/{f.name}</loc>

@@ -123,8 +123,8 @@ def update_homepage() -> str:
     <meta property="og:title" content="{SITE_NAME} — Free Online Developer & AI Utilities">
     <meta property="og:description" content="Modern, private developer & AI utilities with zero ads and instant client-side execution.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="{SITE_URL}">
-    <link rel="canonical" href="{SITE_URL}">
+    <meta property="og:url" content="{SITE_URL}/">
+    <link rel="canonical" href="{SITE_URL}/">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%234361ee'/%3E%3Cpath d='M56 12 L24 54 L48 54 L44 88 L76 46 L52 46 Z' fill='%23ffdd00' stroke='%23f59e0b' stroke-width='2'/%3E%3C/svg%3E">
     <link rel="alternate icon" href="/favicon.svg">
     
