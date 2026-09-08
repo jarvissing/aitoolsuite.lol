@@ -17,8 +17,13 @@ Usage:
 
 import json
 import re
+import sys
 from pathlib import Path
 from datetime import datetime
+
+PROJECT_ROOT = Path(__file__).parent.parent
+sys.path.insert(0, str(PROJECT_ROOT))
+
 from config.settings import PAGES_DIR, LOGS_DIR, SITE_URL
 
 
@@ -245,4 +250,3 @@ def check_page_after_publish(keyword: str) -> str:
             if not info["pass"]
         ]
         return f"QA FAIL: {result['page']} — {result['failed_checks']} issues found:\n" + "\n".join(f"  ⚠️ {f}" for f in failed)
-"""Quality Assurance checker for all tool pages."""

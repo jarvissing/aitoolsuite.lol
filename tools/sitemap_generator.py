@@ -3,8 +3,13 @@
 Scans all tool pages and generates sitemap.xml and robots.txt.
 """
 
+import sys
 from pathlib import Path
 from datetime import datetime
+
+PROJECT_ROOT = Path(__file__).parent.parent
+sys.path.insert(0, str(PROJECT_ROOT))
+
 from config.settings import PAGES_DIR, SITE_URL
 
 

@@ -45,7 +45,7 @@ HIGH_DEMAND_EXPANSIONS = [
         "tool_name": "LLM Context Window & Memory Calculator",
         "description": "Calculate token usage, context window limits (128k, 200k, 1M, 2M tokens), and memory requirements across AI models.",
         "category": "AI Utilities",
-        "tool_type": "token-counter",
+        "tool_type": "llm-context",
         "search_demand": 92,
         "faq_items": "Which models are supported?:::Includes context limits for GPT-4o (128k), Claude 3.5 Sonnet (200k), and Gemini 1.5 Pro (2M).|||How does it calculate memory?:::Estimates KV-cache RAM requirements based on precision (FP16, INT8, INT4).|||Is it browser-safe?:::All calculations run locally with zero server requests.",
         "related_tools": "AI Prompt Token Counter,AI Prompt Cost Calculator,Word Counter"
@@ -55,7 +55,7 @@ HIGH_DEMAND_EXPANSIONS = [
         "tool_name": "AI Embedding & Vector Dimension Calculator",
         "description": "Calculate vector embedding dimensions, storage RAM requirements, and API costs for OpenAI, Cohere, and HuggingFace models.",
         "category": "AI Utilities",
-        "tool_type": "token-counter",
+        "tool_type": "embedding-cost",
         "search_demand": 90,
         "faq_items": "What dimensions are included?:::Supports 1536 (text-embedding-3-small), 3072 (text-embedding-3-large), 768 (nomad), and 1024 (Cohere).|||How is vector storage estimated?:::Calculates total gigabytes based on 4 bytes per float32 vector element.|||Can I calculate batch datasets?:::Yes, enter total document count to see total vector DB storage requirements.",
         "related_tools": "AI Prompt Cost Calculator,JSON Formatter,UUID Generator"
@@ -77,7 +77,7 @@ HIGH_DEMAND_EXPANSIONS = [
         "tool_name": "IPv4 CIDR Subnet & IP Range Calculator",
         "description": "Calculate network masks, usable host IP ranges, broadcast addresses, and wildcard masks for IPv4 CIDR blocks (/8 to /32).",
         "category": "Developer Tools",
-        "tool_type": "chmod-calculator",
+        "tool_type": "cidr-calculator",
         "search_demand": 91,
         "faq_items": "What does CIDR notation mean?:::Classless Inter-Domain Routing specifies the prefix length (number of bits in the network mask).|||How many usable hosts are in a /24 subnet?:::A /24 subnet provides 256 total IP addresses and 254 usable host addresses.|||Does it calculate broadcast and network IPs?:::Yes, network IP, broadcast IP, and first/last usable IP addresses are calculated instantly.",
         "related_tools": "DNS Record Lookup,Unix Timestamp Converter,Hash Generator"
@@ -87,7 +87,7 @@ HIGH_DEMAND_EXPANSIONS = [
         "tool_name": ".env to JSON Environment Converter",
         "description": "Convert .env key-value variables into formatted JSON configuration objects and JavaScript process.env definitions.",
         "category": "Developer Tools",
-        "tool_type": "yaml-to-json",
+        "tool_type": "env-to-json",
         "search_demand": 89,
         "faq_items": "How does it handle quoted values?:::Strips single and double quotes and trims surrounding whitespace.|||Can I convert back from JSON to .env?:::Yes, the tool supports bidirectional conversion between .env and JSON.|||Are API keys safe?:::Yes, conversion happens entirely on your machine with zero network transmission.",
         "related_tools": "JSON Formatter,YAML to JSON Converter,Base64 Encoder"
@@ -154,14 +154,6 @@ def optimize_tool_queue() -> dict:
             added_count += 1
         else:
             logger.info(f"Guardrail filter skipped candidate '{kw}': {reason}")
-
-    # Call Live Context Engine for real-time traffic & trend signals
-    try:
-        from tools.live_context_engine import format_live_context_for_prompt, get_live_context_payload
-        live_ctx = get_live_context_payload()
-        logger.info(f"Live Context Ingested: {live_ctx['trending_developer_topics'][:2]}")
-    except Exception as e:
-        logger.debug(f"Live context engine skipped: {e}")
 
     # Re-rank pending queue by priority score
     pending_items = [i for i in current_queue if i.get("status") == "pending"]

@@ -434,6 +434,7 @@
                 <a href="/#developer-tools" class="nav-link">Developer</a>
                 <a href="/#text-tools" class="nav-link">Text</a>
                 <a href="/#design-tools" class="nav-link">Design</a>
+                <a href="/#seo-tools" class="nav-link">SEO</a>
             </div>
         </nav>
     </div>
@@ -572,6 +573,20 @@
             const embedArea = document.getElementById('embedSnippetText');
             if (embedArea) embedArea.value = embedSnippet;
         });
+
+        // Global unified copy helper for widgets and tool surfaces
+        window.copyToClipboard = function(text, btnElement, successMsg = 'Copied!') {
+            navigator.clipboard.writeText(text).then(() => {
+                if (!btnElement) return;
+                const orig = btnElement.innerText;
+                btnElement.innerText = successMsg;
+                btnElement.classList.add('copied');
+                setTimeout(() => {
+                    btnElement.innerText = orig;
+                    btnElement.classList.remove('copied');
+                }, 1800);
+            });
+        };
 
         function copyToolShareUrl(btn) {
             navigator.clipboard.writeText(window.location.href).then(() => {

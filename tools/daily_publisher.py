@@ -10,6 +10,7 @@ Usage:
 
 import json
 import logging
+import os
 import subprocess
 import sys
 from pathlib import Path
@@ -111,22 +112,32 @@ def publish_next_tool() -> dict:
 
     # Deploy to GitHub
     if "ALL PAGES PASS QA" in qa_report:
-        logger.info("Deploying changes to GitHub Pages...")
-        try:
-            pages_dir = str(PAGES_DIR)
-            subprocess.run(["git", "add", "."], cwd=pages_dir, check=True)
-            subprocess.run(["git", "commit", "-m", f"Auto-publish tool: {tool_name}"], cwd=pages_dir, check=True)
-            subprocess.run(["git", "push"], cwd=pages_dir, check=True)
-            logger.info(f"✅ Successfully deployed '{tool_name}' to {SITE_URL}")
-        except Exception as e:
-            logger.warning(f"Git push note: {e}")
+        if os.getenv("GITHUB_ACTIONS"):
+            logger.info("Running in GitHub Actions — commit and push will be finalized by workflow runner.")
+        else:
+            logger.info("Deploying changes to GitHub Pages locally...")
+            try:
+                pages_dir = str(PAGES_DIR)
+                subprocess.run(["git", "add", "."], cwd=pages_dir, check=True)
+                subprocess.run(["git", "commit", "-m", f"Auto-publish tool: {tool_name}"], cwd=pages_dir, check=True)
+                subprocess.run(["git", "push"], cwd=pages_dir, check=True)
+                logger.info(f"✅ Successfully deployed '{tool_name}' to {SITE_URL}")
+            except Exception as e:
+                logger.warning(f"Git push note: {e}")
     else:
         logger.warning("QA check had warnings; review QA report.")
 
     # Record action
     slug = keyword.lower().replace(" ", "-")
     page_url = f"{SITE_URL}/{slug}.html"
-    log_action("PUBLISH", keyword, "SUCCESS", page_url, f"Published {tool_name}")
+    log_action(
+        action_type="PUBLISH",
+        tool_name=tool_name,
+        keyword=keyword,
+        url=page_url,
+        status="SUCCESS",
+        details=f"Published {tool_name}"
+    )
 
     return {
         "status": "success",
