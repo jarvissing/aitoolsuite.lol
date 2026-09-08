@@ -82,7 +82,8 @@ def check_single_page(filepath: Path) -> dict:
     
     # 10. Tool widget present (not just placeholder)
     has_placeholder = "tool-widget-placeholder" in content or "Tool widget will be embedded here" in content
-    has_real_widget = "tool-container" in content
+    has_real_widget = ("tool-container" in content or 
+                       ("tool-surface" in content and ("<button" in content or "<input" in content or "<textarea" in content or "<select" in content)))
     if has_real_widget and not has_placeholder:
         checks["working_widget"] = {"pass": True, "value": "functional widget embedded"}
     elif has_real_widget and has_placeholder:

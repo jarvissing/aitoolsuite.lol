@@ -70,5 +70,21 @@
   "json-minifier": "json-minifier.html",
   "slug-generator": "slug-generator.html",
   "cidr-calculator": "cidr-calculator.html",
-  "html-table": "html-table.html"
+  "html-table": "html-table.html",
+  "glassmorphism": "glassmorphism.html",
+  "css-glassmorphism-generator": "glassmorphism.html",
+  "ascii-binary": "ascii-binary.html",
+  "ascii-binary-converter": "ascii-binary.html",
+  "regex-library": "regex-library.html",
+  "regex-pattern-library": "regex-library.html",
+  "sql-to-json": "sql-to-json.html",
+  "sql-to-json-converter": "sql-to-json.html",
+  "border-radius": "border-radius.html",
+  "css-border-radius-generator": "border-radius.html",
+  "jwt-verifier": "jwt-verifier.html",
+  "jwt-secret-verifier": "jwt-verifier.html",
+  "html-to-jsx": "html-to-jsx.html",
+  "html-to-jsx-converter": "html-to-jsx.html",
+  "bulk-uuid": "bulk-uuid.html",
+  "bulk-uuid-generator": "bulk-uuid.html"
 }

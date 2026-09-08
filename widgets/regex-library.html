@@ -1,0 +1,181 @@
+<style>
+.rl-container {
+    max-width: 800px;
+    margin: 0 auto;
+    font-family: 'Inter', system-ui, sans-serif;
+    color: #e2e8f0;
+}
+.rl-tester-card {
+    background: #121216;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    padding: 18px;
+    margin-bottom: 24px;
+}
+.rl-input {
+    width: 100%;
+    background: #09090b;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 8px;
+    padding: 10px 14px;
+    color: #fff;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9rem;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+.rl-result-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+.rl-match { background: rgba(34, 197, 94, 0.2); color: #4ade80; border: 1px solid rgba(34, 197, 94, 0.4); }
+.rl-nomatch { background: rgba(239, 68, 68, 0.2); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.4); }
+
+.rl-patterns-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.rl-pattern-item {
+    background: #121216;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 14px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    transition: border-color 0.2s;
+}
+.rl-pattern-item:hover {
+    border-color: rgba(59, 130, 246, 0.3);
+}
+.rl-pat-info {
+    flex: 1;
+}
+.rl-pat-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #f1f5f9;
+    margin-bottom: 4px;
+}
+.rl-pat-code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.82rem;
+    color: #38bdf8;
+    background: #09090b;
+    padding: 4px 8px;
+    border-radius: 6px;
+    display: inline-block;
+    max-width: 500px;
+    overflow-x: auto;
+}
+.rl-actions {
+    display: flex;
+    gap: 8px;
+}
+.rl-btn {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #cbd5e1;
+    border-radius: 8px;
+    padding: 6px 12px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.rl-btn:hover {
+    background: rgba(59, 130, 246, 0.2);
+    color: #93c5fd;
+}
+</style>
+
+<div class="rl-container">
+    <div class="rl-tester-card">
+        <div style="font-weight: 700; font-size: 0.85rem; color: #94a3b8; margin-bottom: 8px; text-transform: uppercase;">Active Pattern Tester</div>
+        <input type="text" id="rlActivePattern" class="rl-input" value="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" oninput="testPattern()">
+        <input type="text" id="rlTestString" class="rl-input" placeholder="Enter test string to validate..." value="developer@example.com" oninput="testPattern()">
+        <div>
+            <span id="rlStatusBadge" class="rl-result-badge rl-match">Valid Match</span>
+        </div>
+    </div>
+
+    <div class="rl-patterns-list" id="rlList"></div>
+</div>
+
+<script>
+const patterns = [
+    { title: "Email Address", pattern: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$" },
+    { title: "URL (HTTP / HTTPS)", pattern: "https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&//=]*)" },
+    { title: "IPv4 Address", pattern: "^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$" },
+    { title: "Strong Password (8+ chars, upper, lower, num, spec)", pattern: "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$" },
+    { title: "ISO 8601 Date (YYYY-MM-DD)", pattern: "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01])$" },
+    { title: "Phone Number (International / E.164)", pattern: "^\\+?[1-9]\\d{1,14}$" },
+    { title: "Hex Color Code (#RGB / #RRGGBB)", pattern: "^#(?:[0-9a-fA-F]{3}){1,2}$" },
+    { title: "UUID v4", pattern: "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$" }
+];
+
+function renderPatterns() {
+    const container = document.getElementById('rlList');
+    container.innerHTML = '';
+    patterns.forEach((p, idx) => {
+        const item = document.createElement('div');
+        item.className = 'rl-pattern-item';
+        item.innerHTML = `
+            <div class="rl-pat-info">
+                <div class="rl-pat-title">${p.title}</div>
+                <code class="rl-pat-code">${p.pattern}</code>
+            </div>
+            <div class="rl-actions">
+                <button class="rl-btn" onclick="usePattern('${p.pattern.replace(/\\/g, '\\\\')}')">Test</button>
+                <button class="rl-btn" onclick="copyPattern('${p.pattern.replace(/\\/g, '\\\\')}', this)">Copy</button>
+            </div>
+        `;
+        container.appendChild(item);
+    });
+}
+
+function usePattern(pat) {
+    document.getElementById('rlActivePattern').value = pat;
+    testPattern();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function testPattern() {
+    const patStr = document.getElementById('rlActivePattern').value;
+    const testStr = document.getElementById('rlTestString').value;
+    const badge = document.getElementById('rlStatusBadge');
+
+    try {
+        const regex = new RegExp(patStr);
+        if (regex.test(testStr)) {
+            badge.className = 'rl-result-badge rl-match';
+            badge.textContent = 'Valid Match';
+        } else {
+            badge.className = 'rl-result-badge rl-nomatch';
+            badge.textContent = 'No Match';
+        }
+    } catch (e) {
+        badge.className = 'rl-result-badge rl-nomatch';
+        badge.textContent = 'Invalid Regular Expression';
+    }
+}
+
+function copyPattern(pat, btn) {
+    navigator.clipboard.writeText(pat).then(() => {
+        const orig = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(() => btn.textContent = orig, 1500);
+    });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    renderPatterns();
+    testPattern();
+});
+</script>

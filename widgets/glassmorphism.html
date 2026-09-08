@@ -1,0 +1,202 @@
+<style>
+.gm-container {
+    max-width: 800px;
+    margin: 0 auto;
+    font-family: 'Inter', system-ui, sans-serif;
+    color: #e2e8f0;
+}
+.gm-preview-stage {
+    position: relative;
+    height: 260px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #6366f1 0%, #ec4899 50%, #f59e0b 100%);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    margin-bottom: 24px;
+    box-shadow: inset 0 0 40px rgba(0,0,0,0.2);
+}
+.gm-preview-bubble-1 {
+    position: absolute;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: #3b82f6;
+    top: 20px;
+    left: 40px;
+}
+.gm-preview-bubble-2 {
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: #10b981;
+    bottom: -30px;
+    right: 50px;
+}
+.gm-glass-card {
+    position: relative;
+    z-index: 2;
+    padding: 28px 36px;
+    border-radius: 16px;
+    max-width: 360px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    transition: all 0.1s ease;
+}
+.gm-glass-card h4 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.3rem;
+    margin-bottom: 6px;
+    color: #ffffff;
+}
+.gm-glass-card p {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.4;
+}
+.gm-controls-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin-bottom: 20px;
+}
+.gm-control-group {
+    background: #121216;
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 14px;
+    border-radius: 12px;
+}
+.gm-control-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.82rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #94a3b8;
+}
+.gm-slider {
+    width: 100%;
+    accent-color: #3b82f6;
+    cursor: pointer;
+}
+.gm-output-box {
+    background: #09090b;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 16px;
+    position: relative;
+}
+.gm-code-area {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    color: #38bdf8;
+    white-space: pre-wrap;
+    line-height: 1.5;
+}
+.gm-btn-copy {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: #3b82f6;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 6px 14px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.gm-btn-copy:hover { background: #2563eb; }
+</style>
+
+<div class="gm-container">
+    <div class="gm-preview-stage">
+        <div class="gm-preview-bubble-1"></div>
+        <div class="gm-preview-bubble-2"></div>
+        <div id="gmGlassCard" class="gm-glass-card">
+            <h4>Glassmorphism</h4>
+            <p>Modern backdrop blur and frosted glass effect preview.</p>
+        </div>
+    </div>
+
+    <div class="gm-controls-grid">
+        <div class="gm-control-group">
+            <div class="gm-control-label">
+                <span>Blur Radius</span>
+                <span id="gmBlurVal">16px</span>
+            </div>
+            <input type="range" id="gmBlur" class="gm-slider" min="0" max="40" value="16" oninput="updateGlass()">
+        </div>
+        <div class="gm-control-group">
+            <div class="gm-control-label">
+                <span>Background Opacity</span>
+                <span id="gmOpacityVal">0.25</span>
+            </div>
+            <input type="range" id="gmOpacity" class="gm-slider" min="0" max="1" step="0.05" value="0.25" oninput="updateGlass()">
+        </div>
+        <div class="gm-control-group">
+            <div class="gm-control-label">
+                <span>Border Opacity</span>
+                <span id="gmBorderVal">0.30</span>
+            </div>
+            <input type="range" id="gmBorder" class="gm-slider" min="0" max="1" step="0.05" value="0.3" oninput="updateGlass()">
+        </div>
+        <div class="gm-control-group">
+            <div class="gm-control-label">
+                <span>Border Radius</span>
+                <span id="gmRadiusVal">16px</span>
+            </div>
+            <input type="range" id="gmRadius" class="gm-slider" min="0" max="50" value="16" oninput="updateGlass()">
+        </div>
+    </div>
+
+    <div class="gm-output-box">
+        <button class="gm-btn-copy" onclick="copyGlassCSS(this)">Copy CSS</button>
+        <div id="gmCSSCode" class="gm-code-area"></div>
+    </div>
+</div>
+
+<script>
+function updateGlass() {
+    const blur = document.getElementById('gmBlur').value;
+    const opacity = document.getElementById('gmOpacity').value;
+    const border = document.getElementById('gmBorder').value;
+    const radius = document.getElementById('gmRadius').value;
+
+    document.getElementById('gmBlurVal').textContent = blur + 'px';
+    document.getElementById('gmOpacityVal').textContent = opacity;
+    document.getElementById('gmBorderVal').textContent = border;
+    document.getElementById('gmRadiusVal').textContent = radius + 'px';
+
+    const card = document.getElementById('gmGlassCard');
+    const bgVal = `rgba(255, 255, 255, ${opacity})`;
+    const borderVal = `1px solid rgba(255, 255, 255, ${border})`;
+    const filterVal = `blur(${blur}px)`;
+
+    card.style.background = bgVal;
+    card.style.backdropFilter = filterVal;
+    card.style.webkitBackdropFilter = filterVal;
+    card.style.border = borderVal;
+    card.style.borderRadius = radius + 'px';
+
+    const cssString = `/* Glassmorphism CSS */\nbackground: rgba(255, 255, 255, ${opacity});\nbackdrop-filter: blur(${blur}px);\n-webkit-backdrop-filter: blur(${blur}px);\nborder-radius: ${radius}px;\nborder: 1px solid rgba(255, 255, 255, ${border});\nbox-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);`;
+
+    document.getElementById('gmCSSCode').textContent = cssString;
+}
+
+function copyGlassCSS(btn) {
+    const text = document.getElementById('gmCSSCode').textContent;
+    navigator.clipboard.writeText(text).then(() => {
+        const orig = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(() => btn.textContent = orig, 1500);
+    });
+}
+
+document.addEventListener('DOMContentLoaded', updateGlass);
+</script>

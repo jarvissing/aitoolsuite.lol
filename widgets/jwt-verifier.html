@@ -1,0 +1,129 @@
+<style>
+.jv-container {
+    max-width: 800px;
+    margin: 0 auto;
+    font-family: 'Inter', system-ui, sans-serif;
+    color: #e2e8f0;
+}
+.jv-input {
+    width: 100%;
+    background: #09090b;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 8px;
+    padding: 12px;
+    color: #fff;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    box-sizing: border-box;
+    margin-bottom: 14px;
+}
+.jv-input:focus { outline: none; border-color: #3b82f6; }
+.jv-badge {
+    padding: 10px 16px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 16px;
+    display: none;
+}
+.jv-valid { background: rgba(34, 197, 94, 0.15); border: 1px solid rgba(34, 197, 94, 0.4); color: #4ade80; display: block; }
+.jv-invalid { background: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.4); color: #f87171; display: block; }
+.jv-card {
+    background: #121216;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 14px;
+}
+.jv-pre {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.82rem;
+    color: #38bdf8;
+    white-space: pre-wrap;
+    margin: 0;
+}
+</style>
+
+<div class="jv-container">
+    <div style="font-size: 0.82rem; font-weight: 600; color: #94a3b8; margin-bottom: 6px;">Paste JWT Token (Encoded)</div>
+    <textarea id="jvToken" class="jv-input" rows="3" placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." oninput="verifyJWT()">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkphcnZpcyIsImlhdCI6MTUxNjIzOTAyMn0.XbPfbIHMI6arZ3Y922BhjWgQzWXcXNrz0ogrVugoWoU</textarea>
+
+    <div style="font-size: 0.82rem; font-weight: 600; color: #94a3b8; margin-bottom: 6px;">HMAC-SHA256 Secret Key</div>
+    <input type="text" id="jvSecret" class="jv-input" value="your-256-bit-secret" placeholder="Enter secret to verify signature..." oninput="verifyJWT()">
+
+    <div id="jvStatus" class="jv-badge"></div>
+
+    <div class="jv-card">
+        <div style="font-weight: 700; font-size: 0.8rem; color: #94a3b8; text-transform: uppercase; margin-bottom: 6px;">Decoded Payload</div>
+        <pre id="jvPayload" class="jv-pre"></pre>
+    </div>
+</div>
+
+<script>
+async function verifyJWT() {
+    const token = document.getElementById('jvToken').value.trim();
+    const secret = document.getElementById('jvSecret').value;
+    const badge = document.getElementById('jvStatus');
+    const payloadPre = document.getElementById('jvPayload');
+
+    if (!token) {
+        badge.style.display = 'none';
+        payloadPre.textContent = '';
+        return;
+    }
+
+    const parts = token.split('.');
+    if (parts.length !== 3) {
+        badge.className = 'jv-badge jv-invalid';
+        badge.textContent = '❌ Invalid JWT: Token must have exactly 3 parts separated by dots.';
+        payloadPre.textContent = '';
+        return;
+    }
+
+    try {
+        const payloadJson = JSON.parse(atob(parts[1].replace(/-/g, '+').replace(/_/g, '/')));
+        payloadPre.textContent = JSON.stringify(payloadJson, null, 2);
+    } catch(e) {
+        payloadPre.textContent = 'Error decoding base64 payload.';
+    }
+
+    if (!secret) {
+        badge.className = 'jv-badge';
+        badge.style.display = 'none';
+        return;
+    }
+
+    try {
+        const enc = new TextEncoder();
+        const key = await crypto.subtle.importKey(
+            'raw',
+            enc.encode(secret),
+            { name: 'HMAC', hash: 'SHA-256' },
+            false,
+            ['sign']
+        );
+
+        const dataToSign = enc.encode(`${parts[0]}.${parts[1]}`);
+        const signatureBuffer = await crypto.subtle.sign('HMAC', key, dataToSign);
+
+        const computedSignature = btoa(String.fromCharCode(...new Uint8Array(signatureBuffer)))
+            .replace(/=/g, '')
+            .replace(/\+/g, '-')
+            .replace(/\//g, '_');
+
+        if (computedSignature === parts[2]) {
+            badge.className = 'jv-badge jv-valid';
+            badge.textContent = '✅ Signature Verified (HMAC-SHA256 Match)';
+        } else {
+            badge.className = 'jv-badge jv-invalid';
+            badge.textContent = '❌ Invalid Signature (Secret does not match token)';
+        }
+    } catch(e) {
+        badge.className = 'jv-badge jv-invalid';
+        badge.textContent = 'Verification error: ' + e.message;
+    }
+}
+
+document.addEventListener('DOMContentLoaded', verifyJWT);
+</script>

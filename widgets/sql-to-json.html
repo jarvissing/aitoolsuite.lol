@@ -1,0 +1,165 @@
+<style>
+.stj-container {
+    max-width: 800px;
+    margin: 0 auto;
+    font-family: 'Inter', system-ui, sans-serif;
+    color: #e2e8f0;
+}
+.stj-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+@media (max-width: 640px) {
+    .stj-grid { grid-template-columns: 1fr; }
+}
+.stj-textarea {
+    width: 100%;
+    height: 240px;
+    background: #09090b;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 12px;
+    padding: 14px;
+    color: #f8fafc;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    resize: none;
+    box-sizing: border-box;
+    line-height: 1.5;
+}
+.stj-textarea:focus {
+    outline: none;
+    border-color: #3b82f6;
+}
+.stj-btn-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+.stj-btn {
+    background: #3b82f6;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.stj-btn:hover { background: #2563eb; }
+.stj-copy-btn {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #cbd5e1;
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+.stj-copy-btn:hover { background: rgba(59, 130, 246, 0.2); color: #93c5fd; }
+</style>
+
+<div class="stj-container">
+    <div class="stj-btn-row">
+        <button class="stj-btn" onclick="convertSQL()">Convert SQL to JSON</button>
+        <button class="stj-copy-btn" onclick="copyJSON(this)">Copy JSON</button>
+    </div>
+
+    <div class="stj-grid">
+        <div>
+            <div style="font-size: 0.82rem; font-weight: 600; color: #94a3b8; margin-bottom: 6px;">SQL Input (CREATE TABLE or INSERT)</div>
+            <textarea id="sqlInput" class="stj-textarea" placeholder="Paste SQL CREATE TABLE or INSERT INTO statements...">CREATE TABLE users (
+    id INT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(255) UNIQUE,
+    is_active BOOLEAN DEFAULT true
+);</textarea>
+        </div>
+
+        <div>
+            <div style="font-size: 0.82rem; font-weight: 600; color: #94a3b8; margin-bottom: 6px;">JSON Schema / Record Output</div>
+            <textarea id="jsonOutput" class="stj-textarea" readonly style="color: #38bdf8;"></textarea>
+        </div>
+    </div>
+</div>
+
+<script>
+function convertSQL() {
+    const sql = document.getElementById('sqlInput').value.trim();
+    if (!sql) {
+        document.getElementById('jsonOutput').value = '';
+        return;
+    }
+
+    try {
+        if (/CREATE\s+TABLE/i.test(sql)) {
+            const tableMatch = sql.match(/CREATE\s+TABLE\s+(?:IF\s+NOT\s+EXISTS\s+)?([`"'\w]+)\s*\(([\s\S]+)\)/i);
+            if (tableMatch) {
+                const tableName = tableMatch[1].replace(/[`"']/g, '');
+                const columnLines = tableMatch[2].split('\n').map(l => l.trim()).filter(l => l && !l.startsWith('--'));
+                const schema = {
+                    table: tableName,
+                    columns: []
+                };
+
+                columnLines.forEach(line => {
+                    const cleanLine = line.replace(/,\s*$/, '').trim();
+                    if (/^(PRIMARY\s+KEY|FOREIGN\s+KEY|CONSTRAINT|KEY|INDEX)/i.test(cleanLine)) return;
+                    const parts = cleanLine.split(/\s+/);
+                    if (parts.length >= 2) {
+                        const colName = parts[0].replace(/[`"']/g, '');
+                        const colType = parts[1].toUpperCase();
+                        const isNullable = !/NOT\s+NULL/i.test(cleanLine);
+                        schema.columns.push({
+                            name: colName,
+                            type: colType,
+                            nullable: isNullable
+                        });
+                    }
+                });
+
+                document.getElementById('jsonOutput').value = JSON.stringify(schema, null, 2);
+                return;
+            }
+        }
+
+        if (/INSERT\s+INTO/i.test(sql)) {
+            const insertMatch = sql.match(/INSERT\s+INTO\s+([`"'\w]+)\s*(?:\(([^)]+)\))?\s*VALUES\s*\(([^)]+)\)/i);
+            if (insertMatch) {
+                const tableName = insertMatch[1].replace(/[`"']/g, '');
+                const rawCols = insertMatch[2] ? insertMatch[2].split(',').map(c => c.trim().replace(/[`"']/g, '')) : [];
+                const rawVals = insertMatch[3].split(',').map(v => v.trim().replace(/^['"]|['"]$/g, ''));
+                
+                const record = {};
+                rawVals.forEach((val, idx) => {
+                    const key = rawCols[idx] || `col_${idx + 1}`;
+                    record[key] = isNaN(val) ? val : Number(val);
+                });
+
+                document.getElementById('jsonOutput').value = JSON.stringify({ table: tableName, record: record }, null, 2);
+                return;
+            }
+        }
+
+        // Generic fallback
+        document.getElementById('jsonOutput').value = JSON.stringify({ raw_query: sql }, null, 2);
+    } catch (e) {
+        document.getElementById('jsonOutput').value = JSON.stringify({ error: "Could not parse SQL: " + e.message }, null, 2);
+    }
+}
+
+function copyJSON(btn) {
+    const text = document.getElementById('jsonOutput').value;
+    if (!text) return;
+    navigator.clipboard.writeText(text).then(() => {
+        const orig = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(() => btn.textContent = orig, 1500);
+    });
+}
+
+document.addEventListener('DOMContentLoaded', convertSQL);
+</script>

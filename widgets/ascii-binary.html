@@ -1,0 +1,149 @@
+<style>
+.ab-container {
+    max-width: 800px;
+    margin: 0 auto;
+    font-family: 'Inter', system-ui, sans-serif;
+    color: #e2e8f0;
+}
+.ab-textarea {
+    width: 100%;
+    min-height: 110px;
+    background: #09090b;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 12px;
+    padding: 14px;
+    color: #f8fafc;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9rem;
+    resize: vertical;
+    box-sizing: border-box;
+    margin-bottom: 16px;
+}
+.ab-textarea:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 1px #3b82f6;
+}
+.ab-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+}
+.ab-card {
+    background: #121216;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 14px 18px;
+}
+.ab-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+.ab-card-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+.ab-copy-btn {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #cbd5e1;
+    border-radius: 6px;
+    padding: 3px 10px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.ab-copy-btn:hover {
+    background: rgba(59, 130, 246, 0.2);
+    color: #93c5fd;
+}
+.ab-output-box {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.88rem;
+    color: #38bdf8;
+    background: #09090b;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 10px 12px;
+    border-radius: 8px;
+    word-break: break-all;
+    min-height: 42px;
+    max-height: 140px;
+    overflow-y: auto;
+}
+</style>
+
+<div class="ab-container">
+    <textarea id="abInput" class="ab-textarea" placeholder="Type or paste text here..." oninput="convertText()">Hello World</textarea>
+
+    <div class="ab-grid">
+        <div class="ab-card">
+            <div class="ab-card-header">
+                <span class="ab-card-title">Binary (8-bit bytes)</span>
+                <button class="ab-copy-btn" onclick="copyBox('abBinary', this)">Copy Binary</button>
+            </div>
+            <div id="abBinary" class="ab-output-box"></div>
+        </div>
+
+        <div class="ab-card">
+            <div class="ab-card-header">
+                <span class="ab-card-title">Hexadecimal</span>
+                <button class="ab-copy-btn" onclick="copyBox('abHex', this)">Copy Hex</button>
+            </div>
+            <div id="abHex" class="ab-output-box"></div>
+        </div>
+
+        <div class="ab-card">
+            <div class="ab-card-header">
+                <span class="ab-card-title">ASCII Decimal Codes</span>
+                <button class="ab-copy-btn" onclick="copyBox('abDecimal', this)">Copy ASCII</button>
+            </div>
+            <div id="abDecimal" class="ab-output-box"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+function convertText() {
+    const text = document.getElementById('abInput').value;
+    if (!text) {
+        document.getElementById('abBinary').textContent = '';
+        document.getElementById('abHex').textContent = '';
+        document.getElementById('abDecimal').textContent = '';
+        return;
+    }
+
+    const binary = [];
+    const hex = [];
+    const decimal = [];
+
+    for (let i = 0; i < text.length; i++) {
+        const code = text.charCodeAt(i);
+        binary.push(code.toString(2).padStart(8, '0'));
+        hex.push(code.toString(16).toUpperCase().padStart(2, '0'));
+        decimal.push(code);
+    }
+
+    document.getElementById('abBinary').textContent = binary.join(' ');
+    document.getElementById('abHex').textContent = hex.join(' ');
+    document.getElementById('abDecimal').textContent = decimal.join(' ');
+}
+
+function copyBox(elemId, btn) {
+    const text = document.getElementById(elemId).textContent;
+    if (!text) return;
+    navigator.clipboard.writeText(text).then(() => {
+        const orig = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(() => btn.textContent = orig, 1500);
+    });
+}
+
+document.addEventListener('DOMContentLoaded', convertText);
+</script>

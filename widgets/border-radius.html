@@ -1,0 +1,134 @@
+<style>
+.br-container {
+    max-width: 800px;
+    margin: 0 auto;
+    font-family: 'Inter', system-ui, sans-serif;
+    color: #e2e8f0;
+}
+.br-stage {
+    height: 240px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #121216;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    margin-bottom: 20px;
+}
+.br-box {
+    width: 170px;
+    height: 170px;
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
+    transition: border-radius 0.1s ease;
+}
+.br-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 20px;
+}
+.br-slider-group {
+    background: #121216;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 12px 16px;
+    border-radius: 12px;
+}
+.br-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #94a3b8;
+    margin-bottom: 6px;
+}
+.br-slider {
+    width: 100%;
+    accent-color: #3b82f6;
+    cursor: pointer;
+}
+.br-code-box {
+    background: #09090b;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 14px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.br-code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9rem;
+    color: #38bdf8;
+}
+.br-copy-btn {
+    background: #3b82f6;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+.br-copy-btn:hover { background: #2563eb; }
+</style>
+
+<div class="br-container">
+    <div class="br-stage">
+        <div id="brTarget" class="br-box"></div>
+    </div>
+
+    <div class="br-grid">
+        <div class="br-slider-group">
+            <div class="br-label"><span>Top Left</span><span id="tlVal">30%</span></div>
+            <input type="range" id="tl" class="br-slider" min="0" max="100" value="30" oninput="updateRadius()">
+        </div>
+        <div class="br-slider-group">
+            <div class="br-label"><span>Top Right</span><span id="trVal">70%</span></div>
+            <input type="range" id="tr" class="br-slider" min="0" max="100" value="70" oninput="updateRadius()">
+        </div>
+        <div class="br-slider-group">
+            <div class="br-label"><span>Bottom Right</span><span id="brVal">70%</span></div>
+            <input type="range" id="br" class="br-slider" min="0" max="100" value="70" oninput="updateRadius()">
+        </div>
+        <div class="br-slider-group">
+            <div class="br-label"><span>Bottom Left</span><span id="blVal">30%</span></div>
+            <input type="range" id="bl" class="br-slider" min="0" max="100" value="30" oninput="updateRadius()">
+        </div>
+    </div>
+
+    <div class="br-code-box">
+        <span id="brCSS" class="br-code"></span>
+        <button class="br-copy-btn" onclick="copyRadius(this)">Copy CSS</button>
+    </div>
+</div>
+
+<script>
+function updateRadius() {
+    const tl = document.getElementById('tl').value;
+    const tr = document.getElementById('tr').value;
+    const br = document.getElementById('br').value;
+    const bl = document.getElementById('bl').value;
+
+    document.getElementById('tlVal').textContent = tl + '%';
+    document.getElementById('trVal').textContent = tr + '%';
+    document.getElementById('brVal').textContent = br + '%';
+    document.getElementById('blVal').textContent = bl + '%';
+
+    const radiusVal = `${tl}% ${tr}% ${br}% ${bl}%`;
+    document.getElementById('brTarget').style.borderRadius = radiusVal;
+    document.getElementById('brCSS').textContent = `border-radius: ${radiusVal};`;
+}
+
+function copyRadius(btn) {
+    const text = document.getElementById('brCSS').textContent;
+    navigator.clipboard.writeText(text).then(() => {
+        const orig = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(() => btn.textContent = orig, 1500);
+    });
+}
+
+document.addEventListener('DOMContentLoaded', updateRadius);
+</script>

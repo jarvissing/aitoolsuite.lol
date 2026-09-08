@@ -1,0 +1,130 @@
+<style>
+.bu-container {
+    max-width: 800px;
+    margin: 0 auto;
+    font-family: 'Inter', system-ui, sans-serif;
+    color: #e2e8f0;
+}
+.bu-controls {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+    background: #121216;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 14px 18px;
+    border-radius: 12px;
+    margin-bottom: 16px;
+}
+.bu-label {
+    font-size: 0.85rem;
+    color: #94a3b8;
+    font-weight: 600;
+}
+.bu-input {
+    background: #09090b;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 8px;
+    padding: 6px 12px;
+    color: #fff;
+    font-size: 0.9rem;
+    width: 80px;
+}
+.bu-checkbox {
+    accent-color: #3b82f6;
+    cursor: pointer;
+}
+.bu-btn {
+    background: #3b82f6;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+.bu-btn:hover { background: #2563eb; }
+.bu-copy-btn {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #cbd5e1;
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-left: auto;
+}
+.bu-copy-btn:hover { background: rgba(59, 130, 246, 0.2); color: #93c5fd; }
+.bu-textarea {
+    width: 100%;
+    height: 260px;
+    background: #09090b;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 12px;
+    padding: 14px;
+    color: #38bdf8;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    resize: none;
+    box-sizing: border-box;
+    line-height: 1.6;
+}
+</style>
+
+<div class="bu-container">
+    <div class="bu-controls">
+        <span class="bu-label">Quantity:</span>
+        <input type="number" id="buCount" class="bu-input" min="1" max="500" value="10">
+
+        <label style="display: flex; align-items: center; gap: 6px; font-size: 0.82rem; cursor: pointer;">
+            <input type="checkbox" id="buUpper" class="bu-checkbox" onchange="generateUUIDs()">
+            <span>Uppercase</span>
+        </label>
+
+        <label style="display: flex; align-items: center; gap: 6px; font-size: 0.82rem; cursor: pointer;">
+            <input type="checkbox" id="buNoHyphens" class="bu-checkbox" onchange="generateUUIDs()">
+            <span>Remove Hyphens</span>
+        </label>
+
+        <button class="bu-btn" onclick="generateUUIDs()">Generate</button>
+        <button class="bu-copy-btn" onclick="copyBulkUUIDs(this)">Copy All</button>
+    </div>
+
+    <textarea id="buOutput" class="bu-textarea" readonly></textarea>
+</div>
+
+<script>
+function generateUUIDs() {
+    let count = parseInt(document.getElementById('buCount').value, 10) || 10;
+    if (count < 1) count = 1;
+    if (count > 500) count = 500;
+    document.getElementById('buCount').value = count;
+
+    const upper = document.getElementById('buUpper').checked;
+    const noHyphens = document.getElementById('buNoHyphens').checked;
+
+    const list = [];
+    for (let i = 0; i < count; i++) {
+        let u = crypto.randomUUID();
+        if (noHyphens) u = u.replace(/-/g, '');
+        if (upper) u = u.toUpperCase();
+        list.push(u);
+    }
+
+    document.getElementById('buOutput').value = list.join('\n');
+}
+
+function copyBulkUUIDs(btn) {
+    const text = document.getElementById('buOutput').value;
+    if (!text) return;
+    navigator.clipboard.writeText(text).then(() => {
+        const orig = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(() => btn.textContent = orig, 1500);
+    });
+}
+
+document.addEventListener('DOMContentLoaded', generateUUIDs);
+</script>
