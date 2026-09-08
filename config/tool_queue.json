@@ -1,17 +1,5 @@
 [
   {
-    "keyword": "ascii binary converter",
-    "tool_name": "Text to ASCII and Binary Byte Converter",
-    "description": "Convert plaintext into 8-bit binary bytes, hexadecimal numbers, and ASCII decimal character codes with real-time translation.",
-    "category": "Developer Tools",
-    "faq_items": "What binary format is used?:::Uses standard 8-bit byte representation padded with leading zeros.|||Can it handle Unicode and emoji?:::Optimized for standard UTF-8 and ASCII characters.|||Is any data uploaded?:::Runs 100% inside your browser using client-side JavaScript.",
-    "related_tools": "Base64 String Encoder,Hash Generator,Hex to RGB and HSL Color Converter",
-    "tool_type": "ascii-binary",
-    "status": "published",
-    "priority": 2,
-    "published_at": "2026-09-08T13:10:33.650613"
-  },
-  {
     "keyword": "regex pattern library",
     "tool_name": "Regex Pattern Library & Live Matcher",
     "description": "Browse production-ready Regular Expressions for emails, URLs, IP addresses, strong passwords, dates, and test them with live validation.",
@@ -19,8 +7,9 @@
     "faq_items": "What regex patterns are included?:::Includes common patterns for email validation, URLs, IPv4, complex passwords, ISO dates, phone numbers, and UUIDs.|||Can I test against custom input?:::Yes, you can test any pattern in the interactive validator at the top.|||How do I copy a pattern?:::Click the copy button next to any expression to copy it to your clipboard.",
     "related_tools": "Regex Cheat Sheet and Tester,SQL Formatter,Word Counter",
     "tool_type": "regex-library",
-    "status": "pending",
-    "priority": 3
+    "status": "published",
+    "priority": 3,
+    "published_at": "2026-09-08T23:03:43.572573"
   },
   {
     "keyword": "sql to json converter",
@@ -76,6 +65,18 @@
     "tool_type": "bulk-uuid",
     "status": "pending",
     "priority": 8
+  },
+  {
+    "keyword": "ascii binary converter",
+    "tool_name": "Text to ASCII and Binary Byte Converter",
+    "description": "Convert plaintext into 8-bit binary bytes, hexadecimal numbers, and ASCII decimal character codes with real-time translation.",
+    "category": "Developer Tools",
+    "faq_items": "What binary format is used?:::Uses standard 8-bit byte representation padded with leading zeros.|||Can it handle Unicode and emoji?:::Optimized for standard UTF-8 and ASCII characters.|||Is any data uploaded?:::Runs 100% inside your browser using client-side JavaScript.",
+    "related_tools": "Base64 String Encoder,Hash Generator,Hex to RGB and HSL Color Converter",
+    "tool_type": "ascii-binary",
+    "status": "published",
+    "priority": 2,
+    "published_at": "2026-09-08T13:10:33.650613"
   },
   {
     "keyword": "css glassmorphism generator",

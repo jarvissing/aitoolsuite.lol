@@ -283,6 +283,12 @@
         <priority>0.8</priority>
     </url>
     <url>
+        <loc>https://aitoolsuite.lol/regex-pattern-library.html</loc>
+        <lastmod>2026-09-08</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
         <loc>https://aitoolsuite.lol/regex-tester-and-cheat-sheet.html</loc>
         <lastmod>2026-09-08</lastmod>
         <changefreq>weekly</changefreq>
