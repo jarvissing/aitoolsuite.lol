@@ -1,8 +1,8 @@
 ============================================================
-  QA REPORT — 2026-09-09 13:15:49
+  QA REPORT — 2026-09-09 22:50:23
 ============================================================
 
-Found 59 tool pages to check.
+Found 60 tool pages to check.
 
 ✅ ai-prompt-cost-calculator — 12/12 checks passed
 ✅ ascii-binary-converter — 12/12 checks passed
@@ -15,6 +15,7 @@ Found 59 tool pages to check.
 ✅ color-contrast-checker — 12/12 checks passed
 ✅ color-picker — 12/12 checks passed
 ✅ cron-expression-generator — 12/12 checks passed
+✅ css-border-radius-generator — 12/12 checks passed
 ✅ css-box-shadow-generator — 12/12 checks passed
 ✅ css-glassmorphism-generator — 12/12 checks passed
 ✅ css-grid-generator — 12/12 checks passed
@@ -66,9 +67,9 @@ Found 59 tool pages to check.
 
 ————————————————————————————————————————
 HOMEPAGE CHECK:
-✅ 59/59 tools listed on homepage
+✅ 60/60 tools listed on homepage
 
 ============================================================
-SUMMARY: 59 passed, 0 failed out of 59 pages
+SUMMARY: 60 passed, 0 failed out of 60 pages
 🎉 ALL PAGES PASS QA!
 ============================================================
