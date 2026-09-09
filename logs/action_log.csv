@@ -13,3 +13,4 @@ timestamp,action_type,tool_name,keyword,url,status,details
 2026-09-06T22:34:18.475447,PUBLISH,html table generator,SUCCESS,https://aitoolsuite.lol/html-table-generator.html,Published HTML Table & CSS Styler Generator,
 2026-09-08T13:10:33.691458,PUBLISH,ascii binary converter,SUCCESS,https://aitoolsuite.lol/ascii-binary-converter.html,Published Text to ASCII and Binary Byte Converter,
 2026-09-08T23:03:43.588665,PUBLISH,Regex Pattern Library & Live Matcher,regex pattern library,https://aitoolsuite.lol/regex-pattern-library.html,SUCCESS,Published Regex Pattern Library & Live Matcher
+2026-09-09T13:15:49.830668,PUBLISH,SQL to JSON Schema & Record Converter,sql to json converter,https://aitoolsuite.lol/sql-to-json-converter.html,SUCCESS,Published SQL to JSON Schema & Record Converter

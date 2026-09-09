@@ -1,17 +1,5 @@
 [
   {
-    "keyword": "regex pattern library",
-    "tool_name": "Regex Pattern Library & Live Matcher",
-    "description": "Browse production-ready Regular Expressions for emails, URLs, IP addresses, strong passwords, dates, and test them with live validation.",
-    "category": "Developer Tools",
-    "faq_items": "What regex patterns are included?:::Includes common patterns for email validation, URLs, IPv4, complex passwords, ISO dates, phone numbers, and UUIDs.|||Can I test against custom input?:::Yes, you can test any pattern in the interactive validator at the top.|||How do I copy a pattern?:::Click the copy button next to any expression to copy it to your clipboard.",
-    "related_tools": "Regex Cheat Sheet and Tester,SQL Formatter,Word Counter",
-    "tool_type": "regex-library",
-    "status": "published",
-    "priority": 3,
-    "published_at": "2026-09-08T23:03:43.572573"
-  },
-  {
     "keyword": "sql to json converter",
     "tool_name": "SQL to JSON Schema & Record Converter",
     "description": "Convert SQL CREATE TABLE definitions and INSERT statements into structured JSON schemas and key-value records.",
@@ -19,8 +7,9 @@
     "faq_items": "Does it parse CREATE TABLE statements?:::Yes, extracts table names, column names, SQL data types, and nullability into structured JSON.|||Does it handle INSERT INTO?:::Yes, parses column lists and VALUES rows into JSON objects.|||Is it secure?:::Zero data leaves your machine\u2014processed entirely in local browser memory.",
     "related_tools": "SQL Formatter,JSON Formatter,JSON to TypeScript Interface Generator",
     "tool_type": "sql-to-json",
-    "status": "pending",
-    "priority": 4
+    "status": "published",
+    "priority": 4,
+    "published_at": "2026-09-09T13:15:49.806078"
   },
   {
     "keyword": "css border radius generator",
@@ -65,6 +54,18 @@
     "tool_type": "bulk-uuid",
     "status": "pending",
     "priority": 8
+  },
+  {
+    "keyword": "regex pattern library",
+    "tool_name": "Regex Pattern Library & Live Matcher",
+    "description": "Browse production-ready Regular Expressions for emails, URLs, IP addresses, strong passwords, dates, and test them with live validation.",
+    "category": "Developer Tools",
+    "faq_items": "What regex patterns are included?:::Includes common patterns for email validation, URLs, IPv4, complex passwords, ISO dates, phone numbers, and UUIDs.|||Can I test against custom input?:::Yes, you can test any pattern in the interactive validator at the top.|||How do I copy a pattern?:::Click the copy button next to any expression to copy it to your clipboard.",
+    "related_tools": "Regex Cheat Sheet and Tester,SQL Formatter,Word Counter",
+    "tool_type": "regex-library",
+    "status": "published",
+    "priority": 3,
+    "published_at": "2026-09-08T23:03:43.572573"
   },
   {
     "keyword": "ascii binary converter",
