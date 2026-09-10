@@ -1,17 +1,5 @@
 [
   {
-    "keyword": "css border radius generator",
-    "tool_name": "CSS Border Radius & Blob Shape Generator",
-    "description": "Generate smooth 8-point organic blob shapes and rounded corner styles with live visual canvas and 1-click CSS output.",
-    "category": "Design Tools",
-    "faq_items": "How does 8-point border-radius work?:::It uses CSS slash syntax (horizontal vs vertical radii) to create organic fluid blob shapes.|||Can I copy the CSS property?:::Yes, copies the exact border-radius declaration ready for your CSS stylesheets.|||Does it work in modern browsers?:::Yes, fully compatible with standard CSS3 across all desktop and mobile browsers.",
-    "related_tools": "CSS Box Shadow Generator,CSS Grid Generator,Tailwind CSS Color Palette Generator",
-    "tool_type": "border-radius",
-    "status": "published",
-    "priority": 5,
-    "published_at": "2026-09-09T22:50:23.229030"
-  },
-  {
     "keyword": "jwt secret verifier",
     "tool_name": "JWT Signature & HMAC-SHA256 Secret Verifier",
     "description": "Verify JSON Web Token signatures with your HMAC-SHA256 secret key locally in your browser using the Web Crypto API.",
@@ -19,8 +7,9 @@
     "faq_items": "Is my secret key sent to any server?:::NO. Verification uses the native browser Web Crypto API (SubtleCrypto)\u2014zero data leaves your device.|||What algorithm is supported?:::Supports standard HS256 (HMAC with SHA-256) signature verification.|||Does it decode the payload?:::Yes, the payload JSON is automatically decoded and formatted alongside the verification check.",
     "related_tools": "JWT Decoder and Debugger,Hash Generator,Strong Password Generator",
     "tool_type": "jwt-verifier",
-    "status": "pending",
-    "priority": 6
+    "status": "published",
+    "priority": 6,
+    "published_at": "2026-09-10T13:13:29.718404"
   },
   {
     "keyword": "html to jsx converter",
@@ -43,6 +32,18 @@
     "tool_type": "bulk-uuid",
     "status": "pending",
     "priority": 8
+  },
+  {
+    "keyword": "css border radius generator",
+    "tool_name": "CSS Border Radius & Blob Shape Generator",
+    "description": "Generate smooth 8-point organic blob shapes and rounded corner styles with live visual canvas and 1-click CSS output.",
+    "category": "Design Tools",
+    "faq_items": "How does 8-point border-radius work?:::It uses CSS slash syntax (horizontal vs vertical radii) to create organic fluid blob shapes.|||Can I copy the CSS property?:::Yes, copies the exact border-radius declaration ready for your CSS stylesheets.|||Does it work in modern browsers?:::Yes, fully compatible with standard CSS3 across all desktop and mobile browsers.",
+    "related_tools": "CSS Box Shadow Generator,CSS Grid Generator,Tailwind CSS Color Palette Generator",
+    "tool_type": "border-radius",
+    "status": "published",
+    "priority": 5,
+    "published_at": "2026-09-09T22:50:23.229030"
   },
   {
     "keyword": "sql to json converter",
