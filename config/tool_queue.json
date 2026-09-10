@@ -1,17 +1,5 @@
 [
   {
-    "keyword": "jwt secret verifier",
-    "tool_name": "JWT Signature & HMAC-SHA256 Secret Verifier",
-    "description": "Verify JSON Web Token signatures with your HMAC-SHA256 secret key locally in your browser using the Web Crypto API.",
-    "category": "Developer Tools",
-    "faq_items": "Is my secret key sent to any server?:::NO. Verification uses the native browser Web Crypto API (SubtleCrypto)\u2014zero data leaves your device.|||What algorithm is supported?:::Supports standard HS256 (HMAC with SHA-256) signature verification.|||Does it decode the payload?:::Yes, the payload JSON is automatically decoded and formatted alongside the verification check.",
-    "related_tools": "JWT Decoder and Debugger,Hash Generator,Strong Password Generator",
-    "tool_type": "jwt-verifier",
-    "status": "published",
-    "priority": 6,
-    "published_at": "2026-09-10T13:13:29.718404"
-  },
-  {
     "keyword": "html to jsx converter",
     "tool_name": "HTML to React JSX Component Converter",
     "description": "Transform HTML markup into clean React and Next.js JSX syntax with automated class to className, self-closing tags, and inline style conversions.",
@@ -19,8 +7,9 @@
     "faq_items": "What attributes does it convert?:::Converts 'class' to 'className', 'for' to 'htmlFor', 'tabindex' to 'tabIndex', and self-closes tags like <img> and <input>.|||Does it format inline styles?:::Yes, converts CSS string styles like 'color: red' into React style objects 'style={{ color: \"red\" }}'.|||Is it instant?:::Yes, converts as you type with zero latency.",
     "related_tools": "HTML Minifier,HTML Entity Encoder,JSON to TypeScript Interface Generator",
     "tool_type": "html-to-jsx",
-    "status": "pending",
-    "priority": 7
+    "status": "published",
+    "priority": 7,
+    "published_at": "2026-09-10T22:51:25.250355"
   },
   {
     "keyword": "bulk uuid generator",
@@ -32,6 +21,18 @@
     "tool_type": "bulk-uuid",
     "status": "pending",
     "priority": 8
+  },
+  {
+    "keyword": "jwt secret verifier",
+    "tool_name": "JWT Signature & HMAC-SHA256 Secret Verifier",
+    "description": "Verify JSON Web Token signatures with your HMAC-SHA256 secret key locally in your browser using the Web Crypto API.",
+    "category": "Developer Tools",
+    "faq_items": "Is my secret key sent to any server?:::NO. Verification uses the native browser Web Crypto API (SubtleCrypto)\u2014zero data leaves your device.|||What algorithm is supported?:::Supports standard HS256 (HMAC with SHA-256) signature verification.|||Does it decode the payload?:::Yes, the payload JSON is automatically decoded and formatted alongside the verification check.",
+    "related_tools": "JWT Decoder and Debugger,Hash Generator,Strong Password Generator",
+    "tool_type": "jwt-verifier",
+    "status": "published",
+    "priority": 6,
+    "published_at": "2026-09-10T13:13:29.718404"
   },
   {
     "keyword": "css border radius generator",
