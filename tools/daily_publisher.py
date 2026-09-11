@@ -30,6 +30,11 @@ from tools.market_analyzer import optimize_tool_queue
 
 # Set up daily bot logger
 LOGS_DIR.mkdir(parents=True, exist_ok=True)
+if hasattr(sys.stdout, "reconfigure"):
+    try:
+        sys.stdout.reconfigure(encoding="utf-8")
+    except Exception:
+        pass
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s] %(message)s",
