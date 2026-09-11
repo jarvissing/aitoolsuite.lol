@@ -26,7 +26,7 @@ from tools.homepage_updater import update_homepage
 from tools.sitemap_generator import generate_sitemap
 from tools.qa_checker import run_full_qa
 from tools.spreadsheet_logger import log_action
-from tools.market_analyzer import optimize_tool_queue
+from tools.market_analyzer import optimize_tool_queue, auto_replenish_queue
 
 # Set up daily bot logger
 LOGS_DIR.mkdir(parents=True, exist_ok=True)
@@ -47,14 +47,14 @@ logger = logging.getLogger("daily_publisher")
 
 
 def publish_next_tool() -> dict:
-    """Publish the next pending tool from the queue."""
-    # Step 1: Run Market Feedback & Guardrails Analyzer
-    logger.info("Running Market Feedback Analyzer & Queue Optimizer...")
+    """Publish the next pending tool from the queue with autonomous auto-replenishment."""
+    # Step 1: Run Market Feedback Analyzer & Ensure Queue is Replenished
+    logger.info("Running Market Feedback Analyzer & Autonomous Replenisher...")
     try:
-        opt_res = optimize_tool_queue()
-        logger.info(f"Market Analysis: {opt_res}")
+        rep_res = auto_replenish_queue(min_tools=5)
+        logger.info(f"Queue Status / Replenishment: {rep_res}")
     except Exception as e:
-        logger.warning(f"Market analyzer note: {e}")
+        logger.warning(f"Replenishment note: {e}")
     if not QUEUE_PATH.exists():
         logger.error(f"Queue file not found at {QUEUE_PATH}")
         return {"status": "error", "message": "Queue file not found"}
@@ -73,7 +73,19 @@ def publish_next_tool() -> dict:
             break
 
     if not pending_tool:
-        logger.info("No pending tools found in queue.")
+        logger.info("No pending tools found! Forcing immediate replenishment...")
+        try:
+            auto_replenish_queue(min_tools=5)
+            queue = json.loads(QUEUE_PATH.read_text(encoding="utf-8"))
+            for item in queue:
+                if item.get("status") == "pending":
+                    pending_tool = item
+                    break
+        except Exception as e:
+            logger.error(f"Forced replenishment error: {e}")
+
+    if not pending_tool:
+        logger.error("Failed to acquire pending tool even after replenishment.")
         return {"status": "empty", "message": "No pending tools in queue"}
 
     keyword = pending_tool.get("keyword")

@@ -1,0 +1,77 @@
+<style>
+.tool-container { font-family: system-ui, -apple-system, sans-serif; background: #121217; padding: 24px; border-radius: 12px; box-sizing: border-box; max-width: 840px; margin: 0 auto; color: #f1f5f9; border: 1px solid rgba(255, 255, 255, 0.08); }
+.tool-container .split-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 12px; }
+@media (max-width: 640px) { .tool-container .split-row { grid-template-columns: 1fr; } }
+.tool-container h3 { font-size: 14px; margin-top: 0; margin-bottom: 6px; color: #e2e8f0; }
+.tool-container textarea { width: 100%; background: #1a1a24; border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 8px; padding: 10px; box-sizing: border-box; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #f8fafc; min-height: 140px; resize: vertical; }
+.tool-container button { background: #4f46e5; color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 13px; font-weight: 500; }
+.tool-container button:hover { background: #4338ca; }
+.tool-container .diff-result { background: #1a1a24; border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 8px; padding: 12px; font-family: 'JetBrains Mono', monospace; font-size: 13px; min-height: 100px; white-space: pre-wrap; }
+.tool-container .diff-add { color: #4ade80; }
+.tool-container .diff-del { color: #f87171; }
+.tool-container .diff-mod { color: #fbbf24; }
+.tool-container .diff-same { color: #94a3b8; }
+</style>
+<div class="tool-container">
+    <div class="split-row">
+        <div>
+            <h3>Original JSON (Left)</h3>
+            <textarea id="jdiff-left" placeholder='{"name": "Alice", "role": "admin", "age": 28}'></textarea>
+        </div>
+        <div>
+            <h3>Modified JSON (Right)</h3>
+            <textarea id="jdiff-right" placeholder='{"name": "Alice", "role": "superadmin", "active": true}'></textarea>
+        </div>
+    </div>
+    <div style="margin-bottom: 12px;">
+        <button onclick="compareJson()">Compare JSON Diff</button>
+    </div>
+    <h3>Key Differences</h3>
+    <div id="jdiff-output" class="diff-result"><span class="diff-same">Enter two JSON objects above and click "Compare JSON Diff"</span></div>
+</div>
+<script>
+function compareJson() {
+    const leftRaw = document.getElementById('jdiff-left').value.trim();
+    const rightRaw = document.getElementById('jdiff-right').value.trim();
+    const out = document.getElementById('jdiff-output');
+
+    let left, right;
+    try {
+        left = JSON.parse(leftRaw || '{}');
+    } catch(e) {
+        out.innerHTML = '<span class="diff-del">Error parsing Left JSON: ' + e.message + '</span>';
+        return;
+    }
+    try {
+        right = JSON.parse(rightRaw || '{}');
+    } catch(e) {
+        out.innerHTML = '<span class="diff-del">Error parsing Right JSON: ' + e.message + '</span>';
+        return;
+    }
+
+    const allKeys = new Set([...Object.keys(left), ...Object.keys(right)]);
+    const lines = [];
+    let diffCount = 0;
+
+    allKeys.forEach(k => {
+        if (!(k in left)) {
+            lines.push(`<span class="diff-add">+ Added key "${k}": ${JSON.stringify(right[k])}</span>`);
+            diffCount++;
+        } else if (!(k in right)) {
+            lines.push(`<span class="diff-del">- Removed key "${k}": ${JSON.stringify(left[k])}</span>`);
+            diffCount++;
+        } else if (JSON.stringify(left[k]) !== JSON.stringify(right[k])) {
+            lines.push(`<span class="diff-mod">~ Changed "${k}": ${JSON.stringify(left[k])} → ${JSON.stringify(right[k])}</span>`);
+            diffCount++;
+        } else {
+            lines.push(`<span class="diff-same">  Unchanged "${k}": ${JSON.stringify(left[k])}</span>`);
+        }
+    });
+
+    if (diffCount === 0) {
+        out.innerHTML = '<span class="diff-add">🎉 Both JSON objects have identical top-level keys and values!</span>';
+    } else {
+        out.innerHTML = `<strong>Found ${diffCount} differences:</strong>\n\n` + lines.join('\n');
+    }
+}
+</script>

@@ -1,8 +1,8 @@
 ============================================================
-  QA REPORT — 2026-09-11 12:50:03
+  QA REPORT — 2026-09-11 13:00:50
 ============================================================
 
-Found 64 tool pages to check.
+Found 65 tool pages to check.
 
 ✅ ai-prompt-cost-calculator — 12/12 checks passed
 ✅ ascii-binary-converter — 12/12 checks passed
@@ -15,6 +15,7 @@ Found 64 tool pages to check.
 ✅ cidr-subnet-calculator — 12/12 checks passed
 ✅ color-contrast-checker — 12/12 checks passed
 ✅ color-picker — 12/12 checks passed
+✅ color-shades-generator — 12/12 checks passed
 ✅ cron-expression-generator — 12/12 checks passed
 ✅ css-border-radius-generator — 12/12 checks passed
 ✅ css-box-shadow-generator — 12/12 checks passed
@@ -71,9 +72,9 @@ Found 64 tool pages to check.
 
 ————————————————————————————————————————
 HOMEPAGE CHECK:
-✅ 64/64 tools listed on homepage
+✅ 65/65 tools listed on homepage
 
 ============================================================
-SUMMARY: 64 passed, 0 failed out of 64 pages
+SUMMARY: 65 passed, 0 failed out of 65 pages
 🎉 ALL PAGES PASS QA!
 ============================================================

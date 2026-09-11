@@ -1,0 +1,57 @@
+<style>
+.tool-container { font-family: system-ui, -apple-system, sans-serif; background: #121217; padding: 24px; border-radius: 12px; box-sizing: border-box; max-width: 840px; margin: 0 auto; color: #f1f5f9; border: 1px solid rgba(255, 255, 255, 0.08); }
+.tool-container h3 { font-size: 15px; margin-top: 0; margin-bottom: 8px; color: #e2e8f0; }
+.tool-container textarea { width: 100%; background: #1a1a24; border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 8px; padding: 12px; box-sizing: border-box; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #f8fafc; margin-bottom: 12px; min-height: 100px; resize: vertical; }
+.tool-container .options { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; flex-wrap: wrap; }
+.tool-container input[type="number"], .tool-container input[type="text"] { background: #1a1a24; border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 6px; padding: 8px 12px; color: #fff; font-size: 13px; }
+.tool-container button { background: #4f46e5; color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 13px; font-weight: 500; }
+.tool-container button:hover { background: #4338ca; }
+.tool-container .copy-btn { background: #10b981; }
+.tool-container .copy-btn:hover { background: #059669; }
+</style>
+<div class="tool-container">
+    <h3>Text / String to Repeat</h3>
+    <textarea id="rep-in" placeholder="Enter word, phrase, or line to repeat..."></textarea>
+    
+    <div class="options">
+        <label style="font-size: 13px; color: #94a3b8;">Count:</label>
+        <input type="number" id="rep-count" min="1" max="10000" value="5" style="width: 80px;">
+        <label style="font-size: 13px; color: #94a3b8;">Delimiter:</label>
+        <select id="rep-delim" style="background: #1a1a24; border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 6px; padding: 8px; color: #fff;">
+            <option value="\n">New Line</option>
+            <option value=", ">Comma + Space</option>
+            <option value=" ">Single Space</option>
+            <option value="">None</option>
+            <option value=" | ">Pipe (" | ")</option>
+        </select>
+        <button onclick="runRepeat()">Repeat String</button>
+        <button onclick="copyRepeated(this)" class="copy-btn">Copy Output</button>
+    </div>
+    
+    <h3>Repeated Output</h3>
+    <textarea id="rep-out" placeholder="Repeated text will appear here..." readonly></textarea>
+</div>
+<script>
+function runRepeat() {
+    const text = document.getElementById('rep-in').value;
+    const count = Math.min(10000, Math.max(1, parseInt(document.getElementById('rep-count').value) || 1));
+    let delim = document.getElementById('rep-delim').value;
+    if (delim === '\\n') delim = '\n';
+    
+    const out = document.getElementById('rep-out');
+    if (!text) { out.value = ''; return; }
+    
+    out.value = new Array(count).fill(text).join(delim);
+}
+
+function copyRepeated(btn) {
+    const text = document.getElementById('rep-out').value;
+    if (!text) return;
+    navigator.clipboard.writeText(text).then(() => {
+        const orig = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(() => btn.textContent = orig, 1500);
+    });
+}
+document.getElementById('rep-in').addEventListener('input', runRepeat);
+</script>

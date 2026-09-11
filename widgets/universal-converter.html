@@ -1,0 +1,104 @@
+<style>
+.tool-container { font-family: system-ui, -apple-system, sans-serif; background: #121217; padding: 24px; border-radius: 12px; box-sizing: border-box; max-width: 840px; margin: 0 auto; color: #f1f5f9; border: 1px solid rgba(255, 255, 255, 0.08); }
+.tool-container h3 { font-size: 16px; margin-top: 0; margin-bottom: 12px; color: #e2e8f0; font-weight: 600; }
+.tool-container textarea { width: 100%; background: #1a1a24; border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 8px; padding: 12px; box-sizing: border-box; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #f8fafc; margin-bottom: 12px; min-height: 120px; resize: vertical; }
+.tool-container textarea:focus { outline: none; border-color: #6366f1; }
+.tool-container .btn-group { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+.tool-container button { background: #4f46e5; color: white; border: none; padding: 8px 14px; border-radius: 6px; cursor: pointer; font-size: 13px; font-weight: 500; transition: all 0.2s; }
+.tool-container button:hover { background: #4338ca; }
+.tool-container .btn-secondary { background: #272732; color: #cbd5e1; border: 1px solid rgba(255, 255, 255, 0.08); }
+.tool-container .btn-secondary:hover { background: #323242; color: #fff; }
+.tool-container .copy-btn { background: #10b981; }
+.tool-container .copy-btn:hover { background: #059669; }
+.tool-container .status-bar { font-size: 12px; color: #94a3b8; display: flex; justify-content: space-between; align-items: center; margin-top: 6px; }
+</style>
+<div class="tool-container">
+    <h3>Input Text / Data</h3>
+    <textarea id="univ-input" placeholder="Type or paste your text or data here..."></textarea>
+    
+    <div class="btn-group">
+        <button onclick="runUniversalAction('trim')">Trim Space</button>
+        <button onclick="runUniversalAction('clean_lines')" class="btn-secondary">Clean Blank Lines</button>
+        <button onclick="runUniversalAction('upper')" class="btn-secondary">UPPERCASE</button>
+        <button onclick="runUniversalAction('lower')" class="btn-secondary">lowercase</button>
+        <button onclick="runUniversalAction('base64_enc')" class="btn-secondary">Base64 Enc</button>
+        <button onclick="runUniversalAction('base64_dec')" class="btn-secondary">Base64 Dec</button>
+        <button onclick="runUniversalAction('url_enc')" class="btn-secondary">URL Enc</button>
+        <button onclick="runUniversalAction('url_dec')" class="btn-secondary">URL Dec</button>
+        <button onclick="copyUnivOutput(this)" class="copy-btn">Copy Result</button>
+    </div>
+    
+    <h3>Processed Output</h3>
+    <textarea id="univ-output" placeholder="Processed output will appear here..." readonly></textarea>
+    <div class="status-bar">
+        <span id="univ-stats">Characters: 0 | Lines: 0</span>
+        <span id="univ-status">Ready</span>
+    </div>
+</div>
+<script>
+function runUniversalAction(mode) {
+    const input = document.getElementById('univ-input').value;
+    const output = document.getElementById('univ-output');
+    const status = document.getElementById('univ-status');
+    const stats = document.getElementById('univ-stats');
+    
+    if (!input) {
+        output.value = '';
+        stats.textContent = 'Characters: 0 | Lines: 0';
+        return;
+    }
+    
+    let res = '';
+    try {
+        switch(mode) {
+            case 'trim':
+                res = input.split('\n').map(l => l.trim()).join('\n');
+                break;
+            case 'clean_lines':
+                res = input.split('\n').filter(l => l.trim().length > 0).join('\n');
+                break;
+            case 'upper':
+                res = input.toUpperCase();
+                break;
+            case 'lower':
+                res = input.toLowerCase();
+                break;
+            case 'base64_enc':
+                res = btoa(unescape(encodeURIComponent(input)));
+                break;
+            case 'base64_dec':
+                res = decodeURIComponent(escape(atob(input.trim())));
+                break;
+            case 'url_enc':
+                res = encodeURIComponent(input);
+                break;
+            case 'url_dec':
+                res = decodeURIComponent(input);
+                break;
+            default:
+                res = input;
+        }
+        output.value = res;
+        stats.textContent = `Characters: ${res.length} | Lines: ${res.split('\n').length}`;
+        status.textContent = 'Processed successfully';
+    } catch(err) {
+        output.value = 'Error processing text: ' + err.message;
+        status.textContent = 'Error';
+    }
+}
+
+document.getElementById('univ-input').addEventListener('input', function() {
+    const lines = this.value ? this.value.split('\n').length : 0;
+    document.getElementById('univ-stats').textContent = `Input: ${this.value.length} chars | ${lines} lines`;
+});
+
+function copyUnivOutput(btn) {
+    const out = document.getElementById('univ-output').value;
+    if (!out) return;
+    navigator.clipboard.writeText(out).then(() => {
+        const orig = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(() => btn.textContent = orig, 2000);
+    });
+}
+</script>

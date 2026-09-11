@@ -1,0 +1,123 @@
+<style>
+.tool-container { font-family: system-ui, -apple-system, sans-serif; background: #121217; padding: 24px; border-radius: 12px; box-sizing: border-box; max-width: 840px; margin: 0 auto; color: #f1f5f9; border: 1px solid rgba(255, 255, 255, 0.08); }
+.tool-container .picker-bar { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+.tool-container input[type="color"] { border: none; width: 44px; height: 44px; border-radius: 8px; cursor: pointer; background: none; }
+.tool-container input[type="text"] { background: #1a1a24; border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 6px; padding: 10px 14px; color: #fff; font-size: 15px; font-family: 'JetBrains Mono', monospace; width: 140px; }
+.tool-container .palette-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(70px, 1fr)); gap: 8px; margin-bottom: 20px; }
+.tool-container .shade-swatch { border-radius: 8px; padding: 12px 6px; text-align: center; cursor: pointer; transition: transform 0.15s; border: 1px solid rgba(255,255,255,0.06); }
+.tool-container .shade-swatch:hover { transform: translateY(-3px); }
+.tool-container .shade-label { font-size: 10px; font-family: 'JetBrains Mono', monospace; font-weight: 600; }
+.tool-container .shade-hex { font-size: 11px; font-family: 'JetBrains Mono', monospace; opacity: 0.9; margin-top: 4px; }
+.tool-container textarea { width: 100%; background: #1a1a24; border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 8px; padding: 12px; color: #f8fafc; font-family: 'JetBrains Mono', monospace; font-size: 12px; min-height: 90px; }
+.tool-container button { background: #10b981; color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 13px; margin-top: 8px; }
+.tool-container button:hover { background: #059669; }
+</style>
+<div class="tool-container">
+    <div class="picker-bar">
+        <input type="color" id="base-color-picker" value="#3b82f6" oninput="onColorPicked(this.value)">
+        <input type="text" id="base-hex-text" value="#3b82f6" oninput="onHexEntered(this.value)">
+        <span style="font-size: 13px; color: #94a3b8;">Select or enter any hex color to generate 10 tints & shades</span>
+    </div>
+    
+    <div class="palette-grid" id="palette-container"></div>
+    
+    <h3 style="font-size: 14px; margin-bottom: 6px; color: #e2e8f0;">Tailwind / CSS Color Tokens</h3>
+    <textarea id="color-tokens-out" readonly></textarea>
+    <button onclick="copyPalette(this)">Copy All Color Values</button>
+</div>
+<script>
+function hexToRgb(hex) {
+    hex = hex.replace(/^#/, '');
+    if (hex.length === 3) hex = hex.split('').map(c => c+c).join('');
+    const num = parseInt(hex, 16);
+    return [(num >> 16) & 255, (num >> 8) & 255, num & 255];
+}
+
+function rgbToHex(r, g, b) {
+    return "#" + [r, g, b].map(x => {
+        const h = Math.min(255, Math.max(0, Math.round(x))).toString(16);
+        return h.length === 1 ? '0' + h : h;
+    }).join('');
+}
+
+function mixColors(c1, c2, weight) {
+    return [
+        c1[0] * (1 - weight) + c2[0] * weight,
+        c1[1] * (1 - weight) + c2[1] * weight,
+        c1[2] * (1 - weight) + c2[2] * weight
+    ];
+}
+
+function generateShades(hex) {
+    try {
+        const rgb = hexToRgb(hex);
+        const white = [255, 255, 255];
+        const black = [0, 0, 0];
+        
+        const weights = [
+            { label: '50', target: white, w: 0.9 },
+            { label: '100', target: white, w: 0.8 },
+            { label: '200', target: white, w: 0.6 },
+            { label: '300', target: white, w: 0.4 },
+            { label: '400', target: white, w: 0.2 },
+            { label: '500', target: rgb, w: 0 },
+            { label: '600', target: black, w: 0.15 },
+            { label: '700', target: black, w: 0.35 },
+            { label: '800', target: black, w: 0.55 },
+            { label: '900', target: black, w: 0.75 },
+            { label: '950', target: black, w: 0.88 },
+        ];
+        
+        const container = document.getElementById('palette-container');
+        container.innerHTML = '';
+        const tokens = {};
+        
+        weights.forEach(step => {
+            const mixed = step.w === 0 ? rgb : mixColors(rgb, step.target, step.w);
+            const shadeHex = rgbToHex(mixed[0], mixed[1], mixed[2]);
+            tokens[step.label] = shadeHex;
+            
+            const lum = (mixed[0]*0.299 + mixed[1]*0.587 + mixed[2]*0.114);
+            const textColor = lum > 140 ? '#0f172a' : '#ffffff';
+            
+            const swatch = document.createElement('div');
+            swatch.className = 'shade-swatch';
+            swatch.style.backgroundColor = shadeHex;
+            swatch.style.color = textColor;
+            swatch.innerHTML = `<div class="shade-label">${step.label}</div><div class="shade-hex">${shadeHex}</div>`;
+            swatch.onclick = () => {
+                navigator.clipboard.writeText(shadeHex);
+                swatch.querySelector('.shade-hex').textContent = 'Copied!';
+                setTimeout(() => swatch.querySelector('.shade-hex').textContent = shadeHex, 1000);
+            };
+            container.appendChild(swatch);
+        });
+        
+        document.getElementById('color-tokens-out').value = JSON.stringify(tokens, null, 2);
+    } catch(e) {}
+}
+
+function onColorPicked(hex) {
+    document.getElementById('base-hex-text').value = hex;
+    generateShades(hex);
+}
+
+function onHexEntered(hex) {
+    if (/^#?[0-9a-fA-F]{6}$/.test(hex)) {
+        if (!hex.startsWith('#')) hex = '#' + hex;
+        document.getElementById('base-color-picker').value = hex;
+        generateShades(hex);
+    }
+}
+
+function copyPalette(btn) {
+    const text = document.getElementById('color-tokens-out').value;
+    navigator.clipboard.writeText(text).then(() => {
+        const orig = btn.textContent;
+        btn.textContent = 'Copied JSON!';
+        setTimeout(() => btn.textContent = orig, 1500);
+    });
+}
+
+generateShades('#3b82f6');
+</script>

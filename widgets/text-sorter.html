@@ -1,0 +1,94 @@
+<style>
+.tool-container { font-family: system-ui, -apple-system, sans-serif; background: #121217; padding: 24px; border-radius: 12px; box-sizing: border-box; max-width: 840px; margin: 0 auto; color: #f1f5f9; border: 1px solid rgba(255, 255, 255, 0.08); }
+.tool-container h3 { font-size: 15px; margin-top: 0; margin-bottom: 8px; color: #e2e8f0; }
+.tool-container textarea { width: 100%; background: #1a1a24; border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 8px; padding: 12px; box-sizing: border-box; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #f8fafc; margin-bottom: 12px; min-height: 130px; resize: vertical; }
+.tool-container .btn-group { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+.tool-container button { background: #4f46e5; color: white; border: none; padding: 8px 14px; border-radius: 6px; cursor: pointer; font-size: 13px; font-weight: 500; }
+.tool-container button:hover { background: #4338ca; }
+.tool-container .btn-secondary { background: #272732; color: #cbd5e1; border: 1px solid rgba(255, 255, 255, 0.08); }
+.tool-container .btn-secondary:hover { background: #323242; color: #fff; }
+.tool-container .copy-btn { background: #10b981; }
+.tool-container .copy-btn:hover { background: #059669; }
+.tool-container .stats { font-size: 12px; color: #94a3b8; }
+</style>
+<div class="tool-container">
+    <h3>Input Lines</h3>
+    <textarea id="sorter-in" placeholder="Paste lines of text here to sort, deduplicate, or reverse..."></textarea>
+    
+    <div class="btn-group">
+        <button onclick="sortLines('az')">Sort A → Z</button>
+        <button onclick="sortLines('za')" class="btn-secondary">Sort Z → A</button>
+        <button onclick="sortLines('num')" class="btn-secondary">Numeric Sort</button>
+        <button onclick="sortLines('dedup')" class="btn-secondary">Remove Duplicates</button>
+        <button onclick="sortLines('rev')" class="btn-secondary">Reverse Order</button>
+        <button onclick="sortLines('shuffle')" class="btn-secondary">Random Shuffle</button>
+        <button onclick="copySorted(this)" class="copy-btn">Copy Output</button>
+    </div>
+    
+    <h3>Sorted Output</h3>
+    <textarea id="sorter-out" placeholder="Sorted lines will appear here..." readonly></textarea>
+    <div class="stats" id="sorter-stats">Total Lines: 0 | Unique: 0</div>
+</div>
+<script>
+function getLines() {
+    const raw = document.getElementById('sorter-in').value;
+    return raw.split('\n');
+}
+
+function updateStats(lines) {
+    const unique = new Set(lines.filter(l => l.trim())).size;
+    document.getElementById('sorter-stats').textContent = `Total Lines: ${lines.length} | Unique Lines: ${unique}`;
+}
+
+function sortLines(mode) {
+    let lines = getLines();
+    if (!lines.length || (lines.length === 1 && !lines[0])) {
+        document.getElementById('sorter-out').value = '';
+        return;
+    }
+
+    switch(mode) {
+        case 'az':
+            lines.sort((a, b) => a.localeCompare(b, undefined, { sensitivity: 'base' }));
+            break;
+        case 'za':
+            lines.sort((a, b) => b.localeCompare(a, undefined, { sensitivity: 'base' }));
+            break;
+        case 'num':
+            lines.sort((a, b) => {
+                const na = parseFloat(a.replace(/[^0-9.-]/g, '')) || 0;
+                const nb = parseFloat(b.replace(/[^0-9.-]/g, '')) || 0;
+                return na - nb;
+            });
+            break;
+        case 'dedup':
+            lines = [...new Set(lines)];
+            break;
+        case 'rev':
+            lines.reverse();
+            break;
+        case 'shuffle':
+            for (let i = lines.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [lines[i], lines[j]] = [lines[j], lines[i]];
+            }
+            break;
+    }
+
+    document.getElementById('sorter-out').value = lines.join('\n');
+    updateStats(lines);
+}
+
+function copySorted(btn) {
+    const out = document.getElementById('sorter-out').value;
+    if (!out) return;
+    navigator.clipboard.writeText(out).then(() => {
+        const orig = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(() => btn.textContent = orig, 1500);
+    });
+}
+document.getElementById('sorter-in').addEventListener('input', function() {
+    updateStats(getLines());
+});
+</script>

@@ -71,9 +71,13 @@ def build_tool_page(keyword: str, tool_name: str, description: str, category: st
             if direct_path.exists():
                 widget_html = direct_path.read_text(encoding="utf-8")
 
-    # If no widget found, use a placeholder
+    # If no specific widget found, use universal interactive converter widget
     if not widget_html:
-        widget_html = '<div class="tool-widget-placeholder"><p>🔧 Interactive tool coming soon.</p></div>'
+        univ_path = widgets_dir / "universal-converter.html"
+        if univ_path.exists():
+            widget_html = univ_path.read_text(encoding="utf-8")
+        else:
+            widget_html = '<div class="tool-container"><div class="tool-surface"><h3>Interactive Utility</h3><textarea id="tool-in" placeholder="Enter input text or data here..."></textarea><button onclick="alert(\'Processed!\')">Run Utility</button></div></div>'
 
     from datetime import datetime
     html_content = template.render(

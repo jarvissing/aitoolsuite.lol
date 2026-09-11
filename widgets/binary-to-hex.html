@@ -1,0 +1,84 @@
+<style>
+.tool-container { font-family: system-ui, -apple-system, sans-serif; background: #121217; padding: 24px; border-radius: 12px; box-sizing: border-box; max-width: 840px; margin: 0 auto; color: #f1f5f9; border: 1px solid rgba(255, 255, 255, 0.08); }
+.tool-container .base-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; background: #1a1a24; padding: 10px 14px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08); }
+.tool-container .base-label { font-size: 13px; font-weight: 600; color: #94a3b8; width: 110px; }
+.tool-container input[type="text"] { flex: 1; background: transparent; border: none; color: #38bdf8; font-family: 'JetBrains Mono', monospace; font-size: 14px; outline: none; margin: 0 10px; }
+.tool-container button { background: #4f46e5; color: white; border: none; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 12px; }
+.tool-container button:hover { background: #4338ca; }
+</style>
+<div class="tool-container">
+    <h3 style="font-size: 15px; margin-top: 0; margin-bottom: 16px; color: #e2e8f0;">Real-Time Multi-Base Number Converter</h3>
+    
+    <div class="base-row">
+        <span class="base-label">Decimal (Base 10)</span>
+        <input type="text" id="dec-in" value="255" oninput="convertFromDec(this.value)">
+        <button onclick="copyBaseVal('dec-in', this)">Copy</button>
+    </div>
+    
+    <div class="base-row">
+        <span class="base-label">Hex (Base 16)</span>
+        <input type="text" id="hex-in" value="FF" oninput="convertFromHex(this.value)">
+        <button onclick="copyBaseVal('hex-in', this)">Copy</button>
+    </div>
+    
+    <div class="base-row">
+        <span class="base-label">Binary (Base 2)</span>
+        <input type="text" id="bin-in" value="11111111" oninput="convertFromBin(this.value)">
+        <button onclick="copyBaseVal('bin-in', this)">Copy</button>
+    </div>
+    
+    <div class="base-row">
+        <span class="base-label">Octal (Base 8)</span>
+        <input type="text" id="oct-in" value="377" oninput="convertFromOct(this.value)">
+        <button onclick="copyBaseVal('oct-in', this)">Copy</button>
+    </div>
+</div>
+<script>
+function setAll(bigIntVal) {
+    document.getElementById('dec-in').value = bigIntVal.toString(10);
+    document.getElementById('hex-in').value = bigIntVal.toString(16).toUpperCase();
+    document.getElementById('bin-in').value = bigIntVal.toString(2);
+    document.getElementById('oct-in').value = bigIntVal.toString(8);
+}
+
+function convertFromDec(val) {
+    val = val.trim();
+    if (!val) return;
+    try {
+        setAll(BigInt(val));
+    } catch(e) {}
+}
+
+function convertFromHex(val) {
+    val = val.trim().replace(/^0x/i, '');
+    if (!val) return;
+    try {
+        setAll(BigInt('0x' + val));
+    } catch(e) {}
+}
+
+function convertFromBin(val) {
+    val = val.trim().replace(/^0b/i, '');
+    if (!val) return;
+    try {
+        setAll(BigInt('0b' + val));
+    } catch(e) {}
+}
+
+function convertFromOct(val) {
+    val = val.trim().replace(/^0o/i, '');
+    if (!val) return;
+    try {
+        setAll(BigInt('0o' + val));
+    } catch(e) {}
+}
+
+function copyBaseVal(id, btn) {
+    const text = document.getElementById(id).value;
+    navigator.clipboard.writeText(text).then(() => {
+        const orig = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(() => btn.textContent = orig, 1500);
+    });
+}
+</script>
