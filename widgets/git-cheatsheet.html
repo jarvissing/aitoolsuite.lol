@@ -1,0 +1,227 @@
+<style>
+.gc-container {
+    max-width: 800px;
+    margin: 0 auto;
+    font-family: 'Inter', system-ui, sans-serif;
+    color: #e2e8f0;
+}
+.gc-search {
+    width: 100%;
+    background: #09090b;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 10px;
+    padding: 10px 14px;
+    color: #fff;
+    font-size: 0.95rem;
+    outline: none;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+}
+.gc-search:focus { border-color: #3b82f6; }
+.gc-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-height: 540px;
+    overflow-y: auto;
+    padding-right: 4px;
+}
+.gc-card {
+    background: #121216;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 14px 16px;
+    transition: all 0.2s;
+}
+.gc-card:hover {
+    border-color: rgba(59, 130, 246, 0.4);
+    background: #15151c;
+}
+.gc-scenario {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: #f8fafc;
+    margin-bottom: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.gc-tag {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: #94a3b8;
+    background: rgba(255, 255, 255, 0.06);
+    padding: 2px 8px;
+    border-radius: 100px;
+    text-transform: uppercase;
+}
+.gc-desc {
+    font-size: 0.82rem;
+    color: #94a3b8;
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
+.gc-cmd-box {
+    display: flex;
+    align-items: center;
+    background: #09090b;
+    border: 1px solid #27272a;
+    border-radius: 8px;
+    padding: 8px 12px;
+}
+.gc-cmd {
+    flex: 1;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    color: #38bdf8;
+    overflow-x: auto;
+}
+.gc-copy {
+    background: #3b82f6;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 5px 12px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    cursor: pointer;
+    margin-left: 10px;
+    flex-shrink: 0;
+}
+.gc-copy:hover { background: #2563eb; }
+</style>
+
+<div class="gc-container">
+    <input type="text" id="gitSearch" class="gc-search" placeholder="Search Git scenarios (e.g. undo, stash, rename branch, squash, revert, commit message)..." oninput="filterGitCommands()">
+    <div id="gitList" class="gc-list"></div>
+</div>
+
+<script>
+const GIT_COMMANDS = [
+    {
+        title: "Undo last commit (keep all file changes staged)",
+        tag: "Undo",
+        desc: "Rewinds your HEAD by 1 commit. All changes remain staged and ready for re-committing.",
+        cmd: "git reset --soft HEAD~1"
+    },
+    {
+        title: "Undo last commit (keep changes unstaged)",
+        tag: "Undo",
+        desc: "Removes the commit from git history but keeps all your modified code in your working directory.",
+        cmd: "git reset HEAD~1"
+    },
+    {
+        title: "Discard ALL local changes & untracked files",
+        tag: "Cleanup",
+        desc: "Nuclear reset: completely removes all unstaged modifications and deletes all newly created files.",
+        cmd: "git restore . && git clean -fd"
+    },
+    {
+        title: "Change commit message of the last commit",
+        tag: "Commit",
+        desc: "Updates the commit message of the most recent commit without modifying changed code.",
+        cmd: 'git commit --amend -m "Updated commit message"'
+    },
+    {
+        title: "Rename current branch (local & remote)",
+        tag: "Branch",
+        desc: "Renames local branch, pushes the new name upstream, and deletes the old remote branch reference.",
+        cmd: "git branch -m new-branch-name && git push origin -u new-branch-name && git push origin --delete old-branch-name"
+    },
+    {
+        title: "Temporarily stash uncommitted work with label",
+        tag: "Stash",
+        desc: "Saves all staged and unstaged work to the stash stack with a descriptive message.",
+        cmd: 'git stash push -m "WIP: my experimental feature"'
+    },
+    {
+        title: "Restore and remove latest stash",
+        tag: "Stash",
+        desc: "Applies the most recent stashed changes back into your working directory and drops it from the stash stack.",
+        cmd: "git stash pop"
+    },
+    {
+        title: "Interactive rebase to squash last N commits",
+        tag: "History",
+        desc: "Opens your editor to squash, edit, or reword the last 3 commits into a single clean commit.",
+        cmd: "git rebase -i HEAD~3"
+    },
+    {
+        title: "Cherry-pick a specific commit into current branch",
+        tag: "Branch",
+        desc: "Applies the exact code changes from a specific commit hash onto your currently checked-out branch.",
+        cmd: "git cherry-pick <commit-hash>"
+    },
+    {
+        title: "Safely delete a merged local and remote branch",
+        tag: "Branch",
+        desc: "Deletes the branch locally (if merged) and purges the branch on GitHub/GitLab origin.",
+        cmd: "git branch -d feature-branch && git push origin --delete feature-branch"
+    },
+    {
+        title: "Create and switch to a new branch instantly",
+        tag: "Branch",
+        desc: "Creates a new branch off your current HEAD and immediately checks it out.",
+        cmd: "git checkout -b new-feature"
+    },
+    {
+        title: "View clean 1-line graphical commit log",
+        tag: "Inspect",
+        desc: "Displays an ASCII visual graph of branches, commits, tags, and HEAD references.",
+        cmd: "git log --oneline --graph --decorate --all"
+    }
+];
+
+function renderGitCommands() {
+    const list = document.getElementById('gitList');
+    const q = document.getElementById('gitSearch').value.toLowerCase().trim();
+    list.innerHTML = '';
+
+    const filtered = GIT_COMMANDS.filter(item => {
+        return item.title.toLowerCase().includes(q) ||
+               item.desc.toLowerCase().includes(q) ||
+               item.cmd.toLowerCase().includes(q) ||
+               item.tag.toLowerCase().includes(q);
+    });
+
+    if (filtered.length === 0) {
+        list.innerHTML = '<div style="text-align:center; padding:40px; color:#64748b;">No matching Git scenarios found.</div>';
+        return;
+    }
+
+    filtered.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'gc-card';
+        card.innerHTML = `
+            <div class="gc-scenario">
+                <span>${item.title}</span>
+                <span class="gc-tag">${item.tag}</span>
+            </div>
+            <div class="gc-desc">${item.desc}</div>
+            <div class="gc-cmd-box">
+                <code class="gc-cmd">${item.cmd}</code>
+                <button class="gc-copy" onclick="copyGitCmd(this, '${encodeURIComponent(item.cmd)}')">Copy</button>
+            </div>
+        `;
+        list.appendChild(card);
+    });
+}
+
+function filterGitCommands() {
+    renderGitCommands();
+}
+
+function copyGitCmd(btn, encodedCmd) {
+    const cmd = decodeURIComponent(encodedCmd);
+    if (window.copyToClipboard) {
+        window.copyToClipboard(cmd, btn, 'Copied!');
+    } else {
+        navigator.clipboard.writeText(cmd).then(() => {
+            btn.innerText = 'Copied!';
+            setTimeout(() => btn.innerText = 'Copy', 1500);
+        });
+    }
+}
+
+document.addEventListener('DOMContentLoaded', renderGitCommands);
+</script>

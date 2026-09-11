@@ -1,0 +1,219 @@
+<style>
+.mh-container {
+    max-width: 800px;
+    margin: 0 auto;
+    font-family: 'Inter', system-ui, sans-serif;
+    color: #e2e8f0;
+}
+.mh-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+@media (max-width: 700px) {
+    .mh-grid { grid-template-columns: 1fr; }
+}
+.mh-panel {
+    background: #121216;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+}
+.mh-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+.mh-title {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #94a3b8;
+    text-transform: uppercase;
+}
+.mh-tabs {
+    display: flex;
+    gap: 6px;
+}
+.mh-tab {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #94a3b8;
+    border-radius: 6px;
+    padding: 4px 10px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+.mh-tab.active {
+    background: #3b82f6;
+    color: #fff;
+    border-color: #3b82f6;
+}
+.mh-textarea {
+    width: 100%;
+    height: 300px;
+    background: #09090b;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 8px;
+    padding: 12px;
+    color: #38bdf8;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    resize: vertical;
+    outline: none;
+    box-sizing: border-box;
+}
+.mh-textarea:focus { border-color: #3b82f6; }
+.mh-preview {
+    width: 100%;
+    height: 300px;
+    background: #09090b;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 8px;
+    padding: 14px;
+    overflow-y: auto;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #cbd5e1;
+    box-sizing: border-box;
+}
+.mh-preview h1, .mh-preview h2, .mh-preview h3 { color: #fff; margin-top: 10px; margin-bottom: 6px; }
+.mh-preview p { margin-bottom: 10px; }
+.mh-preview code { background: rgba(255,255,255,0.08); padding: 2px 6px; border-radius: 4px; font-family: monospace; }
+.mh-preview pre code { display: block; padding: 10px; background: #18181f; border-radius: 6px; overflow-x: auto; }
+.mh-preview a { color: #38bdf8; }
+.mh-btn {
+    background: #3b82f6;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+.mh-btn:hover { background: #2563eb; }
+</style>
+
+<div class="mh-container">
+    <div class="mh-grid">
+        <div class="mh-panel">
+            <div class="mh-header">
+                <span class="mh-title">Markdown Input</span>
+                <button class="mh-tab" onclick="loadMdSample()">Sample</button>
+            </div>
+            <textarea id="mdInput" class="mh-textarea" placeholder="# Enter Markdown here..." oninput="convertMarkdown()"></textarea>
+        </div>
+        <div class="mh-panel">
+            <div class="mh-header">
+                <div class="mh-tabs">
+                    <button id="tabHtml" class="mh-tab active" onclick="switchMdTab('html')">HTML Code</button>
+                    <button id="tabPreview" class="mh-tab" onclick="switchMdTab('preview')">Live Preview</button>
+                </div>
+                <button class="mh-btn" onclick="copyMdHtml(this)">Copy HTML</button>
+            </div>
+            <textarea id="htmlOutput" class="mh-textarea" readonly style="color:#4ade80;"></textarea>
+            <div id="htmlPreview" class="mh-preview" style="display:none;"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+function parseMarkdownToHtml(md) {
+    let html = md
+        // Escape HTML
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        // Headers
+        .replace(/^### (.*$)/gim, '<h3>$1</h3>')
+        .replace(/^## (.*$)/gim, '<h2>$1</h2>')
+        .replace(/^# (.*$)/gim, '<h1>$1</h1>')
+        // Bold & Italic
+        .replace(/\*\*\*(.*?)\*\*\*/gim, '<strong><em>$1</em></strong>')
+        .replace(/\*\*(.*?)\*\*/gim, '<strong>$1</strong>')
+        .replace(/\*(.*?)\*/gim, '<em>$1</em>')
+        // Code blocks
+        .replace(/```([\s\S]*?)```/gim, '<pre><code>$1</code></pre>')
+        // Inline code
+        .replace(/`([^`]+)`/gim, '<code>$1</code>')
+        // Blockquotes
+        .replace(/^\> (.*$)/gim, '<blockquote>$1</blockquote>')
+        // Links
+        .replace(/\[([^\]]+)\]\(([^)]+)\)/gim, '<a href="$2" target="_blank" rel="noopener">$1</a>')
+        // Horizontal Rule
+        .replace(/^---$/gim, '<hr>')
+        // Paragraphs
+        .replace(/\n\s*\n/g, '</p><p>')
+        .replace(/\n/g, '<br>');
+
+    return `<p>${html}</p>`
+        .replace(/<p><\/p>/g, '')
+        .replace(/<p><(h[1-3]|pre|blockquote|hr)/g, '<$1')
+        .replace(/<\/(h[1-3]|pre|blockquote|hr)><\/p>/g, '</$1>');
+}
+
+function convertMarkdown() {
+    const raw = document.getElementById('mdInput').value;
+    const parsed = parseMarkdownToHtml(raw);
+    document.getElementById('htmlOutput').value = parsed;
+    document.getElementById('htmlPreview').innerHTML = parsed;
+}
+
+function switchMdTab(tab) {
+    const htmlArea = document.getElementById('htmlOutput');
+    const previewArea = document.getElementById('htmlPreview');
+    const tabHtml = document.getElementById('tabHtml');
+    const tabPreview = document.getElementById('tabPreview');
+
+    if (tab === 'html') {
+        htmlArea.style.display = 'block';
+        previewArea.style.display = 'none';
+        tabHtml.classList.add('active');
+        tabPreview.classList.remove('active');
+    } else {
+        htmlArea.style.display = 'none';
+        previewArea.style.display = 'block';
+        tabHtml.classList.remove('active');
+        tabPreview.classList.add('active');
+    }
+}
+
+function loadMdSample() {
+    const sample = `# Welcome to Markdown to HTML
+This is a **fast**, private developer converter running *entirely* in your browser.
+
+## Features
+* Clean HTML generator
+* Code snippets: \`const answer = 42;\`
+* Fast 1-click clipboard copy
+
+\`\`\`javascript
+function greet(name) {
+  return "Hello, " + name;
+}
+\`\`\`
+
+> Built for developers who care about speed and privacy.`;
+    document.getElementById('mdInput').value = sample;
+    convertMarkdown();
+}
+
+function copyMdHtml(btn) {
+    const code = document.getElementById('htmlOutput').value;
+    if (window.copyToClipboard) {
+        window.copyToClipboard(code, btn, 'Copied!');
+    } else {
+        navigator.clipboard.writeText(code).then(() => {
+            btn.innerText = 'Copied!';
+            setTimeout(() => btn.innerText = 'Copy HTML', 1500);
+        });
+    }
+}
+
+document.addEventListener('DOMContentLoaded', loadMdSample);
+</script>

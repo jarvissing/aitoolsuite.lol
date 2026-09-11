@@ -1,0 +1,214 @@
+<style>
+.fb-container {
+    max-width: 800px;
+    margin: 0 auto;
+    font-family: 'Inter', system-ui, sans-serif;
+    color: #e2e8f0;
+}
+.fb-controls {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    gap: 12px;
+    background: #121216;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 16px;
+    border-radius: 12px;
+    margin-bottom: 16px;
+}
+.fb-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+.fb-label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+.fb-select {
+    background: #09090b;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 8px;
+    padding: 8px 10px;
+    color: #fff;
+    font-size: 0.85rem;
+    outline: none;
+    cursor: pointer;
+}
+.fb-select:focus { border-color: #3b82f6; }
+.fb-preview-box {
+    background: #09090b;
+    border: 2px dashed rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    padding: 16px;
+    min-height: 220px;
+    margin-bottom: 16px;
+    display: flex;
+    transition: all 0.2s;
+    overflow: auto;
+}
+.fb-item {
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    color: #fff;
+    font-weight: 800;
+    font-size: 1.1rem;
+    min-width: 60px;
+    min-height: 60px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+    user-select: none;
+}
+.fb-item:nth-child(2) { background: linear-gradient(135deg, #8b5cf6, #6d28d9); }
+.fb-item:nth-child(3) { background: linear-gradient(135deg, #ec4899, #be185d); }
+.fb-item:nth-child(4) { background: linear-gradient(135deg, #f59e0b, #d97706); }
+.fb-item:nth-child(5) { background: linear-gradient(135deg, #10b981, #047857); }
+.fb-item:nth-child(6) { background: linear-gradient(135deg, #06b6d4, #0e7490); }
+.fb-code-box {
+    position: relative;
+    background: #121216;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 16px;
+}
+.fb-code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    color: #38bdf8;
+    white-space: pre-wrap;
+    margin: 0;
+}
+.fb-copy-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: #3b82f6;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 6px 14px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+.fb-copy-btn:hover { background: #2563eb; }
+</style>
+
+<div class="fb-container">
+    <div class="fb-controls">
+        <div class="fb-group">
+            <label class="fb-label">flex-direction</label>
+            <select id="fbDirection" class="fb-select" onchange="updateFlexbox()">
+                <option value="row" selected>row</option>
+                <option value="row-reverse">row-reverse</option>
+                <option value="column">column</option>
+                <option value="column-reverse">column-reverse</option>
+            </select>
+        </div>
+        <div class="fb-group">
+            <label class="fb-label">justify-content</label>
+            <select id="fbJustify" class="fb-select" onchange="updateFlexbox()">
+                <option value="flex-start" selected>flex-start</option>
+                <option value="center">center</option>
+                <option value="flex-end">flex-end</option>
+                <option value="space-between">space-between</option>
+                <option value="space-around">space-around</option>
+                <option value="space-evenly">space-evenly</option>
+            </select>
+        </div>
+        <div class="fb-group">
+            <label class="fb-label">align-items</label>
+            <select id="fbAlign" class="fb-select" onchange="updateFlexbox()">
+                <option value="stretch">stretch</option>
+                <option value="flex-start">flex-start</option>
+                <option value="center" selected>center</option>
+                <option value="flex-end">flex-end</option>
+                <option value="baseline">baseline</option>
+            </select>
+        </div>
+        <div class="fb-group">
+            <label class="fb-label">flex-wrap</label>
+            <select id="fbWrap" class="fb-select" onchange="updateFlexbox()">
+                <option value="nowrap" selected>nowrap</option>
+                <option value="wrap">wrap</option>
+                <option value="wrap-reverse">wrap-reverse</option>
+            </select>
+        </div>
+        <div class="fb-group">
+            <label class="fb-label">gap (<span id="gapVal">16px</span>)</label>
+            <input type="range" id="fbGap" min="0" max="48" value="16" style="accent-color:#3b82f6; cursor:pointer;" oninput="document.getElementById('gapVal').innerText=this.value+'px'; updateFlexbox()">
+        </div>
+        <div class="fb-group" style="justify-content:flex-end;">
+            <div style="display:flex; gap:6px;">
+                <button onclick="changeItemCount(1)" style="flex:1; background:#27272a; border:none; color:#fff; padding:6px; border-radius:6px; font-weight:700; cursor:pointer;">+ Item</button>
+                <button onclick="changeItemCount(-1)" style="flex:1; background:#27272a; border:none; color:#fff; padding:6px; border-radius:6px; font-weight:700; cursor:pointer;">- Item</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="fbPreview" class="fb-preview-box">
+        <div class="fb-item">1</div>
+        <div class="fb-item">2</div>
+        <div class="fb-item">3</div>
+        <div class="fb-item">4</div>
+    </div>
+
+    <div class="fb-code-box">
+        <button class="fb-copy-btn" onclick="copyFlexCss(this)">Copy CSS</button>
+        <pre id="fbCssCode" class="fb-code"></pre>
+    </div>
+</div>
+
+<script>
+let itemCount = 4;
+
+function updateFlexbox() {
+    const dir = document.getElementById('fbDirection').value;
+    const justify = document.getElementById('fbJustify').value;
+    const align = document.getElementById('fbAlign').value;
+    const wrap = document.getElementById('fbWrap').value;
+    const gap = document.getElementById('fbGap').value + 'px';
+
+    const preview = document.getElementById('fbPreview');
+    preview.style.flexDirection = dir;
+    preview.style.justifyContent = justify;
+    preview.style.alignItems = align;
+    preview.style.flexWrap = wrap;
+    preview.style.gap = gap;
+
+    const css = `.container {\n  display: flex;\n  flex-direction: ${dir};\n  justify-content: ${justify};\n  align-items: ${align};\n  flex-wrap: ${wrap};\n  gap: ${gap};\n}`;
+    document.getElementById('fbCssCode').innerText = css;
+}
+
+function changeItemCount(delta) {
+    const newCount = itemCount + delta;
+    if (newCount < 1 || newCount > 10) return;
+    itemCount = newCount;
+    const preview = document.getElementById('fbPreview');
+    preview.innerHTML = '';
+    for (let i = 1; i <= itemCount; i++) {
+        const d = document.createElement('div');
+        d.className = 'fb-item';
+        d.innerText = i;
+        preview.appendChild(d);
+    }
+}
+
+function copyFlexCss(btn) {
+    const code = document.getElementById('fbCssCode').innerText;
+    if (window.copyToClipboard) {
+        window.copyToClipboard(code, btn, 'Copied!');
+    } else {
+        navigator.clipboard.writeText(code).then(() => {
+            btn.innerText = 'Copied!';
+            setTimeout(() => btn.innerText = 'Copy CSS', 1500);
+        });
+    }
+}
+
+document.addEventListener('DOMContentLoaded', updateFlexbox);
+</script>

@@ -1,8 +1,8 @@
 ============================================================
-  QA REPORT — 2026-09-11 13:07:06
+  QA REPORT — 2026-09-11 12:50:03
 ============================================================
 
-Found 63 tool pages to check.
+Found 64 tool pages to check.
 
 ✅ ai-prompt-cost-calculator — 12/12 checks passed
 ✅ ascii-binary-converter — 12/12 checks passed
@@ -34,6 +34,7 @@ Found 63 tool pages to check.
 ✅ html-minifier — 12/12 checks passed
 ✅ html-table-generator — 12/12 checks passed
 ✅ html-to-jsx-converter — 12/12 checks passed
+✅ http-status-code-lookup — 12/12 checks passed
 ✅ json-formatter — 12/12 checks passed
 ✅ json-minifier — 12/12 checks passed
 ✅ json-to-csv-converter — 12/12 checks passed
@@ -70,9 +71,9 @@ Found 63 tool pages to check.
 
 ————————————————————————————————————————
 HOMEPAGE CHECK:
-✅ 63/63 tools listed on homepage
+✅ 64/64 tools listed on homepage
 
 ============================================================
-SUMMARY: 63 passed, 0 failed out of 63 pages
+SUMMARY: 64 passed, 0 failed out of 64 pages
 🎉 ALL PAGES PASS QA!
 ============================================================

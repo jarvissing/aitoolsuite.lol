@@ -86,5 +86,17 @@
   "html-to-jsx": "html-to-jsx.html",
   "html-to-jsx-converter": "html-to-jsx.html",
   "bulk-uuid": "bulk-uuid.html",
-  "bulk-uuid-generator": "bulk-uuid.html"
+  "bulk-uuid-generator": "bulk-uuid.html",
+  "http-status-lookup": "http-status-lookup.html",
+  "http-status-code-lookup": "http-status-lookup.html",
+  "css-flexbox": "css-flexbox.html",
+  "css-flexbox-generator": "css-flexbox.html",
+  "json-to-rust": "json-to-rust.html",
+  "json-to-rust-converter": "json-to-rust.html",
+  "json-to-go": "json-to-go.html",
+  "json-to-go-struct": "json-to-go.html",
+  "git-cheatsheet": "git-cheatsheet.html",
+  "git-command-generator": "git-cheatsheet.html",
+  "markdown-to-html": "markdown-to-html.html",
+  "markdown-to-html-converter": "markdown-to-html.html"
 }

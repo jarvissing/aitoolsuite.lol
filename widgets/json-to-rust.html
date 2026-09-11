@@ -1,0 +1,210 @@
+<style>
+.jr-container {
+    max-width: 800px;
+    margin: 0 auto;
+    font-family: 'Inter', system-ui, sans-serif;
+    color: #e2e8f0;
+}
+.jr-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+@media (max-width: 700px) {
+    .jr-grid { grid-template-columns: 1fr; }
+}
+.jr-panel {
+    background: #121216;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+}
+.jr-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+.jr-title {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #94a3b8;
+    text-transform: uppercase;
+}
+.jr-textarea {
+    width: 100%;
+    height: 280px;
+    background: #09090b;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 8px;
+    padding: 12px;
+    color: #38bdf8;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    resize: vertical;
+    outline: none;
+    box-sizing: border-box;
+}
+.jr-textarea:focus { border-color: #3b82f6; }
+.jr-btn {
+    background: #3b82f6;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+.jr-btn:hover { background: #2563eb; }
+.jr-btn-secondary {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #cbd5e1;
+}
+.jr-btn-secondary:hover { background: rgba(255, 255, 255, 0.12); }
+</style>
+
+<div class="jr-container">
+    <div class="jr-grid">
+        <div class="jr-panel">
+            <div class="jr-header">
+                <span class="jr-title">JSON Input</span>
+                <button class="jr-btn jr-btn-secondary" onclick="loadRustSample()">Load Sample</button>
+            </div>
+            <textarea id="jsonInput" class="jr-textarea" placeholder="Paste your JSON here..." oninput="convertJsonToRust()"></textarea>
+        </div>
+        <div class="jr-panel">
+            <div class="jr-header">
+                <span class="jr-title">Rust Structs (Serde)</span>
+                <button class="jr-btn" onclick="copyRustCode(this)">Copy Rust</button>
+            </div>
+            <textarea id="rustOutput" class="jr-textarea" readonly style="color:#4ade80;"></textarea>
+        </div>
+    </div>
+</div>
+
+<script>
+function toPascalCase(str) {
+    return str.replace(/(?:^|[-_])(\w)/g, (_, c) => c.toUpperCase());
+}
+
+function toSnakeCase(str) {
+    return str.replace(/([a-z])([A-Z])/g, '$1_$2')
+              .replace(/[-\s]+/g, '_')
+              .toLowerCase();
+}
+
+function convertJsonToRust() {
+    const raw = document.getElementById('jsonInput').value.trim();
+    const outputEl = document.getElementById('rustOutput');
+    if (!raw) {
+        outputEl.value = '';
+        return;
+    }
+
+    try {
+        const parsed = JSON.parse(raw);
+        const structs = [];
+        const seenNames = new Set();
+
+        function parseObject(obj, structName = "Root") {
+            const cleanName = toPascalCase(structName);
+            if (seenNames.has(cleanName)) return cleanName;
+            seenNames.add(cleanName);
+
+            let lines = [];
+            lines.push(`#[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]`);
+            lines.push(`pub struct ${cleanName} {`);
+
+            for (const [key, val] of Object.entries(obj)) {
+                const snakeKey = toSnakeCase(key);
+                let rustType = "serde_json::Value";
+
+                if (val === null) {
+                    rustType = "Option<serde_json::Value>";
+                } else if (typeof val === "boolean") {
+                    rustType = "bool";
+                } else if (typeof val === "number") {
+                    rustType = Number.isInteger(val) ? "i64" : "f64";
+                } else if (typeof val === "string") {
+                    rustType = "String";
+                } else if (Array.isArray(val)) {
+                    if (val.length > 0 && typeof val[0] === "object" && val[0] !== null) {
+                        const subName = parseObject(val[0], key + "Item");
+                        rustType = `Vec<${subName}>`;
+                    } else if (val.length > 0) {
+                        const itemType = typeof val[0] === "number" ? (Number.isInteger(val[0]) ? "i64" : "f64") : (typeof val[0] === "boolean" ? "bool" : "String");
+                        rustType = `Vec<${itemType}>`;
+                    } else {
+                        rustType = "Vec<serde_json::Value>";
+                    }
+                } else if (typeof val === "object") {
+                    const subName = parseObject(val, key);
+                    rustType = subName;
+                }
+
+                if (snakeKey !== key) {
+                    lines.push(`    #[serde(rename = "${key}")]`);
+                }
+                lines.push(`    pub ${snakeKey}: ${rustType},`);
+            }
+
+            lines.push(`}\n`);
+            structs.push(lines.join('\n'));
+            return cleanName;
+        }
+
+        if (Array.isArray(parsed)) {
+            if (parsed.length > 0 && typeof parsed[0] === "object") {
+                parseObject(parsed[0], "Item");
+                structs.unshift(`pub type Root = Vec<Item>;\n`);
+            } else {
+                structs.push(`pub type Root = Vec<serde_json::Value>;\n`);
+            }
+        } else if (typeof parsed === "object" && parsed !== null) {
+            parseObject(parsed, "Root");
+        } else {
+            outputEl.value = "// Please provide a valid JSON object or array.";
+            return;
+        }
+
+        outputEl.value = `use serde::{Serialize, Deserialize};\n\n` + structs.reverse().join('\n');
+    } catch (e) {
+        outputEl.value = `// Invalid JSON: ${e.message}`;
+    }
+}
+
+function loadRustSample() {
+    const sample = {
+        "id": 101,
+        "username": "developer_pro",
+        "isActive": true,
+        "balance": 249.50,
+        "roles": ["admin", "billing"],
+        "metadata": {
+            "lastLoginIp": "192.168.1.1",
+            "loginAttempts": 0
+        }
+    };
+    document.getElementById('jsonInput').value = JSON.stringify(sample, null, 2);
+    convertJsonToRust();
+}
+
+function copyRustCode(btn) {
+    const code = document.getElementById('rustOutput').value;
+    if (window.copyToClipboard) {
+        window.copyToClipboard(code, btn, 'Copied!');
+    } else {
+        navigator.clipboard.writeText(code).then(() => {
+            btn.innerText = 'Copied!';
+            setTimeout(() => btn.innerText = 'Copy Rust', 1500);
+        });
+    }
+}
+
+document.addEventListener('DOMContentLoaded', loadRustSample);
+</script>

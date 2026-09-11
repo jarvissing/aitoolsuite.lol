@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTTP Status Code Reference & Debugger - Free Online Developer Tools Tool | AI Tool Suite</title>
+    <meta name="description" content="Instant lookup and debugging guide for all HTTP status codes (1xx-5xx) with RFC specifications and troubleshooting advice.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://aitoolsuite.lol/http-status-code-lookup.html">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%234361ee'/%3E%3Cpath d='M56 12 L24 54 L48 54 L44 88 L76 46 L52 46 Z' fill='%23ffdd00' stroke='%23f59e0b' stroke-width='2'/%3E%3C/svg%3E">
+    <link rel="alternate icon" href="/favicon.svg">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="HTTP Status Code Reference & Debugger - Free Online Developer Tools Tool | AI Tool Suite">
+    <meta property="og:description" content="Instant lookup and debugging guide for all HTTP status codes (1xx-5xx) with RFC specifications and troubleshooting advice.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://aitoolsuite.lol/http-status-code-lookup.html">
+    
+    <!-- JSON-LD: WebApplication -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "HTTP Status Code Reference & Debugger",
+        "description": "Instant lookup and debugging guide for all HTTP status codes (1xx-5xx) with RFC specifications and troubleshooting advice.",
+        "url": "https://aitoolsuite.lol/http-status-code-lookup.html",
+        "applicationCategory": "UtilityApplication",
+        "operatingSystem": "Any",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
+    
+    <!-- JSON-LD: FAQPage -->
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            
+            {
+                "@type": "Question",
+                "name": "What is an HTTP status code?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "HTTP status codes are standard response codes issued by web servers to indicate whether a specific HTTP request was successfully completed."
+                }
+            },
+            
+            {
+                "@type": "Question",
+                "name": "What is the difference between 401 and 403?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "401 Unauthorized means authentication is required or failed, while 403 Forbidden means the server understands who you are but refuses access."
+                }
+            },
+            
+            {
+                "@type": "Question",
+                "name": "Is this guide offline and client-side?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, all status code lookups and specifications run entirely within your browser."
+                }
+            }
+            
+        ]
+    }
+    </script>
+    
+    
+    <!-- JSON-LD: BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://aitoolsuite.lol"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Developer Tools",
+                "item": "https://aitoolsuite.lol/#developer-tools"
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "HTTP Status Code Reference & Debugger"
+            }
+        ]
+    }
+    </script>
+    
+    <!-- Syne + Inter Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Syne:wght@700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #f1f5f9;
+            background: #09090b;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Responsive Floating Pill Navigation Bar */
+        .nav-wrapper {
+            position: sticky;
+            top: 14px;
+            z-index: 100;
+            padding: 0 16px;
+            width: 100%;
+        }
+        .site-nav {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(18, 18, 23, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 100px;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
+        }
+        .nav-brand {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: #ffffff;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            letter-spacing: -0.03em;
+            flex-shrink: 0;
+        }
+        .nav-brand-dot {
+            width: 8px;
+            height: 8px;
+            background: #3b82f6;
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 10px #3b82f6;
+        }
+        .nav-links {
+            display: flex;
+            gap: 6px;
+            align-items: center;
+            overflow-x: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        .nav-links::-webkit-scrollbar { display: none; }
+        .nav-link {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: #94a3b8;
+            text-decoration: none;
+            padding: 6px 14px;
+            border-radius: 100px;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+        }
+        .nav-link:hover {
+            background: rgba(255, 255, 255, 0.08);
+            color: #ffffff;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 24px 16px 80px;
+        }
+        
+        /* Breadcrumb */
+        .breadcrumb {
+            font-size: 0.82rem;
+            color: #64748b;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 500;
+            flex-wrap: wrap;
+        }
+        .breadcrumb a { color: #94a3b8; text-decoration: none; transition: color 0.2s; }
+        .breadcrumb a:hover { color: #93c5fd; }
+
+        /* Header */
+        header { margin-bottom: 24px; }
+        .tool-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(59, 130, 246, 0.1);
+            color: #93c5fd;
+            border: 1px solid rgba(59, 130, 246, 0.25);
+            padding: 4px 12px;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        header h1 {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -0.03em;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+        .description {
+            font-size: clamp(0.95rem, 2vw, 1.05rem);
+            color: #94a3b8;
+            line-height: 1.6;
+        }
+
+        /* Tool Action Bar */
+        .tool-action-bar {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 16px 0 24px 0;
+            flex-wrap: wrap;
+        }
+        .btn-action-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: #cbd5e1;
+            padding: 6px 14px;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            user-select: none;
+        }
+        .btn-action-pill:hover {
+            background: rgba(59, 130, 246, 0.15);
+            border-color: rgba(59, 130, 246, 0.4);
+            color: #93c5fd;
+            transform: translateY(-1px);
+        }
+        .btn-action-pill.copied {
+            background: rgba(34, 197, 94, 0.2);
+            border-color: rgba(34, 197, 94, 0.4);
+            color: #4ade80;
+        }
+
+        /* Embed Modal */
+        .embed-modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(4px);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+        }
+        .embed-modal-box {
+            background: #121216;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 16px;
+            max-width: 540px;
+            width: 100%;
+            padding: 24px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+        }
+        .embed-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        .embed-modal-header h3 {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.15rem;
+            color: #fff;
+            margin: 0;
+        }
+        .embed-close-btn {
+            background: transparent;
+            border: none;
+            color: #94a3b8;
+            font-size: 1.4rem;
+            cursor: pointer;
+            padding: 0;
+            line-height: 1;
+        }
+        .embed-code-textarea {
+            width: 100%;
+            height: 110px;
+            background: #09090b;
+            color: #38bdf8;
+            border: 1px solid #334155;
+            border-radius: 8px;
+            padding: 10px;
+            font-family: monospace;
+            font-size: 12px;
+            resize: none;
+            box-sizing: border-box;
+            margin-bottom: 14px;
+        }
+
+        /* Tool Interactive Surface */
+        .tool-surface {
+            background: #121216;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: clamp(16px, 4vw, 28px);
+            margin-bottom: 40px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Sections */
+        .section-title {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(1.15rem, 3vw, 1.35rem);
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        /* FAQ Accordion Section */
+        .faq-section { margin-bottom: 40px; }
+        .faq-list { display: flex; flex-direction: column; gap: 10px; }
+        .faq-item {
+            background: #121216;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 14px;
+            padding: 18px 20px;
+            transition: border-color 0.2s ease;
+        }
+        .faq-item:hover { border-color: rgba(59, 130, 246, 0.3); }
+        .faq-question {
+            font-family: 'Syne', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 6px;
+        }
+        .faq-answer {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* Related Tools Grid */
+        .related-section { margin-bottom: 40px; }
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr));
+            gap: 12px;
+        }
+        .related-card {
+            background: #121216;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 14px;
+            padding: 14px 18px;
+            text-decoration: none;
+            color: #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.2s ease;
+        }
+        .related-card:hover {
+            border-color: rgba(59, 130, 246, 0.4);
+            transform: translateY(-2px);
+            background: #18181f;
+            color: #ffffff;
+        }
+        .related-card span { font-weight: 600; font-size: 0.9rem; }
+        .related-arrow { color: #64748b; font-size: 0.9rem; }
+
+        /* Footer */
+        footer {
+            margin-top: 56px;
+            padding: 32px 0 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            text-align: center;
+            color: #64748b;
+            font-size: 0.85rem;
+        }
+        .footer-brand {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 6px;
+        }
+        footer a { color: #93c5fd; text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+
+        @media (max-width: 640px) {
+            .site-nav {
+                padding: 8px 14px;
+                border-radius: 12px;
+            }
+            .nav-link {
+                padding: 5px 10px;
+                font-size: 0.78rem;
+            }
+            .container {
+                padding: 16px 12px 60px;
+            }
+            .tool-surface {
+                padding: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Floating Pill Navigation Bar (No Sitemap in top nav) -->
+    <div class="nav-wrapper">
+        <nav class="site-nav">
+            <a href="/" class="nav-brand">
+                <span class="nav-brand-dot"></span>
+                AI Tool Suite
+            </a>
+            <div class="nav-links">
+                <a href="/#ai-utilities" class="nav-link">AI</a>
+                <a href="/#developer-tools" class="nav-link">Developer</a>
+                <a href="/#text-tools" class="nav-link">Text</a>
+                <a href="/#design-tools" class="nav-link">Design</a>
+                <a href="/#seo-tools" class="nav-link">SEO</a>
+            </div>
+        </nav>
+    </div>
+
+    <div class="container">
+        <!-- Breadcrumb -->
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="/">Home</a>
+            <span>/</span>
+            <a href="/#developer-tools">Developer Tools</a>
+            <span>/</span>
+            <span style="color: #cbd5e1;">HTTP Status Code Reference & Debugger</span>
+        </nav>
+
+        <!-- Header -->
+        <header>
+            <div class="tool-badge">⚡ Developer Tools</div>
+            <h1>HTTP Status Code Reference & Debugger</h1>
+            <p class="description">Instant lookup and debugging guide for all HTTP status codes (1xx-5xx) with RFC specifications and troubleshooting advice.</p>
+        </header>
+
+        <!-- Viral Share & Embed Toolbar -->
+        <div class="tool-action-bar">
+            <button class="btn-action-pill" onclick="copyToolShareUrl(this)">
+                <span>🔗</span> Copy Link
+            </button>
+            <a href="https://twitter.com/intent/tweet" class="btn-action-pill share-twitter-btn" target="_blank" rel="noopener">
+                <span>𝕏</span> Share
+            </a>
+            <a href="https://www.linkedin.com/sharing/share-offsite/" class="btn-action-pill share-linkedin-btn" target="_blank" rel="noopener">
+                <span>in</span> LinkedIn
+            </a>
+            <button class="btn-action-pill" onclick="openEmbedModal()">
+                <span>&lt;/&gt;</span> Embed Tool
+            </button>
+        </div>
+
+        <!-- Tool Widget Surface -->
+        <div class="tool-surface">
+            <style>
+.http-container {
+    max-width: 800px;
+    margin: 0 auto;
+    font-family: 'Inter', system-ui, sans-serif;
+    color: #e2e8f0;
+}
+.http-search-bar {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+.http-input {
+    flex: 1;
+    background: #09090b;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 10px;
+    padding: 10px 14px;
+    color: #fff;
+    font-size: 0.95rem;
+    outline: none;
+}
+.http-input:focus {
+    border-color: #3b82f6;
+}
+.http-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 18px;
+}
+.http-pill {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #94a3b8;
+    padding: 5px 12px;
+    border-radius: 100px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.http-pill.active, .http-pill:hover {
+    background: #3b82f6;
+    color: #fff;
+    border-color: #3b82f6;
+}
+.http-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 12px;
+    max-height: 520px;
+    overflow-y: auto;
+    padding-right: 4px;
+}
+.http-card {
+    background: #121216;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.http-card:hover {
+    border-color: #3b82f6;
+    transform: translateY(-2px);
+    background: #16161d;
+}
+.http-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 6px;
+}
+.http-code {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 800;
+    font-size: 1.1rem;
+}
+.code-2xx { color: #4ade80; }
+.code-3xx { color: #38bdf8; }
+.code-4xx { color: #fbbf24; }
+.code-5xx { color: #f87171; }
+.http-title {
+    font-weight: 700;
+    font-size: 0.92rem;
+    color: #f1f5f9;
+    margin-bottom: 4px;
+}
+.http-desc {
+    font-size: 0.8rem;
+    color: #94a3b8;
+    line-height: 1.4;
+}
+.http-modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+}
+.http-modal-box {
+    background: #121216;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    max-width: 500px;
+    width: 100%;
+    padding: 24px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+}
+</style>
+
+<div class="http-container">
+    <div class="http-search-bar">
+        <input type="text" id="httpSearch" class="http-input" placeholder="Search status codes (e.g. 404, 500, Unauthorized, Gateway, CORS)..." oninput="filterHttpCodes()">
+    </div>
+    <div class="http-pills">
+        <button class="http-pill active" onclick="setHttpCategory('all', this)">All</button>
+        <button class="http-pill" onclick="setHttpCategory('2xx', this)">2xx Success</button>
+        <button class="http-pill" onclick="setHttpCategory('3xx', this)">3xx Redirection</button>
+        <button class="http-pill" onclick="setHttpCategory('4xx', this)">4xx Client Error</button>
+        <button class="http-pill" onclick="setHttpCategory('5xx', this)">5xx Server Error</button>
+    </div>
+    <div id="httpGrid" class="http-grid"></div>
+</div>
+
+<div id="httpModal" class="http-modal-overlay" onclick="if(event.target===this) closeHttpModal()">
+    <div class="http-modal-box">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+            <div id="modalCode" style="font-size:1.6rem; font-weight:800; font-family:'JetBrains Mono', monospace;"></div>
+            <button onclick="closeHttpModal()" style="background:transparent; border:none; color:#94a3b8; font-size:1.4rem; cursor:pointer;">&times;</button>
+        </div>
+        <h3 id="modalTitle" style="font-size:1.15rem; color:#fff; margin-bottom:8px;"></h3>
+        <p id="modalDesc" style="font-size:0.9rem; color:#cbd5e1; line-height:1.5; margin-bottom:14px;"></p>
+        <div style="background:#09090b; border:1px solid #27272a; border-radius:8px; padding:12px; margin-bottom:16px;">
+            <div style="font-size:0.75rem; text-transform:uppercase; color:#94a3b8; font-weight:700; margin-bottom:4px;">Debugging &amp; Fix Tip</div>
+            <div id="modalTip" style="font-size:0.85rem; color:#38bdf8;"></div>
+        </div>
+        <div style="display:flex; justify-content:flex-end; gap:10px;">
+            <button class="http-pill" onclick="closeHttpModal()">Close</button>
+            <button class="http-pill active" onclick="copyHttpStatusInfo(this)">Copy Code &amp; Info</button>
+        </div>
+    </div>
+</div>
+
+<script>
+const HTTP_CODES = [
+    { code: 200, title: "OK", cat: "2xx", desc: "The standard response for successful HTTP requests. The payload depends on the request method.", tip: "Server successfully returned data. In GET, payload represents the requested resource." },
+    { code: 201, title: "Created", cat: "2xx", desc: "The request has succeeded and resulted in the creation of one or more new resources.", tip: "Typical result of a POST request. Usually accompanied by a Location header." },
+    { code: 204, title: "No Content", cat: "2xx", desc: "The server has fulfilled the request but does not need to return an entity-body.", tip: "Common for DELETE operations or PUT updates where client needs no response body." },
+    { code: 301, title: "Moved Permanently", cat: "3xx", desc: "The URL of the requested resource has been permanently moved to a new URI.", tip: "Browsers cache this redirect aggressively. Ensure Location header is present." },
+    { code: 302, title: "Found (Temporary Redirect)", cat: "3xx", desc: "The target resource resides temporarily under a different URI.", tip: "Used for short-term redirects (e.g. login redirects or maintenance)." },
+    { code: 304, title: "Not Modified", cat: "3xx", desc: "Indicates that the resource has not been modified since the version specified by the request headers.", tip: "Save bandwidth via caching. Matches ETag or If-Modified-Since headers." },
+    { code: 400, title: "Bad Request", cat: "4xx", desc: "The server cannot or will not process the request due to client syntax error or invalid framing.", tip: "Verify request body JSON syntax, missing required fields, or header format." },
+    { code: 401, title: "Unauthorized", cat: "4xx", desc: "Request has not been applied because it lacks valid authentication credentials.", tip: "Check Bearer Token, Authorization header, or cookie expiration." },
+    { code: 403, title: "Forbidden", cat: "4xx", desc: "The server understands the request but refuses to authorize it (insufficient permissions).", tip: "User is authenticated but lacks required role, scope, or IP whitelist access." },
+    { code: 404, title: "Not Found", cat: "4xx", desc: "The server cannot find the requested resource or URL path.", tip: "Verify endpoint URL path, spelling, route parameters, and trailing slashes." },
+    { code: 405, title: "Method Not Allowed", cat: "4xx", desc: "The request method is recognized by the server but is not supported by the target resource.", tip: "Check if the route expects POST instead of GET, or configure CORS Allow-Methods." },
+    { code: 409, title: "Conflict", cat: "4xx", desc: "The request could not be completed due to a conflict with the current state of the resource.", tip: "Common in database unique constraint violations or concurrent edit collisions." },
+    { code: 422, title: "Unprocessable Content", cat: "4xx", desc: "Server understands content type and syntax, but was unable to process contained instructions.", tip: "Standard for validation errors (e.g. Pydantic, Zod, Laravel validator failures)." },
+    { code: 429, title: "Too Many Requests", cat: "4xx", desc: "The user has sent too many requests in a given amount of time (rate limited).", tip: "Inspect Retry-After response header and implement exponential backoff." },
+    { code: 500, title: "Internal Server Error", cat: "5xx", desc: "The server encountered an unexpected condition that prevented it from fulfilling the request.", tip: "Check application server logs, uncaught exceptions, and unhandled promise rejections." },
+    { code: 502, title: "Bad Gateway", cat: "5xx", desc: "The server, while acting as a gateway or proxy, received an invalid response from upstream.", tip: "Check upstream service health, Nginx/Cloudflare proxy settings, or backend crashes." },
+    { code: 503, title: "Service Unavailable", cat: "5xx", desc: "The server is currently unable to handle the request due to maintenance or overload.", tip: "Check system CPU/memory load, deployment status, or database connection pool limits." },
+    { code: 504, title: "Gateway Timeout", cat: "5xx", desc: "The server, while acting as a gateway or proxy, did not receive a timely response upstream.", tip: "Check slow database queries, long-running backend functions, or timeout thresholds." }
+];
+
+let activeCategory = 'all';
+let currentActiveItem = null;
+
+function renderHttpCodes() {
+    const grid = document.getElementById('httpGrid');
+    const query = document.getElementById('httpSearch').value.toLowerCase().trim();
+    grid.innerHTML = '';
+
+    const filtered = HTTP_CODES.filter(item => {
+        const matchesCat = (activeCategory === 'all' || item.cat === activeCategory);
+        const matchesQuery = (
+            item.code.toString().includes(query) ||
+            item.title.toLowerCase().includes(query) ||
+            item.desc.toLowerCase().includes(query) ||
+            item.tip.toLowerCase().includes(query)
+        );
+        return matchesCat && matchesQuery;
+    });
+
+    if (filtered.length === 0) {
+        grid.innerHTML = '<div style="grid-column:1/-1; text-align:center; padding:40px; color:#64748b;">No matching HTTP status codes found.</div>';
+        return;
+    }
+
+    filtered.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'http-card';
+        card.onclick = () => openHttpModal(item);
+        card.innerHTML = `
+            <div>
+                <div class="http-card-header">
+                    <span class="http-code code-${item.cat}">${item.code}</span>
+                    <span style="font-size:0.75rem; color:#64748b; text-transform:uppercase;">${item.cat}</span>
+                </div>
+                <div class="http-title">${item.title}</div>
+                <div class="http-desc">${item.desc}</div>
+            </div>
+            <div style="font-size:0.75rem; color:#3b82f6; margin-top:10px; font-weight:600;">View Details &rarr;</div>
+        `;
+        grid.appendChild(card);
+    });
+}
+
+function setHttpCategory(cat, btn) {
+    activeCategory = cat;
+    document.querySelectorAll('.http-pill').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    renderHttpCodes();
+}
+
+function filterHttpCodes() {
+    renderHttpCodes();
+}
+
+function openHttpModal(item) {
+    currentActiveItem = item;
+    const codeEl = document.getElementById('modalCode');
+    codeEl.innerText = item.code + ' ' + item.title;
+    codeEl.className = 'code-' + item.cat;
+    document.getElementById('modalTitle').innerText = item.title;
+    document.getElementById('modalDesc').innerText = item.desc;
+    document.getElementById('modalTip').innerText = item.tip;
+    document.getElementById('httpModal').style.display = 'flex';
+}
+
+function closeHttpModal() {
+    document.getElementById('httpModal').style.display = 'none';
+}
+
+function copyHttpStatusInfo(btn) {
+    if (!currentActiveItem) return;
+    const txt = `HTTP ${currentActiveItem.code} ${currentActiveItem.title}\nDescription: ${currentActiveItem.desc}\nTip: ${currentActiveItem.tip}`;
+    if (window.copyToClipboard) {
+        window.copyToClipboard(txt, btn, 'Copied!');
+    } else {
+        navigator.clipboard.writeText(txt).then(() => {
+            btn.innerText = 'Copied!';
+            setTimeout(() => btn.innerText = 'Copy Code & Info', 1500);
+        });
+    }
+}
+
+document.addEventListener('DOMContentLoaded', renderHttpCodes);
+</script>
+
+        </div>
+
+        <!-- FAQ Section -->
+        
+        <section class="faq-section">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="faq-list">
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">What is an HTTP status code?</h3>
+                    <p class="faq-answer">HTTP status codes are standard response codes issued by web servers to indicate whether a specific HTTP request was successfully completed.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">What is the difference between 401 and 403?</h3>
+                    <p class="faq-answer">401 Unauthorized means authentication is required or failed, while 403 Forbidden means the server understands who you are but refuses access.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">Is this guide offline and client-side?</h3>
+                    <p class="faq-answer">Yes, all status code lookups and specifications run entirely within your browser.</p>
+                </div>
+                
+            </div>
+        </section>
+        
+
+        <!-- Related Tools -->
+        
+        <section class="related-section">
+            <h2 class="section-title">Explore Related Tools</h2>
+            <div class="related-grid">
+                
+                <a href="/curl-to-fetch-converter.html" class="related-card">
+                    <span>cURL to Fetch Converter</span>
+                    <span class="related-arrow">↗</span>
+                </a>
+                
+                <a href="/dns-lookup-tool.html" class="related-card">
+                    <span>DNS Lookup Tool</span>
+                    <span class="related-arrow">↗</span>
+                </a>
+                
+                <a href="/url-parser-&-query-string-extractor.html" class="related-card">
+                    <span>URL Parser & Query String Extractor</span>
+                    <span class="related-arrow">↗</span>
+                </a>
+                
+            </div>
+        </section>
+        
+
+        <footer>
+            <div class="footer-brand">AI Tool Suite</div>
+            <p>&copy; 2026 AI Tool Suite. Free private developer utilities.</p>
+            <div style="margin-top: 10px; display: flex; justify-content: center; gap: 16px; font-size: 0.85rem;">
+                <a href="/" style="color: #94a3b8; text-decoration: none;">All Tools</a>
+                <a href="/about.html" style="color: #94a3b8; text-decoration: none;">About</a>
+                <a href="/contact.html" style="color: #94a3b8; text-decoration: none;">Contact</a>
+                <a href="/privacy.html" style="color: #94a3b8; text-decoration: none;">Privacy Policy</a>
+                <a href="/terms.html" style="color: #94a3b8; text-decoration: none;">Terms of Service</a>
+            </div>
+        </footer>
+    </div>
+
+    <!-- GoatCounter Analytics & Admin Ignore Filter -->
+    <script>
+        if (window.location.search.includes('admin=true') || window.location.search.includes('ignore=true')) {
+            localStorage.setItem('skip_analytics', 'true');
+            alert('✅ Admin Mode Activated: Your browser is now permanently excluded from GoatCounter analytics.');
+        }
+        if (localStorage.getItem('skip_analytics') === 'true' || location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
+            window.goatcounter = { no_onload: true };
+        }
+    </script>
+    <script data-goatcounter="https://aitoolsuite.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+    <script>
+        function trackToolAction(actionName) {
+            if (window.goatcounter && window.goatcounter.count) {
+                window.goatcounter.count({
+                    path: 'use-' + actionName,
+                    title: 'Tool Action: ' + actionName,
+                    event: true
+                });
+            }
+        }
+
+        // Automatically track tool button clicks and copy events
+        document.addEventListener('DOMContentLoaded', () => {
+            const surface = document.querySelector('.tool-surface');
+            if (surface) {
+                surface.addEventListener('click', (e) => {
+                    const btn = e.target.closest('button');
+                    if (btn) {
+                        const btnText = btn.textContent.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-');
+                        const toolSlug = window.location.pathname.replace(/^\//, '').replace('.html', '') || 'tool';
+                        trackToolAction(toolSlug + '--' + btnText);
+                    }
+                });
+            }
+
+            // Populate viral share buttons dynamically
+            const curUrl = window.location.href;
+            const toolHeading = document.querySelector('h1') ? document.querySelector('h1').innerText : 'Developer Utility';
+            
+            const twBtn = document.querySelector('.share-twitter-btn');
+            if (twBtn) {
+                twBtn.href = `https://twitter.com/intent/tweet?text=${encodeURIComponent('Check out this fast, free developer tool: ' + toolHeading)}&url=${encodeURIComponent(curUrl)}`;
+            }
+            const liBtn = document.querySelector('.share-linkedin-btn');
+            if (liBtn) {
+                liBtn.href = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(curUrl)}`;
+            }
+
+            const embedSnippet = `<iframe src="${curUrl}" width="100%" height="650" frameborder="0" style="border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; max-width: 900px; width: 100%;"></iframe>\n<p style="font-size: 12px; color: #64748b;">Tool powered by <a href="${curUrl}" target="_blank" rel="noopener">AI Tool Suite</a></p>`;
+            const embedArea = document.getElementById('embedSnippetText');
+            if (embedArea) embedArea.value = embedSnippet;
+        });
+
+        // Global unified copy helper for widgets and tool surfaces
+        window.copyToClipboard = function(text, btnElement, successMsg = 'Copied!') {
+            navigator.clipboard.writeText(text).then(() => {
+                if (!btnElement) return;
+                const orig = btnElement.innerText;
+                btnElement.innerText = successMsg;
+                btnElement.classList.add('copied');
+                setTimeout(() => {
+                    btnElement.innerText = orig;
+                    btnElement.classList.remove('copied');
+                }, 1800);
+            });
+        };
+
+        function copyToolShareUrl(btn) {
+            navigator.clipboard.writeText(window.location.href).then(() => {
+                const orig = btn.innerHTML;
+                btn.innerHTML = '<span>✅</span> Link Copied!';
+                btn.classList.add('copied');
+                setTimeout(() => {
+                    btn.innerHTML = orig;
+                    btn.classList.remove('copied');
+                }, 2000);
+            });
+        }
+
+        function openEmbedModal() {
+            const m = document.getElementById('embedModal');
+            if (m) m.style.display = 'flex';
+        }
+
+        function closeEmbedModal() {
+            const m = document.getElementById('embedModal');
+            if (m) m.style.display = 'none';
+        }
+
+        function copyEmbedSnippet(btn) {
+            const snippet = document.getElementById('embedSnippetText').value;
+            navigator.clipboard.writeText(snippet).then(() => {
+                const orig = btn.innerText;
+                btn.innerText = 'Copied to Clipboard!';
+                setTimeout(() => btn.innerText = orig, 2000);
+            });
+        }
+    </script>
+
+    <!-- Embed Modal Dialog -->
+    <div id="embedModal" class="embed-modal-overlay" onclick="if(event.target === this) closeEmbedModal()">
+        <div class="embed-modal-box">
+            <div class="embed-modal-header">
+                <h3>Embed this Tool on Your Site</h3>
+                <button class="embed-close-btn" onclick="closeEmbedModal()">&times;</button>
+            </div>
+            <p style="font-size: 0.85rem; color: #94a3b8; margin-bottom: 12px; line-height: 1.5;">
+                Copy and paste this snippet into your blog, documentation, or tech site to embed this interactive utility:
+            </p>
+            <textarea id="embedSnippetText" class="embed-code-textarea" readonly></textarea>
+            <div style="display: flex; justify-content: flex-end; gap: 10px;">
+                <button class="btn-action-pill" onclick="closeEmbedModal()">Close</button>
+                <button class="btn-action-pill" style="background: #3b82f6; color: #fff; border-color: #3b82f6;" onclick="copyEmbedSnippet(this)">
+                    Copy Embed Code
+                </button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

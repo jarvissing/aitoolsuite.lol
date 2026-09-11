@@ -1,5 +1,72 @@
 [
   {
+    "keyword": "http status code lookup",
+    "tool_name": "HTTP Status Code Reference & Debugger",
+    "description": "Instant lookup and debugging guide for all HTTP status codes (1xx-5xx) with RFC specifications and troubleshooting advice.",
+    "category": "Developer Tools",
+    "faq_items": "What is an HTTP status code?:::HTTP status codes are standard response codes issued by web servers to indicate whether a specific HTTP request was successfully completed.|||What is the difference between 401 and 403?:::401 Unauthorized means authentication is required or failed, while 403 Forbidden means the server understands who you are but refuses access.|||Is this guide offline and client-side?:::Yes, all status code lookups and specifications run entirely within your browser.",
+    "related_tools": "cURL to Fetch Converter,DNS Lookup Tool,URL Parser & Query String Extractor",
+    "tool_type": "http-status-lookup",
+    "status": "published",
+    "priority": 9,
+    "published_at": "2026-09-11T12:50:03.489321"
+  },
+  {
+    "keyword": "css flexbox playground",
+    "tool_name": "CSS Flexbox Layout Generator & Visualizer",
+    "description": "Interactively build and test responsive CSS Flexbox container and item layouts with real-time CSS code export.",
+    "category": "Developer Tools",
+    "faq_items": "How do I align items vertically in Flexbox?:::Use `align-items: center` for single-line flex containers, or `align-content: center` for multi-line wrapped containers.|||What does flex-grow do?:::It defines the ability for a flex item to grow if necessary, specifying how much remaining container space it should take up.|||Can I copy the generated CSS?:::Yes, click 'Copy CSS' to copy the container and item rules directly to your clipboard.",
+    "related_tools": "CSS Grid Layout Generator,CSS Border Radius Generator,CSS Glassmorphism Generator",
+    "tool_type": "css-flexbox",
+    "status": "pending",
+    "priority": 9
+  },
+  {
+    "keyword": "json to rust struct",
+    "tool_name": "JSON to Rust Struct Converter (Serde)",
+    "description": "Convert JSON payloads into clean, idiomatic Rust struct definitions with Serde derive macros and field annotations.",
+    "category": "Developer Tools",
+    "faq_items": "Does this generate Serde derives?:::Yes, generated structs automatically include `#[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]`.|||How are nested JSON objects handled?:::Nested objects are recursively parsed into separate, strongly typed Rust structs.|||Are field names converted to snake_case?:::Yes, JSON camelCase keys are converted to Rust snake_case with `#[serde(rename = \"...\")]` attributes.",
+    "related_tools": "JSON to TypeScript Interfaces,JSON to Go Struct Converter,JSON to YAML Converter",
+    "tool_type": "json-to-rust",
+    "status": "pending",
+    "priority": 8
+  },
+  {
+    "keyword": "json to go struct",
+    "tool_name": "JSON to Go Struct Converter",
+    "description": "Instantly transform JSON objects into idiomatic Go structs complete with struct tags for JSON serialization.",
+    "category": "Developer Tools",
+    "faq_items": "Does this generate Go struct tags?:::Yes, every field is annotated with `json:\"key\"` tags.|||How does it handle primitive types?:::Numbers with decimals become `float64`, whole numbers become `int64`, booleans become `bool`, and strings become `string`.|||Can it handle arrays of objects?:::Yes, arrays of objects are generated as slices of custom child structs.",
+    "related_tools": "JSON to Rust Struct Converter,JSON to TypeScript Interfaces,JSON Formatter & Validator",
+    "tool_type": "json-to-go",
+    "status": "pending",
+    "priority": 8
+  },
+  {
+    "keyword": "git command helper",
+    "tool_name": "Interactive Git Scenario & Command Generator",
+    "description": "Find the exact Git commands for your scenario: undoing commits, branching, stashing, rebasing, and disaster recovery.",
+    "category": "Developer Tools",
+    "faq_items": "How do I undo the last commit without losing changes?:::Run `git reset --soft HEAD~1`. Your changes will remain staged in the index.|||How do I discard all local uncommitted changes?:::Run `git restore .` and `git clean -fd` to remove untracked files.|||Are these commands safe?:::Each command in this cheatsheet is labeled with its safety level (Safe, Modifies, or Destructive).",
+    "related_tools": "Diff Checker,Cron Expression Generator,Chmod Calculator",
+    "tool_type": "git-cheatsheet",
+    "status": "pending",
+    "priority": 7
+  },
+  {
+    "keyword": "markdown to html converter",
+    "tool_name": "Markdown to HTML Converter & Live Preview",
+    "description": "Fast client-side Markdown to HTML converter supporting headings, lists, tables, code blocks, blockquotes, and live preview.",
+    "category": "Developer Tools",
+    "faq_items": "Does this require an external library or backend?:::No, it uses a fast, zero-dependency client-side parser that runs directly in your browser.|||Can I copy the raw HTML output?:::Yes, you can toggle between the visual preview and the raw HTML markup to copy with one click.|||Does it support GFM tables?:::Yes, GitHub Flavored Markdown table syntax is fully parsed.",
+    "related_tools": "HTML Entity Encoder / Decoder,Diff Checker,Case Converter",
+    "tool_type": "markdown-to-html",
+    "status": "pending",
+    "priority": 7
+  },
+  {
     "keyword": "bulk uuid generator",
     "tool_name": "Bulk UUID v4 Generator (Up to 500 IDs)",
     "description": "Generate batches of up to 500 cryptographically secure UUID v4 identifiers with uppercase, lowercase, and hyphen options.",

@@ -1,0 +1,258 @@
+<style>
+.http-container {
+    max-width: 800px;
+    margin: 0 auto;
+    font-family: 'Inter', system-ui, sans-serif;
+    color: #e2e8f0;
+}
+.http-search-bar {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+.http-input {
+    flex: 1;
+    background: #09090b;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 10px;
+    padding: 10px 14px;
+    color: #fff;
+    font-size: 0.95rem;
+    outline: none;
+}
+.http-input:focus {
+    border-color: #3b82f6;
+}
+.http-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 18px;
+}
+.http-pill {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #94a3b8;
+    padding: 5px 12px;
+    border-radius: 100px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.http-pill.active, .http-pill:hover {
+    background: #3b82f6;
+    color: #fff;
+    border-color: #3b82f6;
+}
+.http-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 12px;
+    max-height: 520px;
+    overflow-y: auto;
+    padding-right: 4px;
+}
+.http-card {
+    background: #121216;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.http-card:hover {
+    border-color: #3b82f6;
+    transform: translateY(-2px);
+    background: #16161d;
+}
+.http-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 6px;
+}
+.http-code {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 800;
+    font-size: 1.1rem;
+}
+.code-2xx { color: #4ade80; }
+.code-3xx { color: #38bdf8; }
+.code-4xx { color: #fbbf24; }
+.code-5xx { color: #f87171; }
+.http-title {
+    font-weight: 700;
+    font-size: 0.92rem;
+    color: #f1f5f9;
+    margin-bottom: 4px;
+}
+.http-desc {
+    font-size: 0.8rem;
+    color: #94a3b8;
+    line-height: 1.4;
+}
+.http-modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+}
+.http-modal-box {
+    background: #121216;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    max-width: 500px;
+    width: 100%;
+    padding: 24px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+}
+</style>
+
+<div class="http-container">
+    <div class="http-search-bar">
+        <input type="text" id="httpSearch" class="http-input" placeholder="Search status codes (e.g. 404, 500, Unauthorized, Gateway, CORS)..." oninput="filterHttpCodes()">
+    </div>
+    <div class="http-pills">
+        <button class="http-pill active" onclick="setHttpCategory('all', this)">All</button>
+        <button class="http-pill" onclick="setHttpCategory('2xx', this)">2xx Success</button>
+        <button class="http-pill" onclick="setHttpCategory('3xx', this)">3xx Redirection</button>
+        <button class="http-pill" onclick="setHttpCategory('4xx', this)">4xx Client Error</button>
+        <button class="http-pill" onclick="setHttpCategory('5xx', this)">5xx Server Error</button>
+    </div>
+    <div id="httpGrid" class="http-grid"></div>
+</div>
+
+<div id="httpModal" class="http-modal-overlay" onclick="if(event.target===this) closeHttpModal()">
+    <div class="http-modal-box">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+            <div id="modalCode" style="font-size:1.6rem; font-weight:800; font-family:'JetBrains Mono', monospace;"></div>
+            <button onclick="closeHttpModal()" style="background:transparent; border:none; color:#94a3b8; font-size:1.4rem; cursor:pointer;">&times;</button>
+        </div>
+        <h3 id="modalTitle" style="font-size:1.15rem; color:#fff; margin-bottom:8px;"></h3>
+        <p id="modalDesc" style="font-size:0.9rem; color:#cbd5e1; line-height:1.5; margin-bottom:14px;"></p>
+        <div style="background:#09090b; border:1px solid #27272a; border-radius:8px; padding:12px; margin-bottom:16px;">
+            <div style="font-size:0.75rem; text-transform:uppercase; color:#94a3b8; font-weight:700; margin-bottom:4px;">Debugging &amp; Fix Tip</div>
+            <div id="modalTip" style="font-size:0.85rem; color:#38bdf8;"></div>
+        </div>
+        <div style="display:flex; justify-content:flex-end; gap:10px;">
+            <button class="http-pill" onclick="closeHttpModal()">Close</button>
+            <button class="http-pill active" onclick="copyHttpStatusInfo(this)">Copy Code &amp; Info</button>
+        </div>
+    </div>
+</div>
+
+<script>
+const HTTP_CODES = [
+    { code: 200, title: "OK", cat: "2xx", desc: "The standard response for successful HTTP requests. The payload depends on the request method.", tip: "Server successfully returned data. In GET, payload represents the requested resource." },
+    { code: 201, title: "Created", cat: "2xx", desc: "The request has succeeded and resulted in the creation of one or more new resources.", tip: "Typical result of a POST request. Usually accompanied by a Location header." },
+    { code: 204, title: "No Content", cat: "2xx", desc: "The server has fulfilled the request but does not need to return an entity-body.", tip: "Common for DELETE operations or PUT updates where client needs no response body." },
+    { code: 301, title: "Moved Permanently", cat: "3xx", desc: "The URL of the requested resource has been permanently moved to a new URI.", tip: "Browsers cache this redirect aggressively. Ensure Location header is present." },
+    { code: 302, title: "Found (Temporary Redirect)", cat: "3xx", desc: "The target resource resides temporarily under a different URI.", tip: "Used for short-term redirects (e.g. login redirects or maintenance)." },
+    { code: 304, title: "Not Modified", cat: "3xx", desc: "Indicates that the resource has not been modified since the version specified by the request headers.", tip: "Save bandwidth via caching. Matches ETag or If-Modified-Since headers." },
+    { code: 400, title: "Bad Request", cat: "4xx", desc: "The server cannot or will not process the request due to client syntax error or invalid framing.", tip: "Verify request body JSON syntax, missing required fields, or header format." },
+    { code: 401, title: "Unauthorized", cat: "4xx", desc: "Request has not been applied because it lacks valid authentication credentials.", tip: "Check Bearer Token, Authorization header, or cookie expiration." },
+    { code: 403, title: "Forbidden", cat: "4xx", desc: "The server understands the request but refuses to authorize it (insufficient permissions).", tip: "User is authenticated but lacks required role, scope, or IP whitelist access." },
+    { code: 404, title: "Not Found", cat: "4xx", desc: "The server cannot find the requested resource or URL path.", tip: "Verify endpoint URL path, spelling, route parameters, and trailing slashes." },
+    { code: 405, title: "Method Not Allowed", cat: "4xx", desc: "The request method is recognized by the server but is not supported by the target resource.", tip: "Check if the route expects POST instead of GET, or configure CORS Allow-Methods." },
+    { code: 409, title: "Conflict", cat: "4xx", desc: "The request could not be completed due to a conflict with the current state of the resource.", tip: "Common in database unique constraint violations or concurrent edit collisions." },
+    { code: 422, title: "Unprocessable Content", cat: "4xx", desc: "Server understands content type and syntax, but was unable to process contained instructions.", tip: "Standard for validation errors (e.g. Pydantic, Zod, Laravel validator failures)." },
+    { code: 429, title: "Too Many Requests", cat: "4xx", desc: "The user has sent too many requests in a given amount of time (rate limited).", tip: "Inspect Retry-After response header and implement exponential backoff." },
+    { code: 500, title: "Internal Server Error", cat: "5xx", desc: "The server encountered an unexpected condition that prevented it from fulfilling the request.", tip: "Check application server logs, uncaught exceptions, and unhandled promise rejections." },
+    { code: 502, title: "Bad Gateway", cat: "5xx", desc: "The server, while acting as a gateway or proxy, received an invalid response from upstream.", tip: "Check upstream service health, Nginx/Cloudflare proxy settings, or backend crashes." },
+    { code: 503, title: "Service Unavailable", cat: "5xx", desc: "The server is currently unable to handle the request due to maintenance or overload.", tip: "Check system CPU/memory load, deployment status, or database connection pool limits." },
+    { code: 504, title: "Gateway Timeout", cat: "5xx", desc: "The server, while acting as a gateway or proxy, did not receive a timely response upstream.", tip: "Check slow database queries, long-running backend functions, or timeout thresholds." }
+];
+
+let activeCategory = 'all';
+let currentActiveItem = null;
+
+function renderHttpCodes() {
+    const grid = document.getElementById('httpGrid');
+    const query = document.getElementById('httpSearch').value.toLowerCase().trim();
+    grid.innerHTML = '';
+
+    const filtered = HTTP_CODES.filter(item => {
+        const matchesCat = (activeCategory === 'all' || item.cat === activeCategory);
+        const matchesQuery = (
+            item.code.toString().includes(query) ||
+            item.title.toLowerCase().includes(query) ||
+            item.desc.toLowerCase().includes(query) ||
+            item.tip.toLowerCase().includes(query)
+        );
+        return matchesCat && matchesQuery;
+    });
+
+    if (filtered.length === 0) {
+        grid.innerHTML = '<div style="grid-column:1/-1; text-align:center; padding:40px; color:#64748b;">No matching HTTP status codes found.</div>';
+        return;
+    }
+
+    filtered.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'http-card';
+        card.onclick = () => openHttpModal(item);
+        card.innerHTML = `
+            <div>
+                <div class="http-card-header">
+                    <span class="http-code code-${item.cat}">${item.code}</span>
+                    <span style="font-size:0.75rem; color:#64748b; text-transform:uppercase;">${item.cat}</span>
+                </div>
+                <div class="http-title">${item.title}</div>
+                <div class="http-desc">${item.desc}</div>
+            </div>
+            <div style="font-size:0.75rem; color:#3b82f6; margin-top:10px; font-weight:600;">View Details &rarr;</div>
+        `;
+        grid.appendChild(card);
+    });
+}
+
+function setHttpCategory(cat, btn) {
+    activeCategory = cat;
+    document.querySelectorAll('.http-pill').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    renderHttpCodes();
+}
+
+function filterHttpCodes() {
+    renderHttpCodes();
+}
+
+function openHttpModal(item) {
+    currentActiveItem = item;
+    const codeEl = document.getElementById('modalCode');
+    codeEl.innerText = item.code + ' ' + item.title;
+    codeEl.className = 'code-' + item.cat;
+    document.getElementById('modalTitle').innerText = item.title;
+    document.getElementById('modalDesc').innerText = item.desc;
+    document.getElementById('modalTip').innerText = item.tip;
+    document.getElementById('httpModal').style.display = 'flex';
+}
+
+function closeHttpModal() {
+    document.getElementById('httpModal').style.display = 'none';
+}
+
+function copyHttpStatusInfo(btn) {
+    if (!currentActiveItem) return;
+    const txt = `HTTP ${currentActiveItem.code} ${currentActiveItem.title}\nDescription: ${currentActiveItem.desc}\nTip: ${currentActiveItem.tip}`;
+    if (window.copyToClipboard) {
+        window.copyToClipboard(txt, btn, 'Copied!');
+    } else {
+        navigator.clipboard.writeText(txt).then(() => {
+            btn.innerText = 'Copied!';
+            setTimeout(() => btn.innerText = 'Copy Code & Info', 1500);
+        });
+    }
+}
+
+document.addEventListener('DOMContentLoaded', renderHttpCodes);
+</script>
