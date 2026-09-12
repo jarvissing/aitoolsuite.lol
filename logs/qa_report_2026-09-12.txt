@@ -1,8 +1,8 @@
 ============================================================
-  QA REPORT — 2026-09-12 12:31:26
+  QA REPORT — 2026-09-12 22:43:11
 ============================================================
 
-Found 67 tool pages to check.
+Found 68 tool pages to check.
 
 ✅ ai-prompt-cost-calculator — 12/12 checks passed
 ✅ ai-prompt-token-estimator — 12/12 checks passed
@@ -57,6 +57,7 @@ Found 67 tool pages to check.
 ✅ qr-code-generator — 12/12 checks passed
 ✅ regex-pattern-library — 12/12 checks passed
 ✅ regex-tester-and-cheat-sheet — 12/12 checks passed
+✅ rgb-to-hsl-converter — 12/12 checks passed
 ✅ sql-formatter-and-beautifier — 12/12 checks passed
 ✅ sql-to-json-converter — 12/12 checks passed
 ✅ strong-password-generator — 12/12 checks passed
@@ -74,9 +75,9 @@ Found 67 tool pages to check.
 
 ————————————————————————————————————————
 HOMEPAGE CHECK:
-✅ 67/67 tools listed on homepage
+✅ 68/68 tools listed on homepage
 
 ============================================================
-SUMMARY: 67 passed, 0 failed out of 67 pages
+SUMMARY: 68 passed, 0 failed out of 68 pages
 🎉 ALL PAGES PASS QA!
 ============================================================

@@ -1,19 +1,5 @@
 [
   {
-    "keyword": "ai prompt token estimator",
-    "tool_name": "AI Prompt Token Estimator & Chunker",
-    "description": "Estimate prompt token usage across GPT-4o, Claude 3.5, and Gemini models with chunk size recommendations.",
-    "category": "AI Utilities",
-    "tool_type": "token-counter",
-    "search_demand": 94,
-    "faq_items": "How are tokens estimated?:::Calculates token length using byte-pair heuristic algorithms calibrated against OpenAI and Anthropic tokenizers.|||Why is token estimation important?:::Prevents exceeding context limits and helps budget API expenditure before running LLM calls.|||Does it work offline?:::Yes, estimation runs completely in client-side JavaScript.",
-    "related_tools": "AI Prompt Cost Calculator,Word Counter,LLM Context Calculator",
-    "status": "published",
-    "priority_score": 94,
-    "discovered_at": "2026-09-11T13:00:23.991501",
-    "published_at": "2026-09-12T12:31:26.337851"
-  },
-  {
     "keyword": "rgb to hsl converter",
     "tool_name": "RGB to HSL & HSV Color Converter",
     "description": "Convert RGB color values to HSL and HSV representations with live color preview and 1-click CSS copying.",
@@ -22,9 +8,10 @@
     "search_demand": 93,
     "faq_items": "What is the difference between HSL and HSV?:::HSL represents Lightness while HSV represents Value (brightness), making HSV popular in graphics editors.|||Does this support Hex input?:::Yes, enter either RGB numbers or a Hex color code to update all formats.|||Can I copy CSS strings?:::Yes, one click copies hsl() or rgb() CSS color definitions.",
     "related_tools": "Hex to RGB Converter,Color Contrast Checker,Tailwind Color Palette",
-    "status": "pending",
+    "status": "published",
     "priority_score": 93,
-    "discovered_at": "2026-09-11T13:00:23.991065"
+    "discovered_at": "2026-09-11T13:00:23.991065",
+    "published_at": "2026-09-12T22:43:11.375430"
   },
   {
     "keyword": "json diff comparator",
@@ -223,6 +210,20 @@
     "tool_type": "markdown-to-html",
     "status": "pending",
     "priority": 7
+  },
+  {
+    "keyword": "ai prompt token estimator",
+    "tool_name": "AI Prompt Token Estimator & Chunker",
+    "description": "Estimate prompt token usage across GPT-4o, Claude 3.5, and Gemini models with chunk size recommendations.",
+    "category": "AI Utilities",
+    "tool_type": "token-counter",
+    "search_demand": 94,
+    "faq_items": "How are tokens estimated?:::Calculates token length using byte-pair heuristic algorithms calibrated against OpenAI and Anthropic tokenizers.|||Why is token estimation important?:::Prevents exceeding context limits and helps budget API expenditure before running LLM calls.|||Does it work offline?:::Yes, estimation runs completely in client-side JavaScript.",
+    "related_tools": "AI Prompt Cost Calculator,Word Counter,LLM Context Calculator",
+    "status": "published",
+    "priority_score": 94,
+    "discovered_at": "2026-09-11T13:00:23.991501",
+    "published_at": "2026-09-12T12:31:26.337851"
   },
   {
     "keyword": "html to plain text",
