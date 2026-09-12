@@ -1,19 +1,5 @@
 [
   {
-    "keyword": "html to plain text",
-    "tool_name": "HTML to Plain Text Extractor & Stripper",
-    "description": "Fast client-side HTML tag stripper that extracts clean, unformatted plain text while decoding entities.",
-    "category": "Developer Tools",
-    "tool_type": "html-to-text",
-    "search_demand": 94,
-    "faq_items": "Does this remove scripts and CSS styles?:::Yes, all script tags, stylesheets, and HTML tags are completely removed.|||Are HTML entities decoded?:::Yes, entities like &amp; and &quot; are converted back to normal characters.|||Is my HTML data sent to a server?:::No, parsing happens entirely inside your browser using the DOMParser API.",
-    "related_tools": "HTML Entity Encoder,Markdown to HTML Converter,Word Counter",
-    "status": "published",
-    "priority_score": 94,
-    "discovered_at": "2026-09-11T13:00:23.990984",
-    "published_at": "2026-09-11T22:53:58.733706"
-  },
-  {
     "keyword": "ai prompt token estimator",
     "tool_name": "AI Prompt Token Estimator & Chunker",
     "description": "Estimate prompt token usage across GPT-4o, Claude 3.5, and Gemini models with chunk size recommendations.",
@@ -22,9 +8,10 @@
     "search_demand": 94,
     "faq_items": "How are tokens estimated?:::Calculates token length using byte-pair heuristic algorithms calibrated against OpenAI and Anthropic tokenizers.|||Why is token estimation important?:::Prevents exceeding context limits and helps budget API expenditure before running LLM calls.|||Does it work offline?:::Yes, estimation runs completely in client-side JavaScript.",
     "related_tools": "AI Prompt Cost Calculator,Word Counter,LLM Context Calculator",
-    "status": "pending",
+    "status": "published",
     "priority_score": 94,
-    "discovered_at": "2026-09-11T13:00:23.991501"
+    "discovered_at": "2026-09-11T13:00:23.991501",
+    "published_at": "2026-09-12T12:31:26.337851"
   },
   {
     "keyword": "rgb to hsl converter",
@@ -236,6 +223,20 @@
     "tool_type": "markdown-to-html",
     "status": "pending",
     "priority": 7
+  },
+  {
+    "keyword": "html to plain text",
+    "tool_name": "HTML to Plain Text Extractor & Stripper",
+    "description": "Fast client-side HTML tag stripper that extracts clean, unformatted plain text while decoding entities.",
+    "category": "Developer Tools",
+    "tool_type": "html-to-text",
+    "search_demand": 94,
+    "faq_items": "Does this remove scripts and CSS styles?:::Yes, all script tags, stylesheets, and HTML tags are completely removed.|||Are HTML entities decoded?:::Yes, entities like &amp; and &quot; are converted back to normal characters.|||Is my HTML data sent to a server?:::No, parsing happens entirely inside your browser using the DOMParser API.",
+    "related_tools": "HTML Entity Encoder,Markdown to HTML Converter,Word Counter",
+    "status": "published",
+    "priority_score": 94,
+    "discovered_at": "2026-09-11T13:00:23.990984",
+    "published_at": "2026-09-11T22:53:58.733706"
   },
   {
     "keyword": "color shades generator",
