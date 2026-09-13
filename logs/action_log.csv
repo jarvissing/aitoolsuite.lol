@@ -24,3 +24,4 @@ timestamp,action_type,tool_name,keyword,url,status,details
 2026-09-12T12:31:26.358667,PUBLISH,AI Prompt Token Estimator & Chunker,ai prompt token estimator,https://aitoolsuite.lol/ai-prompt-token-estimator.html,SUCCESS,Published AI Prompt Token Estimator & Chunker
 2026-09-12T22:43:11.406402,PUBLISH,RGB to HSL & HSV Color Converter,rgb to hsl converter,https://aitoolsuite.lol/rgb-to-hsl-converter.html,SUCCESS,Published RGB to HSL & HSV Color Converter
 2026-09-13T13:32:40.947809,PUBLISH,JSON Difference & Key Comparator,json diff comparator,https://aitoolsuite.lol/json-diff-comparator.html,SUCCESS,Published JSON Difference & Key Comparator
+2026-09-13T22:43:45.842225,PUBLISH,Text Line Sorter & Deduplicator,text line sorter,https://aitoolsuite.lol/text-line-sorter.html,SUCCESS,Published Text Line Sorter & Deduplicator

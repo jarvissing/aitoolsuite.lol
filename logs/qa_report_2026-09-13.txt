@@ -1,8 +1,8 @@
 ============================================================
-  QA REPORT — 2026-09-13 13:32:40
+  QA REPORT — 2026-09-13 22:43:45
 ============================================================
 
-Found 69 tool pages to check.
+Found 70 tool pages to check.
 
 ✅ ai-prompt-cost-calculator — 12/12 checks passed
 ✅ ai-prompt-token-estimator — 12/12 checks passed
@@ -66,6 +66,7 @@ Found 69 tool pages to check.
 ✅ svg-optimizer-and-viewer — 12/12 checks passed
 ✅ svg-to-png-converter — 12/12 checks passed
 ✅ tailwind-color-palette-generator — 12/12 checks passed
+✅ text-line-sorter — 12/12 checks passed
 ✅ timestamp-converter — 12/12 checks passed
 ✅ url-encoder — 12/12 checks passed
 ✅ url-parser-and-query-params — 12/12 checks passed
@@ -76,9 +77,9 @@ Found 69 tool pages to check.
 
 ————————————————————————————————————————
 HOMEPAGE CHECK:
-✅ 69/69 tools listed on homepage
+✅ 70/70 tools listed on homepage
 
 ============================================================
-SUMMARY: 69 passed, 0 failed out of 69 pages
+SUMMARY: 70 passed, 0 failed out of 70 pages
 🎉 ALL PAGES PASS QA!
 ============================================================
