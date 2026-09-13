@@ -1,19 +1,5 @@
 [
   {
-    "keyword": "rgb to hsl converter",
-    "tool_name": "RGB to HSL & HSV Color Converter",
-    "description": "Convert RGB color values to HSL and HSV representations with live color preview and 1-click CSS copying.",
-    "category": "Design Tools",
-    "tool_type": "rgb-to-hsl",
-    "search_demand": 93,
-    "faq_items": "What is the difference between HSL and HSV?:::HSL represents Lightness while HSV represents Value (brightness), making HSV popular in graphics editors.|||Does this support Hex input?:::Yes, enter either RGB numbers or a Hex color code to update all formats.|||Can I copy CSS strings?:::Yes, one click copies hsl() or rgb() CSS color definitions.",
-    "related_tools": "Hex to RGB Converter,Color Contrast Checker,Tailwind Color Palette",
-    "status": "published",
-    "priority_score": 93,
-    "discovered_at": "2026-09-11T13:00:23.991065",
-    "published_at": "2026-09-12T22:43:11.375430"
-  },
-  {
     "keyword": "json diff comparator",
     "tool_name": "JSON Difference & Key Comparator",
     "description": "Compare two JSON objects side-by-side to detect added, removed, and modified keys with syntax highlighting.",
@@ -22,9 +8,10 @@
     "search_demand": 93,
     "faq_items": "Does it detect modified nested values?:::Yes, highlights property changes, missing keys, and added fields.|||Is formatted JSON required?:::No, both minified and formatted JSON strings are parsed automatically.|||Is my JSON private?:::Yes, comparison runs 100% client-side with zero data transmission.",
     "related_tools": "Diff Checker,JSON Formatter,JSON Minifier",
-    "status": "pending",
+    "status": "published",
     "priority_score": 93,
-    "discovered_at": "2026-09-11T13:00:23.991400"
+    "discovered_at": "2026-09-11T13:00:23.991400",
+    "published_at": "2026-09-13T13:32:40.919678"
   },
   {
     "keyword": "text line sorter",
@@ -210,6 +197,20 @@
     "tool_type": "markdown-to-html",
     "status": "pending",
     "priority": 7
+  },
+  {
+    "keyword": "rgb to hsl converter",
+    "tool_name": "RGB to HSL & HSV Color Converter",
+    "description": "Convert RGB color values to HSL and HSV representations with live color preview and 1-click CSS copying.",
+    "category": "Design Tools",
+    "tool_type": "rgb-to-hsl",
+    "search_demand": 93,
+    "faq_items": "What is the difference between HSL and HSV?:::HSL represents Lightness while HSV represents Value (brightness), making HSV popular in graphics editors.|||Does this support Hex input?:::Yes, enter either RGB numbers or a Hex color code to update all formats.|||Can I copy CSS strings?:::Yes, one click copies hsl() or rgb() CSS color definitions.",
+    "related_tools": "Hex to RGB Converter,Color Contrast Checker,Tailwind Color Palette",
+    "status": "published",
+    "priority_score": 93,
+    "discovered_at": "2026-09-11T13:00:23.991065",
+    "published_at": "2026-09-12T22:43:11.375430"
   },
   {
     "keyword": "ai prompt token estimator",
