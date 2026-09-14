@@ -1,19 +1,5 @@
 [
   {
-    "keyword": "text line sorter",
-    "tool_name": "Text Line Sorter & Deduplicator",
-    "description": "Sort lists of text alphabetically, numerically, remove duplicate lines, or reverse order instantly.",
-    "category": "Text Tools",
-    "tool_type": "text-sorter",
-    "search_demand": 92,
-    "faq_items": "Can I remove duplicates without sorting?:::Yes, the 'Remove Duplicates' button deduplicates items while preserving order.|||Does it handle natural numeric sorting?:::Yes, numeric sort correctly ranks 2 before 10.|||Can I shuffle lines randomly?:::Yes, includes a 1-click random shuffle button.",
-    "related_tools": "Word Counter,Case Converter,Diff Checker",
-    "status": "published",
-    "priority_score": 92,
-    "discovered_at": "2026-09-11T13:00:23.991161",
-    "published_at": "2026-09-13T22:43:45.813280"
-  },
-  {
     "keyword": "binary to hex converter",
     "tool_name": "Binary to Hexadecimal & Decimal Converter",
     "description": "Convert numbers between Binary (Base 2), Octal (Base 8), Decimal (Base 10), and Hexadecimal (Base 16) in real time.",
@@ -22,9 +8,10 @@
     "search_demand": 92,
     "faq_items": "Does this support large numbers?:::Yes, uses BigInt precision to handle arbitrary length numbers without precision loss.|||Can I convert from Hex to Binary?:::Yes, editing any field immediately updates all other bases simultaneously.|||Are prefixes required?:::No, standard numbers without 0x or 0b prefixes work automatically.",
     "related_tools": "ASCII to Binary Converter,Hash Generator,Unix Timestamp Converter",
-    "status": "pending",
+    "status": "published",
     "priority_score": 92,
-    "discovered_at": "2026-09-11T13:00:23.991300"
+    "discovered_at": "2026-09-11T13:00:23.991300",
+    "published_at": "2026-09-14T15:27:43.754771"
   },
   {
     "keyword": "rot13 cipher encoder",
@@ -184,6 +171,20 @@
     "tool_type": "markdown-to-html",
     "status": "pending",
     "priority": 7
+  },
+  {
+    "keyword": "text line sorter",
+    "tool_name": "Text Line Sorter & Deduplicator",
+    "description": "Sort lists of text alphabetically, numerically, remove duplicate lines, or reverse order instantly.",
+    "category": "Text Tools",
+    "tool_type": "text-sorter",
+    "search_demand": 92,
+    "faq_items": "Can I remove duplicates without sorting?:::Yes, the 'Remove Duplicates' button deduplicates items while preserving order.|||Does it handle natural numeric sorting?:::Yes, numeric sort correctly ranks 2 before 10.|||Can I shuffle lines randomly?:::Yes, includes a 1-click random shuffle button.",
+    "related_tools": "Word Counter,Case Converter,Diff Checker",
+    "status": "published",
+    "priority_score": 92,
+    "discovered_at": "2026-09-11T13:00:23.991161",
+    "published_at": "2026-09-13T22:43:45.813280"
   },
   {
     "keyword": "json diff comparator",
