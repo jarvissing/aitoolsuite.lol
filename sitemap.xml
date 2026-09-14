@@ -361,6 +361,12 @@
         <priority>0.8</priority>
     </url>
     <url>
+        <loc>https://aitoolsuite.lol/rot13-cipher-encoder.html</loc>
+        <lastmod>2026-09-14</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
         <loc>https://aitoolsuite.lol/sql-formatter-and-beautifier.html</loc>
         <lastmod>2026-09-14</lastmod>
         <changefreq>weekly</changefreq>
