@@ -1,19 +1,5 @@
 [
   {
-    "keyword": "url query parameter cleaner",
-    "tool_name": "URL Query Parameter Cleaner & Normalizer",
-    "description": "Strip tracking UTM parameters, click IDs (fbclid, gclid), and normalize query strings for clean links.",
-    "category": "Developer Tools",
-    "tool_type": "url-parser",
-    "search_demand": 91,
-    "faq_items": "Which tracking tags are removed?:::Strips utm_source, utm_medium, utm_campaign, fbclid, gclid, and custom tracking keys.|||Does it sort parameters?:::Yes, provides an option to sort remaining query parameters alphabetically.|||Does it preserve hash anchors?:::Yes, URL fragments (#hash) are safely preserved.",
-    "related_tools": "URL Parser & Query Extractor,URL Encoder / Decoder,URL Slug Generator",
-    "status": "published",
-    "priority_score": 91,
-    "discovered_at": "2026-09-11T13:00:23.991642",
-    "published_at": "2026-09-15T13:59:40.564601"
-  },
-  {
     "keyword": "base64 url safe encoder",
     "tool_name": "Base64 URL-Safe Encoder & Decoder (RFC 4648)",
     "description": "Encode and decode URL-safe Base64 strings replacing plus and slash characters with hyphens and underscores.",
@@ -22,9 +8,10 @@
     "search_demand": 90,
     "faq_items": "Why use URL-safe Base64?:::Standard Base64 contains '+' and '/' which require URL encoding in query parameters; URL-safe uses '-' and '_'.|||Does it strip '=' padding?:::Yes, trailing '=' padding characters are removed according to RFC 4648.|||Is it compatible with JWT tokens?:::Yes, JWT headers and payloads use URL-safe Base64 encoding.",
     "related_tools": "Base64 Encoder,JWT Decoder,URL Encoder",
-    "status": "pending",
+    "status": "published",
     "priority_score": 90,
-    "discovered_at": "2026-09-11T13:00:23.991257"
+    "discovered_at": "2026-09-11T13:00:23.991257",
+    "published_at": "2026-09-15T23:19:31.337697"
   },
   {
     "keyword": "unix time difference calculator",
@@ -145,6 +132,20 @@
     "tool_type": "markdown-to-html",
     "status": "pending",
     "priority": 7
+  },
+  {
+    "keyword": "url query parameter cleaner",
+    "tool_name": "URL Query Parameter Cleaner & Normalizer",
+    "description": "Strip tracking UTM parameters, click IDs (fbclid, gclid), and normalize query strings for clean links.",
+    "category": "Developer Tools",
+    "tool_type": "url-parser",
+    "search_demand": 91,
+    "faq_items": "Which tracking tags are removed?:::Strips utm_source, utm_medium, utm_campaign, fbclid, gclid, and custom tracking keys.|||Does it sort parameters?:::Yes, provides an option to sort remaining query parameters alphabetically.|||Does it preserve hash anchors?:::Yes, URL fragments (#hash) are safely preserved.",
+    "related_tools": "URL Parser & Query Extractor,URL Encoder / Decoder,URL Slug Generator",
+    "status": "published",
+    "priority_score": 91,
+    "discovered_at": "2026-09-11T13:00:23.991642",
+    "published_at": "2026-09-15T13:59:40.564601"
   },
   {
     "keyword": "rot13 cipher encoder",
