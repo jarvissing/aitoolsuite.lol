@@ -1,8 +1,8 @@
 ============================================================
-  QA REPORT — 2026-09-16 13:54:02
+  QA REPORT — 2026-09-16 23:25:04
 ============================================================
 
-Found 75 tool pages to check.
+Found 76 tool pages to check.
 
 ✅ ai-prompt-cost-calculator — 12/12 checks passed
 ✅ ai-prompt-token-estimator — 12/12 checks passed
@@ -25,6 +25,7 @@ Found 75 tool pages to check.
 ✅ css-glassmorphism-generator — 12/12 checks passed
 ✅ css-grid-generator — 12/12 checks passed
 ✅ css-minifier — 12/12 checks passed
+✅ css-text-shadow-generator — 12/12 checks passed
 ✅ csv-to-json-converter — 12/12 checks passed
 ✅ csv-to-markdown-table-converter — 12/12 checks passed
 ✅ curl-to-fetch-converter — 12/12 checks passed
@@ -82,9 +83,9 @@ Found 75 tool pages to check.
 
 ————————————————————————————————————————
 HOMEPAGE CHECK:
-✅ 75/75 tools listed on homepage
+✅ 76/76 tools listed on homepage
 
 ============================================================
-SUMMARY: 75 passed, 0 failed out of 75 pages
+SUMMARY: 76 passed, 0 failed out of 76 pages
 🎉 ALL PAGES PASS QA!
 ============================================================
