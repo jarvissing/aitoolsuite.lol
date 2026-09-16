@@ -1,19 +1,5 @@
 [
   {
-    "keyword": "base64 url safe encoder",
-    "tool_name": "Base64 URL-Safe Encoder & Decoder (RFC 4648)",
-    "description": "Encode and decode URL-safe Base64 strings replacing plus and slash characters with hyphens and underscores.",
-    "category": "Developer Tools",
-    "tool_type": "base64-url-safe",
-    "search_demand": 90,
-    "faq_items": "Why use URL-safe Base64?:::Standard Base64 contains '+' and '/' which require URL encoding in query parameters; URL-safe uses '-' and '_'.|||Does it strip '=' padding?:::Yes, trailing '=' padding characters are removed according to RFC 4648.|||Is it compatible with JWT tokens?:::Yes, JWT headers and payloads use URL-safe Base64 encoding.",
-    "related_tools": "Base64 Encoder,JWT Decoder,URL Encoder",
-    "status": "published",
-    "priority_score": 90,
-    "discovered_at": "2026-09-11T13:00:23.991257",
-    "published_at": "2026-09-15T23:19:31.337697"
-  },
-  {
     "keyword": "unix time difference calculator",
     "tool_name": "Unix Timestamp Difference & Duration Calculator",
     "description": "Calculate exact days, hours, minutes, and seconds between two timestamps or dates in real time.",
@@ -22,9 +8,10 @@
     "search_demand": 90,
     "faq_items": "Does this support epoch seconds and milliseconds?:::Yes, handles both 10-digit seconds and 13-digit millisecond timestamps.|||Can I enter human dates?:::Yes, accepts standard ISO dates, UTC strings, and numeric timestamps.|||Does it account for leap seconds?:::Calculates exact elapsed calendar durations and total seconds.",
     "related_tools": "Unix Timestamp Converter,Chmod Calculator,Cron Expression Generator",
-    "status": "pending",
+    "status": "published",
     "priority_score": 90,
-    "discovered_at": "2026-09-11T13:00:23.991601"
+    "discovered_at": "2026-09-11T13:00:23.991601",
+    "published_at": "2026-09-16T13:54:02.955962"
   },
   {
     "keyword": "css text shadow generator",
@@ -132,6 +119,20 @@
     "tool_type": "markdown-to-html",
     "status": "pending",
     "priority": 7
+  },
+  {
+    "keyword": "base64 url safe encoder",
+    "tool_name": "Base64 URL-Safe Encoder & Decoder (RFC 4648)",
+    "description": "Encode and decode URL-safe Base64 strings replacing plus and slash characters with hyphens and underscores.",
+    "category": "Developer Tools",
+    "tool_type": "base64-url-safe",
+    "search_demand": 90,
+    "faq_items": "Why use URL-safe Base64?:::Standard Base64 contains '+' and '/' which require URL encoding in query parameters; URL-safe uses '-' and '_'.|||Does it strip '=' padding?:::Yes, trailing '=' padding characters are removed according to RFC 4648.|||Is it compatible with JWT tokens?:::Yes, JWT headers and payloads use URL-safe Base64 encoding.",
+    "related_tools": "Base64 Encoder,JWT Decoder,URL Encoder",
+    "status": "published",
+    "priority_score": 90,
+    "discovered_at": "2026-09-11T13:00:23.991257",
+    "published_at": "2026-09-15T23:19:31.337697"
   },
   {
     "keyword": "url query parameter cleaner",
