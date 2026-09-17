@@ -1,19 +1,5 @@
 [
   {
-    "keyword": "css text shadow generator",
-    "tool_name": "CSS Text Shadow Generator & Presets",
-    "description": "Design subtle, glowing, and multi-layered CSS text shadows with live visual preview and code copy.",
-    "category": "Design Tools",
-    "tool_type": "box-shadow",
-    "search_demand": 90,
-    "faq_items": "Can I add multiple shadow layers?:::Yes, stack multiple blur and color layers for glow and 3D effects.|||Does it generate standard CSS?:::Outputs cross-browser text-shadow rules ready for production CSS.|||Can I preview dark and light backgrounds?:::Toggle preview background to test contrast on various surface colors.",
-    "related_tools": "CSS Box Shadow Generator,CSS Glassmorphism Generator,Color Contrast Checker",
-    "status": "published",
-    "priority_score": 90,
-    "discovered_at": "2026-09-11T13:00:23.991684",
-    "published_at": "2026-09-16T23:25:04.446788"
-  },
-  {
     "keyword": "json flattener tool",
     "tool_name": "JSON Object Flattener & Unflattener",
     "description": "Flatten deep nested JSON objects into dot-notation paths and unflatten dot-notation back into nested JSON.",
@@ -22,9 +8,10 @@
     "search_demand": 89,
     "faq_items": "What is dot-notation flattening?:::Converts objects like {'a': {'b': 1}} into flat keys like 'a.b': 1.|||Can I unflatten back to nested objects?:::Yes, 1-click unflatten reconstructs the original nested JSON hierarchy.|||How are arrays handled?:::Arrays are mapped with indexed keys like 'items.0.name'.",
     "related_tools": "JSON to CSV Converter,JSON Formatter,JSON to YAML Converter",
-    "status": "pending",
+    "status": "published",
     "priority_score": 89,
-    "discovered_at": "2026-09-11T13:00:23.991455"
+    "discovered_at": "2026-09-11T13:00:23.991455",
+    "published_at": "2026-09-17T13:57:26.263830"
   },
   {
     "keyword": "csv deduplicator and cleaner",
@@ -106,6 +93,20 @@
     "tool_type": "markdown-to-html",
     "status": "pending",
     "priority": 7
+  },
+  {
+    "keyword": "css text shadow generator",
+    "tool_name": "CSS Text Shadow Generator & Presets",
+    "description": "Design subtle, glowing, and multi-layered CSS text shadows with live visual preview and code copy.",
+    "category": "Design Tools",
+    "tool_type": "box-shadow",
+    "search_demand": 90,
+    "faq_items": "Can I add multiple shadow layers?:::Yes, stack multiple blur and color layers for glow and 3D effects.|||Does it generate standard CSS?:::Outputs cross-browser text-shadow rules ready for production CSS.|||Can I preview dark and light backgrounds?:::Toggle preview background to test contrast on various surface colors.",
+    "related_tools": "CSS Box Shadow Generator,CSS Glassmorphism Generator,Color Contrast Checker",
+    "status": "published",
+    "priority_score": 90,
+    "discovered_at": "2026-09-11T13:00:23.991684",
+    "published_at": "2026-09-16T23:25:04.446788"
   },
   {
     "keyword": "unix time difference calculator",
