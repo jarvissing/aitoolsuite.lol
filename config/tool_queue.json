@@ -1,19 +1,5 @@
 [
   {
-    "keyword": "csv deduplicator and cleaner",
-    "tool_name": "CSV Deduplicator & Whitespace Cleaner",
-    "description": "Remove duplicate rows from CSV data and clean trailing whitespace while preserving table structure.",
-    "category": "Text Tools",
-    "tool_type": "text-sorter",
-    "search_demand": 89,
-    "faq_items": "How does it handle headers?:::Maintains the top header row while removing duplicates across subsequent data rows.|||Can I clean spaces?:::Yes, automatically trims extra whitespace around commas.|||Is large CSV processing supported?:::Easily processes thousands of rows within browser memory.",
-    "related_tools": "CSV to JSON Converter,CSV to Markdown Table,JSON to CSV Converter",
-    "status": "published",
-    "priority_score": 89,
-    "discovered_at": "2026-09-11T13:00:23.991557",
-    "published_at": "2026-09-17T23:16:32.672798"
-  },
-  {
     "keyword": "string repeater tool",
     "tool_name": "Text & String Multiplier Generator",
     "description": "Repeat any text, word, or character sequence N times with customizable delimiters (newlines, commas, pipes).",
@@ -22,9 +8,10 @@
     "search_demand": 88,
     "faq_items": "What is the maximum repetition count?:::Supports generating up to 10,000 repetitions per click.|||Can I separate repeated items by newline?:::Yes, choose newline, comma, space, pipe, or none as the delimiter.|||Does this run locally?:::Yes, generates text in browser memory instantly.",
     "related_tools": "Lorem Ipsum Generator,Word Counter,Case Converter",
-    "status": "pending",
+    "status": "published",
     "priority_score": 88,
-    "discovered_at": "2026-09-11T13:00:23.991354"
+    "discovered_at": "2026-09-11T13:00:23.991354",
+    "published_at": "2026-09-18T13:15:56.680705"
   },
   {
     "keyword": "css flexbox playground",
@@ -80,6 +67,20 @@
     "tool_type": "markdown-to-html",
     "status": "pending",
     "priority": 7
+  },
+  {
+    "keyword": "csv deduplicator and cleaner",
+    "tool_name": "CSV Deduplicator & Whitespace Cleaner",
+    "description": "Remove duplicate rows from CSV data and clean trailing whitespace while preserving table structure.",
+    "category": "Text Tools",
+    "tool_type": "text-sorter",
+    "search_demand": 89,
+    "faq_items": "How does it handle headers?:::Maintains the top header row while removing duplicates across subsequent data rows.|||Can I clean spaces?:::Yes, automatically trims extra whitespace around commas.|||Is large CSV processing supported?:::Easily processes thousands of rows within browser memory.",
+    "related_tools": "CSV to JSON Converter,CSV to Markdown Table,JSON to CSV Converter",
+    "status": "published",
+    "priority_score": 89,
+    "discovered_at": "2026-09-11T13:00:23.991557",
+    "published_at": "2026-09-17T23:16:32.672798"
   },
   {
     "keyword": "json flattener tool",
