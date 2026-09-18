@@ -1,19 +1,5 @@
 [
   {
-    "keyword": "string repeater tool",
-    "tool_name": "Text & String Multiplier Generator",
-    "description": "Repeat any text, word, or character sequence N times with customizable delimiters (newlines, commas, pipes).",
-    "category": "Text Tools",
-    "tool_type": "string-repeater",
-    "search_demand": 88,
-    "faq_items": "What is the maximum repetition count?:::Supports generating up to 10,000 repetitions per click.|||Can I separate repeated items by newline?:::Yes, choose newline, comma, space, pipe, or none as the delimiter.|||Does this run locally?:::Yes, generates text in browser memory instantly.",
-    "related_tools": "Lorem Ipsum Generator,Word Counter,Case Converter",
-    "status": "published",
-    "priority_score": 88,
-    "discovered_at": "2026-09-11T13:00:23.991354",
-    "published_at": "2026-09-18T13:15:56.680705"
-  },
-  {
     "keyword": "css flexbox playground",
     "tool_name": "CSS Flexbox Layout Generator & Visualizer",
     "description": "Interactively build and test responsive CSS Flexbox container and item layouts with real-time CSS code export.",
@@ -21,8 +7,9 @@
     "faq_items": "How do I align items vertically in Flexbox?:::Use `align-items: center` for single-line flex containers, or `align-content: center` for multi-line wrapped containers.|||What does flex-grow do?:::It defines the ability for a flex item to grow if necessary, specifying how much remaining container space it should take up.|||Can I copy the generated CSS?:::Yes, click 'Copy CSS' to copy the container and item rules directly to your clipboard.",
     "related_tools": "CSS Grid Layout Generator,CSS Border Radius Generator,CSS Glassmorphism Generator",
     "tool_type": "css-flexbox",
-    "status": "pending",
-    "priority": 9
+    "status": "published",
+    "priority": 9,
+    "published_at": "2026-09-18T22:55:09.909474"
   },
   {
     "keyword": "json to rust struct",
@@ -67,6 +54,20 @@
     "tool_type": "markdown-to-html",
     "status": "pending",
     "priority": 7
+  },
+  {
+    "keyword": "string repeater tool",
+    "tool_name": "Text & String Multiplier Generator",
+    "description": "Repeat any text, word, or character sequence N times with customizable delimiters (newlines, commas, pipes).",
+    "category": "Text Tools",
+    "tool_type": "string-repeater",
+    "search_demand": 88,
+    "faq_items": "What is the maximum repetition count?:::Supports generating up to 10,000 repetitions per click.|||Can I separate repeated items by newline?:::Yes, choose newline, comma, space, pipe, or none as the delimiter.|||Does this run locally?:::Yes, generates text in browser memory instantly.",
+    "related_tools": "Lorem Ipsum Generator,Word Counter,Case Converter",
+    "status": "published",
+    "priority_score": 88,
+    "discovered_at": "2026-09-11T13:00:23.991354",
+    "published_at": "2026-09-18T13:15:56.680705"
   },
   {
     "keyword": "csv deduplicator and cleaner",
