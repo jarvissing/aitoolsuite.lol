@@ -361,6 +361,12 @@
         <priority>0.8</priority>
     </url>
     <url>
+        <loc>https://aitoolsuite.lol/payload-diff-data.html</loc>
+        <lastmod>2026-09-19</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
         <loc>https://aitoolsuite.lol/privacy.html</loc>
         <lastmod>2026-09-19</lastmod>
         <changefreq>weekly</changefreq>

@@ -1,17 +1,17 @@
 [
   {
-    "keyword": "payload base64 encoder",
-    "tool_name": "Base64 Safe Payload Encoder",
-    "description": "Fast browser-based base64 safe payload encoder with 100% client-side privacy, instant execution, and zero ads.",
+    "keyword": "payload diff data",
+    "tool_name": "Realtime Payload Diff Inspector",
+    "description": "Fast browser-based realtime payload diff inspector with 100% client-side privacy, instant execution, and zero ads.",
     "category": "Developer Tools",
-    "tool_type": "base64-url-safe",
+    "tool_type": "diff-checker",
     "search_demand": 85,
     "faq_items": "Is this tool free?:::Yes, completely free with zero limits.|||Does it require an account?:::No account or login required.|||Is my data secure?:::All calculations happen in your browser memory.",
     "related_tools": "JSON Formatter,Diff Checker,Word Counter",
     "status": "published",
     "priority_score": 85,
-    "discovered_at": "2026-09-19T12:46:49.895997",
-    "published_at": "2026-09-19T12:46:49.905729"
+    "discovered_at": "2026-09-19T22:34:42.869065",
+    "published_at": "2026-09-19T22:34:42.877632"
   },
   {
     "keyword": "json to rust struct",
@@ -56,6 +56,20 @@
     "tool_type": "markdown-to-html",
     "status": "pending",
     "priority": 7
+  },
+  {
+    "keyword": "payload base64 encoder",
+    "tool_name": "Base64 Safe Payload Encoder",
+    "description": "Fast browser-based base64 safe payload encoder with 100% client-side privacy, instant execution, and zero ads.",
+    "category": "Developer Tools",
+    "tool_type": "base64-url-safe",
+    "search_demand": 85,
+    "faq_items": "Is this tool free?:::Yes, completely free with zero limits.|||Does it require an account?:::No account or login required.|||Is my data secure?:::All calculations happen in your browser memory.",
+    "related_tools": "JSON Formatter,Diff Checker,Word Counter",
+    "status": "published",
+    "priority_score": 85,
+    "discovered_at": "2026-09-19T12:46:49.895997",
+    "published_at": "2026-09-19T12:46:49.905729"
   },
   {
     "keyword": "css flexbox playground",
