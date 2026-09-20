@@ -1,0 +1,34 @@
+{
+  "sponsor": {
+    "enabled": true,
+    "label": "Buy Me a Coffee",
+    "url": "https://buymeacoffee.com/aitoolsuite",
+    "message": "AI Tool Suite is 100% free and runs entirely in your browser with zero ads. If this tool saved you time, consider fueling further development!"
+  },
+  "affiliates": [
+    {
+      "id": "digitalocean",
+      "title": "DigitalOcean Cloud",
+      "badge": "$200 Free Credit",
+      "desc": "Simple, reliable cloud computing. Spin up SSD droplets, managed databases, and Kubernetes clusters in seconds.",
+      "url": "https://m.do.co/c/aitoolsuite",
+      "cta": "Claim $200 Free Credit ↗"
+    },
+    {
+      "id": "supabase",
+      "title": "Supabase Postgres",
+      "badge": "Generous Free Tier",
+      "desc": "The open-source Firebase alternative. Dedicated PostgreSQL database, instant REST & GraphQL APIs, Auth, and Storage.",
+      "url": "https://supabase.com/?ref=aitoolsuite",
+      "cta": "Deploy Free Database ↗"
+    },
+    {
+      "id": "nordvpn",
+      "title": "NordVPN & Threat Protection",
+      "badge": "74% Off Deal",
+      "desc": "Essential privacy protection for developers. Encrypt API tests, bypass Geo-DNS limits, and block malicious ads.",
+      "url": "https://go.nordvpn.net/aff_c?offer_id=15&aff_id=aitoolsuite",
+      "cta": "Get 74% Off + Gift ↗"
+    }
+  ]
+}

@@ -402,6 +402,130 @@
         footer a { color: #93c5fd; text-decoration: none; }
         footer a:hover { text-decoration: underline; }
 
+        /* Monetization & Affiliate Section */
+        .affiliate-section { margin-bottom: 40px; }
+        .affiliate-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 16px;
+            margin-top: 14px;
+        }
+        .affiliate-card {
+            background: linear-gradient(145deg, #13131a 0%, #171722 100%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.25s ease;
+            text-decoration: none;
+            position: relative;
+        }
+        .affiliate-card:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        .affiliate-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        .affiliate-title {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #ffffff;
+        }
+        .affiliate-badge {
+            background: rgba(99, 102, 241, 0.15);
+            border: 1px solid rgba(99, 102, 241, 0.35);
+            color: #818cf8;
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+        .affiliate-desc {
+            color: #94a3b8;
+            font-size: 0.85rem;
+            line-height: 1.5;
+            margin-bottom: 14px;
+        }
+        .affiliate-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #38bdf8;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        .affiliate-card:hover .affiliate-cta { color: #60a5fa; }
+        .affiliate-disclosure {
+            font-size: 0.75rem;
+            color: #64748b;
+            margin-top: 10px;
+            line-height: 1.4;
+        }
+
+        /* Sponsor Box */
+        .sponsor-banner {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.08) 0%, rgba(217, 119, 6, 0.03) 100%);
+            border: 1px solid rgba(245, 158, 11, 0.25);
+            border-radius: 16px;
+            padding: 18px 22px;
+            margin-bottom: 36px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .sponsor-text h3 {
+            font-family: 'Syne', sans-serif;
+            font-size: 1rem;
+            color: #fbbf24;
+            margin: 0 0 4px 0;
+            font-weight: 700;
+        }
+        .sponsor-text p {
+            color: #cbd5e1;
+            font-size: 0.85rem;
+            margin: 0;
+            max-width: 580px;
+        }
+        .sponsor-btn {
+            background: #f59e0b;
+            color: #0f172a;
+            font-weight: 700;
+            font-size: 0.85rem;
+            padding: 10px 18px;
+            border-radius: 10px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+        .sponsor-btn:hover {
+            background: #fbbf24;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.35);
+        }
+        .sponsor-nav-link {
+            background: rgba(245, 158, 11, 0.15) !important;
+            color: #fbbf24 !important;
+            border: 1px solid rgba(245, 158, 11, 0.35);
+        }
+        .sponsor-nav-link:hover {
+            background: rgba(245, 158, 11, 0.28) !important;
+        }
+
         @media (max-width: 640px) {
             .site-nav {
                 padding: 8px 14px;
@@ -435,6 +559,7 @@
                 <a href="/#text-tools" class="nav-link">Text</a>
                 <a href="/#design-tools" class="nav-link">Design</a>
                 <a href="/#seo-tools" class="nav-link">SEO</a>
+                <a href="https://buymeacoffee.com/aitoolsuite" target="_blank" rel="noopener" class="nav-link sponsor-nav-link">☕ Sponsor</a>
             </div>
         </nav>
     </div>
@@ -476,6 +601,49 @@
         <div class="tool-surface">
             {{ widget_html or tool_widget_html | safe }}
         </div>
+
+        <!-- Sponsor / Tip Jar Banner -->
+        <div class="sponsor-banner">
+            <div class="sponsor-text">
+                <h3>☕ Fuel Free &amp; Client-Side Tools</h3>
+                <p>AI Tool Suite is 100% free with zero ads and zero data collection. If this tool saved you time today, consider buying a coffee to keep hosting and updates running!</p>
+            </div>
+            <a href="https://buymeacoffee.com/aitoolsuite" target="_blank" rel="noopener" class="sponsor-btn">
+                <span>☕</span> Buy Me a Coffee ($3)
+            </a>
+        </div>
+
+        <!-- Recommended Developer Stack & Free Credits -->
+        <section class="affiliate-section">
+            <h2 class="section-title">⚡ Recommended Developer Stack &amp; Free Credits</h2>
+            <div class="affiliate-grid">
+                <a href="https://m.do.co/c/aitoolsuite" target="_blank" rel="noopener sponsored" class="affiliate-card">
+                    <div class="affiliate-card-header">
+                        <span class="affiliate-title">DigitalOcean Cloud</span>
+                        <span class="affiliate-badge">$200 Free Credit</span>
+                    </div>
+                    <p class="affiliate-desc">Reliable SSD droplets, managed databases, and Kubernetes clusters deployed in seconds.</p>
+                    <span class="affiliate-cta">Claim $200 Free Credit ↗</span>
+                </a>
+                <a href="https://supabase.com/?ref=aitoolsuite" target="_blank" rel="noopener sponsored" class="affiliate-card">
+                    <div class="affiliate-card-header">
+                        <span class="affiliate-title">Supabase Postgres</span>
+                        <span class="affiliate-badge">Free Tier</span>
+                    </div>
+                    <p class="affiliate-desc">The open source Firebase alternative. Dedicated Postgres DB, instant Auth, and REST/GraphQL APIs.</p>
+                    <span class="affiliate-cta">Start Free Project ↗</span>
+                </a>
+                <a href="https://go.nordvpn.net/aff_c?offer_id=15&aff_id=aitoolsuite" target="_blank" rel="noopener sponsored" class="affiliate-card">
+                    <div class="affiliate-card-header">
+                        <span class="affiliate-title">NordVPN Security</span>
+                        <span class="affiliate-badge">74% Off Deal</span>
+                    </div>
+                    <p class="affiliate-desc">Protect your developer workstations, APIs, and DNS queries with fast, encrypted tunnels.</p>
+                    <span class="affiliate-cta">Get 74% Off + Gift ↗</span>
+                </a>
+            </div>
+            <p class="affiliate-disclosure">Affiliate Disclosure: We may earn a commission from partner signups at zero cost to you, which funds our free tools and ad-free hosting.</p>
+        </section>
 
         <!-- FAQ Section -->
         {% if faq_items %}
