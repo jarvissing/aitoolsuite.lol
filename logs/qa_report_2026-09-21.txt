@@ -1,8 +1,8 @@
 ============================================================
-  QA REPORT — 2026-09-21 15:29:38
+  QA REPORT — 2026-09-21 23:44:05
 ============================================================
 
-Found 85 tool pages to check.
+Found 86 tool pages to check.
 
 ✅ ai-prompt-cost-calculator — 12/12 checks passed
 ✅ ai-prompt-token-estimator — 12/12 checks passed
@@ -64,6 +64,7 @@ Found 85 tool pages to check.
 ✅ payload-color-hex — 12/12 checks passed
 ✅ payload-css-grid — 12/12 checks passed
 ✅ payload-diff-data — 12/12 checks passed
+✅ payload-json-schema — 12/12 checks passed
 ✅ payload-text-lines — 12/12 checks passed
 ✅ px-to-rem-converter — 12/12 checks passed
 ✅ qr-code-generator — 12/12 checks passed
@@ -92,9 +93,9 @@ Found 85 tool pages to check.
 
 ————————————————————————————————————————
 HOMEPAGE CHECK:
-✅ 85/85 tools listed on homepage
+✅ 86/86 tools listed on homepage
 
 ============================================================
-SUMMARY: 85 passed, 0 failed out of 85 pages
+SUMMARY: 86 passed, 0 failed out of 86 pages
 🎉 ALL PAGES PASS QA!
 ============================================================

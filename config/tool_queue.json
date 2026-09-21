@@ -1,17 +1,17 @@
 [
   {
-    "keyword": "payload color hex",
-    "tool_name": "Hex Payload Palette Transformer",
-    "description": "Fast browser-based hex payload palette transformer with 100% client-side privacy, instant execution, and zero ads.",
-    "category": "Design Tools",
-    "tool_type": "color-shades",
+    "keyword": "payload json schema",
+    "tool_name": "Strict Payload Schema Validator",
+    "description": "Fast browser-based strict payload schema validator with 100% client-side privacy, instant execution, and zero ads.",
+    "category": "Developer Tools",
+    "tool_type": "json-formatter",
     "search_demand": 85,
     "faq_items": "Is this tool free?:::Yes, completely free with zero limits.|||Does it require an account?:::No account or login required.|||Is my data secure?:::All calculations happen in your browser memory.",
     "related_tools": "JSON Formatter,Diff Checker,Word Counter",
     "status": "published",
     "priority_score": 85,
-    "discovered_at": "2026-09-21T15:29:38.647059",
-    "published_at": "2026-09-21T15:29:38.653539"
+    "discovered_at": "2026-09-21T23:44:05.896896",
+    "published_at": "2026-09-21T23:44:05.907624"
   },
   {
     "keyword": "json to rust struct",
@@ -56,6 +56,20 @@
     "tool_type": "markdown-to-html",
     "status": "pending",
     "priority": 7
+  },
+  {
+    "keyword": "payload color hex",
+    "tool_name": "Hex Payload Palette Transformer",
+    "description": "Fast browser-based hex payload palette transformer with 100% client-side privacy, instant execution, and zero ads.",
+    "category": "Design Tools",
+    "tool_type": "color-shades",
+    "search_demand": 85,
+    "faq_items": "Is this tool free?:::Yes, completely free with zero limits.|||Does it require an account?:::No account or login required.|||Is my data secure?:::All calculations happen in your browser memory.",
+    "related_tools": "JSON Formatter,Diff Checker,Word Counter",
+    "status": "published",
+    "priority_score": 85,
+    "discovered_at": "2026-09-21T15:29:38.647059",
+    "published_at": "2026-09-21T15:29:38.653539"
   },
   {
     "keyword": "payload css grid",

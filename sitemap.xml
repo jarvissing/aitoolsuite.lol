@@ -379,6 +379,12 @@
         <priority>0.8</priority>
     </url>
     <url>
+        <loc>https://aitoolsuite.lol/payload-json-schema.html</loc>
+        <lastmod>2026-09-21</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
         <loc>https://aitoolsuite.lol/payload-text-lines.html</loc>
         <lastmod>2026-09-21</lastmod>
         <changefreq>weekly</changefreq>
