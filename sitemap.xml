@@ -361,6 +361,12 @@
         <priority>0.8</priority>
     </url>
     <url>
+        <loc>https://aitoolsuite.lol/payload-binary-base.html</loc>
+        <lastmod>2026-09-22</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
         <loc>https://aitoolsuite.lol/payload-color-hex.html</loc>
         <lastmod>2026-09-22</lastmod>
         <changefreq>weekly</changefreq>
