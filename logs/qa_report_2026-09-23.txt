@@ -1,8 +1,8 @@
 ============================================================
-  QA REPORT — 2026-09-23 13:58:26
+  QA REPORT — 2026-09-23 23:21:07
 ============================================================
 
-Found 89 tool pages to check.
+Found 90 tool pages to check.
 
 ✅ ai-prompt-cost-calculator — 12/12 checks passed
 ✅ ai-prompt-token-estimator — 12/12 checks passed
@@ -77,6 +77,7 @@ Found 89 tool pages to check.
 ✅ sql-formatter-and-beautifier — 12/12 checks passed
 ✅ sql-to-json-converter — 12/12 checks passed
 ✅ string-base64-encoder — 12/12 checks passed
+✅ string-diff-data — 12/12 checks passed
 ✅ string-repeater-tool — 12/12 checks passed
 ✅ strong-password-generator — 12/12 checks passed
 ✅ subdomain-finder-and-dns-lookup — 12/12 checks passed
@@ -96,9 +97,9 @@ Found 89 tool pages to check.
 
 ————————————————————————————————————————
 HOMEPAGE CHECK:
-✅ 89/89 tools listed on homepage
+✅ 90/90 tools listed on homepage
 
 ============================================================
-SUMMARY: 89 passed, 0 failed out of 89 pages
+SUMMARY: 90 passed, 0 failed out of 90 pages
 🎉 ALL PAGES PASS QA!
 ============================================================
