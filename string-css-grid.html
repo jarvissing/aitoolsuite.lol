@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS String Layout Visualizer - Free Online Design Tools Tool | AI Tool Suite</title>
+    <meta name="description" content="Fast browser-based css string layout visualizer with 100% client-side privacy, instant execution, and zero ads.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://aitoolsuite.lol/string-css-grid.html">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%234361ee'/%3E%3Cpath d='M56 12 L24 54 L48 54 L44 88 L76 46 L52 46 Z' fill='%23ffdd00' stroke='%23f59e0b' stroke-width='2'/%3E%3C/svg%3E">
+    <link rel="alternate icon" href="/favicon.svg">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="CSS String Layout Visualizer - Free Online Design Tools Tool | AI Tool Suite">
+    <meta property="og:description" content="Fast browser-based css string layout visualizer with 100% client-side privacy, instant execution, and zero ads.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://aitoolsuite.lol/string-css-grid.html">
+    
+    <!-- JSON-LD: WebApplication -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "CSS String Layout Visualizer",
+        "description": "Fast browser-based css string layout visualizer with 100% client-side privacy, instant execution, and zero ads.",
+        "url": "https://aitoolsuite.lol/string-css-grid.html",
+        "applicationCategory": "UtilityApplication",
+        "operatingSystem": "Any",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
+    
+    <!-- JSON-LD: FAQPage -->
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            
+            {
+                "@type": "Question",
+                "name": "Is this tool free?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, completely free with zero limits."
+                }
+            },
+            
+            {
+                "@type": "Question",
+                "name": "Does it require an account?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "No account or login required."
+                }
+            },
+            
+            {
+                "@type": "Question",
+                "name": "Is my data secure?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "All calculations happen in your browser memory."
+                }
+            }
+            
+        ]
+    }
+    </script>
+    
+    
+    <!-- JSON-LD: BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://aitoolsuite.lol"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Design Tools",
+                "item": "https://aitoolsuite.lol/#design-tools"
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "CSS String Layout Visualizer"
+            }
+        ]
+    }
+    </script>
+    
+    <!-- Syne + Inter Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Syne:wght@700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #f1f5f9;
+            background: #09090b;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Responsive Floating Pill Navigation Bar */
+        .nav-wrapper {
+            position: sticky;
+            top: 14px;
+            z-index: 100;
+            padding: 0 16px;
+            width: 100%;
+        }
+        .site-nav {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(18, 18, 23, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 100px;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
+        }
+        .nav-brand {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: #ffffff;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            letter-spacing: -0.03em;
+            flex-shrink: 0;
+        }
+        .nav-brand-dot {
+            width: 8px;
+            height: 8px;
+            background: #3b82f6;
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 10px #3b82f6;
+        }
+        .nav-links {
+            display: flex;
+            gap: 6px;
+            align-items: center;
+            overflow-x: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        .nav-links::-webkit-scrollbar { display: none; }
+        .nav-link {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: #94a3b8;
+            text-decoration: none;
+            padding: 6px 14px;
+            border-radius: 100px;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+        }
+        .nav-link:hover {
+            background: rgba(255, 255, 255, 0.08);
+            color: #ffffff;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 24px 16px 80px;
+        }
+        
+        /* Breadcrumb */
+        .breadcrumb {
+            font-size: 0.82rem;
+            color: #64748b;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 500;
+            flex-wrap: wrap;
+        }
+        .breadcrumb a { color: #94a3b8; text-decoration: none; transition: color 0.2s; }
+        .breadcrumb a:hover { color: #93c5fd; }
+
+        /* Header */
+        header { margin-bottom: 24px; }
+        .tool-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(59, 130, 246, 0.1);
+            color: #93c5fd;
+            border: 1px solid rgba(59, 130, 246, 0.25);
+            padding: 4px 12px;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        header h1 {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -0.03em;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+        .description {
+            font-size: clamp(0.95rem, 2vw, 1.05rem);
+            color: #94a3b8;
+            line-height: 1.6;
+        }
+
+        /* Tool Action Bar */
+        .tool-action-bar {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 16px 0 24px 0;
+            flex-wrap: wrap;
+        }
+        .btn-action-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: #cbd5e1;
+            padding: 6px 14px;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            user-select: none;
+        }
+        .btn-action-pill:hover {
+            background: rgba(59, 130, 246, 0.15);
+            border-color: rgba(59, 130, 246, 0.4);
+            color: #93c5fd;
+            transform: translateY(-1px);
+        }
+        .btn-action-pill.copied {
+            background: rgba(34, 197, 94, 0.2);
+            border-color: rgba(34, 197, 94, 0.4);
+            color: #4ade80;
+        }
+
+        /* Embed Modal */
+        .embed-modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(4px);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+        }
+        .embed-modal-box {
+            background: #121216;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 16px;
+            max-width: 540px;
+            width: 100%;
+            padding: 24px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+        }
+        .embed-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        .embed-modal-header h3 {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.15rem;
+            color: #fff;
+            margin: 0;
+        }
+        .embed-close-btn {
+            background: transparent;
+            border: none;
+            color: #94a3b8;
+            font-size: 1.4rem;
+            cursor: pointer;
+            padding: 0;
+            line-height: 1;
+        }
+        .embed-code-textarea {
+            width: 100%;
+            height: 110px;
+            background: #09090b;
+            color: #38bdf8;
+            border: 1px solid #334155;
+            border-radius: 8px;
+            padding: 10px;
+            font-family: monospace;
+            font-size: 12px;
+            resize: none;
+            box-sizing: border-box;
+            margin-bottom: 14px;
+        }
+
+        /* Tool Interactive Surface */
+        .tool-surface {
+            background: #121216;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: clamp(16px, 4vw, 28px);
+            margin-bottom: 40px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Sections */
+        .section-title {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(1.15rem, 3vw, 1.35rem);
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        /* FAQ Accordion Section */
+        .faq-section { margin-bottom: 40px; }
+        .faq-list { display: flex; flex-direction: column; gap: 10px; }
+        .faq-item {
+            background: #121216;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 14px;
+            padding: 18px 20px;
+            transition: border-color 0.2s ease;
+        }
+        .faq-item:hover { border-color: rgba(59, 130, 246, 0.3); }
+        .faq-question {
+            font-family: 'Syne', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 6px;
+        }
+        .faq-answer {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* Related Tools Grid */
+        .related-section { margin-bottom: 40px; }
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr));
+            gap: 12px;
+        }
+        .related-card {
+            background: #121216;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 14px;
+            padding: 14px 18px;
+            text-decoration: none;
+            color: #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.2s ease;
+        }
+        .related-card:hover {
+            border-color: rgba(59, 130, 246, 0.4);
+            transform: translateY(-2px);
+            background: #18181f;
+            color: #ffffff;
+        }
+        .related-card span { font-weight: 600; font-size: 0.9rem; }
+        .related-arrow { color: #64748b; font-size: 0.9rem; }
+
+        /* Footer */
+        footer {
+            margin-top: 56px;
+            padding: 32px 0 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            text-align: center;
+            color: #64748b;
+            font-size: 0.85rem;
+        }
+        .footer-brand {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 6px;
+        }
+        footer a { color: #93c5fd; text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+
+        /* Monetization & Affiliate Section */
+        .affiliate-section { margin-bottom: 40px; }
+        .affiliate-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 16px;
+            margin-top: 14px;
+        }
+        .affiliate-card {
+            background: linear-gradient(145deg, #13131a 0%, #171722 100%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.25s ease;
+            text-decoration: none;
+            position: relative;
+        }
+        .affiliate-card:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        .affiliate-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        .affiliate-title {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #ffffff;
+        }
+        .affiliate-badge {
+            background: rgba(99, 102, 241, 0.15);
+            border: 1px solid rgba(99, 102, 241, 0.35);
+            color: #818cf8;
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+        .affiliate-desc {
+            color: #94a3b8;
+            font-size: 0.85rem;
+            line-height: 1.5;
+            margin-bottom: 14px;
+        }
+        .affiliate-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #38bdf8;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        .affiliate-card:hover .affiliate-cta { color: #60a5fa; }
+        .affiliate-disclosure {
+            font-size: 0.75rem;
+            color: #64748b;
+            margin-top: 10px;
+            line-height: 1.4;
+        }
+
+        /* Sponsor Box */
+        .sponsor-banner {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.08) 0%, rgba(217, 119, 6, 0.03) 100%);
+            border: 1px solid rgba(245, 158, 11, 0.25);
+            border-radius: 16px;
+            padding: 18px 22px;
+            margin-bottom: 36px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .sponsor-text h3 {
+            font-family: 'Syne', sans-serif;
+            font-size: 1rem;
+            color: #fbbf24;
+            margin: 0 0 4px 0;
+            font-weight: 700;
+        }
+        .sponsor-text p {
+            color: #cbd5e1;
+            font-size: 0.85rem;
+            margin: 0;
+            max-width: 580px;
+        }
+        .sponsor-btn {
+            background: #f59e0b;
+            color: #0f172a;
+            font-weight: 700;
+            font-size: 0.85rem;
+            padding: 10px 18px;
+            border-radius: 10px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+        .sponsor-btn:hover {
+            background: #fbbf24;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.35);
+        }
+        .sponsor-nav-link {
+            background: rgba(245, 158, 11, 0.15) !important;
+            color: #fbbf24 !important;
+            border: 1px solid rgba(245, 158, 11, 0.35);
+        }
+        .sponsor-nav-link:hover {
+            background: rgba(245, 158, 11, 0.28) !important;
+        }
+
+        @media (max-width: 640px) {
+            .site-nav {
+                padding: 8px 14px;
+                border-radius: 12px;
+            }
+            .nav-link {
+                padding: 5px 10px;
+                font-size: 0.78rem;
+            }
+            .container {
+                padding: 16px 12px 60px;
+            }
+            .tool-surface {
+                padding: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Floating Pill Navigation Bar (No Sitemap in top nav) -->
+    <div class="nav-wrapper">
+        <nav class="site-nav">
+            <a href="/" class="nav-brand">
+                <span class="nav-brand-dot"></span>
+                AI Tool Suite
+            </a>
+            <div class="nav-links">
+                <a href="/#ai-utilities" class="nav-link">AI</a>
+                <a href="/#developer-tools" class="nav-link">Developer</a>
+                <a href="/#text-tools" class="nav-link">Text</a>
+                <a href="/#design-tools" class="nav-link">Design</a>
+                <a href="/#seo-tools" class="nav-link">SEO</a>
+                <a href="https://buymeacoffee.com/aitoolsuite" target="_blank" rel="noopener" class="nav-link sponsor-nav-link">☕ Sponsor</a>
+            </div>
+        </nav>
+    </div>
+
+    <div class="container">
+        <!-- Breadcrumb -->
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="/">Home</a>
+            <span>/</span>
+            <a href="/#design-tools">Design Tools</a>
+            <span>/</span>
+            <span style="color: #cbd5e1;">CSS String Layout Visualizer</span>
+        </nav>
+
+        <!-- Header -->
+        <header>
+            <div class="tool-badge">⚡ Design Tools</div>
+            <h1>CSS String Layout Visualizer</h1>
+            <p class="description">Fast browser-based css string layout visualizer with 100% client-side privacy, instant execution, and zero ads.</p>
+        </header>
+
+        <!-- Viral Share & Embed Toolbar -->
+        <div class="tool-action-bar">
+            <button class="btn-action-pill" onclick="copyToolShareUrl(this)">
+                <span>🔗</span> Copy Link
+            </button>
+            <a href="https://twitter.com/intent/tweet" class="btn-action-pill share-twitter-btn" target="_blank" rel="noopener">
+                <span>𝕏</span> Share
+            </a>
+            <a href="https://www.linkedin.com/sharing/share-offsite/" class="btn-action-pill share-linkedin-btn" target="_blank" rel="noopener">
+                <span>in</span> LinkedIn
+            </a>
+            <button class="btn-action-pill" onclick="openEmbedModal()">
+                <span>&lt;/&gt;</span> Embed Tool
+            </button>
+        </div>
+
+        <!-- Tool Widget Surface -->
+        <div class="tool-surface">
+            <style>
+.fb-container {
+    max-width: 800px;
+    margin: 0 auto;
+    font-family: 'Inter', system-ui, sans-serif;
+    color: #e2e8f0;
+}
+.fb-controls {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    gap: 12px;
+    background: #121216;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 16px;
+    border-radius: 12px;
+    margin-bottom: 16px;
+}
+.fb-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+.fb-label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+.fb-select {
+    background: #09090b;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 8px;
+    padding: 8px 10px;
+    color: #fff;
+    font-size: 0.85rem;
+    outline: none;
+    cursor: pointer;
+}
+.fb-select:focus { border-color: #3b82f6; }
+.fb-preview-box {
+    background: #09090b;
+    border: 2px dashed rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    padding: 16px;
+    min-height: 220px;
+    margin-bottom: 16px;
+    display: flex;
+    transition: all 0.2s;
+    overflow: auto;
+}
+.fb-item {
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    color: #fff;
+    font-weight: 800;
+    font-size: 1.1rem;
+    min-width: 60px;
+    min-height: 60px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+    user-select: none;
+}
+.fb-item:nth-child(2) { background: linear-gradient(135deg, #8b5cf6, #6d28d9); }
+.fb-item:nth-child(3) { background: linear-gradient(135deg, #ec4899, #be185d); }
+.fb-item:nth-child(4) { background: linear-gradient(135deg, #f59e0b, #d97706); }
+.fb-item:nth-child(5) { background: linear-gradient(135deg, #10b981, #047857); }
+.fb-item:nth-child(6) { background: linear-gradient(135deg, #06b6d4, #0e7490); }
+.fb-code-box {
+    position: relative;
+    background: #121216;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 16px;
+}
+.fb-code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    color: #38bdf8;
+    white-space: pre-wrap;
+    margin: 0;
+}
+.fb-copy-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: #3b82f6;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 6px 14px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+.fb-copy-btn:hover { background: #2563eb; }
+</style>
+
+<div class="fb-container">
+    <div class="fb-controls">
+        <div class="fb-group">
+            <label class="fb-label">flex-direction</label>
+            <select id="fbDirection" class="fb-select" onchange="updateFlexbox()">
+                <option value="row" selected>row</option>
+                <option value="row-reverse">row-reverse</option>
+                <option value="column">column</option>
+                <option value="column-reverse">column-reverse</option>
+            </select>
+        </div>
+        <div class="fb-group">
+            <label class="fb-label">justify-content</label>
+            <select id="fbJustify" class="fb-select" onchange="updateFlexbox()">
+                <option value="flex-start" selected>flex-start</option>
+                <option value="center">center</option>
+                <option value="flex-end">flex-end</option>
+                <option value="space-between">space-between</option>
+                <option value="space-around">space-around</option>
+                <option value="space-evenly">space-evenly</option>
+            </select>
+        </div>
+        <div class="fb-group">
+            <label class="fb-label">align-items</label>
+            <select id="fbAlign" class="fb-select" onchange="updateFlexbox()">
+                <option value="stretch">stretch</option>
+                <option value="flex-start">flex-start</option>
+                <option value="center" selected>center</option>
+                <option value="flex-end">flex-end</option>
+                <option value="baseline">baseline</option>
+            </select>
+        </div>
+        <div class="fb-group">
+            <label class="fb-label">flex-wrap</label>
+            <select id="fbWrap" class="fb-select" onchange="updateFlexbox()">
+                <option value="nowrap" selected>nowrap</option>
+                <option value="wrap">wrap</option>
+                <option value="wrap-reverse">wrap-reverse</option>
+            </select>
+        </div>
+        <div class="fb-group">
+            <label class="fb-label">gap (<span id="gapVal">16px</span>)</label>
+            <input type="range" id="fbGap" min="0" max="48" value="16" style="accent-color:#3b82f6; cursor:pointer;" oninput="document.getElementById('gapVal').innerText=this.value+'px'; updateFlexbox()">
+        </div>
+        <div class="fb-group" style="justify-content:flex-end;">
+            <div style="display:flex; gap:6px;">
+                <button onclick="changeItemCount(1)" style="flex:1; background:#27272a; border:none; color:#fff; padding:6px; border-radius:6px; font-weight:700; cursor:pointer;">+ Item</button>
+                <button onclick="changeItemCount(-1)" style="flex:1; background:#27272a; border:none; color:#fff; padding:6px; border-radius:6px; font-weight:700; cursor:pointer;">- Item</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="fbPreview" class="fb-preview-box">
+        <div class="fb-item">1</div>
+        <div class="fb-item">2</div>
+        <div class="fb-item">3</div>
+        <div class="fb-item">4</div>
+    </div>
+
+    <div class="fb-code-box">
+        <button class="fb-copy-btn" onclick="copyFlexCss(this)">Copy CSS</button>
+        <pre id="fbCssCode" class="fb-code"></pre>
+    </div>
+</div>
+
+<script>
+let itemCount = 4;
+
+function updateFlexbox() {
+    const dir = document.getElementById('fbDirection').value;
+    const justify = document.getElementById('fbJustify').value;
+    const align = document.getElementById('fbAlign').value;
+    const wrap = document.getElementById('fbWrap').value;
+    const gap = document.getElementById('fbGap').value + 'px';
+
+    const preview = document.getElementById('fbPreview');
+    preview.style.flexDirection = dir;
+    preview.style.justifyContent = justify;
+    preview.style.alignItems = align;
+    preview.style.flexWrap = wrap;
+    preview.style.gap = gap;
+
+    const css = `.container {\n  display: flex;\n  flex-direction: ${dir};\n  justify-content: ${justify};\n  align-items: ${align};\n  flex-wrap: ${wrap};\n  gap: ${gap};\n}`;
+    document.getElementById('fbCssCode').innerText = css;
+}
+
+function changeItemCount(delta) {
+    const newCount = itemCount + delta;
+    if (newCount < 1 || newCount > 10) return;
+    itemCount = newCount;
+    const preview = document.getElementById('fbPreview');
+    preview.innerHTML = '';
+    for (let i = 1; i <= itemCount; i++) {
+        const d = document.createElement('div');
+        d.className = 'fb-item';
+        d.innerText = i;
+        preview.appendChild(d);
+    }
+}
+
+function copyFlexCss(btn) {
+    const code = document.getElementById('fbCssCode').innerText;
+    if (window.copyToClipboard) {
+        window.copyToClipboard(code, btn, 'Copied!');
+    } else {
+        navigator.clipboard.writeText(code).then(() => {
+            btn.innerText = 'Copied!';
+            setTimeout(() => btn.innerText = 'Copy CSS', 1500);
+        });
+    }
+}
+
+document.addEventListener('DOMContentLoaded', updateFlexbox);
+</script>
+
+        </div>
+
+        <!-- Sponsor / Tip Jar Banner -->
+        <div class="sponsor-banner">
+            <div class="sponsor-text">
+                <h3>☕ Fuel Free &amp; Client-Side Tools</h3>
+                <p>AI Tool Suite is 100% free with zero ads and zero data collection. If this tool saved you time today, consider buying a coffee to keep hosting and updates running!</p>
+            </div>
+            <a href="https://buymeacoffee.com/aitoolsuite" target="_blank" rel="noopener" class="sponsor-btn">
+                <span>☕</span> Buy Me a Coffee ($3)
+            </a>
+        </div>
+
+        <!-- Recommended Developer Stack & Free Credits -->
+        <section class="affiliate-section">
+            <h2 class="section-title">⚡ Recommended Developer Stack &amp; Free Credits</h2>
+            <div class="affiliate-grid">
+                <a href="https://m.do.co/c/aitoolsuite" target="_blank" rel="noopener sponsored" class="affiliate-card">
+                    <div class="affiliate-card-header">
+                        <span class="affiliate-title">DigitalOcean Cloud</span>
+                        <span class="affiliate-badge">$200 Free Credit</span>
+                    </div>
+                    <p class="affiliate-desc">Reliable SSD droplets, managed databases, and Kubernetes clusters deployed in seconds.</p>
+                    <span class="affiliate-cta">Claim $200 Free Credit ↗</span>
+                </a>
+                <a href="https://supabase.com/?ref=aitoolsuite" target="_blank" rel="noopener sponsored" class="affiliate-card">
+                    <div class="affiliate-card-header">
+                        <span class="affiliate-title">Supabase Postgres</span>
+                        <span class="affiliate-badge">Free Tier</span>
+                    </div>
+                    <p class="affiliate-desc">The open source Firebase alternative. Dedicated Postgres DB, instant Auth, and REST/GraphQL APIs.</p>
+                    <span class="affiliate-cta">Start Free Project ↗</span>
+                </a>
+                <a href="https://go.nordvpn.net/aff_c?offer_id=15&aff_id=aitoolsuite" target="_blank" rel="noopener sponsored" class="affiliate-card">
+                    <div class="affiliate-card-header">
+                        <span class="affiliate-title">NordVPN Security</span>
+                        <span class="affiliate-badge">74% Off Deal</span>
+                    </div>
+                    <p class="affiliate-desc">Protect your developer workstations, APIs, and DNS queries with fast, encrypted tunnels.</p>
+                    <span class="affiliate-cta">Get 74% Off + Gift ↗</span>
+                </a>
+            </div>
+            <p class="affiliate-disclosure">Affiliate Disclosure: We may earn a commission from partner signups at zero cost to you, which funds our free tools and ad-free hosting.</p>
+        </section>
+
+        <!-- FAQ Section -->
+        
+        <section class="faq-section">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="faq-list">
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">Is this tool free?</h3>
+                    <p class="faq-answer">Yes, completely free with zero limits.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">Does it require an account?</h3>
+                    <p class="faq-answer">No account or login required.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">Is my data secure?</h3>
+                    <p class="faq-answer">All calculations happen in your browser memory.</p>
+                </div>
+                
+            </div>
+        </section>
+        
+
+        <!-- Related Tools -->
+        
+        <section class="related-section">
+            <h2 class="section-title">Explore Related Tools</h2>
+            <div class="related-grid">
+                
+                <a href="/json-formatter.html" class="related-card">
+                    <span>JSON Formatter</span>
+                    <span class="related-arrow">↗</span>
+                </a>
+                
+                <a href="/diff-checker.html" class="related-card">
+                    <span>Diff Checker</span>
+                    <span class="related-arrow">↗</span>
+                </a>
+                
+                <a href="/word-counter.html" class="related-card">
+                    <span>Word Counter</span>
+                    <span class="related-arrow">↗</span>
+                </a>
+                
+            </div>
+        </section>
+        
+
+        <footer>
+            <div class="footer-brand">AI Tool Suite</div>
+            <p>&copy; 2026 AI Tool Suite. Free private developer utilities.</p>
+            <div style="margin-top: 10px; display: flex; justify-content: center; gap: 16px; font-size: 0.85rem;">
+                <a href="/" style="color: #94a3b8; text-decoration: none;">All Tools</a>
+                <a href="/about.html" style="color: #94a3b8; text-decoration: none;">About</a>
+                <a href="/contact.html" style="color: #94a3b8; text-decoration: none;">Contact</a>
+                <a href="/privacy.html" style="color: #94a3b8; text-decoration: none;">Privacy Policy</a>
+                <a href="/terms.html" style="color: #94a3b8; text-decoration: none;">Terms of Service</a>
+            </div>
+        </footer>
+    </div>
+
+    <!-- GoatCounter Analytics & Admin Ignore Filter -->
+    <script>
+        if (window.location.search.includes('admin=true') || window.location.search.includes('ignore=true')) {
+            localStorage.setItem('skip_analytics', 'true');
+            alert('✅ Admin Mode Activated: Your browser is now permanently excluded from GoatCounter analytics.');
+        }
+        if (localStorage.getItem('skip_analytics') === 'true' || location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
+            window.goatcounter = { no_onload: true };
+        }
+    </script>
+    <script data-goatcounter="https://aitoolsuite.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+    <script>
+        function trackToolAction(actionName) {
+            if (window.goatcounter && window.goatcounter.count) {
+                window.goatcounter.count({
+                    path: 'use-' + actionName,
+                    title: 'Tool Action: ' + actionName,
+                    event: true
+                });
+            }
+        }
+
+        // Automatically track tool button clicks and copy events
+        document.addEventListener('DOMContentLoaded', () => {
+            const surface = document.querySelector('.tool-surface');
+            if (surface) {
+                surface.addEventListener('click', (e) => {
+                    const btn = e.target.closest('button');
+                    if (btn) {
+                        const btnText = btn.textContent.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-');
+                        const toolSlug = window.location.pathname.replace(/^\//, '').replace('.html', '') || 'tool';
+                        trackToolAction(toolSlug + '--' + btnText);
+                    }
+                });
+            }
+
+            // Populate viral share buttons dynamically
+            const curUrl = window.location.href;
+            const toolHeading = document.querySelector('h1') ? document.querySelector('h1').innerText : 'Developer Utility';
+            
+            const twBtn = document.querySelector('.share-twitter-btn');
+            if (twBtn) {
+                twBtn.href = `https://twitter.com/intent/tweet?text=${encodeURIComponent('Check out this fast, free developer tool: ' + toolHeading)}&url=${encodeURIComponent(curUrl)}`;
+            }
+            const liBtn = document.querySelector('.share-linkedin-btn');
+            if (liBtn) {
+                liBtn.href = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(curUrl)}`;
+            }
+
+            const embedSnippet = `<iframe src="${curUrl}" width="100%" height="650" frameborder="0" style="border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; max-width: 900px; width: 100%;"></iframe>\n<p style="font-size: 12px; color: #64748b;">Tool powered by <a href="${curUrl}" target="_blank" rel="noopener">AI Tool Suite</a></p>`;
+            const embedArea = document.getElementById('embedSnippetText');
+            if (embedArea) embedArea.value = embedSnippet;
+        });
+
+        // Global unified copy helper for widgets and tool surfaces
+        window.copyToClipboard = function(text, btnElement, successMsg = 'Copied!') {
+            navigator.clipboard.writeText(text).then(() => {
+                if (!btnElement) return;
+                const orig = btnElement.innerText;
+                btnElement.innerText = successMsg;
+                btnElement.classList.add('copied');
+                setTimeout(() => {
+                    btnElement.innerText = orig;
+                    btnElement.classList.remove('copied');
+                }, 1800);
+            });
+        };
+
+        function copyToolShareUrl(btn) {
+            navigator.clipboard.writeText(window.location.href).then(() => {
+                const orig = btn.innerHTML;
+                btn.innerHTML = '<span>✅</span> Link Copied!';
+                btn.classList.add('copied');
+                setTimeout(() => {
+                    btn.innerHTML = orig;
+                    btn.classList.remove('copied');
+                }, 2000);
+            });
+        }
+
+        function openEmbedModal() {
+            const m = document.getElementById('embedModal');
+            if (m) m.style.display = 'flex';
+        }
+
+        function closeEmbedModal() {
+            const m = document.getElementById('embedModal');
+            if (m) m.style.display = 'none';
+        }
+
+        function copyEmbedSnippet(btn) {
+            const snippet = document.getElementById('embedSnippetText').value;
+            navigator.clipboard.writeText(snippet).then(() => {
+                const orig = btn.innerText;
+                btn.innerText = 'Copied to Clipboard!';
+                setTimeout(() => btn.innerText = orig, 2000);
+            });
+        }
+    </script>
+
+    <!-- Embed Modal Dialog -->
+    <div id="embedModal" class="embed-modal-overlay" onclick="if(event.target === this) closeEmbedModal()">
+        <div class="embed-modal-box">
+            <div class="embed-modal-header">
+                <h3>Embed this Tool on Your Site</h3>
+                <button class="embed-close-btn" onclick="closeEmbedModal()">&times;</button>
+            </div>
+            <p style="font-size: 0.85rem; color: #94a3b8; margin-bottom: 12px; line-height: 1.5;">
+                Copy and paste this snippet into your blog, documentation, or tech site to embed this interactive utility:
+            </p>
+            <textarea id="embedSnippetText" class="embed-code-textarea" readonly></textarea>
+            <div style="display: flex; justify-content: flex-end; gap: 10px;">
+                <button class="btn-action-pill" onclick="closeEmbedModal()">Close</button>
+                <button class="btn-action-pill" style="background: #3b82f6; color: #fff; border-color: #3b82f6;" onclick="copyEmbedSnippet(this)">
+                    Copy Embed Code
+                </button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
