@@ -1,17 +1,17 @@
 [
   {
-    "keyword": "string css grid",
-    "tool_name": "CSS String Layout Visualizer",
-    "description": "Fast browser-based css string layout visualizer with 100% client-side privacy, instant execution, and zero ads.",
+    "keyword": "string color hex",
+    "tool_name": "Hex String Palette Transformer",
+    "description": "Fast browser-based hex string palette transformer with 100% client-side privacy, instant execution, and zero ads.",
     "category": "Design Tools",
-    "tool_type": "css-flexbox",
+    "tool_type": "color-shades",
     "search_demand": 85,
     "faq_items": "Is this tool free?:::Yes, completely free with zero limits.|||Does it require an account?:::No account or login required.|||Is my data secure?:::All calculations happen in your browser memory.",
     "related_tools": "JSON Formatter,Diff Checker,Word Counter",
     "status": "published",
     "priority_score": 85,
-    "discovered_at": "2026-09-24T23:41:17.197157",
-    "published_at": "2026-09-24T23:41:17.206791"
+    "discovered_at": "2026-09-25T14:18:49.727840",
+    "published_at": "2026-09-25T14:18:49.738756"
   },
   {
     "keyword": "json to rust struct",
@@ -56,6 +56,20 @@
     "tool_type": "markdown-to-html",
     "status": "pending",
     "priority": 7
+  },
+  {
+    "keyword": "string css grid",
+    "tool_name": "CSS String Layout Visualizer",
+    "description": "Fast browser-based css string layout visualizer with 100% client-side privacy, instant execution, and zero ads.",
+    "category": "Design Tools",
+    "tool_type": "css-flexbox",
+    "search_demand": 85,
+    "faq_items": "Is this tool free?:::Yes, completely free with zero limits.|||Does it require an account?:::No account or login required.|||Is my data secure?:::All calculations happen in your browser memory.",
+    "related_tools": "JSON Formatter,Diff Checker,Word Counter",
+    "status": "published",
+    "priority_score": 85,
+    "discovered_at": "2026-09-24T23:41:17.197157",
+    "published_at": "2026-09-24T23:41:17.206791"
   },
   {
     "keyword": "string text lines",
