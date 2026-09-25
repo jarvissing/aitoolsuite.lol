@@ -1,8 +1,8 @@
 ============================================================
-  QA REPORT — 2026-09-25 14:18:49
+  QA REPORT — 2026-09-25 23:42:01
 ============================================================
 
-Found 93 tool pages to check.
+Found 94 tool pages to check.
 
 ✅ ai-prompt-cost-calculator — 12/12 checks passed
 ✅ ai-prompt-token-estimator — 12/12 checks passed
@@ -80,6 +80,7 @@ Found 93 tool pages to check.
 ✅ string-color-hex — 12/12 checks passed
 ✅ string-css-grid — 12/12 checks passed
 ✅ string-diff-data — 12/12 checks passed
+✅ string-json-schema — 12/12 checks passed
 ✅ string-repeater-tool — 12/12 checks passed
 ✅ string-text-lines — 12/12 checks passed
 ✅ strong-password-generator — 12/12 checks passed
@@ -100,9 +101,9 @@ Found 93 tool pages to check.
 
 ————————————————————————————————————————
 HOMEPAGE CHECK:
-✅ 93/93 tools listed on homepage
+✅ 94/94 tools listed on homepage
 
 ============================================================
-SUMMARY: 93 passed, 0 failed out of 93 pages
+SUMMARY: 94 passed, 0 failed out of 94 pages
 🎉 ALL PAGES PASS QA!
 ============================================================
