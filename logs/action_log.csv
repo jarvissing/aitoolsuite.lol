@@ -51,3 +51,4 @@ timestamp,action_type,tool_name,keyword,url,status,details
 2026-09-25T23:42:01.117630,PUBLISH,Strict String Schema Validator,string json schema,https://aitoolsuite.lol/string-json-schema.html,SUCCESS,Published Strict String Schema Validator
 2026-09-26T13:29:05.681008,PUBLISH,Raw String Plain Text Stripper,string text strip,https://aitoolsuite.lol/string-text-strip.html,SUCCESS,Published Raw String Plain Text Stripper
 2026-09-26T23:14:51.604615,PUBLISH,Multi Base String Radix Calculator,string binary base,https://aitoolsuite.lol/string-binary-base.html,SUCCESS,Published Multi Base String Radix Calculator
+2026-09-27T14:24:45.074699,PUBLISH,Base64 Safe Manifest Encoder,manifest base64 encoder,https://aitoolsuite.lol/manifest-base64-encoder.html,SUCCESS,Published Base64 Safe Manifest Encoder
