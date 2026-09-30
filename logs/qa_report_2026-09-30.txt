@@ -1,8 +1,8 @@
 ============================================================
-  QA REPORT — 2026-09-30 00:00:02
+  QA REPORT — 2026-09-30 15:28:38
 ============================================================
 
-Found 102 tool pages to check.
+Found 103 tool pages to check.
 
 ✅ ai-prompt-cost-calculator — 12/12 checks passed
 ✅ ai-prompt-token-estimator — 12/12 checks passed
@@ -62,6 +62,7 @@ Found 102 tool pages to check.
 ✅ manifest-diff-data — 12/12 checks passed
 ✅ manifest-json-schema — 12/12 checks passed
 ✅ manifest-text-lines — 12/12 checks passed
+✅ manifest-text-strip — 12/12 checks passed
 ✅ markdown-previewer — 12/12 checks passed
 ✅ markdown-table-to-json — 12/12 checks passed
 ✅ og-meta-tag-generator — 12/12 checks passed
@@ -109,9 +110,9 @@ Found 102 tool pages to check.
 
 ————————————————————————————————————————
 HOMEPAGE CHECK:
-✅ 102/102 tools listed on homepage
+✅ 103/103 tools listed on homepage
 
 ============================================================
-SUMMARY: 102 passed, 0 failed out of 102 pages
+SUMMARY: 103 passed, 0 failed out of 103 pages
 🎉 ALL PAGES PASS QA!
 ============================================================
