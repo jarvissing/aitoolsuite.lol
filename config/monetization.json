@@ -1,9 +1,6 @@
 {
   "sponsor": {
-    "enabled": true,
-    "label": "Buy Me a Coffee",
-    "url": "https://buymeacoffee.com/aitoolsuite",
-    "message": "AI Tool Suite is 100% free and runs entirely in your browser with zero ads. If this tool saved you time, consider fueling further development!"
+    "enabled": false
   },
   "affiliates": [
     {
