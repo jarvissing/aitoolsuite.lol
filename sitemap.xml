@@ -103,6 +103,12 @@
         <priority>0.8</priority>
     </url>
     <url>
+        <loc>https://aitoolsuite.lol/config-base64-encoder.html</loc>
+        <lastmod>2026-10-01</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
         <loc>https://aitoolsuite.lol/contact.html</loc>
         <lastmod>2026-10-01</lastmod>
         <changefreq>weekly</changefreq>
