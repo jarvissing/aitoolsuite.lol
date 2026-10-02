@@ -29,8 +29,14 @@ def build_tool_page(keyword: str, tool_name: str, description: str, category: st
     except Exception as e:
         # Fallback if template doesn't exist yet
         return f"Error loading template: {str(e)}. Ensure templates/tool_page_template.html exists."
-        
-    meta_title = f"{tool_name} - Free Online {category} Tool | {SITE_NAME}"
+    if len(tool_name) <= 24:
+        meta_title = f"{tool_name} – Fast, Free & Online | {SITE_NAME}"
+    elif len(tool_name) <= 36:
+        meta_title = f"{tool_name} – Free Online Tool | {SITE_NAME}"
+    elif len(tool_name) <= 44:
+        meta_title = f"{tool_name} – Free & Online | {SITE_NAME}"
+    else:
+        meta_title = f"{tool_name} | {SITE_NAME}"
     page_slug = slug
     page_url = f"{SITE_URL}/{slug}.html"
     category_slug = category.lower().replace(" ", "-").replace("&", "and")
