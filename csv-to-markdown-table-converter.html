@@ -108,16 +108,21 @@
 
     <style>
 :root {
-            --void:           #0a0a0c;    /* page background */
-            --surface:        #141418;    /* card/elevated surfaces */
-            --surface-hover:  #1a1a20;    /* card hover state */
-            --rule:           #232328;    /* borders, dividers */
-            --text-primary:   #e8e8ec;    /* headings, primary text */
-            --text-secondary: #7a7a86;    /* descriptions, meta */
-            --text-tertiary:  #4a4a54;    /* footer, fine print */
-            --signal:         #e2a53a;    /* THE accent — warm amber/gold */
-            --signal-dim:     rgba(226, 165, 58, 0.12);  /* amber background tints */
-            --signal-border:  rgba(226, 165, 58, 0.3);   /* amber border highlights */
+            --void:           #08080a;    /* deep dark page background */
+            --surface:        #111116;    /* card/elevated surfaces */
+            --surface-hover:  #17171e;    /* card hover state */
+            --surface-accent: #1e1e28;    /* highlight container */
+            --rule:           #22222a;    /* borders, dividers */
+            --rule-bright:    #32323e;    /* active border */
+            --text-primary:   #f0f0f4;    /* headings, primary text */
+            --text-secondary: #8c8c9a;    /* descriptions, meta */
+            --text-tertiary:  #525260;    /* footer, fine print */
+            --signal:         #e2a53a;    /* warm amber accent */
+            --signal-glow:    rgba(226, 165, 58, 0.25);
+            --signal-dim:     rgba(226, 165, 58, 0.12);
+            --signal-border:  rgba(226, 165, 58, 0.4);
+            --emerald-accent: #34d399;
+            --cyan-accent:    #38bdf8;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -126,7 +131,13 @@
             font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
             line-height: 1.6;
             color: var(--text-primary);
-            background: var(--void);
+            background-color: var(--void);
+            background-image: 
+                radial-gradient(circle at 50% -10%, rgba(226, 165, 58, 0.14) 0%, transparent 65%),
+                radial-gradient(circle at 80% 30%, rgba(56, 189, 248, 0.05) 0%, transparent 40%),
+                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 32px 32px, 32px 32px;
             min-height: 100vh;
             overflow-x: hidden;
         }
@@ -142,15 +153,36 @@
         .site-nav {
             max-width: 900px;
             margin: 0 auto;
-            background: rgba(20, 20, 24, 0.9);
+            background: rgba(17, 17, 22, 0.92);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             border: 1px solid var(--rule);
             border-radius: 8px;
-            padding: 8px 20px;
+            padding: 10px 22px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+        }
+        .nav-brand-wrap {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+        .nav-logo-badge {
+            width: 24px;
+            height: 24px;
+            background: var(--signal-dim);
+            border: 1px solid var(--signal-border);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--signal);
+            font-family: 'IBM Plex Mono', monospace;
+            font-weight: 700;
+            font-size: 12px;
         }
         .nav-brand {
             font-family: 'Space Grotesk', sans-serif;
@@ -356,13 +388,66 @@
             margin-bottom: 14px;
         }
 
-        /* Tool Interactive Surface */
+        /* Workbench HUD Bar & Tool Interactive Surface */
+        .workbench-hud-bar {
+            background: #0d0d12;
+            border: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            border-radius: 8px 8px 0 0;
+            padding: 10px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.76rem;
+            color: var(--text-secondary);
+        }
+        .workbench-hud-dots {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+        .dot.red { background: #ef4444; }
+        .dot.yellow { background: #f59e0b; }
+        .dot.green { background: #10b981; }
+        .workbench-hud-title {
+            color: var(--text-secondary);
+            margin-left: 6px;
+        }
+        .workbench-hud-status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--emerald-accent);
+            font-size: 0.72rem;
+        }
+        .pulse-dot {
+            width: 7px;
+            height: 7px;
+            background-color: var(--emerald-accent);
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 8px var(--emerald-accent);
+            animation: pulse-glow 2s infinite;
+        }
+        @keyframes pulse-glow {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(0.85); }
+        }
         .tool-surface {
             background: var(--surface);
             border: 1px solid var(--rule);
-            border-radius: 8px;
+            border-top: none;
+            border-radius: 0 0 8px 8px;
             padding: clamp(16px, 4vw, 24px);
             margin-bottom: 40px;
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(226, 165, 58, 0.04);
         }
 
         /* Sections */
@@ -543,10 +628,13 @@
 </head>
 <body>
 
-        <!-- Slim Angular Navbar -->
+            <!-- Slim Angular Navbar -->
     <div class="nav-wrapper">
         <nav class="site-nav">
-            <a href="/" class="nav-brand">aitoolsuite</a>
+            <a href="/" class="nav-brand-wrap">
+                <span class="nav-logo-badge">⚡</span>
+                <span class="nav-brand">aitoolsuite</span>
+            </a>
             <div class="nav-links">
                 <a href="/#ai-utilities" class="nav-link">AI</a>
                 <a href="/#developer-tools" class="nav-link">Developer</a>
@@ -554,6 +642,7 @@
                 <a href="/#design-tools" class="nav-link">Design</a>
                 <a href="/#seo-tools" class="nav-link">SEO</a>
             </div>
+            <a href="/#quicklab" class="nav-cta-btn" style="background:var(--signal-dim);border:1px solid var(--signal-border);color:var(--signal);font-family:'IBM Plex Mono',monospace;font-size:0.75rem;font-weight:600;padding:6px 12px;border-radius:4px;text-decoration:none;transition:all 0.2s ease;">QuickLab</a>
         </nav>
     </div>
 
@@ -685,7 +774,7 @@ convertCsvToMd();
 
         </div>
 
-                <!-- Recommended Developer Stack & Free Credits -->
+                        <!-- Recommended Developer Stack & Free Credits -->
         <section class="affiliate-section">
             <h2 class="section-title">Recommended developer stack</h2>
             <div class="affiliate-grid">
@@ -762,9 +851,9 @@ convertCsvToMd();
         </section>
         
 
-                <footer>
+                        <footer>
             <div class="footer-brand">aitoolsuite</div>
-            <p>Free. Private. Open.</p>
+            <p>Free. Private. Open Source.</p>
             <div style="margin-top: 10px; display: flex; justify-content: center; gap: 16px; font-size: 0.85rem;">
                 <a href="/">All Tools</a>
                 <a href="/about.html">About</a>

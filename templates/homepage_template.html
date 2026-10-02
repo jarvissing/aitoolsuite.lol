@@ -3,34 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ site_name }} — Free Online Developer &amp; AI Utilities</title>
-    <meta name="description" content="Lightning-fast online tools for developers, designers, and AI creators. Free Markdown editor, JSON formatter, prompt token counter, and {{ total_tools }}+ utilities.">
+    <title>{{ site_name }} — Interactive Developer &amp; AI Utilities Workbench</title>
+    <meta name="description" content="Lightning-fast online workbench for developers, designers, and AI creators. Test-drive utilities in our in-browser QuickLab sandbox, format JSON, debug JWTs, and explore {{ total_tools }}+ free tools.">
     <meta name="robots" content="index, follow">
-    <meta property="og:title" content="{{ site_name }} — Free Online Developer &amp; AI Utilities">
-    <meta property="og:description" content="Modern, private developer &amp; AI utilities with zero ads and instant client-side execution.">
+    <meta property="og:title" content="{{ site_name }} — Interactive Developer &amp; AI Utilities Workbench">
+    <meta property="og:description" content="High-performance, private developer utilities with zero ads, interactive QuickLab sandbox, and instant client-side execution.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ site_url }}/">
     <link rel="canonical" href="{{ site_url }}/">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='16' fill='%23141418'/%3E%3Cpath d='M56 12 L24 54 L48 54 L44 88 L76 46 L52 46 Z' fill='%23e2a53a' stroke='%23e2a53a' stroke-width='2'/%3E%3C/svg%3E">
     <link rel="alternate icon" href="/favicon.svg">
     
-    <!-- Typography: Space Grotesk (Headings) + IBM Plex Sans (Body) + IBM Plex Mono (Mono) -->
+    <!-- Typography: Space Grotesk (Headings/Brand) + IBM Plex Sans (Body) + IBM Plex Mono (Code/HUD) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --void:           #0a0a0c;    /* page background */
-            --surface:        #141418;    /* card/elevated surfaces */
-            --surface-hover:  #1a1a20;    /* card hover state */
-            --rule:           #232328;    /* borders, dividers */
-            --text-primary:   #e8e8ec;    /* headings, primary text */
-            --text-secondary: #7a7a86;    /* descriptions, meta */
-            --text-tertiary:  #4a4a54;    /* footer, fine print */
-            --signal:         #e2a53a;    /* THE accent — warm amber/gold */
-            --signal-dim:     rgba(226, 165, 58, 0.12);  /* amber background tints */
-            --signal-border:  rgba(226, 165, 58, 0.3);   /* amber border highlights */
+            --void:           #08080a;    /* deep dark page background */
+            --surface:        #111116;    /* elevated card surface */
+            --surface-hover:  #17171e;    /* card hover state */
+            --surface-accent: #1e1e28;    /* highlight container */
+            --rule:           #22222a;    /* crisp borders & dividers */
+            --rule-bright:    #32323e;    /* active border */
+            --text-primary:   #f0f0f4;    /* headings, primary text */
+            --text-secondary: #8c8c9a;    /* descriptions, meta */
+            --text-tertiary:  #525260;    /* footer, fine print */
+            --signal:         #e2a53a;    /* warm amber accent */
+            --signal-glow:    rgba(226, 165, 58, 0.25);
+            --signal-dim:     rgba(226, 165, 58, 0.12);
+            --signal-border:  rgba(226, 165, 58, 0.4);
+            --cyan-accent:    #38bdf8;
+            --emerald-accent: #34d399;
+            --violet-accent:  #a78bfa;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -39,12 +45,18 @@
             font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
             line-height: 1.6;
             color: var(--text-primary);
-            background: var(--void);
+            background-color: var(--void);
+            background-image: 
+                radial-gradient(circle at 50% -10%, rgba(226, 165, 58, 0.14) 0%, transparent 65%),
+                radial-gradient(circle at 80% 30%, rgba(56, 189, 248, 0.05) 0%, transparent 40%),
+                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 32px 32px, 32px 32px;
             min-height: 100vh;
             overflow-x: hidden;
         }
 
-        /* Slim Angular Navbar */
+        /* Slim Angular Tech Navbar */
         .nav-wrapper {
             position: sticky;
             top: 14px;
@@ -53,17 +65,38 @@
             width: 100%;
         }
         .site-nav {
-            max-width: 980px;
+            max-width: 1040px;
             margin: 0 auto;
-            background: rgba(20, 20, 24, 0.9);
+            background: rgba(17, 17, 22, 0.92);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             border: 1px solid var(--rule);
             border-radius: 8px;
-            padding: 8px 20px;
+            padding: 10px 22px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+        }
+        .nav-brand-wrap {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+        .nav-logo-badge {
+            width: 24px;
+            height: 24px;
+            background: var(--signal-dim);
+            border: 1px solid var(--signal-border);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--signal);
+            font-family: 'IBM Plex Mono', monospace;
+            font-weight: 700;
+            font-size: 12px;
         }
         .nav-brand {
             font-family: 'Space Grotesk', sans-serif;
@@ -72,10 +105,6 @@
             color: var(--text-primary);
             text-decoration: none;
             letter-spacing: -0.02em;
-            flex-shrink: 0;
-        }
-        .nav-brand:hover {
-            color: #ffffff;
         }
         .nav-links {
             display: flex;
@@ -83,11 +112,9 @@
             align-items: center;
             overflow-x: auto;
             scrollbar-width: none;
-            -ms-overflow-style: none;
         }
         .nav-links::-webkit-scrollbar { display: none; }
         .nav-link {
-            font-family: 'IBM Plex Sans', sans-serif;
             font-size: 0.85rem;
             font-weight: 500;
             color: var(--text-secondary);
@@ -114,56 +141,294 @@
         .nav-link:hover::after {
             transform: scaleX(1);
         }
+        .nav-cta-btn {
+            background: var(--signal-dim);
+            border: 1px solid var(--signal-border);
+            color: var(--signal);
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 6px 12px;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+        .nav-cta-btn:hover {
+            background: var(--signal);
+            color: #000;
+            border-color: var(--signal);
+        }
 
         .container {
-            max-width: 980px;
+            max-width: 1040px;
             margin: 0 auto;
             padding: 24px 16px 80px;
         }
-        
+
         /* Hero Section */
         header {
             text-align: center;
-            padding: clamp(36px, 8vw, 64px) 12px clamp(28px, 6vw, 40px);
+            padding: clamp(32px, 6vw, 56px) 12px clamp(24px, 4vw, 36px);
         }
+        .lab-status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(226, 165, 58, 0.08);
+            border: 1px solid var(--signal-border);
+            padding: 4px 12px;
+            border-radius: 100px;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--signal);
+            margin-bottom: 20px;
+        }
+        .pulse-dot {
+            width: 7px;
+            height: 7px;
+            background-color: var(--emerald-accent);
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 8px var(--emerald-accent);
+            animation: pulse-glow 2s infinite;
+        }
+        @keyframes pulse-glow {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(0.85); }
+        }
+
         header h1 {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: clamp(2.2rem, 5.5vw, 3.4rem);
+            font-size: clamp(2.3rem, 5vw, 3.6rem);
             font-weight: 700;
-            line-height: 1.15;
+            line-height: 1.12;
             letter-spacing: -0.03em;
             color: var(--text-primary);
-            margin-bottom: 12px;
+            margin-bottom: 14px;
         }
-        header p {
-            font-size: clamp(1rem, 2.2vw, 1.15rem);
+        header p.hero-subhead {
+            font-size: clamp(1rem, 2vw, 1.15rem);
             color: var(--text-secondary);
-            max-width: 540px;
-            margin: 0 auto;
+            max-width: 620px;
+            margin: 0 auto 32px;
+            line-height: 1.55;
+        }
+
+        /* LIVE QUICKLAB SANDBOX */
+        .quicklab-container {
+            max-width: 860px;
+            margin: 0 auto 40px;
+            background: var(--surface);
+            border: 1px solid var(--rule);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7), 0 0 30px rgba(226, 165, 58, 0.05);
+            text-align: left;
+            transition: border-color 0.25s ease;
+        }
+        .quicklab-container:hover {
+            border-color: var(--rule-bright);
+        }
+        .quicklab-header {
+            background: #0d0d12;
+            border-bottom: 1px solid var(--rule);
+            padding: 10px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .quicklab-controls {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+        .dot.red { background: #ef4444; }
+        .dot.yellow { background: #f59e0b; }
+        .dot.green { background: #10b981; }
+        .quicklab-title {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.78rem;
+            color: var(--text-secondary);
+            margin-left: 6px;
+        }
+        .quicklab-tabs {
+            display: flex;
+            gap: 4px;
+            background: #14141a;
+            padding: 3px;
+            border-radius: 6px;
+            border: 1px solid var(--rule);
+        }
+        .quicklab-tab {
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 500;
+            padding: 5px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .quicklab-tab:hover {
+            color: var(--text-primary);
+        }
+        .quicklab-tab.active {
+            background: var(--surface-accent);
+            color: var(--signal);
+            font-weight: 600;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+        }
+
+        .quicklab-body {
+            padding: 16px;
+        }
+        .quicklab-io {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin-bottom: 14px;
+        }
+        @media (max-width: 720px) {
+            .quicklab-io { grid-template-columns: 1fr; }
+        }
+        .quicklab-pane {
+            display: flex;
+            flex-direction: column;
+            background: var(--void);
+            border: 1px solid var(--rule);
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .quicklab-pane-header {
+            background: #0d0d12;
+            padding: 6px 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--rule);
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.05em;
+        }
+        .quicklab-btn-sm {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--rule);
+            color: var(--text-secondary);
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-size: 0.7rem;
+            padding: 2px 8px;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .quicklab-btn-sm:hover {
+            color: var(--text-primary);
+            border-color: var(--rule-bright);
+        }
+        .quicklab-pane textarea {
+            width: 100%;
+            height: 140px;
+            background: transparent;
+            border: none;
+            color: var(--text-primary);
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.8rem;
             line-height: 1.5;
+            padding: 12px;
+            resize: none;
+            outline: none;
+        }
+        .quicklab-code-output {
+            width: 100%;
+            height: 140px;
+            background: transparent;
+            color: #38bdf8;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.8rem;
+            line-height: 1.5;
+            padding: 12px;
+            overflow: auto;
+            white-space: pre-wrap;
+            word-break: break-all;
         }
 
-        /* Hero Entry Animation */
-        @keyframes hero-enter {
-            from { opacity: 0; transform: translateY(12px); }
-            to { opacity: 1; transform: translateY(0); }
+        .quicklab-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            padding-top: 6px;
         }
-        header h1, header p, .search-box-wrapper {
-            animation: hero-enter 0.6s ease-out both;
+        .quicklab-actions {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
         }
-        header p { animation-delay: 0.1s; }
-        .search-box-wrapper { animation-delay: 0.2s; }
+        .quicklab-action-btn {
+            background: var(--surface-accent);
+            border: 1px solid var(--rule-bright);
+            color: var(--text-primary);
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 500;
+            padding: 6px 14px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .quicklab-action-btn:hover {
+            background: var(--signal-dim);
+            border-color: var(--signal-border);
+            color: var(--signal);
+        }
+        .quicklab-action-btn.primary {
+            background: var(--signal);
+            color: #000;
+            font-weight: 600;
+            border-color: var(--signal);
+        }
+        .quicklab-action-btn.primary:hover {
+            background: #f0be63;
+        }
+        .quicklab-status-wrap {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.78rem;
+        }
+        .quicklab-perf {
+            font-family: 'IBM Plex Mono', monospace;
+            color: var(--emerald-accent);
+            font-size: 0.74rem;
+        }
+        .quicklab-link {
+            color: var(--signal);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+        .quicklab-link:hover {
+            color: #f0be63;
+            text-decoration: underline;
+        }
 
-        @media (prefers-reduced-motion: reduce) {
-            header h1, header p, .search-box-wrapper {
-                animation: none;
-            }
-        }
-
-        /* Search Bar */
+        /* COMMAND SEARCH BAR */
         .search-box-wrapper {
-            max-width: 580px;
-            margin: 32px auto 0;
+            max-width: 680px;
+            margin: 0 auto 20px;
             width: 100%;
         }
         .search-box {
@@ -171,18 +436,19 @@
             display: flex;
             align-items: center;
             background: var(--surface);
-            border: 1px solid var(--rule);
-            border-radius: 6px;
-            padding: 8px 16px;
+            border: 1px solid var(--rule-bright);
+            border-radius: 8px;
+            padding: 10px 18px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
             transition: border-color 0.2s ease, box-shadow 0.2s ease;
         }
         .search-box:focus-within {
             border-color: var(--signal);
-            box-shadow: 0 0 0 1px var(--signal-border);
+            box-shadow: 0 0 0 1px var(--signal), 0 8px 30px var(--signal-glow);
         }
         .search-icon {
-            margin-right: 12px;
-            color: var(--text-secondary);
+            margin-right: 14px;
+            color: var(--signal);
             flex-shrink: 0;
         }
         .search-box input {
@@ -192,35 +458,290 @@
             outline: none;
             color: var(--text-primary);
             font-family: 'IBM Plex Sans', sans-serif;
-            font-size: 0.95rem;
-            padding: 6px 0;
+            font-size: 1rem;
+            padding: 4px 0;
         }
         .search-box input::placeholder {
             color: var(--text-secondary);
+            font-size: 0.92rem;
         }
         .search-shortcut {
-            background: rgba(255, 255, 255, 0.04);
+            background: rgba(255, 255, 255, 0.05);
             border: 1px solid var(--rule);
             color: var(--text-secondary);
-            padding: 2px 7px;
+            padding: 2px 8px;
             border-radius: 4px;
-            font-size: 0.72rem;
-            font-weight: 500;
+            font-size: 0.75rem;
+            font-weight: 600;
             font-family: 'IBM Plex Mono', monospace;
         }
+        .search-results-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 680px;
+            margin: 10px auto 0;
+            padding: 6px 14px;
+            background: rgba(226, 165, 58, 0.08);
+            border: 1px solid var(--signal-border);
+            border-radius: 6px;
+            font-size: 0.8rem;
+            color: var(--signal);
+        }
+        .clear-search-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-primary);
+            cursor: pointer;
+            text-decoration: underline;
+            font-size: 0.78rem;
+        }
 
-        /* Recommended Developer Stack / Affiliates */
-        .affiliate-section {
+        /* CATEGORY FILTER PILLS */
+        .category-pills-bar {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin: 20px auto 40px;
+            max-width: 860px;
+        }
+        .cat-pill {
+            background: var(--surface);
+            border: 1px solid var(--rule);
+            color: var(--text-secondary);
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-size: 0.82rem;
+            font-weight: 500;
+            padding: 6px 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .cat-pill:hover {
+            color: var(--text-primary);
+            border-color: var(--rule-bright);
+            background: var(--surface-hover);
+        }
+        .cat-pill.active {
+            background: var(--signal-dim);
+            border-color: var(--signal);
+            color: var(--signal);
+            font-weight: 600;
+        }
+        .pill-cnt {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.7rem;
+            opacity: 0.75;
+        }
+
+        /* ESSENTIAL SPOTLIGHT SHELF */
+        .spotlight-section {
+            margin-bottom: 48px;
+            text-align: left;
+        }
+        .spotlight-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 14px;
+        }
+        .spotlight-heading {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            letter-spacing: -0.01em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .spotlight-heading::before {
+            content: '⚡';
+            font-size: 0.95rem;
+        }
+        .spotlight-hint {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+        .spotlight-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 14px;
+        }
+        .spotlight-card {
+            background: var(--surface);
+            border: 1px solid var(--rule);
+            border-top: 2px solid var(--signal);
+            border-radius: 8px;
+            padding: 18px;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.25s ease;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+        }
+        .spotlight-card:hover {
+            transform: translateY(-2px);
+            background: var(--surface-hover);
+            border-color: var(--signal-border);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), 0 0 15px rgba(226, 165, 58, 0.1);
+        }
+        .spotlight-title-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 6px;
+        }
+        .spotlight-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.98rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+        .spotlight-desc {
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            line-height: 1.45;
+            margin-bottom: 12px;
+        }
+        .spotlight-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.72rem;
+            color: var(--signal);
+        }
+
+        /* Empty Search Results Notice */
+        #noResults {
+            display: none;
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-secondary);
+        }
+        #noResults h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.25rem;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        /* CATEGORY SECTIONS */
+        .category-section {
             margin-top: 48px;
+            text-align: left;
+        }
+        .category-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 16px;
+            border-bottom: 1px solid var(--rule);
+            padding-bottom: 8px;
+        }
+        .category-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(1.2rem, 3vw, 1.35rem);
+            font-weight: 700;
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
+        }
+        .category-count {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+
+        /* TOOL CARDS GRID */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+            gap: 14px;
+        }
+        .tool-card {
+            background: var(--surface);
+            border: 1px solid var(--rule);
+            border-left: 2px solid transparent;
+            border-radius: 8px;
+            padding: 18px 20px;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+        }
+        .tool-card:hover {
+            border-left-color: var(--signal);
+            border-color: var(--rule-bright);
+            background: var(--surface-hover);
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4);
+        }
+        .tool-card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+        }
+        .tool-cat-tag {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.65rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.05em;
+        }
+        .tool-card:hover .tool-cat-tag {
+            color: var(--signal);
+        }
+        .tool-card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.02rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 6px;
+            letter-spacing: -0.01em;
+        }
+        .tool-card p {
+            font-size: 0.84rem;
+            color: var(--text-secondary);
+            line-height: 1.48;
+            margin-bottom: 12px;
+        }
+        .tool-card-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 8px;
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--text-tertiary);
+        }
+        .tool-card:hover .tool-card-bottom {
+            color: var(--signal);
+        }
+
+        /* RECOMMENDED DEVELOPER STACK */
+        .affiliate-section {
+            margin-top: 64px;
             margin-bottom: 24px;
             text-align: left;
         }
         .affiliate-header {
-            margin-bottom: 12px;
+            margin-bottom: 14px;
         }
         .affiliate-heading {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.05rem;
+            font-size: 1.1rem;
             font-weight: 700;
             color: var(--text-primary);
             letter-spacing: -0.01em;
@@ -238,7 +759,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            transition: border-color 0.2s ease, background 0.2s ease;
+            transition: all 0.2s ease;
             text-decoration: none;
             position: relative;
         }
@@ -270,7 +791,7 @@
         }
         .affiliate-desc {
             color: var(--text-secondary);
-            font-size: 0.85rem;
+            font-size: 0.84rem;
             line-height: 1.5;
             margin-bottom: 14px;
         }
@@ -292,81 +813,6 @@
             line-height: 1.4;
         }
 
-        /* Empty Search Results Notice */
-        #noResults {
-            display: none;
-            text-align: center;
-            padding: 60px 20px;
-            color: var(--text-secondary);
-        }
-        #noResults h3 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.25rem;
-            color: var(--text-primary);
-            margin-bottom: 8px;
-        }
-
-        /* Category Section */
-        .category-section { margin-top: clamp(40px, 6vw, 56px); }
-        .category-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            margin-bottom: 14px;
-            border-bottom: 1px solid var(--rule);
-            padding-bottom: 8px;
-        }
-        .category-title {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: clamp(1.2rem, 3vw, 1.35rem);
-            font-weight: 700;
-            color: var(--text-primary);
-            letter-spacing: -0.02em;
-        }
-        .category-count {
-            font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.8rem;
-            font-weight: 500;
-            color: var(--text-secondary);
-        }
-
-        /* Responsive Tool Cards Grid */
-        .tools-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
-            gap: 14px;
-        }
-        .tool-card {
-            background: var(--surface);
-            border: 1px solid var(--rule);
-            border-left: 2px solid transparent;
-            border-radius: 8px;
-            padding: 20px;
-            text-decoration: none;
-            color: inherit;
-            transition: border-color 0.2s ease, background 0.2s ease;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-        }
-        .tool-card:hover {
-            border-left-color: var(--signal);
-            background: var(--surface-hover);
-        }
-        .tool-card h3 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.05rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 6px;
-            letter-spacing: -0.01em;
-        }
-        .tool-card p {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-            line-height: 1.5;
-        }
-
         /* Footer */
         footer {
             margin-top: 72px;
@@ -378,7 +824,7 @@
         }
         .footer-brand {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.05rem;
+            font-size: 1.1rem;
             font-weight: 700;
             color: var(--text-primary);
             margin-bottom: 6px;
@@ -394,32 +840,27 @@
         }
 
         @media (max-width: 640px) {
-            .site-nav {
-                padding: 8px 14px;
-                border-radius: 8px;
-            }
-            .nav-links {
-                gap: 12px;
-            }
-            .nav-link {
-                font-size: 0.8rem;
-            }
-            .container {
-                padding: 16px 12px 60px;
-            }
-            .tool-card {
-                padding: 16px;
-            }
+            .site-nav { padding: 8px 14px; }
+            .nav-links { gap: 12px; }
+            .nav-cta-btn { display: none; }
+            .container { padding: 16px 12px 60px; }
+            .tool-card { padding: 16px; }
             .search-shortcut { display: none; }
+            .quicklab-header { flex-direction: column; align-items: flex-start; }
+            .quicklab-tabs { width: 100%; justify-content: space-between; }
+            .quicklab-tab { padding: 5px 8px; font-size: 0.74rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Slim Angular Navbar -->
+    <!-- Slim Angular Tech Navbar -->
     <div class="nav-wrapper">
         <nav class="site-nav">
-            <a href="/" class="nav-brand">{{ site_name|lower }}</a>
+            <a href="/" class="nav-brand-wrap">
+                <span class="nav-logo-badge">⚡</span>
+                <span class="nav-brand">{{ site_name|lower }}</span>
+            </a>
             <div class="nav-links">
                 <a href="#ai-utilities" class="nav-link">AI</a>
                 <a href="#developer-tools" class="nav-link">Developer</a>
@@ -427,64 +868,145 @@
                 <a href="#design-tools" class="nav-link">Design</a>
                 <a href="#seo-tools" class="nav-link">SEO</a>
             </div>
+            <a href="#quicklab" class="nav-cta-btn">QuickLab Sandbox</a>
         </nav>
     </div>
 
     <div class="container">
         <header>
-            <h1>{{ total_tools }} tools that run in your browser.</h1>
-            <p>No accounts. No tracking. Just utilities.</p>
+            <div class="lab-status-badge">
+                <span class="pulse-dot"></span>
+                <span>{{ total_tools }} In-Browser Utilities Active &bull; Zero Server Latency</span>
+            </div>
+            <h1>The In-Browser Developer Workbench</h1>
+            <p class="hero-subhead">High-speed developer, AI, and design utilities running 100% locally in your browser. Zero telemetry, zero logins, instant results.</p>
             
-            <!-- Live Search Bar -->
+            <!-- LIVE QUICKLAB SANDBOX -->
+            <section id="quicklab" class="quicklab-container">
+                <div class="quicklab-header">
+                    <div class="quicklab-controls">
+                        <span class="dot red"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot green"></span>
+                        <span class="quicklab-title" id="quickLabModeTitle">aitoolsuite://sandbox &bull; JSON Beautifier</span>
+                    </div>
+                    <div class="quicklab-tabs">
+                        <button class="quicklab-tab active" id="tab-json" onclick="setLabTab('json')">JSON</button>
+                        <button class="quicklab-tab" id="tab-base64" onclick="setLabTab('base64')">Base64</button>
+                        <button class="quicklab-tab" id="tab-hash" onclick="setLabTab('hash')">SHA-256</button>
+                        <button class="quicklab-tab" id="tab-case" onclick="setLabTab('case')">Case Shift</button>
+                    </div>
+                </div>
+                <div class="quicklab-body">
+                    <div class="quicklab-io">
+                        <div class="quicklab-pane">
+                            <div class="quicklab-pane-header">
+                                <span id="quickLabInLabel">INPUT (EDITABLE)</span>
+                                <div>
+                                    <button class="quicklab-btn-sm" onclick="loadLabSample()">Sample</button>
+                                    <button class="quicklab-btn-sm" onclick="clearLabInput()">Clear</button>
+                                </div>
+                            </div>
+                            <textarea id="quickLabInput" spellcheck="false" placeholder="Type or paste input here..."></textarea>
+                        </div>
+                        <div class="quicklab-pane">
+                            <div class="quicklab-pane-header">
+                                <span id="quickLabOutLabel">OUTPUT (LIVE)</span>
+                                <button class="quicklab-btn-sm" id="quickLabCopyBtn" onclick="copyLabOutput()">Copy Output</button>
+                            </div>
+                            <pre id="quickLabOutput" class="quicklab-code-output"></pre>
+                        </div>
+                    </div>
+                    <div class="quicklab-footer">
+                        <div class="quicklab-actions" id="quickLabActions">
+                            <!-- Populated dynamically via JS -->
+                        </div>
+                        <div class="quicklab-status-wrap">
+                            <span id="quickLabStatus" class="quicklab-perf">⚡ 0.1ms client-side</span>
+                            <a id="quickLabFullLink" href="/json-formatter.html" class="quicklab-link">Open Full Tool &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Command Search Bar -->
             <div class="search-box-wrapper">
                 <div class="search-box">
-                    <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <circle cx="11" cy="11" r="8"></circle>
                         <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                     </svg>
                     <input type="text" id="toolSearch" placeholder="Search {{ total_tools }}+ developer and AI tools... (Press '/' to focus)" autocomplete="off" oninput="filterTools()">
                     <span class="search-shortcut">/</span>
                 </div>
+                <div id="searchResultsBar" class="search-results-bar" style="display:none;">
+                    <span id="resultsCountText">Showing tools</span>
+                    <button onclick="clearSearch()" class="clear-search-btn">Reset filter</button>
+                </div>
             </div>
 
-            <!-- Recommended Developer Stack & Free Credits -->
-            <section class="affiliate-section">
-                <div class="affiliate-header">
-                    <h2 class="affiliate-heading">Recommended developer stack</h2>
-                </div>
-                <div class="affiliate-grid">
-                    <a href="https://m.do.co/c/aitoolsuite" target="_blank" rel="noopener sponsored" class="affiliate-card">
-                        <div class="affiliate-card-header">
-                            <span class="affiliate-title">DigitalOcean Cloud</span>
-                            <span class="affiliate-badge">$200 free credit</span>
-                        </div>
-                        <p class="affiliate-desc">Reliable SSD droplets, managed databases, and Kubernetes clusters deployed in seconds.</p>
-                        <span class="affiliate-cta">Claim $200 free credit</span>
-                    </a>
-                    <a href="https://supabase.com/?ref=aitoolsuite" target="_blank" rel="noopener sponsored" class="affiliate-card">
-                        <div class="affiliate-card-header">
-                            <span class="affiliate-title">Supabase Postgres</span>
-                            <span class="affiliate-badge">Free tier</span>
-                        </div>
-                        <p class="affiliate-desc">The open source Firebase alternative. Dedicated Postgres DB, instant Auth, and REST/GraphQL APIs.</p>
-                        <span class="affiliate-cta">Start free project</span>
-                    </a>
-                    <a href="https://go.nordvpn.net/aff_c?offer_id=15&aff_id=aitoolsuite" target="_blank" rel="noopener sponsored" class="affiliate-card">
-                        <div class="affiliate-card-header">
-                            <span class="affiliate-title">NordVPN Security</span>
-                            <span class="affiliate-badge">74% off deal</span>
-                        </div>
-                        <p class="affiliate-desc">Protect your developer workstations, APIs, and DNS queries with fast, encrypted tunnels.</p>
-                        <span class="affiliate-cta">Get 74% off deal</span>
-                    </a>
-                </div>
-                <p class="affiliate-disclosure">Affiliate Disclosure: We may earn a commission from partner signups at zero cost to you, which funds our free tools and ad-free hosting.</p>
-            </section>
+            <!-- Category Filter Pills -->
+            <div class="category-pills-bar">
+                <button class="cat-pill active" id="pill-all" onclick="filterByCategory('all')">All <span class="pill-cnt">{{ total_tools }}</span></button>
+                {% for category in categories %}
+                <button class="cat-pill" id="pill-{{ category.slug }}" onclick="filterByCategory('{{ category.slug }}')">{{ category.name }} <span class="pill-cnt">{{ category.tools|length }}</span></button>
+                {% endfor %}
+            </div>
         </header>
+
+        <!-- ESSENTIAL SPOTLIGHT SHELF -->
+        <section class="spotlight-section">
+            <div class="spotlight-header">
+                <h2 class="spotlight-heading">Essential Developer Utilities</h2>
+                <span class="spotlight-hint">Frequently Used</span>
+            </div>
+            <div class="spotlight-grid">
+                <a href="/json-formatter.html" class="spotlight-card">
+                    <div class="spotlight-title-row">
+                        <span class="spotlight-title">JSON Formatter &amp; Validator</span>
+                    </div>
+                    <p class="spotlight-desc">Format, minify, and inspect JSON payloads with real-time error pinpoints.</p>
+                    <div class="spotlight-footer">
+                        <span>⚡ INSTANT V8</span>
+                        <span>RUN TOOL &rarr;</span>
+                    </div>
+                </a>
+                <a href="/cron-expression-generator.html" class="spotlight-card">
+                    <div class="spotlight-title-row">
+                        <span class="spotlight-title">Cron Expression Generator</span>
+                    </div>
+                    <p class="spotlight-desc">Build cron syntax with visual presets and human-readable schedule explanations.</p>
+                    <div class="spotlight-footer">
+                        <span>⏱️ SCHEDULER</span>
+                        <span>RUN TOOL &rarr;</span>
+                    </div>
+                </a>
+                <a href="/jwt-decoder-and-debugger.html" class="spotlight-card">
+                    <div class="spotlight-title-row">
+                        <span class="spotlight-title">JWT Decoder &amp; Debugger</span>
+                    </div>
+                    <p class="spotlight-desc">Safely decode JWT header and payload claims client-side without sending tokens away.</p>
+                    <div class="spotlight-footer">
+                        <span>🔒 100% PRIVATE</span>
+                        <span>RUN TOOL &rarr;</span>
+                    </div>
+                </a>
+                <a href="/ai-prompt-token-estimator.html" class="spotlight-card">
+                    <div class="spotlight-title-row">
+                        <span class="spotlight-title">AI Prompt Token Estimator</span>
+                    </div>
+                    <p class="spotlight-desc">Calculate tokens and cost projections across GPT-4o, Claude 3.5, and Gemini.</p>
+                    <div class="spotlight-footer">
+                        <span>🤖 LLM TOOLS</span>
+                        <span>RUN TOOL &rarr;</span>
+                    </div>
+                </a>
+            </div>
+        </section>
 
         <!-- No Results Fallback -->
         <div id="noResults">
-            <h3>No matching tools found</h3>
+            <h3>No matching utilities found</h3>
             <p>Try searching for terms like <i>json, base64, markdown, token, uuid, or regex</i>.</p>
         </div>
 
@@ -496,19 +1018,60 @@
             </div>
             <div class="tools-grid">
                 {% for tool in category.tools %}
-                <a href="/{{ tool.slug }}.html" class="tool-card" data-category="{{ category.name|lower }}">
+                <a href="/{{ tool.slug }}.html" class="tool-card" data-category="{{ category.name|lower }}" data-slug="{{ category.slug }}">
+                    <div class="tool-card-top">
+                        <span class="tool-cat-tag">{{ category.name|upper }}</span>
+                    </div>
                     <h3>{{ tool.name }}</h3>
                     <p>{{ tool.description }}</p>
+                    <div class="tool-card-bottom">
+                        <span>Client-side</span>
+                        <span>Use Tool &rarr;</span>
+                    </div>
                 </a>
                 {% endfor %}
             </div>
         </section>
         {% endfor %}
 
+        <!-- Recommended Developer Stack & Free Credits -->
+        <section class="affiliate-section">
+            <div class="affiliate-header">
+                <h2 class="affiliate-heading">Recommended developer infrastructure</h2>
+            </div>
+            <div class="affiliate-grid">
+                <a href="https://m.do.co/c/aitoolsuite" target="_blank" rel="noopener sponsored" class="affiliate-card">
+                    <div class="affiliate-card-header">
+                        <span class="affiliate-title">DigitalOcean Cloud</span>
+                        <span class="affiliate-badge">$200 free credit</span>
+                    </div>
+                    <p class="affiliate-desc">Reliable SSD droplets, managed databases, and Kubernetes clusters deployed in seconds.</p>
+                    <span class="affiliate-cta">Claim $200 free credit</span>
+                </a>
+                <a href="https://supabase.com/?ref=aitoolsuite" target="_blank" rel="noopener sponsored" class="affiliate-card">
+                    <div class="affiliate-card-header">
+                        <span class="affiliate-title">Supabase Postgres</span>
+                        <span class="affiliate-badge">Free tier</span>
+                    </div>
+                    <p class="affiliate-desc">The open source Firebase alternative. Dedicated Postgres DB, instant Auth, and REST/GraphQL APIs.</p>
+                    <span class="affiliate-cta">Start free project</span>
+                </a>
+                <a href="https://go.nordvpn.net/aff_c?offer_id=15&aff_id=aitoolsuite" target="_blank" rel="noopener sponsored" class="affiliate-card">
+                    <div class="affiliate-card-header">
+                        <span class="affiliate-title">NordVPN Security</span>
+                        <span class="affiliate-badge">74% off deal</span>
+                    </div>
+                    <p class="affiliate-desc">Protect your developer workstations, APIs, and DNS queries with fast, encrypted tunnels.</p>
+                    <span class="affiliate-cta">Get 74% off deal</span>
+                </a>
+            </div>
+            <p class="affiliate-disclosure">Affiliate Disclosure: We may earn a commission from partner signups at zero cost to you, which funds our free tools and ad-free hosting.</p>
+        </section>
+
         <footer>
             <div class="footer-brand">{{ site_name|lower }}</div>
-            <p>Free. Private. Open.</p>
-            <p style="margin-top: 6px; color: var(--text-tertiary);">All processing happens locally in your browser.</p>
+            <p>Free. Private. Open Source.</p>
+            <p style="margin-top: 6px; color: var(--text-tertiary);">All computations execute locally inside your browser sandbox.</p>
             <div style="margin-top: 14px; display: flex; justify-content: center; gap: 20px; font-size: 0.85rem;">
                 <a href="/about.html">About</a>
                 <a href="/contact.html">Contact</a>
@@ -518,8 +1081,216 @@
         </footer>
     </div>
 
-    <!-- Client-Side Instant Search Filter -->
+    <!-- QUICKLAB SANDBOX SCRIPT -->
     <script>
+        const LAB_CONFIGS = {
+            json: {
+                title: "aitoolsuite://sandbox • JSON Beautifier",
+                sample: '{\n  "site": "aitoolsuite.lol",\n  "engine": "v8-browser-sandbox",\n  "execution": "client-side",\n  "tools": {{ total_tools }},\n  "offline_ready": true,\n  "speed": "0ms latency"\n}',
+                fullUrl: "/json-formatter.html",
+                actions: [
+                    { label: "Format (2 Spaces)", primary: true, fn: () => runJsonFormat(2) },
+                    { label: "Format (4 Spaces)", primary: false, fn: () => runJsonFormat(4) },
+                    { label: "Minify JSON", primary: false, fn: () => runJsonMinify() }
+                ]
+            },
+            base64: {
+                title: "aitoolsuite://sandbox • Base64 Codec",
+                sample: "Welcome to aitoolsuite.lol — 100% private in-browser utilities.",
+                fullUrl: "/base64-encoder.html",
+                actions: [
+                    { label: "Encode Base64", primary: true, fn: () => runBase64Encode() },
+                    { label: "Decode Base64", primary: false, fn: () => runBase64Decode() }
+                ]
+            },
+            hash: {
+                title: "aitoolsuite://sandbox • Cryptographic Hashes",
+                sample: "developer-workbench-security-2026",
+                fullUrl: "/hash-generator.html",
+                actions: [
+                    { label: "SHA-256", primary: true, fn: () => runCryptoHash('SHA-256') },
+                    { label: "SHA-1", primary: false, fn: () => runCryptoHash('SHA-1') },
+                    { label: "SHA-512", primary: false, fn: () => runCryptoHash('SHA-512') }
+                ]
+            },
+            case: {
+                title: "aitoolsuite://sandbox • Case Converter",
+                sample: "the quick brown fox jumps over the lazy dog",
+                fullUrl: "/case-converter.html",
+                actions: [
+                    { label: "camelCase", primary: true, fn: () => runCaseShift('camel') },
+                    { label: "kebab-case", primary: false, fn: () => runCaseShift('kebab') },
+                    { label: "UPPERCASE", primary: false, fn: () => runCaseShift('upper') },
+                    { label: "Title Case", primary: false, fn: () => runCaseShift('title') }
+                ]
+            }
+        };
+
+        let currentLabTab = 'json';
+
+        function setLabTab(tabKey) {
+            currentLabTab = tabKey;
+            document.querySelectorAll('.quicklab-tab').forEach(b => b.classList.remove('active'));
+            const tabBtn = document.getElementById('tab-' + tabKey);
+            if (tabBtn) tabBtn.classList.add('active');
+
+            const conf = LAB_CONFIGS[tabKey];
+            document.getElementById('quickLabModeTitle').textContent = conf.title;
+            document.getElementById('quickLabFullLink').href = conf.fullUrl;
+            
+            // Build action buttons
+            const actionContainer = document.getElementById('quickLabActions');
+            actionContainer.innerHTML = '';
+            conf.actions.forEach(act => {
+                const btn = document.createElement('button');
+                btn.className = 'quicklab-action-btn' + (act.primary ? ' primary' : '');
+                btn.textContent = act.label;
+                btn.onclick = act.fn;
+                actionContainer.appendChild(btn);
+            });
+
+            loadLabSample();
+        }
+
+        function loadLabSample() {
+            const conf = LAB_CONFIGS[currentLabTab];
+            document.getElementById('quickLabInput').value = conf.sample;
+            if (conf.actions.length > 0) {
+                conf.actions[0].fn();
+            }
+        }
+
+        function clearLabInput() {
+            document.getElementById('quickLabInput').value = '';
+            document.getElementById('quickLabOutput').textContent = '';
+            document.getElementById('quickLabStatus').textContent = 'Ready';
+        }
+
+        function updateLabOutput(text, timeMs) {
+            document.getElementById('quickLabOutput').textContent = text;
+            if (timeMs !== undefined) {
+                document.getElementById('quickLabStatus').textContent = `⚡ ${timeMs.toFixed(2)}ms client-side`;
+            }
+        }
+
+        function runJsonFormat(spaces) {
+            const t0 = performance.now();
+            try {
+                const raw = document.getElementById('quickLabInput').value;
+                const parsed = JSON.parse(raw);
+                const formatted = JSON.stringify(parsed, null, spaces);
+                updateLabOutput(formatted, performance.now() - t0);
+            } catch (err) {
+                updateLabOutput('SyntaxError: ' + err.message);
+                document.getElementById('quickLabStatus').textContent = '❌ Invalid JSON';
+            }
+        }
+
+        function runJsonMinify() {
+            const t0 = performance.now();
+            try {
+                const raw = document.getElementById('quickLabInput').value;
+                const parsed = JSON.parse(raw);
+                updateLabOutput(JSON.stringify(parsed), performance.now() - t0);
+            } catch (err) {
+                updateLabOutput('SyntaxError: ' + err.message);
+                document.getElementById('quickLabStatus').textContent = '❌ Invalid JSON';
+            }
+        }
+
+        function runBase64Encode() {
+            const t0 = performance.now();
+            try {
+                const raw = document.getElementById('quickLabInput').value;
+                const encoded = btoa(unescape(encodeURIComponent(raw)));
+                updateLabOutput(encoded, performance.now() - t0);
+            } catch (err) {
+                updateLabOutput('Encoding error: ' + err.message);
+            }
+        }
+
+        function runBase64Decode() {
+            const t0 = performance.now();
+            try {
+                const raw = document.getElementById('quickLabInput').value.trim();
+                const decoded = decodeURIComponent(escape(atob(raw)));
+                updateLabOutput(decoded, performance.now() - t0);
+            } catch (err) {
+                updateLabOutput('Invalid Base64 input');
+                document.getElementById('quickLabStatus').textContent = '❌ Decode error';
+            }
+        }
+
+        async function runCryptoHash(algo) {
+            const t0 = performance.now();
+            try {
+                const raw = document.getElementById('quickLabInput').value;
+                const msgBuffer = new TextEncoder().encode(raw);
+                const hashBuffer = await crypto.subtle.digest(algo, msgBuffer);
+                const hashArray = Array.from(new Uint8Array(hashBuffer));
+                const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+                updateLabOutput(hashHex, performance.now() - t0);
+            } catch (err) {
+                updateLabOutput('Crypto error: ' + err.message);
+            }
+        }
+
+        function runCaseShift(mode) {
+            const t0 = performance.now();
+            const raw = document.getElementById('quickLabInput').value;
+            let result = '';
+            const words = raw.match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g) || [];
+            
+            if (mode === 'camel') {
+                result = words.map((w, i) => i === 0 ? w.toLowerCase() : w.charAt(0).toUpperCase() + w.slice(1).toLowerCase()).join('');
+            } else if (mode === 'kebab') {
+                result = words.map(w => w.toLowerCase()).join('-');
+            } else if (mode === 'upper') {
+                result = raw.toUpperCase();
+            } else if (mode === 'title') {
+                result = words.map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase()).join(' ');
+            }
+            updateLabOutput(result || raw, performance.now() - t0);
+        }
+
+        function copyLabOutput() {
+            const out = document.getElementById('quickLabOutput').textContent;
+            if (!out) return;
+            navigator.clipboard.writeText(out).then(() => {
+                const btn = document.getElementById('quickLabCopyBtn');
+                const orig = btn.textContent;
+                btn.textContent = 'Copied!';
+                btn.style.color = 'var(--emerald-accent)';
+                setTimeout(() => {
+                    btn.textContent = orig;
+                    btn.style.color = '';
+                }, 1500);
+            });
+        }
+
+        // Live input typing binding for real-time reactivity
+        document.getElementById('quickLabInput').addEventListener('input', () => {
+            if (currentLabTab === 'hash') {
+                runCryptoHash('SHA-256');
+            }
+        });
+
+        // Initialize QuickLab on JSON tab
+        setLabTab('json');
+    </script>
+
+    <!-- SEARCH & CATEGORY FILTERING SCRIPT -->
+    <script>
+        let activeCategoryFilter = 'all';
+
+        function filterByCategory(slug) {
+            activeCategoryFilter = slug;
+            document.querySelectorAll('.cat-pill').forEach(p => p.classList.remove('active'));
+            const targetPill = document.getElementById('pill-' + slug);
+            if (targetPill) targetPill.classList.add('active');
+            filterTools();
+        }
+
         function filterTools() {
             const q = document.getElementById('toolSearch').value.toLowerCase().trim();
             const cards = document.querySelectorAll('.tool-card');
@@ -529,30 +1300,89 @@
             cards.forEach(card => {
                 const title = (card.querySelector('h3')?.textContent || '').toLowerCase();
                 const desc = (card.querySelector('p')?.textContent || '').toLowerCase();
-                const cat = (card.getAttribute('data-category') || '').toLowerCase();
-                const match = title.includes(q) || desc.includes(q) || cat.includes(q);
-                card.style.display = match ? 'flex' : 'none';
-                if (match) visibleTotal++;
+                const cardCat = (card.getAttribute('data-slug') || '').toLowerCase();
+                
+                const matchesSearch = !q || title.includes(q) || desc.includes(q);
+                const matchesCategory = (activeCategoryFilter === 'all') || (cardCat === activeCategoryFilter);
+                
+                const show = matchesSearch && matchesCategory;
+                card.style.display = show ? 'flex' : 'none';
+                if (show) visibleTotal++;
             });
 
             sections.forEach(sec => {
+                const secSlug = sec.id;
+                const matchesCategory = (activeCategoryFilter === 'all') || (secSlug === activeCategoryFilter);
                 const visibleCards = sec.querySelectorAll('.tool-card:not([style*="display: none"])');
-                sec.style.display = visibleCards.length > 0 ? 'block' : 'none';
+                sec.style.display = (matchesCategory && visibleCards.length > 0) ? 'block' : 'none';
             });
+
+            const resultsBar = document.getElementById('searchResultsBar');
+            const resultsText = document.getElementById('resultsCountText');
+            if (q || activeCategoryFilter !== 'all') {
+                resultsBar.style.display = 'flex';
+                resultsText.textContent = `Showing ${visibleTotal} tools` + (q ? ` matching "${q}"` : '') + (activeCategoryFilter !== 'all' ? ` in selected category` : '');
+            } else {
+                resultsBar.style.display = 'none';
+            }
 
             const emptyState = document.getElementById('noResults');
             if (emptyState) {
-                emptyState.style.display = (visibleTotal === 0 && q !== '') ? 'block' : 'none';
+                emptyState.style.display = (visibleTotal === 0) ? 'block' : 'none';
             }
+        }
+
+        function clearSearch() {
+            document.getElementById('toolSearch').value = '';
+            filterByCategory('all');
         }
 
         // Shortcut: Press '/' to focus search bar
         document.addEventListener('keydown', e => {
             if (e.key === '/' && document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
                 e.preventDefault();
-                document.getElementById('toolSearch').focus();
+                const searchBox = document.getElementById('toolSearch');
+                searchBox.focus();
+                searchBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
         });
+
+        // Animated Search Placeholder Prompts
+        const SEARCH_PROMPTS = [
+            "Search {{ total_tools }}+ tools (e.g. 'jwt', 'cron', 'json')...",
+            "Try 'base64', 'uuid', 'regex', 'curl'...",
+            "Try 'color picker', 'markdown', 'token estimator'...",
+            "Try 'diff checker', 'subnet', 'sql formatter'..."
+        ];
+        let promptIdx = 0;
+        let charIdx = 0;
+        let isDeleting = false;
+        function typeSearchPlaceholder() {
+            const input = document.getElementById('toolSearch');
+            if (!input || document.activeElement === input || input.value.length > 0) {
+                setTimeout(typeSearchPlaceholder, 1000);
+                return;
+            }
+            const current = SEARCH_PROMPTS[promptIdx];
+            if (isDeleting) {
+                input.setAttribute('placeholder', current.substring(0, charIdx--));
+                if (charIdx < 0) {
+                    isDeleting = false;
+                    promptIdx = (promptIdx + 1) % SEARCH_PROMPTS.length;
+                    setTimeout(typeSearchPlaceholder, 400);
+                    return;
+                }
+            } else {
+                input.setAttribute('placeholder', current.substring(0, charIdx++));
+                if (charIdx > current.length) {
+                    isDeleting = true;
+                    setTimeout(typeSearchPlaceholder, 2000);
+                    return;
+                }
+            }
+            setTimeout(typeSearchPlaceholder, isDeleting ? 25 : 55);
+        }
+        setTimeout(typeSearchPlaceholder, 1000);
     </script>
 
     <!-- GoatCounter Analytics & Admin Ignore Filter -->
