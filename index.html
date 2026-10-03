@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Tool Suite — Interactive Developer &amp; AI Utilities Workbench</title>
-    <meta name="description" content="Lightning-fast online workbench for developers, designers, and AI creators. Test-drive utilities in our in-browser QuickLab sandbox, format JSON, debug JWTs, and explore 108+ free tools.">
+    <meta name="description" content="Lightning-fast online workbench for developers, designers, and AI creators. Test-drive utilities in our in-browser QuickLab sandbox, format JSON, debug JWTs, and explore 109+ free tools.">
     <meta name="robots" content="index, follow">
     <meta property="og:title" content="AI Tool Suite — Interactive Developer &amp; AI Utilities Workbench">
     <meta property="og:description" content="High-performance, private developer utilities with zero ads, interactive QuickLab sandbox, and instant client-side execution.">
@@ -896,7 +896,7 @@
         <header>
             <div class="lab-status-badge">
                 <span class="pulse-dot"></span>
-                <span>108 In-Browser Utilities Active &bull; Zero Server Latency</span>
+                <span>109 In-Browser Utilities Active &bull; Zero Server Latency</span>
             </div>
             <h1>The In-Browser Developer Workbench</h1>
             <p class="hero-subhead">High-speed developer, AI, and design utilities running 100% locally in your browser. Zero telemetry, zero logins, instant results.</p>
@@ -956,7 +956,7 @@
                         <circle cx="11" cy="11" r="8"></circle>
                         <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                     </svg>
-                    <input type="text" id="toolSearch" placeholder="Search 108+ developer and AI tools... (Press '/' to focus)" autocomplete="off" oninput="filterTools()">
+                    <input type="text" id="toolSearch" placeholder="Search 109+ developer and AI tools... (Press '/' to focus)" autocomplete="off" oninput="filterTools()">
                     <span class="search-shortcut">/</span>
                 </div>
                 <div id="searchResultsBar" class="search-results-bar" style="display:none;">
@@ -967,7 +967,7 @@
 
             <!-- Category Filter Pills -->
             <div class="category-pills-bar">
-                <button class="cat-pill active" id="pill-all" onclick="filterByCategory('all')">All <span class="pill-cnt">108</span></button>
+                <button class="cat-pill active" id="pill-all" onclick="filterByCategory('all')">All <span class="pill-cnt">109</span></button>
                 
                 <button class="cat-pill" id="pill-ai-utilities" onclick="filterByCategory('ai-utilities')">AI Utilities <span class="pill-cnt">5</span></button>
                 
@@ -975,7 +975,7 @@
                 
                 <button class="cat-pill" id="pill-text-tools" onclick="filterByCategory('text-tools')">Text Tools <span class="pill-cnt">20</span></button>
                 
-                <button class="cat-pill" id="pill-design-tools" onclick="filterByCategory('design-tools')">Design Tools <span class="pill-cnt">21</span></button>
+                <button class="cat-pill" id="pill-design-tools" onclick="filterByCategory('design-tools')">Design Tools <span class="pill-cnt">22</span></button>
                 
                 <button class="cat-pill" id="pill-seo-tools" onclick="filterByCategory('seo-tools')">SEO Tools <span class="pill-cnt">4</span></button>
                 
@@ -2068,7 +2068,7 @@
         <section id="design-tools" class="category-section">
             <div class="category-header">
                 <h2 class="category-title">Design Tools</h2>
-                <span class="category-count">21 tools</span>
+                <span class="category-count">22 tools</span>
             </div>
             <div class="tools-grid">
                 
@@ -2114,6 +2114,18 @@
                     </div>
                     <h3>Hex Color Tint & Shade Palette Generator</h3>
                     <p>Generate 10 lighter tints and darker shades from any base hex color with exportable Tailwind/CSS tokens. 100% ...</p>
+                    <div class="tool-card-bottom">
+                        <span>Client-side</span>
+                        <span>Use Tool &rarr;</span>
+                    </div>
+                </a>
+                
+                <a href="/config-color-hex.html" class="tool-card" data-category="design tools" data-slug="design-tools">
+                    <div class="tool-card-top">
+                        <span class="tool-cat-tag">DESIGN TOOLS</span>
+                    </div>
+                    <h3>Hex Config Palette Transformer</h3>
+                    <p>Fast browser-based hex config palette transformer with 100% client-side privacy, instant execution, and zero a...</p>
                     <div class="tool-card-bottom">
                         <span>Client-side</span>
                         <span>Use Tool &rarr;</span>
@@ -2438,7 +2450,7 @@
         const LAB_CONFIGS = {
             json: {
                 title: "aitoolsuite://sandbox • JSON Beautifier",
-                sample: '{\n  "site": "aitoolsuite.lol",\n  "engine": "v8-browser-sandbox",\n  "execution": "client-side",\n  "tools": 108,\n  "offline_ready": true,\n  "speed": "0ms latency"\n}',
+                sample: '{\n  "site": "aitoolsuite.lol",\n  "engine": "v8-browser-sandbox",\n  "execution": "client-side",\n  "tools": 109,\n  "offline_ready": true,\n  "speed": "0ms latency"\n}',
                 fullUrl: "/json-formatter.html",
                 actions: [
                     { label: "Format (2 Spaces)", primary: true, fn: () => runJsonFormat(2) },
@@ -2701,7 +2713,7 @@
 
         // Animated Search Placeholder Prompts
         const SEARCH_PROMPTS = [
-            "Search 108+ tools (e.g. 'jwt', 'cron', 'json')...",
+            "Search 109+ tools (e.g. 'jwt', 'cron', 'json')...",
             "Try 'base64', 'uuid', 'regex', 'curl'...",
             "Try 'color picker', 'markdown', 'token estimator'...",
             "Try 'diff checker', 'subnet', 'sql formatter'..."

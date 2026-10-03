@@ -109,6 +109,12 @@
         <priority>0.8</priority>
     </url>
     <url>
+        <loc>https://aitoolsuite.lol/config-color-hex.html</loc>
+        <lastmod>2026-10-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
         <loc>https://aitoolsuite.lol/config-css-grid.html</loc>
         <lastmod>2026-10-03</lastmod>
         <changefreq>weekly</changefreq>
