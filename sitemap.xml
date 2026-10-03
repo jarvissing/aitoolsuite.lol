@@ -127,6 +127,12 @@
         <priority>0.8</priority>
     </url>
     <url>
+        <loc>https://aitoolsuite.lol/config-json-schema.html</loc>
+        <lastmod>2026-10-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
         <loc>https://aitoolsuite.lol/config-text-lines.html</loc>
         <lastmod>2026-10-03</lastmod>
         <changefreq>weekly</changefreq>

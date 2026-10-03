@@ -1,8 +1,8 @@
 ============================================================
-  QA REPORT — 2026-10-03 14:04:51
+  QA REPORT — 2026-10-03 23:26:19
 ============================================================
 
-Found 109 tool pages to check.
+Found 110 tool pages to check.
 
 ✅ ai-prompt-cost-calculator — 12/12 checks passed
 ✅ ai-prompt-token-estimator — 12/12 checks passed
@@ -23,6 +23,7 @@ Found 109 tool pages to check.
 ✅ config-color-hex — 12/12 checks passed
 ✅ config-css-grid — 12/12 checks passed
 ✅ config-diff-data — 12/12 checks passed
+✅ config-json-schema — 12/12 checks passed
 ✅ config-text-lines — 12/12 checks passed
 ✅ cron-expression-generator — 12/12 checks passed
 ✅ css-border-radius-generator — 12/12 checks passed
@@ -116,9 +117,9 @@ Found 109 tool pages to check.
 
 ————————————————————————————————————————
 HOMEPAGE CHECK:
-✅ 109/109 tools listed on homepage
+✅ 110/110 tools listed on homepage
 
 ============================================================
-SUMMARY: 109 passed, 0 failed out of 109 pages
+SUMMARY: 110 passed, 0 failed out of 110 pages
 🎉 ALL PAGES PASS QA!
 ============================================================
