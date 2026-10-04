@@ -66,3 +66,4 @@ timestamp,action_type,tool_name,keyword,url,status,details
 2026-10-03T14:04:51.260995,PUBLISH,Hex Config Palette Transformer,config color hex,https://aitoolsuite.lol/config-color-hex.html,SUCCESS,Published Hex Config Palette Transformer
 2026-10-03T23:26:19.410927,PUBLISH,Strict Config Schema Validator,config json schema,https://aitoolsuite.lol/config-json-schema.html,SUCCESS,Published Strict Config Schema Validator
 2026-10-04T14:30:44.334414,PUBLISH,Raw Config Plain Text Stripper,config text strip,https://aitoolsuite.lol/config-text-strip.html,SUCCESS,Published Raw Config Plain Text Stripper
+2026-10-04T23:43:06.543186,PUBLISH,Multi Base Config Radix Calculator,config binary base,https://aitoolsuite.lol/config-binary-base.html,SUCCESS,Published Multi Base Config Radix Calculator

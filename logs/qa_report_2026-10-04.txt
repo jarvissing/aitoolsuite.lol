@@ -1,8 +1,8 @@
 ============================================================
-  QA REPORT — 2026-10-04 14:30:44
+  QA REPORT — 2026-10-04 23:43:06
 ============================================================
 
-Found 111 tool pages to check.
+Found 112 tool pages to check.
 
 ✅ ai-prompt-cost-calculator — 12/12 checks passed
 ✅ ai-prompt-token-estimator — 12/12 checks passed
@@ -20,6 +20,7 @@ Found 111 tool pages to check.
 ✅ color-picker — 12/12 checks passed
 ✅ color-shades-generator — 12/12 checks passed
 ✅ config-base64-encoder — 12/12 checks passed
+✅ config-binary-base — 12/12 checks passed
 ✅ config-color-hex — 12/12 checks passed
 ✅ config-css-grid — 12/12 checks passed
 ✅ config-diff-data — 12/12 checks passed
@@ -118,9 +119,9 @@ Found 111 tool pages to check.
 
 ————————————————————————————————————————
 HOMEPAGE CHECK:
-✅ 111/111 tools listed on homepage
+✅ 112/112 tools listed on homepage
 
 ============================================================
-SUMMARY: 111 passed, 0 failed out of 111 pages
+SUMMARY: 112 passed, 0 failed out of 112 pages
 🎉 ALL PAGES PASS QA!
 ============================================================
