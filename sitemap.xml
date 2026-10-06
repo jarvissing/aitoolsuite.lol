@@ -451,6 +451,12 @@
         <priority>0.8</priority>
     </url>
     <url>
+        <loc>https://aitoolsuite.lol/object-text-lines.html</loc>
+        <lastmod>2026-10-06</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
         <loc>https://aitoolsuite.lol/og-meta-tag-generator.html</loc>
         <lastmod>2026-10-06</lastmod>
         <changefreq>weekly</changefreq>
