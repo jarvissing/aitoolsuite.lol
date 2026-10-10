@@ -1,8 +1,8 @@
 ============================================================
-  QA REPORT — 2026-10-10 00:23:28
+  QA REPORT — 2026-10-10 14:55:10
 ============================================================
 
-Found 122 tool pages to check.
+Found 123 tool pages to check.
 
 ✅ ai-prompt-cost-calculator — 12/12 checks passed
 ✅ ai-prompt-token-estimator — 12/12 checks passed
@@ -42,6 +42,7 @@ Found 122 tool pages to check.
 ✅ curl-to-python-converter — 12/12 checks passed
 ✅ dataset-base64-encoder — 12/12 checks passed
 ✅ dataset-diff-data — 12/12 checks passed
+✅ dataset-text-lines — 12/12 checks passed
 ✅ diff-checker-and-text-compare — 12/12 checks passed
 ✅ embedding-cost-calculator — 12/12 checks passed
 ✅ env-to-json-converter — 12/12 checks passed
@@ -129,9 +130,9 @@ Found 122 tool pages to check.
 
 ————————————————————————————————————————
 HOMEPAGE CHECK:
-✅ 122/122 tools listed on homepage
+✅ 123/123 tools listed on homepage
 
 ============================================================
-SUMMARY: 122 passed, 0 failed out of 122 pages
+SUMMARY: 123 passed, 0 failed out of 123 pages
 🎉 ALL PAGES PASS QA!
 ============================================================
