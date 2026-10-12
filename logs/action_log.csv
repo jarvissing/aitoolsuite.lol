@@ -81,3 +81,4 @@ timestamp,action_type,tool_name,keyword,url,status,details
 2026-10-10T23:59:37.036562,PUBLISH,CSS Dataset Layout Visualizer,dataset css grid,https://aitoolsuite.lol/dataset-css-grid.html,SUCCESS,Published CSS Dataset Layout Visualizer
 2026-10-11T15:12:06.742538,PUBLISH,Hex Dataset Palette Transformer,dataset color hex,https://aitoolsuite.lol/dataset-color-hex.html,SUCCESS,Published Hex Dataset Palette Transformer
 2026-10-12T00:06:49.174237,PUBLISH,Strict Dataset Schema Validator,dataset json schema,https://aitoolsuite.lol/dataset-json-schema.html,SUCCESS,Published Strict Dataset Schema Validator
+2026-10-12T18:22:29.180013,PUBLISH,Raw Dataset Plain Text Stripper,dataset text strip,https://aitoolsuite.lol/dataset-text-strip.html,SUCCESS,Published Raw Dataset Plain Text Stripper
