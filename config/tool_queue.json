@@ -1,17 +1,17 @@
 [
   {
-    "keyword": "dataset text strip",
-    "tool_name": "Raw Dataset Plain Text Stripper",
-    "description": "Fast browser-based raw dataset plain text stripper with 100% client-side privacy, instant execution, and zero ads.",
-    "category": "Text Tools",
-    "tool_type": "html-to-text",
+    "keyword": "dataset binary base",
+    "tool_name": "Multi Base Dataset Radix Calculator",
+    "description": "Fast browser-based multi base dataset radix calculator with 100% client-side privacy, instant execution, and zero ads.",
+    "category": "Developer Tools",
+    "tool_type": "binary-to-hex",
     "search_demand": 85,
     "faq_items": "Is this tool free?:::Yes, completely free with zero limits.|||Does it require an account?:::No account or login required.|||Is my data secure?:::All calculations happen in your browser memory.",
     "related_tools": "JSON Formatter,Diff Checker,Word Counter",
     "status": "published",
     "priority_score": 85,
-    "discovered_at": "2026-10-12T18:22:29.107385",
-    "published_at": "2026-10-12T18:22:29.119240"
+    "discovered_at": "2026-10-13T02:19:02.645866",
+    "published_at": "2026-10-13T02:19:02.657832"
   },
   {
     "keyword": "json to rust struct",
@@ -56,6 +56,20 @@
     "tool_type": "markdown-to-html",
     "status": "pending",
     "priority": 7
+  },
+  {
+    "keyword": "dataset text strip",
+    "tool_name": "Raw Dataset Plain Text Stripper",
+    "description": "Fast browser-based raw dataset plain text stripper with 100% client-side privacy, instant execution, and zero ads.",
+    "category": "Text Tools",
+    "tool_type": "html-to-text",
+    "search_demand": 85,
+    "faq_items": "Is this tool free?:::Yes, completely free with zero limits.|||Does it require an account?:::No account or login required.|||Is my data secure?:::All calculations happen in your browser memory.",
+    "related_tools": "JSON Formatter,Diff Checker,Word Counter",
+    "status": "published",
+    "priority_score": 85,
+    "discovered_at": "2026-10-12T18:22:29.107385",
+    "published_at": "2026-10-12T18:22:29.119240"
   },
   {
     "keyword": "dataset json schema",
