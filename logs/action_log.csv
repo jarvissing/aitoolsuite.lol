@@ -92,3 +92,4 @@ timestamp,action_type,tool_name,keyword,url,status,details
 2026-10-16T13:37:57.149193,PUBLISH,Raw Variable Plain Text Stripper,variable text strip,https://aitoolsuite.lol/variable-text-strip.html,SUCCESS,Published Raw Variable Plain Text Stripper
 2026-10-16T23:08:38.229473,PUBLISH,Multi Base Variable Radix Calculator,variable binary base,https://aitoolsuite.lol/variable-binary-base.html,SUCCESS,Published Multi Base Variable Radix Calculator
 2026-10-17T12:35:29.475675,PUBLISH,Base64 Safe Markup Encoder,markup base64 encoder,https://aitoolsuite.lol/markup-base64-encoder.html,SUCCESS,Published Base64 Safe Markup Encoder
+2026-10-17T22:46:41.831995,PUBLISH,Realtime Markup Diff Inspector,markup diff data,https://aitoolsuite.lol/markup-diff-data.html,SUCCESS,Published Realtime Markup Diff Inspector
