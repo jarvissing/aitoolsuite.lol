@@ -96,3 +96,4 @@ timestamp,action_type,tool_name,keyword,url,status,details
 2026-10-18T12:52:46.436717,PUBLISH,Online Markup Line Formatter,markup text lines,https://aitoolsuite.lol/markup-text-lines.html,SUCCESS,Published Online Markup Line Formatter
 2026-10-18T22:40:41.007635,PUBLISH,CSS Markup Layout Visualizer,markup css grid,https://aitoolsuite.lol/markup-css-grid.html,SUCCESS,Published CSS Markup Layout Visualizer
 2026-10-19T16:01:44.092812,PUBLISH,Hex Markup Palette Transformer,markup color hex,https://aitoolsuite.lol/markup-color-hex.html,SUCCESS,Published Hex Markup Palette Transformer
+2026-10-20T00:02:42.782577,PUBLISH,Strict Markup Schema Validator,markup json schema,https://aitoolsuite.lol/markup-json-schema.html,SUCCESS,Published Strict Markup Schema Validator
