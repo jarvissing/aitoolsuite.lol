@@ -99,3 +99,4 @@ timestamp,action_type,tool_name,keyword,url,status,details
 2026-10-20T00:02:42.782577,PUBLISH,Strict Markup Schema Validator,markup json schema,https://aitoolsuite.lol/markup-json-schema.html,SUCCESS,Published Strict Markup Schema Validator
 2026-10-20T13:58:26.163398,PUBLISH,Raw Markup Plain Text Stripper,markup text strip,https://aitoolsuite.lol/markup-text-strip.html,SUCCESS,Published Raw Markup Plain Text Stripper
 2026-10-20T23:32:23.059623,PUBLISH,Multi Base Markup Radix Calculator,markup binary base,https://aitoolsuite.lol/markup-binary-base.html,SUCCESS,Published Multi Base Markup Radix Calculator
+2026-10-21T14:14:40.379543,PUBLISH,Base64 Safe Query Encoder,query base64 encoder,https://aitoolsuite.lol/query-base64-encoder.html,SUCCESS,Published Base64 Safe Query Encoder
