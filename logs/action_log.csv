@@ -101,3 +101,4 @@ timestamp,action_type,tool_name,keyword,url,status,details
 2026-10-20T23:32:23.059623,PUBLISH,Multi Base Markup Radix Calculator,markup binary base,https://aitoolsuite.lol/markup-binary-base.html,SUCCESS,Published Multi Base Markup Radix Calculator
 2026-10-21T14:14:40.379543,PUBLISH,Base64 Safe Query Encoder,query base64 encoder,https://aitoolsuite.lol/query-base64-encoder.html,SUCCESS,Published Base64 Safe Query Encoder
 2026-10-21T23:49:02.775827,PUBLISH,Realtime Query Diff Inspector,query diff data,https://aitoolsuite.lol/query-diff-data.html,SUCCESS,Published Realtime Query Diff Inspector
+2026-10-22T14:14:09.071156,PUBLISH,Online Query Line Formatter,query text lines,https://aitoolsuite.lol/query-text-lines.html,SUCCESS,Published Online Query Line Formatter
