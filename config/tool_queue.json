@@ -1,17 +1,17 @@
 [
   {
-    "keyword": "query css grid",
-    "tool_name": "CSS Query Layout Visualizer",
-    "description": "Fast browser-based css query layout visualizer with 100% client-side privacy, instant execution, and zero ads.",
+    "keyword": "query color hex",
+    "tool_name": "Hex Query Palette Transformer",
+    "description": "Fast browser-based hex query palette transformer with 100% client-side privacy, instant execution, and zero ads.",
     "category": "Design Tools",
-    "tool_type": "css-flexbox",
+    "tool_type": "color-shades",
     "search_demand": 85,
     "faq_items": "Is this tool free?:::Yes, completely free with zero limits.|||Does it require an account?:::No account or login required.|||Is my data secure?:::All calculations happen in your browser memory.",
     "related_tools": "JSON Formatter,Diff Checker,Word Counter",
     "status": "published",
     "priority_score": 85,
-    "discovered_at": "2026-10-22T23:47:04.942394",
-    "published_at": "2026-10-22T23:47:04.954580"
+    "discovered_at": "2026-10-23T13:57:05.797682",
+    "published_at": "2026-10-23T13:57:05.807220"
   },
   {
     "keyword": "json to rust struct",
@@ -56,6 +56,20 @@
     "tool_type": "markdown-to-html",
     "status": "pending",
     "priority": 7
+  },
+  {
+    "keyword": "query css grid",
+    "tool_name": "CSS Query Layout Visualizer",
+    "description": "Fast browser-based css query layout visualizer with 100% client-side privacy, instant execution, and zero ads.",
+    "category": "Design Tools",
+    "tool_type": "css-flexbox",
+    "search_demand": 85,
+    "faq_items": "Is this tool free?:::Yes, completely free with zero limits.|||Does it require an account?:::No account or login required.|||Is my data secure?:::All calculations happen in your browser memory.",
+    "related_tools": "JSON Formatter,Diff Checker,Word Counter",
+    "status": "published",
+    "priority_score": 85,
+    "discovered_at": "2026-10-22T23:47:04.942394",
+    "published_at": "2026-10-22T23:47:04.954580"
   },
   {
     "keyword": "query text lines",
