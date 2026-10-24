@@ -1,8 +1,8 @@
 ============================================================
-  QA REPORT — 2026-10-24 13:00:21
+  QA REPORT — 2026-10-24 22:47:14
 ============================================================
 
-Found 151 tool pages to check.
+Found 152 tool pages to check.
 
 ✅ ai-prompt-cost-calculator — 12/12 checks passed
 ✅ ai-prompt-token-estimator — 12/12 checks passed
@@ -111,6 +111,7 @@ Found 151 tool pages to check.
 ✅ px-to-rem-converter — 12/12 checks passed
 ✅ qr-code-generator — 12/12 checks passed
 ✅ query-base64-encoder — 12/12 checks passed
+✅ query-binary-base — 12/12 checks passed
 ✅ query-color-hex — 12/12 checks passed
 ✅ query-css-grid — 12/12 checks passed
 ✅ query-diff-data — 12/12 checks passed
@@ -158,9 +159,9 @@ Found 151 tool pages to check.
 
 ————————————————————————————————————————
 HOMEPAGE CHECK:
-✅ 151/151 tools listed on homepage
+✅ 152/152 tools listed on homepage
 
 ============================================================
-SUMMARY: 151 passed, 0 failed out of 151 pages
+SUMMARY: 152 passed, 0 failed out of 152 pages
 🎉 ALL PAGES PASS QA!
 ============================================================
