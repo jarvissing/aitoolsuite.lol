@@ -541,6 +541,12 @@
         <priority>0.8</priority>
     </url>
     <url>
+        <loc>https://aitoolsuite.lol/matrix-color-hex.html</loc>
+        <lastmod>2026-10-27</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
         <loc>https://aitoolsuite.lol/matrix-css-grid.html</loc>
         <lastmod>2026-10-27</lastmod>
         <changefreq>weekly</changefreq>

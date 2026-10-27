@@ -1,8 +1,8 @@
 ============================================================
-  QA REPORT — 2026-10-27 00:08:32
+  QA REPORT — 2026-10-27 15:01:57
 ============================================================
 
-Found 156 tool pages to check.
+Found 157 tool pages to check.
 
 ✅ ai-prompt-cost-calculator — 12/12 checks passed
 ✅ ai-prompt-token-estimator — 12/12 checks passed
@@ -91,6 +91,7 @@ Found 156 tool pages to check.
 ✅ markup-text-lines — 12/12 checks passed
 ✅ markup-text-strip — 12/12 checks passed
 ✅ matrix-base64-encoder — 12/12 checks passed
+✅ matrix-color-hex — 12/12 checks passed
 ✅ matrix-css-grid — 12/12 checks passed
 ✅ matrix-diff-data — 12/12 checks passed
 ✅ matrix-text-lines — 12/12 checks passed
@@ -163,9 +164,9 @@ Found 156 tool pages to check.
 
 ————————————————————————————————————————
 HOMEPAGE CHECK:
-✅ 156/156 tools listed on homepage
+✅ 157/157 tools listed on homepage
 
 ============================================================
-SUMMARY: 156 passed, 0 failed out of 156 pages
+SUMMARY: 157 passed, 0 failed out of 157 pages
 🎉 ALL PAGES PASS QA!
 ============================================================
