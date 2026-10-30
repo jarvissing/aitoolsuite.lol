@@ -97,6 +97,12 @@
         <priority>0.8</priority>
     </url>
     <url>
+        <loc>https://aitoolsuite.lol/collection-text-lines.html</loc>
+        <lastmod>2026-10-30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
         <loc>https://aitoolsuite.lol/color-contrast-checker.html</loc>
         <lastmod>2026-10-30</lastmod>
         <changefreq>weekly</changefreq>
