@@ -1,8 +1,8 @@
 ============================================================
-  QA REPORT — 2026-10-31 00:15:23
+  QA REPORT — 2026-10-31 14:54:18
 ============================================================
 
-Found 164 tool pages to check.
+Found 165 tool pages to check.
 
 ✅ ai-prompt-cost-calculator — 12/12 checks passed
 ✅ ai-prompt-token-estimator — 12/12 checks passed
@@ -17,6 +17,7 @@ Found 164 tool pages to check.
 ✅ chmod-calculator — 12/12 checks passed
 ✅ cidr-subnet-calculator — 12/12 checks passed
 ✅ collection-base64-encoder — 12/12 checks passed
+✅ collection-color-hex — 12/12 checks passed
 ✅ collection-css-grid — 12/12 checks passed
 ✅ collection-diff-data — 12/12 checks passed
 ✅ collection-text-lines — 12/12 checks passed
@@ -171,9 +172,9 @@ Found 164 tool pages to check.
 
 ————————————————————————————————————————
 HOMEPAGE CHECK:
-✅ 164/164 tools listed on homepage
+✅ 165/165 tools listed on homepage
 
 ============================================================
-SUMMARY: 164 passed, 0 failed out of 164 pages
+SUMMARY: 165 passed, 0 failed out of 165 pages
 🎉 ALL PAGES PASS QA!
 ============================================================
