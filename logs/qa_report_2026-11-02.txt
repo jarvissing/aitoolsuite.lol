@@ -1,8 +1,8 @@
 ============================================================
-  QA REPORT — 2026-11-02 00:03:13
+  QA REPORT — 2026-11-02 18:58:48
 ============================================================
 
-Found 168 tool pages to check.
+Found 169 tool pages to check.
 
 ✅ ai-prompt-cost-calculator — 12/12 checks passed
 ✅ ai-prompt-token-estimator — 12/12 checks passed
@@ -12,6 +12,7 @@ Found 168 tool pages to check.
 ✅ base64-image-encoder — 12/12 checks passed
 ✅ base64-url-safe-encoder — 12/12 checks passed
 ✅ binary-to-hex-converter — 12/12 checks passed
+✅ buffer-base64-encoder — 12/12 checks passed
 ✅ bulk-uuid-generator — 12/12 checks passed
 ✅ case-converter — 12/12 checks passed
 ✅ chmod-calculator — 12/12 checks passed
@@ -175,9 +176,9 @@ Found 168 tool pages to check.
 
 ————————————————————————————————————————
 HOMEPAGE CHECK:
-✅ 168/168 tools listed on homepage
+✅ 169/169 tools listed on homepage
 
 ============================================================
-SUMMARY: 168 passed, 0 failed out of 168 pages
+SUMMARY: 169 passed, 0 failed out of 169 pages
 🎉 ALL PAGES PASS QA!
 ============================================================
