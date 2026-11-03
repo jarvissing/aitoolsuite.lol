@@ -73,6 +73,12 @@
         <priority>0.8</priority>
     </url>
     <url>
+        <loc>https://aitoolsuite.lol/buffer-text-lines.html</loc>
+        <lastmod>2026-11-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
         <loc>https://aitoolsuite.lol/bulk-uuid-generator.html</loc>
         <lastmod>2026-11-03</lastmod>
         <changefreq>weekly</changefreq>
