@@ -132,3 +132,4 @@ timestamp,action_type,tool_name,keyword,url,status,details
 2026-11-05T16:57:21.497616,PUBLISH,Raw Buffer Plain Text Stripper,buffer text strip,https://aitoolsuite.lol/buffer-text-strip.html,SUCCESS,Published Raw Buffer Plain Text Stripper
 2026-11-06T01:16:58.993797,PUBLISH,Multi Base Buffer Radix Calculator,buffer binary base,https://aitoolsuite.lol/buffer-binary-base.html,SUCCESS,Published Multi Base Buffer Radix Calculator
 2026-11-06T16:29:39.911869,PUBLISH,JSON to Rust Struct Converter (Serde),json to rust struct,https://aitoolsuite.lol/json-to-rust-struct.html,SUCCESS,Published JSON to Rust Struct Converter (Serde)
+2026-11-07T00:30:34.094217,PUBLISH,JSON to Go Struct Converter,json to go struct,https://aitoolsuite.lol/json-to-go-struct.html,SUCCESS,Published JSON to Go Struct Converter
