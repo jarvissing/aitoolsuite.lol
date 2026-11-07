@@ -1,17 +1,5 @@
 [
   {
-    "keyword": "json to go struct",
-    "tool_name": "JSON to Go Struct Converter",
-    "description": "Instantly transform JSON objects into idiomatic Go structs complete with struct tags for JSON serialization.",
-    "category": "Developer Tools",
-    "faq_items": "Does this generate Go struct tags?:::Yes, every field is annotated with `json:\"key\"` tags.|||How does it handle primitive types?:::Numbers with decimals become `float64`, whole numbers become `int64`, booleans become `bool`, and strings become `string`.|||Can it handle arrays of objects?:::Yes, arrays of objects are generated as slices of custom child structs.",
-    "related_tools": "JSON to Rust Struct Converter,JSON to TypeScript Interfaces,JSON Formatter & Validator",
-    "tool_type": "json-to-go",
-    "status": "published",
-    "priority": 8,
-    "published_at": "2026-11-07T00:30:34.019289"
-  },
-  {
     "keyword": "git command helper",
     "tool_name": "Interactive Git Scenario & Command Generator",
     "description": "Find the exact Git commands for your scenario: undoing commits, branching, stashing, rebasing, and disaster recovery.",
@@ -19,8 +7,9 @@
     "faq_items": "How do I undo the last commit without losing changes?:::Run `git reset --soft HEAD~1`. Your changes will remain staged in the index.|||How do I discard all local uncommitted changes?:::Run `git restore .` and `git clean -fd` to remove untracked files.|||Are these commands safe?:::Each command in this cheatsheet is labeled with its safety level (Safe, Modifies, or Destructive).",
     "related_tools": "Diff Checker,Cron Expression Generator,Chmod Calculator",
     "tool_type": "git-cheatsheet",
-    "status": "pending",
-    "priority": 7
+    "status": "published",
+    "priority": 7,
+    "published_at": "2026-11-07T15:16:36.164319"
   },
   {
     "keyword": "markdown to html converter",
@@ -32,6 +21,18 @@
     "tool_type": "markdown-to-html",
     "status": "pending",
     "priority": 7
+  },
+  {
+    "keyword": "json to go struct",
+    "tool_name": "JSON to Go Struct Converter",
+    "description": "Instantly transform JSON objects into idiomatic Go structs complete with struct tags for JSON serialization.",
+    "category": "Developer Tools",
+    "faq_items": "Does this generate Go struct tags?:::Yes, every field is annotated with `json:\"key\"` tags.|||How does it handle primitive types?:::Numbers with decimals become `float64`, whole numbers become `int64`, booleans become `bool`, and strings become `string`.|||Can it handle arrays of objects?:::Yes, arrays of objects are generated as slices of custom child structs.",
+    "related_tools": "JSON to Rust Struct Converter,JSON to TypeScript Interfaces,JSON Formatter & Validator",
+    "tool_type": "json-to-go",
+    "status": "published",
+    "priority": 8,
+    "published_at": "2026-11-07T00:30:34.019289"
   },
   {
     "keyword": "json to rust struct",
