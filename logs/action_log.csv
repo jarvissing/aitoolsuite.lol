@@ -134,3 +134,4 @@ timestamp,action_type,tool_name,keyword,url,status,details
 2026-11-06T16:29:39.911869,PUBLISH,JSON to Rust Struct Converter (Serde),json to rust struct,https://aitoolsuite.lol/json-to-rust-struct.html,SUCCESS,Published JSON to Rust Struct Converter (Serde)
 2026-11-07T00:30:34.094217,PUBLISH,JSON to Go Struct Converter,json to go struct,https://aitoolsuite.lol/json-to-go-struct.html,SUCCESS,Published JSON to Go Struct Converter
 2026-11-07T15:16:36.252287,PUBLISH,Interactive Git Scenario & Command Generator,git command helper,https://aitoolsuite.lol/git-command-helper.html,SUCCESS,Published Interactive Git Scenario & Command Generator
+2026-11-08T00:05:07.219500,PUBLISH,Markdown to HTML Converter & Live Preview,markdown to html converter,https://aitoolsuite.lol/markdown-to-html-converter.html,SUCCESS,Published Markdown to HTML Converter & Live Preview

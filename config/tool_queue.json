@@ -1,5 +1,17 @@
 [
   {
+    "keyword": "markdown to html converter",
+    "tool_name": "Markdown to HTML Converter & Live Preview",
+    "description": "Fast client-side Markdown to HTML converter supporting headings, lists, tables, code blocks, blockquotes, and live preview.",
+    "category": "Developer Tools",
+    "faq_items": "Does this require an external library or backend?:::No, it uses a fast, zero-dependency client-side parser that runs directly in your browser.|||Can I copy the raw HTML output?:::Yes, you can toggle between the visual preview and the raw HTML markup to copy with one click.|||Does it support GFM tables?:::Yes, GitHub Flavored Markdown table syntax is fully parsed.",
+    "related_tools": "HTML Entity Encoder / Decoder,Diff Checker,Case Converter",
+    "tool_type": "markdown-to-html",
+    "status": "published",
+    "priority": 7,
+    "published_at": "2026-11-08T00:05:07.119277"
+  },
+  {
     "keyword": "git command helper",
     "tool_name": "Interactive Git Scenario & Command Generator",
     "description": "Find the exact Git commands for your scenario: undoing commits, branching, stashing, rebasing, and disaster recovery.",
@@ -10,17 +22,6 @@
     "status": "published",
     "priority": 7,
     "published_at": "2026-11-07T15:16:36.164319"
-  },
-  {
-    "keyword": "markdown to html converter",
-    "tool_name": "Markdown to HTML Converter & Live Preview",
-    "description": "Fast client-side Markdown to HTML converter supporting headings, lists, tables, code blocks, blockquotes, and live preview.",
-    "category": "Developer Tools",
-    "faq_items": "Does this require an external library or backend?:::No, it uses a fast, zero-dependency client-side parser that runs directly in your browser.|||Can I copy the raw HTML output?:::Yes, you can toggle between the visual preview and the raw HTML markup to copy with one click.|||Does it support GFM tables?:::Yes, GitHub Flavored Markdown table syntax is fully parsed.",
-    "related_tools": "HTML Entity Encoder / Decoder,Diff Checker,Case Converter",
-    "tool_type": "markdown-to-html",
-    "status": "pending",
-    "priority": 7
   },
   {
     "keyword": "json to go struct",
