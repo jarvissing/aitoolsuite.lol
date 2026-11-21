@@ -279,6 +279,41 @@
             line-height: 1.55;
         }
 
+        /* Starred / Favorites Section */
+        .tool-card { position: relative; }
+        .tool-star {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--rule);
+            color: #64748b;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            z-index: 10;
+            font-size: 0.9rem;
+        }
+        .tool-star:hover {
+            background: rgba(226, 165, 58, 0.15);
+            color: var(--signal);
+            border-color: var(--signal-border);
+        }
+        .tool-star.starred {
+            background: rgba(226, 165, 58, 0.2);
+            color: var(--signal);
+            border-color: var(--signal);
+        }
+        #starredSection {
+            display: none;
+            margin-bottom: 40px;
+        }
+
         /* LIVE QUICKLAB SANDBOX */
         .quicklab-container {
             max-width: 860px;
@@ -1091,6 +1126,15 @@
         </div>
 
         
+        <!-- Starred & Pinned Tools Section -->
+        <section id="starredSection" class="category-section">
+            <div class="category-header">
+                <h2 class="category-title">⭐ Pinned &amp; Starred Tools</h2>
+                <span class="category-count" id="starredCount">0 tools</span>
+            </div>
+            <div class="tools-grid" id="starredGrid"></div>
+        </section>
+
         <section id="ai-utilities" class="category-section">
             <div class="category-header">
                 <h2 class="category-title">AI Utilities</h2>
@@ -3718,6 +3762,106 @@
             }
             animate();
         }
+    </script>
+
+    <!-- Client-Side Starred / Pinned Tools Manager (LocalStorage) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const STORAGE_KEY = 'ai_tool_suite_favorites';
+            
+            function getFavorites() {
+                try {
+                    return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+                } catch(e) { return []; }
+            }
+
+            function saveFavorites(favs) {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(favs));
+            }
+
+            const cards = document.querySelectorAll('.tool-card');
+            const favorites = getFavorites();
+
+            cards.forEach(card => {
+                const href = card.getAttribute('href');
+                const isStarred = favorites.includes(href);
+
+                // Create star button
+                const starBtn = document.createElement('button');
+                starBtn.className = `tool-star ${isStarred ? 'starred' : ''}`;
+                starBtn.innerHTML = isStarred ? '★' : '☆';
+                starBtn.title = isStarred ? 'Unpin tool' : 'Pin to favorites';
+                
+                starBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const currentFavs = getFavorites();
+                    if (currentFavs.includes(href)) {
+                        const updated = currentFavs.filter(h => h !== href);
+                        saveFavorites(updated);
+                        starBtn.classList.remove('starred');
+                        starBtn.innerHTML = '☆';
+                        starBtn.title = 'Pin to favorites';
+                    } else {
+                        currentFavs.push(href);
+                        saveFavorites(currentFavs);
+                        starBtn.classList.add('starred');
+                        starBtn.innerHTML = '★';
+                        starBtn.title = 'Unpin tool';
+                    }
+                    renderStarredSection();
+                });
+
+                card.appendChild(starBtn);
+            });
+
+            function renderStarredSection() {
+                const starredSection = document.getElementById('starredSection');
+                const starredGrid = document.getElementById('starredGrid');
+                const starredCount = document.getElementById('starredCount');
+                const favorites = getFavorites();
+
+                if (!starredSection || !starredGrid) return;
+
+                if (favorites.length === 0) {
+                    starredSection.style.display = 'none';
+                    return;
+                }
+
+                starredSection.style.display = 'block';
+                starredCount.textContent = `${favorites.length} tool${favorites.length > 1 ? 's' : ''}`;
+                starredGrid.innerHTML = '';
+
+                favorites.forEach(href => {
+                    const originalCard = document.querySelector(`.tool-card[href="${href}"]`);
+                    if (originalCard) {
+                        const clone = originalCard.cloneNode(true);
+                        // Update star in clone
+                        const cloneStar = clone.querySelector('.tool-star');
+                        if (cloneStar) {
+                            cloneStar.classList.add('starred');
+                            cloneStar.innerHTML = '★';
+                            cloneStar.addEventListener('click', (e) => {
+                                e.preventDefault();
+                                e.stopPropagation();
+                                const currentFavs = getFavorites().filter(h => h !== href);
+                                saveFavorites(currentFavs);
+                                // update original card star
+                                const origCard = document.querySelector(`.tool-card[href="${href}"] .tool-star`);
+                                if (origCard) {
+                                    origCard.classList.remove('starred');
+                                    origCard.innerHTML = '☆';
+                                }
+                                renderStarredSection();
+                            });
+                        }
+                        starredGrid.appendChild(clone);
+                    }
+                });
+            }
+
+            renderStarredSection();
+        });
     </script>
 </body>
 </html>
