@@ -186,6 +186,50 @@
             padding: 24px 16px 80px;
         }
 
+        /* 3D Hero Canvas Background */
+        #heroCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.45;
+        }
+        header {
+            position: relative;
+            overflow: hidden;
+            border-radius: 16px;
+            background: radial-gradient(circle at center, #12121c 0%, #09090b 75%);
+            border: 1px solid var(--rule);
+            margin-bottom: 24px;
+            text-align: center;
+            padding: clamp(40px, 8vw, 70px) 16px clamp(32px, 6vw, 48px);
+        }
+        header > * { position: relative; z-index: 2; }
+
+        /* Privacy Trust Badge */
+        .trust-badge-bar {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            color: #34d399;
+            padding: 8px 18px;
+            border-radius: 100px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            margin-top: 18px;
+            margin-bottom: 12px;
+            box-shadow: 0 0 25px rgba(16, 185, 129, 0.15);
+        }
+        .trust-badge-bar span {
+            color: #a7f3d0;
+            font-weight: 500;
+        }
+
         /* Hero Section */
         header {
             text-align: center;
@@ -894,13 +938,21 @@
 
     <div class="container">
         <header>
+            <canvas id="heroCanvas"></canvas>
             <div class="lab-status-badge">
                 <span class="pulse-dot"></span>
-                <span>180 In-Browser Utilities Active &bull; Zero Server Latency</span>
+                <span>180+ In-Browser Utilities Active &bull; Zero Server Latency</span>
             </div>
             <h1>The In-Browser Developer Workbench</h1>
             <p class="hero-subhead">High-speed developer, AI, and design utilities running 100% locally in your browser. Zero telemetry, zero logins, instant results.</p>
             
+            <!-- Privacy Trust Guarantee -->
+            <div>
+                <div class="trust-badge-bar">
+                    <span>🛡️ 100% Client-Side Privacy:</span> Zero data leaves your browser. Check your F12 Network tab to verify!
+                </div>
+            </div>
+
             <!-- LIVE QUICKLAB SANDBOX -->
             <section id="quicklab" class="quicklab-container">
                 <div class="quicklab-header">
@@ -3612,5 +3664,60 @@
         }
     </script>
     <script data-goatcounter="https://aitoolsuite.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
+    <!-- Interactive 3D Particle Network Hero Animation -->
+    <script>
+        const canvas = document.getElementById('heroCanvas');
+        if (canvas) {
+            const ctx = canvas.getContext('2d');
+            let width = canvas.width = canvas.offsetWidth;
+            let height = canvas.height = canvas.offsetHeight;
+            
+            window.addEventListener('resize', () => {
+                width = canvas.width = canvas.offsetWidth;
+                height = canvas.height = canvas.offsetHeight;
+            });
+
+            const particles = Array.from({ length: 45 }, () => ({
+                x: Math.random() * width,
+                y: Math.random() * height,
+                vx: (Math.random() - 0.5) * 0.7,
+                vy: (Math.random() - 0.5) * 0.7,
+                radius: Math.random() * 2 + 1.2
+            }));
+
+            function animate() {
+                ctx.clearRect(0, 0, width, height);
+                ctx.fillStyle = 'rgba(226, 165, 58, 0.4)';
+                ctx.strokeStyle = 'rgba(226, 165, 58, 0.15)';
+                ctx.lineWidth = 1;
+
+                particles.forEach((p, index) => {
+                    p.x += p.vx;
+                    p.y += p.vy;
+
+                    if (p.x < 0 || p.x > width) p.vx *= -1;
+                    if (p.y < 0 || p.y > height) p.vy *= -1;
+
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                    ctx.fill();
+
+                    for (let j = index + 1; j < particles.length; j++) {
+                        const p2 = particles[j];
+                        const dist = Math.hypot(p.x - p2.x, p.y - p2.y);
+                        if (dist < 130) {
+                            ctx.beginPath();
+                            ctx.moveTo(p.x, p.y);
+                            ctx.lineTo(p2.x, p2.y);
+                            ctx.stroke();
+                        }
+                    }
+                });
+                requestAnimationFrame(animate);
+            }
+            animate();
+        }
+    </script>
 </body>
 </html>
